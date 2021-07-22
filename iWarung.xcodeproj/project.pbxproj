@@ -7,6 +7,8 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		3FE725FB26A96F24009F4D32 /* Pembayaran.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 3FE725FA26A96F24009F4D32 /* Pembayaran.storyboard */; };
+		3FE725FD26A96F7A009F4D32 /* PembayaranViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3FE725FC26A96F7A009F4D32 /* PembayaranViewController.swift */; };
 		BD5AC58526A369F400A52336 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = BD5AC58426A369F400A52336 /* AppDelegate.swift */; };
 		BD5AC58726A369F400A52336 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = BD5AC58626A369F400A52336 /* SceneDelegate.swift */; };
 		BD5AC58926A369F400A52336 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BD5AC58826A369F400A52336 /* ViewController.swift */; };
@@ -20,6 +22,8 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		3FE725FA26A96F24009F4D32 /* Pembayaran.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = Pembayaran.storyboard; sourceTree = "<group>"; };
+		3FE725FC26A96F7A009F4D32 /* PembayaranViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PembayaranViewController.swift; sourceTree = "<group>"; };
 		BD5AC58126A369F400A52336 /* iWarung.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = iWarung.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		BD5AC58426A369F400A52336 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		BD5AC58626A369F400A52336 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -83,6 +87,7 @@
 			isa = PBXGroup;
 			children = (
 				BD5AC58A26A369F400A52336 /* Main.storyboard */,
+				3FE725FA26A96F24009F4D32 /* Pembayaran.storyboard */,
 			);
 			path = Views;
 			sourceTree = "<group>";
@@ -99,6 +104,7 @@
 			isa = PBXGroup;
 			children = (
 				BD5AC58826A369F400A52336 /* ViewController.swift */,
+				3FE725FC26A96F7A009F4D32 /* PembayaranViewController.swift */,
 			);
 			path = Controllers;
 			sourceTree = "<group>";
@@ -168,6 +174,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				3FE725FB26A96F24009F4D32 /* Pembayaran.storyboard in Resources */,
 				BD5AC59426A369F500A52336 /* LaunchScreen.storyboard in Resources */,
 				BD5AC59126A369F500A52336 /* Assets.xcassets in Resources */,
 				BD5AC58C26A369F400A52336 /* Main.storyboard in Resources */,
@@ -181,6 +188,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				3FE725FD26A96F7A009F4D32 /* PembayaranViewController.swift in Sources */,
 				BD8C016726A3F15600FAF9C5 /* model.swift in Sources */,
 				BD5AC58926A369F400A52336 /* ViewController.swift in Sources */,
 				BD5AC58F26A369F400A52336 /* iWarung.xcdatamodeld in Sources */,
