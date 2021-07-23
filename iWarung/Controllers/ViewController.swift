@@ -6,15 +6,58 @@
 //
 
 import UIKit
+import Vision
+import AVFoundation
 
-class ViewController: UIViewController {
+class ViewController: UIViewController, AVCaptureVideoDataOutputSampleBufferDelegate {
+    
+    private let captureSession = AVCaptureSession()
+    private let videoOutput = AVCaptureVideoDataOutput()
+    private let sequenceHandler = VNSequenceRequestHandler()
 
     override func viewDidLoad() {
         super.viewDidLoad()
-        // Do any additional setup after loading the view.
+        self.addCameraInput()
+        self.configurePreviewLayer()
+        self.addVideoOutput()
+        self.captureSession.startRunning()
+    }
+    
+    func captureOutput(_ output: AVCaptureOutput,
+                       didOutput sampleBuffer: CMSampleBuffer,
+                       from connection: AVCaptureConnection) {
+        guard let frame = CMSampleBufferGetImageBuffer(sampleBuffer) else {
+            debugPrint("unable to get image from sample buffer")
+            return
+        }
+        if let barcode = self.extractBarcode(fromFrame: frame) {
+            showAlert(
+              withTitle: "Found barcode",
+              message: "\(barcode)")
+        }
+    }
+    
+    private func extractBarcode(fromFrame frame: CVImageBuffer) -> String? {
+        let barcodeRequest = VNDetectBarcodesRequest()
+        barcodeRequest.symbologies = [.EAN13]
+        try? self.sequenceHandler.perform([barcodeRequest], on: frame)
+        guard let results = barcodeRequest.results as? [VNBarcodeObservation], let firstBarcode = results.first?.payloadStringValue else {
+            return nil
+        }
+        return firstBarcode
     }
 
-
+    private func addCameraInput() {
+        let device = AVCaptureDevice.default(for: .video)!
+        let cameraInput = try! AVCaptureDeviceInput(device: device)
+        self.captureSession.addInput(cameraInput)
+    }
+    
+    private func addVideoOutput() {
+        self.videoOutput.videoSettings = [(kCVPixelBufferPixelFormatTypeKey as NSString) : NSNumber(value: kCVPixelFormatType_32BGRA)] as [String : Any]
+        self.videoOutput.setSampleBufferDelegate(self, queue: DispatchQueue(label: "my.image.handling.queue"))
+        self.captureSession.addOutput(self.videoOutput)
+    }
 }
 
 //MARK: - Remove Nav bar
@@ -28,4 +71,22 @@ extension ViewController {
         self.navigationController?.setNavigationBarHidden(false, animated: animated)
         super.viewWillDisappear(animated)
     }
+    
+    private func configurePreviewLayer() {
+      let cameraPreviewLayer = AVCaptureVideoPreviewLayer(session: captureSession)
+      cameraPreviewLayer.videoGravity = .resizeAspectFill
+      cameraPreviewLayer.connection?.videoOrientation = .portrait
+      cameraPreviewLayer.frame = view.frame
+      view.layer.insertSublayer(cameraPreviewLayer, at: 0)
+    }
+    
+    private func showAlert(withTitle title: String, message: String) {
+      DispatchQueue.main.async {
+        let alertController = UIAlertController(title: title, message: message, preferredStyle: .alert)
+        alertController.addAction(UIAlertAction(title: "OK", style: .default))
+        self.present(alertController, animated: true)
+      }
+    }
 }
+
+
