@@ -48,7 +48,7 @@ class ViewController: UIViewController, AVCaptureVideoDataOutputSampleBufferDele
     }
 
     private func addCameraInput() {
-        let device = AVCaptureDevice.default(for: .video)!
+        guard let device = AVCaptureDevice.default(for: .video) else { return print("No camera detected") }
         let cameraInput = try! AVCaptureDeviceInput(device: device)
         self.captureSession.addInput(cameraInput)
     }

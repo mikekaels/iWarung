@@ -8,11 +8,13 @@
 import UIKit
 
 class KeranjangViewController: UIViewController {
-
+    @IBOutlet weak var keranjangCollectionView: UICollectionView!
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         title = "Keranjang"
-        // Do any additional setup after loading the view.
+        
+        
     }
     
 
@@ -29,3 +31,14 @@ extension KeranjangViewController {
     }
 }
 
+extension KeranjangViewController: UICollectionViewDataSource, UICollectionViewDelegate {
+    func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
+        <#code#>
+    }
+    
+    func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
+        <#code#>
+    }
+    
+    
+}
