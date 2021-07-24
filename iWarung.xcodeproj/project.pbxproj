@@ -13,6 +13,8 @@
 		BD1FFF3226AB604100EB9AAD /* KeranjangCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = BD1FFF3026AB604100EB9AAD /* KeranjangCell.xib */; };
 		BD1FFF3426AB65F800EB9AAD /* Product.swift in Sources */ = {isa = PBXBuildFile; fileRef = BD1FFF3326AB65F800EB9AAD /* Product.swift */; };
 		BD1FFF3926AB957100EB9AAD /* UIViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BD1FFF3826AB957100EB9AAD /* UIViewController.swift */; };
+		BD1FFF3B26AC237A00EB9AAD /* UIView.swift in Sources */ = {isa = PBXBuildFile; fileRef = BD1FFF3A26AC237A00EB9AAD /* UIView.swift */; };
+		BD1FFF3D26AC24D300EB9AAD /* UIColor.swift in Sources */ = {isa = PBXBuildFile; fileRef = BD1FFF3C26AC24D300EB9AAD /* UIColor.swift */; };
 		BD5AC58526A369F400A52336 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = BD5AC58426A369F400A52336 /* AppDelegate.swift */; };
 		BD5AC58726A369F400A52336 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = BD5AC58626A369F400A52336 /* SceneDelegate.swift */; };
 		BD5AC58926A369F400A52336 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BD5AC58826A369F400A52336 /* ViewController.swift */; };
@@ -24,6 +26,7 @@
 		BD85A2D126A9F72600FE1B9C /* Keranjang.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = BD85A2D026A9F72600FE1B9C /* Keranjang.storyboard */; };
 		BD85A2D326A9F74B00FE1B9C /* KeranjangViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BD85A2D226A9F74B00FE1B9C /* KeranjangViewController.swift */; };
 		BD8C016726A3F15600FAF9C5 /* model.swift in Sources */ = {isa = PBXBuildFile; fileRef = BD8C016626A3F15600FAF9C5 /* model.swift */; };
+		BDC8DFA226AC2886008310AA /* UIButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = BDC8DFA126AC2886008310AA /* UIButton.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -33,6 +36,8 @@
 		BD1FFF3026AB604100EB9AAD /* KeranjangCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = KeranjangCell.xib; sourceTree = "<group>"; };
 		BD1FFF3326AB65F800EB9AAD /* Product.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Product.swift; sourceTree = "<group>"; };
 		BD1FFF3826AB957100EB9AAD /* UIViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIViewController.swift; sourceTree = "<group>"; };
+		BD1FFF3A26AC237A00EB9AAD /* UIView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIView.swift; sourceTree = "<group>"; };
+		BD1FFF3C26AC24D300EB9AAD /* UIColor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIColor.swift; sourceTree = "<group>"; };
 		BD5AC58126A369F400A52336 /* iWarung.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = iWarung.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		BD5AC58426A369F400A52336 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		BD5AC58626A369F400A52336 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -46,6 +51,7 @@
 		BD85A2D026A9F72600FE1B9C /* Keranjang.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = Keranjang.storyboard; sourceTree = "<group>"; };
 		BD85A2D226A9F74B00FE1B9C /* KeranjangViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = KeranjangViewController.swift; sourceTree = "<group>"; };
 		BD8C016626A3F15600FAF9C5 /* model.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = model.swift; sourceTree = "<group>"; };
+		BDC8DFA126AC2886008310AA /* UIButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIButton.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -128,6 +134,9 @@
 			isa = PBXGroup;
 			children = (
 				BD1FFF3826AB957100EB9AAD /* UIViewController.swift */,
+				BD1FFF3A26AC237A00EB9AAD /* UIView.swift */,
+				BD1FFF3C26AC24D300EB9AAD /* UIColor.swift */,
+				BDC8DFA126AC2886008310AA /* UIButton.swift */,
 			);
 			path = Extensions;
 			sourceTree = "<group>";
@@ -209,11 +218,14 @@
 				BD8C016726A3F15600FAF9C5 /* model.swift in Sources */,
 				BD1FFF3926AB957100EB9AAD /* UIViewController.swift in Sources */,
 				BD5AC58926A369F400A52336 /* ViewController.swift in Sources */,
+				BD1FFF3B26AC237A00EB9AAD /* UIView.swift in Sources */,
 				BD85A2D326A9F74B00FE1B9C /* KeranjangViewController.swift in Sources */,
 				BD5AC58F26A369F400A52336 /* iWarung.xcdatamodeld in Sources */,
 				BD1FFF3426AB65F800EB9AAD /* Product.swift in Sources */,
 				BD74BCB026A4820B00E3EE75 /* constants.swift in Sources */,
+				BD1FFF3D26AC24D300EB9AAD /* UIColor.swift in Sources */,
 				BD5AC58526A369F400A52336 /* AppDelegate.swift in Sources */,
+				BDC8DFA226AC2886008310AA /* UIButton.swift in Sources */,
 				BD1FFF3126AB604100EB9AAD /* KeranjangCell.swift in Sources */,
 				BD5AC58726A369F400A52336 /* SceneDelegate.swift in Sources */,
 			);

@@ -9,6 +9,9 @@ import UIKit
 
 class KeranjangViewController: UIViewController {
     @IBOutlet weak var keranjangCollectionView: UICollectionView!
+    @IBOutlet weak var totalBackgroundViewController: UIView!
+    @IBOutlet weak var pembayaranButton: UIButton!
+    @IBOutlet weak var pembayaranArrowButton: UIButton!
     
     let products: [Product] = [
         Product(image: "bimoli", name: "Bimoli 2L", expired: "20-05-2022", price: 24000),
@@ -32,12 +35,28 @@ class KeranjangViewController: UIViewController {
         keranjangCollectionView.dataSource = self
         keranjangCollectionView.delegate = self
         
-        //MARK: - custom navigation
         
     }
     
+    lazy var gradient: CAGradientLayer = {
+        let gradient = CAGradientLayer()
+        gradient.type = .radial
+        gradient.colors = [
+            UIColor.purple.cgColor,
+            UIColor.blue.cgColor,
+            UIColor.green.cgColor,
+            UIColor.yellow.cgColor,
+            UIColor.orange.cgColor,
+            UIColor.red.cgColor
+        ]
+        gradient.startPoint = CGPoint(x: 0.5, y: 0.5)
+        let endY = 0.5 + view.frame.size.width / view.frame.size.height / 2
+        gradient.endPoint = CGPoint(x: 1, y: endY)
+        return gradient
+    }()
+    
    
-
+    
 }
 
 //MARK: - Large title, Back Button, Navigation Bar
@@ -45,10 +64,31 @@ extension KeranjangViewController {
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         navigationController?.navigationBar.prefersLargeTitles = true
+        
         //MARK: - Change back button title to Kembali
         navigationController?.navigationBar.backItem?.title = "kembali"
+        
         //MARK: - No Border on Navigation bar
         navigationController?.isHiddenHairline = true
+        
+        //MARK: - Background Total
+        totalBackgroundViewController.cornerRadius(width: 7, height: 7)
+        totalBackgroundViewController.addGradient()
+        
+        //MARK: - Pembayaran Button
+        pembayaranButton.cornerRadius()
+        pembayaranButton.addGradient()
+        
+        //MARK: - Pembayaran Arrow Button
+        pembayaranArrowButton.backgroundColor = UIColor(rgb: K.blueColor3)
+        
+        let config = UIImage.SymbolConfiguration(pointSize: 20, weight: .semibold, scale: .small)
+
+         let BoldDoc = UIImage(systemName: "arrow.right", withConfiguration: config)
+
+        pembayaranArrowButton.setImage(BoldDoc, for: .normal)
+        pembayaranArrowButton.tintColor = .white
+        pembayaranArrowButton.cornerRadius(width: 4, height: 4)
     }
     
     override func viewWillDisappear(_ animated: Bool) {
@@ -86,6 +126,4 @@ extension KeranjangViewController: UICollectionViewDataSource, UICollectionViewD
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
         print(indexPath)
     }
-    
-    
 }
