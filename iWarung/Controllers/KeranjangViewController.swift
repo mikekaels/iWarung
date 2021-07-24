@@ -65,8 +65,8 @@ extension KeranjangViewController {
         super.viewWillAppear(animated)
         navigationController?.navigationBar.prefersLargeTitles = true
         
-        //MARK: - Change back button title to Kembali
-        navigationController?.navigationBar.backItem?.title = "kembali"
+//        //MARK: - Change back button title to Kembali
+//        navigationController?.navigationBar.backItem?.title = "kembali"
         
         //MARK: - No Border on Navigation bar
         navigationController?.isHiddenHairline = true
