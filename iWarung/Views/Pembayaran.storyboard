@@ -57,7 +57,7 @@
                                     <color key="titleColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
                                 </state>
                                 <connections>
-                                    <segue destination="rH4-EE-6dz" kind="show" id="PvM-Be-Kqs"/>
+                                    <action selector="finishTransactionPressed:" destination="Y6W-OH-hqX" eventType="touchUpInside" id="Upe-U1-an8"/>
                                 </connections>
                             </button>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Uang Diterima : " textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="fTj-bf-VzT">
@@ -110,9 +110,11 @@
                         <outlet property="receivedMoneyTextfield" destination="guM-mQ-ZNq" id="YRr-Xo-p1h"/>
                         <outlet property="totalTagihan" destination="RDQ-GJ-zb8" id="oPH-R6-ESb"/>
                         <outlet property="totalTagihanBackgroundView" destination="wQE-XV-VDh" id="KKP-Q8-OZN"/>
+                        <segue destination="shI-sg-6kz" kind="unwind" identifier="backToMainController" unwindAction="unwindToMainWithSegue:" id="bx5-AL-S62"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Ief-a0-LHa" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+                <exit id="shI-sg-6kz" userLabel="Exit" sceneMemberID="exit"/>
             </objects>
             <point key="canvasLocation" x="131.8840579710145" y="115.84821428571428"/>
         </scene>

@@ -9,11 +9,22 @@ import UIKit
 
 class PembayaranViewController: UIViewController {
     
+    
+    
     @IBOutlet weak var totalTagihanBackgroundView: UIView!
     @IBOutlet weak var totalTagihan: UILabel!
     @IBOutlet weak var finishTransactionButton: UIButton!
     @IBOutlet weak var receivedMoneyTextfield: UITextField!
     
+    
+    
+    @IBAction func finishTransactionPressed(_ sender: UIButton) {
+        showModal()
+    }
+    
+    func onButtonTapped() {
+        self.performSegue(withIdentifier: "backToMainController", sender: self)
+    }
 }
 
 //MARK: - View Did Load
@@ -21,10 +32,6 @@ extension PembayaranViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         title = "Pembayaran"
-        
-        
-        
-        // hide keyboard when tapping around
         self.hideKeyboardWhenTappedAround()
     }
 }
@@ -51,7 +58,7 @@ extension PembayaranViewController {
             button.setImage(UIImage(systemName: "xmark.circle"), for: .normal)
             button.imageEdgeInsets = UIEdgeInsets(top: 0, left: 0, bottom: 0, right: 0)
             button.frame = CGRect(x: CGFloat(receivedMoneyTextfield.frame.size.width - 40), y: CGFloat(5), width: CGFloat(40), height: CGFloat(30))
-//            button.backgroundColor = UIColor
+            //            button.backgroundColor = UIColor
             button.addTarget(self, action: #selector(self.texfieldButton), for: .touchUpInside)
             return button
         }
@@ -69,5 +76,21 @@ extension PembayaranViewController {
         self.receivedMoneyTextfield.text = nil
     }
     
+    @objc func showModal() {
+        let slideVC = TransaksiSelesaiPasView()
+        slideVC.modalPresentationStyle = .custom
+        slideVC.transitioningDelegate = self
+        self.present(slideVC, animated: true, completion: { () in
+            print("Modal opened")
+        })
+    }
     
+    
+}
+
+//MARK: - PresentationModal
+extension PembayaranViewController: UIViewControllerTransitioningDelegate {
+    func presentationController(forPresented presented: UIViewController, presenting: UIViewController?, source: UIViewController) -> UIPresentationController? {
+        PresentationController(presentedViewController: presented, presenting: presenting)
+    }
 }

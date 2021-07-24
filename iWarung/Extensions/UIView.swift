@@ -12,7 +12,7 @@ extension UIView {
     func cornerRadius(width: Int = 11, height: Int = 11){
         //
         let maskPath1 = UIBezierPath(roundedRect: bounds,
-        byRoundingCorners: [.topLeft , .topRight, .bottomLeft, .bottomRight],
+        byRoundingCorners: [.allCorners],
         cornerRadii: CGSize(width: width, height: height))
         let maskLayer1 = CAShapeLayer()
         maskLayer1.frame = bounds
