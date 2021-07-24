@@ -14,7 +14,7 @@ class ViewController: UIViewController, AVCaptureVideoDataOutputSampleBufferDele
     private let captureSession = AVCaptureSession()
     private let videoOutput = AVCaptureVideoDataOutput()
     private let sequenceHandler = VNSequenceRequestHandler()
-
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         self.addCameraInput()
@@ -22,6 +22,8 @@ class ViewController: UIViewController, AVCaptureVideoDataOutputSampleBufferDele
         self.addVideoOutput()
         self.captureSession.startRunning()
     }
+    
+    
     
     func captureOutput(_ output: AVCaptureOutput,
                        didOutput sampleBuffer: CMSampleBuffer,
@@ -32,8 +34,8 @@ class ViewController: UIViewController, AVCaptureVideoDataOutputSampleBufferDele
         }
         if let barcode = self.extractBarcode(fromFrame: frame) {
             showAlert(
-              withTitle: "Found barcode",
-              message: "\(barcode)")
+                withTitle: "Found barcode",
+                message: "\(barcode)")
         }
     }
     
@@ -46,7 +48,7 @@ class ViewController: UIViewController, AVCaptureVideoDataOutputSampleBufferDele
         }
         return firstBarcode
     }
-
+    
     private func addCameraInput() {
         guard let device = AVCaptureDevice.default(for: .video) else { return print("No camera detected") }
         let cameraInput = try! AVCaptureDeviceInput(device: device)
@@ -58,6 +60,23 @@ class ViewController: UIViewController, AVCaptureVideoDataOutputSampleBufferDele
         self.videoOutput.setSampleBufferDelegate(self, queue: DispatchQueue(label: "my.image.handling.queue"))
         self.captureSession.addOutput(self.videoOutput)
     }
+    
+    @objc func showModal() {
+        let slideVC = TransaksiSelesaiPasView()
+        slideVC.modalPresentationStyle = .custom
+        slideVC.transitioningDelegate = self
+        self.present(slideVC, animated: true, completion: { () in
+            print("Modal opened")
+        })
+    }
+    
+    @IBAction func unwindToMain(segue: UIStoryboardSegue) {
+        print("This is the First View Controller")
+    }
+    
+    @IBAction func openModal(_ sender: UIButton) {
+        showModal()
+    }
 }
 
 //MARK: - Remove Nav bar
@@ -66,27 +85,32 @@ extension ViewController {
         self.navigationController?.setNavigationBarHidden(true, animated: animated)
         super.viewWillAppear(animated)
     }
-
+    
     override func viewWillDisappear(_ animated: Bool) {
         self.navigationController?.setNavigationBarHidden(false, animated: animated)
         super.viewWillDisappear(animated)
     }
     
     private func configurePreviewLayer() {
-      let cameraPreviewLayer = AVCaptureVideoPreviewLayer(session: captureSession)
-      cameraPreviewLayer.videoGravity = .resizeAspectFill
-      cameraPreviewLayer.connection?.videoOrientation = .portrait
-      cameraPreviewLayer.frame = view.frame
-      view.layer.insertSublayer(cameraPreviewLayer, at: 0)
+        let cameraPreviewLayer = AVCaptureVideoPreviewLayer(session: captureSession)
+        cameraPreviewLayer.videoGravity = .resizeAspectFill
+        cameraPreviewLayer.connection?.videoOrientation = .portrait
+        cameraPreviewLayer.frame = view.frame
+        view.layer.insertSublayer(cameraPreviewLayer, at: 0)
     }
     
     private func showAlert(withTitle title: String, message: String) {
-      DispatchQueue.main.async {
-        let alertController = UIAlertController(title: title, message: message, preferredStyle: .alert)
-        alertController.addAction(UIAlertAction(title: "OK", style: .default))
-        self.present(alertController, animated: true)
-      }
+        DispatchQueue.main.async {
+            let alertController = UIAlertController(title: title, message: message, preferredStyle: .alert)
+            alertController.addAction(UIAlertAction(title: "OK", style: .default))
+            self.present(alertController, animated: true)
+        }
     }
 }
 
-
+//MARK: - PresentationModal
+extension ViewController: UIViewControllerTransitioningDelegate {
+    func presentationController(forPresented presented: UIViewController, presenting: UIViewController?, source: UIViewController) -> UIPresentationController? {
+        PresentationController(presentedViewController: presented, presenting: presenting)
+    }
+}
