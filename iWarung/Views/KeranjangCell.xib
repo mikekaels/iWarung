@@ -1,0 +1,91 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="18122" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
+    <device id="retina6_1" orientation="portrait" appearance="light"/>
+    <dependencies>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="18093"/>
+        <capability name="Safe area layout guides" minToolsVersion="9.0"/>
+        <capability name="System colors in document resources" minToolsVersion="11.0"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <objects>
+        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner"/>
+        <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
+        <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" reuseIdentifier="keranjangCell" id="gTV-IL-0wX" customClass="KeranjangCell" customModule="iWarung" customModuleProvider="target">
+            <rect key="frame" x="0.0" y="0.0" width="330" height="121"/>
+            <autoresizingMask key="autoresizingMask"/>
+            <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center">
+                <rect key="frame" x="0.0" y="0.0" width="330" height="121"/>
+                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                <subviews>
+                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="g9R-v7-Ooq">
+                        <rect key="frame" x="0.0" y="0.0" width="330" height="121"/>
+                        <subviews>
+                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" tag="1" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="bimoli" translatesAutoresizingMaskIntoConstraints="NO" id="4EB-LU-t18">
+                                <rect key="frame" x="10" y="10" width="103" height="101"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="103" id="vm4-LR-cku"/>
+                                </constraints>
+                            </imageView>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Minyak Bimoli 240ml" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="EHm-YW-LSf">
+                                <rect key="frame" x="136" y="15" width="144" height="17"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <fontDescription key="fontDescription" type="boldSystem" pointSize="14"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="20 - 10 - 2022" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Pnp-j1-7xj">
+                                <rect key="frame" x="136" y="39" width="85" height="15"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <fontDescription key="fontDescription" type="system" weight="semibold" pointSize="12"/>
+                                <color key="textColor" white="0.66666666669999997" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Rp" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="kTq-Sg-3gq">
+                                <rect key="frame" x="136" y="86" width="14" height="12"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <fontDescription key="fontDescription" type="system" weight="semibold" pointSize="10"/>
+                                <color key="textColor" white="0.66666666669999997" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="24.000" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="IBs-ba-Bke">
+                                <rect key="frame" x="152" y="85" width="60" height="21"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <fontDescription key="fontDescription" type="boldSystem" pointSize="17"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                        </subviews>
+                        <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                        <constraints>
+                            <constraint firstAttribute="bottom" secondItem="4EB-LU-t18" secondAttribute="bottom" constant="10" id="Afy-Tk-oDg"/>
+                            <constraint firstItem="4EB-LU-t18" firstAttribute="leading" secondItem="g9R-v7-Ooq" secondAttribute="leading" constant="10" id="I6D-MI-Yh4"/>
+                            <constraint firstAttribute="bottom" secondItem="4EB-LU-t18" secondAttribute="bottom" constant="10" id="PhM-0Q-CxN"/>
+                            <constraint firstItem="4EB-LU-t18" firstAttribute="top" secondItem="g9R-v7-Ooq" secondAttribute="top" constant="10" id="SPA-Zj-B7I"/>
+                        </constraints>
+                    </view>
+                </subviews>
+            </view>
+            <viewLayoutGuide key="safeArea" id="ZTg-uK-7eu"/>
+            <constraints>
+                <constraint firstAttribute="trailing" secondItem="g9R-v7-Ooq" secondAttribute="trailing" id="C0V-Mr-Gl5"/>
+                <constraint firstAttribute="bottom" secondItem="g9R-v7-Ooq" secondAttribute="bottom" id="DLi-2f-Fxo"/>
+                <constraint firstItem="g9R-v7-Ooq" firstAttribute="leading" secondItem="gTV-IL-0wX" secondAttribute="leading" id="abV-BB-q4t"/>
+                <constraint firstItem="g9R-v7-Ooq" firstAttribute="top" secondItem="gTV-IL-0wX" secondAttribute="top" id="rry-N0-PPu"/>
+            </constraints>
+            <connections>
+                <outlet property="keranjangBackgroundView" destination="g9R-v7-Ooq" id="RDO-N1-bjo"/>
+                <outlet property="productExpired" destination="Pnp-j1-7xj" id="K1V-02-IA2"/>
+                <outlet property="productImage" destination="4EB-LU-t18" id="ntv-eL-USS"/>
+                <outlet property="productName" destination="EHm-YW-LSf" id="aGI-MR-AHA"/>
+                <outlet property="productPrice" destination="IBs-ba-Bke" id="Cac-xJ-1QH"/>
+            </connections>
+            <point key="canvasLocation" x="-7.2463768115942031" y="116.18303571428571"/>
+        </collectionViewCell>
+    </objects>
+    <resources>
+        <image name="bimoli" width="256" height="197"/>
+        <systemColor name="systemBackgroundColor">
+            <color white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+        </systemColor>
+    </resources>
+</document>
