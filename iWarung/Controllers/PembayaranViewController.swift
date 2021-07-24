@@ -58,7 +58,6 @@ extension PembayaranViewController {
         
         receivedMoneyTextfield.rightView = textFieldBtn
         receivedMoneyTextfield.rightViewMode = .always
-        
     }
     
     override func viewWillDisappear(_ animated: Bool) {
