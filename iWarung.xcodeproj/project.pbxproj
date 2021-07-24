@@ -27,6 +27,7 @@
 		BD85A2D326A9F74B00FE1B9C /* KeranjangViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BD85A2D226A9F74B00FE1B9C /* KeranjangViewController.swift */; };
 		BD8C016726A3F15600FAF9C5 /* model.swift in Sources */ = {isa = PBXBuildFile; fileRef = BD8C016626A3F15600FAF9C5 /* model.swift */; };
 		BDC8DFA226AC2886008310AA /* UIButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = BDC8DFA126AC2886008310AA /* UIButton.swift */; };
+		BDC8DFA426AC6C1E008310AA /* UITextField.swift in Sources */ = {isa = PBXBuildFile; fileRef = BDC8DFA326AC6C1E008310AA /* UITextField.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -52,6 +53,7 @@
 		BD85A2D226A9F74B00FE1B9C /* KeranjangViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = KeranjangViewController.swift; sourceTree = "<group>"; };
 		BD8C016626A3F15600FAF9C5 /* model.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = model.swift; sourceTree = "<group>"; };
 		BDC8DFA126AC2886008310AA /* UIButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIButton.swift; sourceTree = "<group>"; };
+		BDC8DFA326AC6C1E008310AA /* UITextField.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UITextField.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -137,6 +139,7 @@
 				BD1FFF3A26AC237A00EB9AAD /* UIView.swift */,
 				BD1FFF3C26AC24D300EB9AAD /* UIColor.swift */,
 				BDC8DFA126AC2886008310AA /* UIButton.swift */,
+				BDC8DFA326AC6C1E008310AA /* UITextField.swift */,
 			);
 			path = Extensions;
 			sourceTree = "<group>";
@@ -225,6 +228,7 @@
 				BD74BCB026A4820B00E3EE75 /* constants.swift in Sources */,
 				BD1FFF3D26AC24D300EB9AAD /* UIColor.swift in Sources */,
 				BD5AC58526A369F400A52336 /* AppDelegate.swift in Sources */,
+				BDC8DFA426AC6C1E008310AA /* UITextField.swift in Sources */,
 				BDC8DFA226AC2886008310AA /* UIButton.swift in Sources */,
 				BD1FFF3126AB604100EB9AAD /* KeranjangCell.swift in Sources */,
 				BD5AC58726A369F400A52336 /* SceneDelegate.swift in Sources */,
