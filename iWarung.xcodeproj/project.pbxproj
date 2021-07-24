@@ -12,7 +12,7 @@
 		BD1FFF3126AB604100EB9AAD /* KeranjangCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = BD1FFF2F26AB604100EB9AAD /* KeranjangCell.swift */; };
 		BD1FFF3226AB604100EB9AAD /* KeranjangCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = BD1FFF3026AB604100EB9AAD /* KeranjangCell.xib */; };
 		BD1FFF3426AB65F800EB9AAD /* Product.swift in Sources */ = {isa = PBXBuildFile; fileRef = BD1FFF3326AB65F800EB9AAD /* Product.swift */; };
-		BD1FFF3726AB798100EB9AAD /* UIViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BD1FFF3626AB798100EB9AAD /* UIViewController.swift */; };
+		BD1FFF3926AB957100EB9AAD /* UIViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BD1FFF3826AB957100EB9AAD /* UIViewController.swift */; };
 		BD5AC58526A369F400A52336 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = BD5AC58426A369F400A52336 /* AppDelegate.swift */; };
 		BD5AC58726A369F400A52336 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = BD5AC58626A369F400A52336 /* SceneDelegate.swift */; };
 		BD5AC58926A369F400A52336 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BD5AC58826A369F400A52336 /* ViewController.swift */; };
@@ -32,7 +32,7 @@
 		BD1FFF2F26AB604100EB9AAD /* KeranjangCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = KeranjangCell.swift; sourceTree = "<group>"; };
 		BD1FFF3026AB604100EB9AAD /* KeranjangCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = KeranjangCell.xib; sourceTree = "<group>"; };
 		BD1FFF3326AB65F800EB9AAD /* Product.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Product.swift; sourceTree = "<group>"; };
-		BD1FFF3626AB798100EB9AAD /* UIViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIViewController.swift; sourceTree = "<group>"; };
+		BD1FFF3826AB957100EB9AAD /* UIViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIViewController.swift; sourceTree = "<group>"; };
 		BD5AC58126A369F400A52336 /* iWarung.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = iWarung.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		BD5AC58426A369F400A52336 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		BD5AC58626A369F400A52336 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -127,7 +127,7 @@
 		BD5AC59F26A36A3800A52336 /* Extensions */ = {
 			isa = PBXGroup;
 			children = (
-				BD1FFF3626AB798100EB9AAD /* UIViewController.swift */,
+				BD1FFF3826AB957100EB9AAD /* UIViewController.swift */,
 			);
 			path = Extensions;
 			sourceTree = "<group>";
@@ -207,8 +207,8 @@
 			files = (
 				3FE725FD26A96F7A009F4D32 /* PembayaranViewController.swift in Sources */,
 				BD8C016726A3F15600FAF9C5 /* model.swift in Sources */,
+				BD1FFF3926AB957100EB9AAD /* UIViewController.swift in Sources */,
 				BD5AC58926A369F400A52336 /* ViewController.swift in Sources */,
-				BD1FFF3726AB798100EB9AAD /* UIViewController.swift in Sources */,
 				BD85A2D326A9F74B00FE1B9C /* KeranjangViewController.swift in Sources */,
 				BD5AC58F26A369F400A52336 /* iWarung.xcdatamodeld in Sources */,
 				BD1FFF3426AB65F800EB9AAD /* Product.swift in Sources */,
