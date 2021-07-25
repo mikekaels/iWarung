@@ -4,7 +4,6 @@
     <dependencies>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="18093"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
-        <capability name="System colors in document resources" minToolsVersion="11.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <scenes>
@@ -12,34 +11,71 @@
         <scene sceneID="tne-QT-ifu">
             <objects>
                 <viewController storyboardIdentifier="Main" id="BYZ-38-t0r" customClass="ViewController" customModule="iWarung" customModuleProvider="target" sceneMemberID="viewController">
-                    <view key="view" contentMode="scaleToFill" id="8bC-Xf-vdC">
+                    <view key="view" contentMode="scaleToFill" id="SPq-km-g6a">
                         <rect key="frame" x="0.0" y="0.0" width="390" height="844"/>
-                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                         <subviews>
-                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="WjH-2M-X6y">
-                                <rect key="frame" x="320" y="739" width="37" height="34"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                <fontDescription key="fontDescription" type="system" pointSize="20"/>
-                                <state key="normal" image="cart.fill" catalog="system"/>
-                                <connections>
-                                    <segue destination="Xo6-r7-51v" kind="show" id="lDc-JB-JiD"/>
-                                </connections>
-                            </button>
-                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="z53-17-WZX">
-                                <rect key="frame" x="174" y="169" width="43" height="30"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                <state key="normal" title="Modal"/>
-                                <connections>
-                                    <action selector="openModal:" destination="BYZ-38-t0r" eventType="touchUpInside" id="sVt-Vg-9hj"/>
-                                </connections>
-                            </button>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="MbA-Ne-jev">
+                                <rect key="frame" x="0.0" y="640" width="390" height="238"/>
+                                <subviews>
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="dB1-kR-8pn">
+                                        <rect key="frame" x="157.66666666666666" y="48" width="75" height="75"/>
+                                        <constraints>
+                                            <constraint firstAttribute="height" constant="75" id="vAZ-a2-lB2"/>
+                                            <constraint firstAttribute="width" constant="75" id="y4g-D4-fbg"/>
+                                        </constraints>
+                                        <state key="normal" image="camera-button"/>
+                                    </button>
+                                    <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="HB7-8K-5Ma">
+                                        <rect key="frame" x="332" y="73" width="23" height="26"/>
+                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                        <state key="normal" image="flashlight-off"/>
+                                    </button>
+                                    <segmentedControl opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="top" segmentControlStyle="plain" selectedSegmentIndex="0" translatesAutoresizingMaskIntoConstraints="NO" id="QRY-1u-rPv">
+                                        <rect key="frame" x="101" y="9" width="189" height="32"/>
+                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                        <segments>
+                                            <segment title="Barcode"/>
+                                            <segment title="No-Barcode"/>
+                                        </segments>
+                                    </segmentedControl>
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" id="XNA-j0-wSL">
+                                        <rect key="frame" x="47" y="73" width="23" height="26"/>
+                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                        <state key="normal" image="inventory"/>
+                                    </button>
+                                </subviews>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <constraints>
+                                    <constraint firstItem="dB1-kR-8pn" firstAttribute="top" secondItem="MbA-Ne-jev" secondAttribute="top" constant="48" id="bmX-hh-ZYl"/>
+                                    <constraint firstItem="dB1-kR-8pn" firstAttribute="centerX" secondItem="MbA-Ne-jev" secondAttribute="centerX" id="mcJ-kL-rv8"/>
+                                </constraints>
+                            </view>
+                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="kapal api" translatesAutoresizingMaskIntoConstraints="NO" id="hF1-4q-Lhf">
+                                <rect key="frame" x="0.0" y="0.0" width="390" height="640"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="640" id="3MQ-Oa-Zvu"/>
+                                </constraints>
+                            </imageView>
                         </subviews>
-                        <viewLayoutGuide key="safeArea" id="6Tk-OE-BBY"/>
-                        <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                        <viewLayoutGuide key="safeArea" id="32U-rT-DQT"/>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <constraints>
+                            <constraint firstItem="hF1-4q-Lhf" firstAttribute="leading" secondItem="32U-rT-DQT" secondAttribute="leading" id="1KB-1t-uXa"/>
+                            <constraint firstItem="hF1-4q-Lhf" firstAttribute="top" secondItem="SPq-km-g6a" secondAttribute="top" id="4IQ-lE-TXO"/>
+                            <constraint firstItem="hF1-4q-Lhf" firstAttribute="trailing" secondItem="32U-rT-DQT" secondAttribute="trailing" id="8Xn-Mx-MQc"/>
+                            <constraint firstItem="MbA-Ne-jev" firstAttribute="top" secondItem="hF1-4q-Lhf" secondAttribute="bottom" id="Ccn-8y-wbz"/>
+                            <constraint firstItem="MbA-Ne-jev" firstAttribute="leading" secondItem="hF1-4q-Lhf" secondAttribute="leading" id="eQG-WF-JrK"/>
+                            <constraint firstItem="MbA-Ne-jev" firstAttribute="trailing" secondItem="hF1-4q-Lhf" secondAttribute="trailing" id="iE9-hd-PtB"/>
+                            <constraint firstAttribute="bottom" secondItem="MbA-Ne-jev" secondAttribute="bottom" constant="-34" id="y8x-sz-2Ww"/>
+                        </constraints>
                     </view>
                     <navigationItem key="navigationItem" id="qG9-QH-FBf">
                         <barButtonItem key="backBarButtonItem" title="Kembali" id="t2W-UH-tra"/>
                     </navigationItem>
+                    <connections>
+                        <outlet property="cameraView" destination="hF1-4q-Lhf" id="Btw-2E-v12"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
             </objects>
@@ -75,9 +111,9 @@
         </scene>
     </scenes>
     <resources>
-        <image name="cart.fill" catalog="system" width="128" height="102"/>
-        <systemColor name="systemBackgroundColor">
-            <color white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-        </systemColor>
+        <image name="camera-button" width="213" height="213"/>
+        <image name="flashlight-off" width="96" height="108"/>
+        <image name="inventory" width="70" height="70"/>
+        <image name="kapal api" width="700" height="933"/>
     </resources>
 </document>
