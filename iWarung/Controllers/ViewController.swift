@@ -11,19 +11,44 @@ import AVFoundation
 
 class ViewController: UIViewController, AVCaptureVideoDataOutputSampleBufferDelegate {
     
+    @IBOutlet weak var cameraView: UIImageView!
     private let captureSession = AVCaptureSession()
     private let videoOutput = AVCaptureVideoDataOutput()
     private let sequenceHandler = VNSequenceRequestHandler()
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        setupNavBar()
         self.addCameraInput()
         self.configurePreviewLayer()
         self.addVideoOutput()
         self.captureSession.startRunning()
     }
     
+    fileprivate func setupNavBar(){
+        navigationController?.navigationBar.barTintColor = UIColor.white
+        let iWarungLogoImageView = UIImageView(image: UIImage(named: "iwarung_logo"))
+        iWarungLogoImageView.frame = CGRect(x: 0, y: 0, width: 132, height: 40)
+        iWarungLogoImageView.contentMode = .scaleAspectFit
+        
+        let width = view.frame.width
+        let titleView = UIView(frame: CGRect(x: 0, y: 0, width: width, height: 50))
+        titleView.addSubview(iWarungLogoImageView)
+        
+        navigationItem.titleView = titleView
+    }
     
+    private func configurePreviewLayer() {
+        let cameraPreviewLayer = AVCaptureVideoPreviewLayer(session: captureSession)
+        cameraPreviewLayer.videoGravity = .resizeAspectFill
+        cameraPreviewLayer.connection?.videoOrientation = .portrait
+        cameraPreviewLayer.frame = view.frame
+        view.layer.insertSublayer(cameraPreviewLayer, at: 0)
+        
+        cameraPreviewLayer.position = CGPoint(x: self.cameraView.frame.width / 2, y: self.cameraView.frame.height / 2)
+        cameraPreviewLayer.bounds = cameraView.frame
+        cameraView.layer.addSublayer(cameraPreviewLayer)
+    }
     
     func captureOutput(_ output: AVCaptureOutput,
                        didOutput sampleBuffer: CMSampleBuffer,
@@ -82,21 +107,9 @@ class ViewController: UIViewController, AVCaptureVideoDataOutputSampleBufferDele
 //MARK: - Remove Nav bar
 extension ViewController {
     override func viewWillAppear(_ animated: Bool) {
-        self.navigationController?.setNavigationBarHidden(true, animated: animated)
+        navigationController?.navigationBar.prefersLargeTitles = false
+        self.navigationController?.isHiddenHairline = true
         super.viewWillAppear(animated)
-    }
-    
-    override func viewWillDisappear(_ animated: Bool) {
-        self.navigationController?.setNavigationBarHidden(false, animated: animated)
-        super.viewWillDisappear(animated)
-    }
-    
-    private func configurePreviewLayer() {
-        let cameraPreviewLayer = AVCaptureVideoPreviewLayer(session: captureSession)
-        cameraPreviewLayer.videoGravity = .resizeAspectFill
-        cameraPreviewLayer.connection?.videoOrientation = .portrait
-        cameraPreviewLayer.frame = view.frame
-        view.layer.insertSublayer(cameraPreviewLayer, at: 0)
     }
     
     private func showAlert(withTitle title: String, message: String) {
