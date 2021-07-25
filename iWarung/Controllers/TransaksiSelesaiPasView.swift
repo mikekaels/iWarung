@@ -25,6 +25,7 @@ class TransaksiSelesaiPasView: UIViewController {
             pointOrigin = self.view.frame.origin
         }
     }
+    
     @objc func panGestureRecognizerAction(sender: UIPanGestureRecognizer) {
         let translation = sender.translation(in: view)
         
