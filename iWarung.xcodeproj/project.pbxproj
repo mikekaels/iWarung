@@ -29,6 +29,8 @@
 		BD85A2D126A9F72600FE1B9C /* Keranjang.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = BD85A2D026A9F72600FE1B9C /* Keranjang.storyboard */; };
 		BD85A2D326A9F74B00FE1B9C /* KeranjangViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BD85A2D226A9F74B00FE1B9C /* KeranjangViewController.swift */; };
 		BD8C016726A3F15600FAF9C5 /* model.swift in Sources */ = {isa = PBXBuildFile; fileRef = BD8C016626A3F15600FAF9C5 /* model.swift */; };
+		BDB39A3826ADD05800296909 /* DaftarProduk.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = BDB39A3726ADD05800296909 /* DaftarProduk.storyboard */; };
+		BDB39A3A26ADD06F00296909 /* DaftarProdukViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BDB39A3926ADD06F00296909 /* DaftarProdukViewController.swift */; };
 		BDC625C626AD507300E44675 /* TambahProdukScan.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = BDC625C526AD507300E44675 /* TambahProdukScan.storyboard */; };
 		BDC625C826AD509500E44675 /* TambahProdukScanViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BDC625C726AD509500E44675 /* TambahProdukScanViewController.swift */; };
 		BDC8DFA226AC2886008310AA /* UIButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = BDC8DFA126AC2886008310AA /* UIButton.swift */; };
@@ -67,6 +69,8 @@
 		BD85A2D026A9F72600FE1B9C /* Keranjang.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = Keranjang.storyboard; sourceTree = "<group>"; };
 		BD85A2D226A9F74B00FE1B9C /* KeranjangViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = KeranjangViewController.swift; sourceTree = "<group>"; };
 		BD8C016626A3F15600FAF9C5 /* model.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = model.swift; sourceTree = "<group>"; };
+		BDB39A3726ADD05800296909 /* DaftarProduk.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = DaftarProduk.storyboard; sourceTree = "<group>"; };
+		BDB39A3926ADD06F00296909 /* DaftarProdukViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DaftarProdukViewController.swift; sourceTree = "<group>"; };
 		BDC625C526AD507300E44675 /* TambahProdukScan.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = TambahProdukScan.storyboard; sourceTree = "<group>"; };
 		BDC625C726AD509500E44675 /* TambahProdukScanViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TambahProdukScanViewController.swift; sourceTree = "<group>"; };
 		BDC8DFA126AC2886008310AA /* UIButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIButton.swift; sourceTree = "<group>"; };
@@ -136,6 +140,7 @@
 				BD1CF23E26AC99F9001B7EC8 /* TransaksiSelesaiPasView.xib */,
 				E7194C2D26AD97BD0018B189 /* Inventory.storyboard */,
 				BDC625C526AD507300E44675 /* TambahProdukScan.storyboard */,
+				BDB39A3726ADD05800296909 /* DaftarProduk.storyboard */,
 			);
 			path = Views;
 			sourceTree = "<group>";
@@ -163,6 +168,7 @@
 				E7194C3126ADA4CA0018B189 /* ProductCell.swift */,
 				E7194C3326ADA4D70018B189 /* ProductTableView.swift */,
 				BDC625C726AD509500E44675 /* TambahProdukScanViewController.swift */,
+				BDB39A3926ADD06F00296909 /* DaftarProdukViewController.swift */,
 			);
 			path = Controllers;
 			sourceTree = "<group>";
@@ -242,6 +248,7 @@
 				BDC625C626AD507300E44675 /* TambahProdukScan.storyboard in Resources */,
 				BD1CF23F26AC99F9001B7EC8 /* TransaksiSelesaiPasView.xib in Resources */,
 				BD5AC59426A369F500A52336 /* LaunchScreen.storyboard in Resources */,
+				BDB39A3826ADD05800296909 /* DaftarProduk.storyboard in Resources */,
 				BD5AC59126A369F500A52336 /* Assets.xcassets in Resources */,
 				BD85A2D126A9F72600FE1B9C /* Keranjang.storyboard in Resources */,
 				BD5AC58C26A369F400A52336 /* Main.storyboard in Resources */,
@@ -274,6 +281,7 @@
 				E7194C3026AD9C1A0018B189 /* DetailProductVC.swift in Sources */,
 				BDC8DFA426AC6C1E008310AA /* UITextField.swift in Sources */,
 				E7194C4726ADC0A10018B189 /* Item+CoreDataClass.swift in Sources */,
+				BDB39A3A26ADD06F00296909 /* DaftarProdukViewController.swift in Sources */,
 				BDC625C826AD509500E44675 /* TambahProdukScanViewController.swift in Sources */,
 				BD1CF24526ACAEA9001B7EC8 /* TransaksiSelesaiPasView.swift in Sources */,
 				BDC8DFA226AC2886008310AA /* UIButton.swift in Sources */,
@@ -427,7 +435,7 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				CODE_SIGN_STYLE = Automatic;
-				DEVELOPMENT_TEAM = 43D74ZX25H;
+				DEVELOPMENT_TEAM = RMQNS23DVX;
 				INFOPLIST_FILE = iWarung/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
@@ -446,7 +454,7 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				CODE_SIGN_STYLE = Automatic;
-				DEVELOPMENT_TEAM = 43D74ZX25H;
+				DEVELOPMENT_TEAM = RMQNS23DVX;
 				INFOPLIST_FILE = iWarung/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",

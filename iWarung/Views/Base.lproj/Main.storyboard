@@ -30,6 +30,9 @@
                                         <rect key="frame" x="332" y="73" width="23" height="26"/>
                                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                         <state key="normal" image="flashlight-off"/>
+                                        <connections>
+                                            <segue destination="Xo6-r7-51v" kind="show" id="Ice-EH-HYG"/>
+                                        </connections>
                                     </button>
                                     <segmentedControl opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="top" segmentControlStyle="plain" selectedSegmentIndex="0" translatesAutoresizingMaskIntoConstraints="NO" id="QRY-1u-rPv">
                                         <rect key="frame" x="101" y="9" width="189" height="32"/>
@@ -40,9 +43,12 @@
                                         </segments>
                                     </segmentedControl>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" id="XNA-j0-wSL">
-                                        <rect key="frame" x="47" y="73" width="23" height="26"/>
+                                        <rect key="frame" x="47" y="73" width="28" height="28"/>
                                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                         <state key="normal" image="inventory"/>
+                                        <connections>
+                                            <segue destination="DjZ-lU-yFH" kind="show" id="yIq-N4-LpP"/>
+                                        </connections>
                                     </button>
                                 </subviews>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
@@ -79,7 +85,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1952.1739130434785" y="115.84821428571428"/>
+            <point key="canvasLocation" x="1950.7692307692307" y="115.16587677725119"/>
         </scene>
         <!--Keranjang-->
         <scene sceneID="2wb-uB-g9v">
@@ -90,6 +96,16 @@
                 <placeholder placeholderIdentifier="IBFirstResponder" id="7vK-8j-5zZ" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="2706" y="-21"/>
+        </scene>
+        <!--DaftarProduk-->
+        <scene sceneID="hnd-kQ-uHT">
+            <objects>
+                <viewControllerPlaceholder storyboardIdentifier="DaftarProduk" storyboardName="DaftarProduk" referencedIdentifier="DaftarProduk" id="DjZ-lU-yFH" sceneMemberID="viewController">
+                    <navigationItem key="navigationItem" id="Arh-gW-f4d"/>
+                </viewControllerPlaceholder>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="mfx-io-b7l" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="2685" y="227"/>
         </scene>
         <!--Navigation Controller-->
         <scene sceneID="vqY-bI-Odp">
