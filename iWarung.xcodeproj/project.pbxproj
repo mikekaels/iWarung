@@ -29,6 +29,8 @@
 		BD85A2D126A9F72600FE1B9C /* Keranjang.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = BD85A2D026A9F72600FE1B9C /* Keranjang.storyboard */; };
 		BD85A2D326A9F74B00FE1B9C /* KeranjangViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BD85A2D226A9F74B00FE1B9C /* KeranjangViewController.swift */; };
 		BD8C016726A3F15600FAF9C5 /* model.swift in Sources */ = {isa = PBXBuildFile; fileRef = BD8C016626A3F15600FAF9C5 /* model.swift */; };
+		BDC625C626AD507300E44675 /* TambahProdukScan.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = BDC625C526AD507300E44675 /* TambahProdukScan.storyboard */; };
+		BDC625C826AD509500E44675 /* TambahProdukScanViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BDC625C726AD509500E44675 /* TambahProdukScanViewController.swift */; };
 		BDC8DFA226AC2886008310AA /* UIButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = BDC8DFA126AC2886008310AA /* UIButton.swift */; };
 		BDC8DFA426AC6C1E008310AA /* UITextField.swift in Sources */ = {isa = PBXBuildFile; fileRef = BDC8DFA326AC6C1E008310AA /* UITextField.swift */; };
 		BDC8DFA626AC8D3B008310AA /* PresentationController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BDC8DFA526AC8D3B008310AA /* PresentationController.swift */; };
@@ -59,6 +61,8 @@
 		BD85A2D026A9F72600FE1B9C /* Keranjang.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = Keranjang.storyboard; sourceTree = "<group>"; };
 		BD85A2D226A9F74B00FE1B9C /* KeranjangViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = KeranjangViewController.swift; sourceTree = "<group>"; };
 		BD8C016626A3F15600FAF9C5 /* model.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = model.swift; sourceTree = "<group>"; };
+		BDC625C526AD507300E44675 /* TambahProdukScan.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = TambahProdukScan.storyboard; sourceTree = "<group>"; };
+		BDC625C726AD509500E44675 /* TambahProdukScanViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TambahProdukScanViewController.swift; sourceTree = "<group>"; };
 		BDC8DFA126AC2886008310AA /* UIButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIButton.swift; sourceTree = "<group>"; };
 		BDC8DFA326AC6C1E008310AA /* UITextField.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UITextField.swift; sourceTree = "<group>"; };
 		BDC8DFA526AC8D3B008310AA /* PresentationController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PresentationController.swift; sourceTree = "<group>"; };
@@ -118,6 +122,7 @@
 				BD1FFF2F26AB604100EB9AAD /* KeranjangCell.swift */,
 				BD1FFF3026AB604100EB9AAD /* KeranjangCell.xib */,
 				BD1CF23E26AC99F9001B7EC8 /* TransaksiSelesaiPasView.xib */,
+				BDC625C526AD507300E44675 /* TambahProdukScan.storyboard */,
 			);
 			path = Views;
 			sourceTree = "<group>";
@@ -139,6 +144,7 @@
 				BD85A2D226A9F74B00FE1B9C /* KeranjangViewController.swift */,
 				BDC8DFA526AC8D3B008310AA /* PresentationController.swift */,
 				BD1CF24426ACAEA9001B7EC8 /* TransaksiSelesaiPasView.swift */,
+				BDC625C726AD509500E44675 /* TambahProdukScanViewController.swift */,
 			);
 			path = Controllers;
 			sourceTree = "<group>";
@@ -214,6 +220,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				3FE725FB26A96F24009F4D32 /* Pembayaran.storyboard in Resources */,
+				BDC625C626AD507300E44675 /* TambahProdukScan.storyboard in Resources */,
 				BD1CF23F26AC99F9001B7EC8 /* TransaksiSelesaiPasView.xib in Resources */,
 				BD5AC59426A369F500A52336 /* LaunchScreen.storyboard in Resources */,
 				BD5AC59126A369F500A52336 /* Assets.xcassets in Resources */,
@@ -244,6 +251,7 @@
 				BD1FFF3D26AC24D300EB9AAD /* UIColor.swift in Sources */,
 				BD5AC58526A369F400A52336 /* AppDelegate.swift in Sources */,
 				BDC8DFA426AC6C1E008310AA /* UITextField.swift in Sources */,
+				BDC625C826AD509500E44675 /* TambahProdukScanViewController.swift in Sources */,
 				BD1CF24526ACAEA9001B7EC8 /* TransaksiSelesaiPasView.swift in Sources */,
 				BDC8DFA226AC2886008310AA /* UIButton.swift in Sources */,
 				BD1FFF3126AB604100EB9AAD /* KeranjangCell.swift in Sources */,

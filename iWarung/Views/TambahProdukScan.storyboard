@@ -1,0 +1,102 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="18122" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
+    <device id="retina6_0" orientation="portrait" appearance="light"/>
+    <dependencies>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="18093"/>
+        <capability name="Safe area layout guides" minToolsVersion="9.0"/>
+        <capability name="System colors in document resources" minToolsVersion="11.0"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <scenes>
+        <!--Tambah Produk Scan View Controller-->
+        <scene sceneID="s0d-6b-0kx">
+            <objects>
+                <viewController storyboardIdentifier="TambahProdukScan" useStoryboardIdentifierAsRestorationIdentifier="YES" id="Y6W-OH-hqX" customClass="TambahProdukScanViewController" customModule="iWarung" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="5EZ-qb-Rvc">
+                        <rect key="frame" x="0.0" y="0.0" width="390" height="844"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="kapal api" translatesAutoresizingMaskIntoConstraints="NO" id="RwG-KP-HIk">
+                                <rect key="frame" x="0.0" y="0.0" width="390" height="640"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="640" id="1JS-B1-LHf"/>
+                                </constraints>
+                            </imageView>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="ga8-G1-yPa">
+                                <rect key="frame" x="0.0" y="640" width="390" height="204"/>
+                                <subviews>
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="JEr-g4-tBW">
+                                        <rect key="frame" x="157.66666666666663" y="48" width="75" height="75"/>
+                                        <constraints>
+                                            <constraint firstAttribute="width" constant="75" id="H7Z-bC-3IR"/>
+                                            <constraint firstAttribute="height" constant="75" id="Udh-9R-D3G"/>
+                                        </constraints>
+                                        <state key="normal" image="camera-button"/>
+                                    </button>
+                                    <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="yAV-gz-2V2">
+                                        <rect key="frame" x="332" y="73" width="23" height="26"/>
+                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                        <state key="normal" image="flashlight-off"/>
+                                    </button>
+                                    <segmentedControl opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="top" segmentControlStyle="plain" selectedSegmentIndex="0" translatesAutoresizingMaskIntoConstraints="NO" id="How-PL-X9w">
+                                        <rect key="frame" x="101" y="9" width="189" height="32"/>
+                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                        <segments>
+                                            <segment title="Barcode"/>
+                                            <segment title="No-Barcode"/>
+                                        </segments>
+                                    </segmentedControl>
+                                </subviews>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <constraints>
+                                    <constraint firstItem="JEr-g4-tBW" firstAttribute="top" secondItem="ga8-G1-yPa" secondAttribute="top" constant="48" id="LDr-eQ-yRI"/>
+                                    <constraint firstItem="JEr-g4-tBW" firstAttribute="centerX" secondItem="ga8-G1-yPa" secondAttribute="centerX" id="xQn-ny-YRw"/>
+                                </constraints>
+                            </view>
+                        </subviews>
+                        <viewLayoutGuide key="safeArea" id="vDu-zF-Fre"/>
+                        <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                        <constraints>
+                            <constraint firstItem="RwG-KP-HIk" firstAttribute="top" secondItem="5EZ-qb-Rvc" secondAttribute="top" id="4vo-YT-idR"/>
+                            <constraint firstItem="ga8-G1-yPa" firstAttribute="top" secondItem="RwG-KP-HIk" secondAttribute="bottom" id="DMK-hO-RMS"/>
+                            <constraint firstItem="ga8-G1-yPa" firstAttribute="trailing" secondItem="RwG-KP-HIk" secondAttribute="trailing" id="KSa-GK-4PR"/>
+                            <constraint firstAttribute="bottomMargin" secondItem="ga8-G1-yPa" secondAttribute="bottom" constant="-34" id="Uc1-SD-xwT"/>
+                            <constraint firstItem="ga8-G1-yPa" firstAttribute="leading" secondItem="RwG-KP-HIk" secondAttribute="leading" id="b93-PH-lI2"/>
+                            <constraint firstAttribute="trailing" secondItem="RwG-KP-HIk" secondAttribute="trailing" id="mD6-7m-zdD"/>
+                            <constraint firstItem="RwG-KP-HIk" firstAttribute="leading" secondItem="5EZ-qb-Rvc" secondAttribute="leading" id="oGo-4W-Xdt"/>
+                        </constraints>
+                    </view>
+                    <navigationItem key="navigationItem" id="Hgv-9j-967"/>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="Ief-a0-LHa" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="1060" y="76.066350710900466"/>
+        </scene>
+        <!--Navigation Controller-->
+        <scene sceneID="Amd-Uo-pni">
+            <objects>
+                <navigationController automaticallyAdjustsScrollViewInsets="NO" id="v07-zb-Puq" sceneMemberID="viewController">
+                    <toolbarItems/>
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" id="ftg-ek-ZiO">
+                        <rect key="frame" x="0.0" y="44" width="390" height="44"/>
+                        <autoresizingMask key="autoresizingMask"/>
+                    </navigationBar>
+                    <nil name="viewControllers"/>
+                    <connections>
+                        <segue destination="Y6W-OH-hqX" kind="relationship" relationship="rootViewController" id="hY9-IG-Dwq"/>
+                    </connections>
+                </navigationController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="zmw-Hl-Xuu" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="130.76923076923077" y="76.066350710900466"/>
+        </scene>
+    </scenes>
+    <resources>
+        <image name="camera-button" width="213" height="213"/>
+        <image name="flashlight-off" width="96" height="108"/>
+        <image name="kapal api" width="700" height="933"/>
+        <systemColor name="systemBackgroundColor">
+            <color white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+        </systemColor>
+    </resources>
+</document>
