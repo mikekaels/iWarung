@@ -32,6 +32,12 @@
 		BDC8DFA226AC2886008310AA /* UIButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = BDC8DFA126AC2886008310AA /* UIButton.swift */; };
 		BDC8DFA426AC6C1E008310AA /* UITextField.swift in Sources */ = {isa = PBXBuildFile; fileRef = BDC8DFA326AC6C1E008310AA /* UITextField.swift */; };
 		BDC8DFA626AC8D3B008310AA /* PresentationController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BDC8DFA526AC8D3B008310AA /* PresentationController.swift */; };
+		E7194C2E26AD97BD0018B189 /* Inventory.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = E7194C2D26AD97BD0018B189 /* Inventory.storyboard */; };
+		E7194C3026AD9C1A0018B189 /* DetailProductVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = E7194C2F26AD9C1A0018B189 /* DetailProductVC.swift */; };
+		E7194C3226ADA4CA0018B189 /* ProductCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = E7194C3126ADA4CA0018B189 /* ProductCell.swift */; };
+		E7194C3426ADA4D70018B189 /* ProductTableView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E7194C3326ADA4D70018B189 /* ProductTableView.swift */; };
+		E7194C4726ADC0A10018B189 /* Item+CoreDataClass.swift in Sources */ = {isa = PBXBuildFile; fileRef = E7194C4526ADC0A10018B189 /* Item+CoreDataClass.swift */; };
+		E7194C4826ADC0A10018B189 /* Item+CoreDataProperties.swift in Sources */ = {isa = PBXBuildFile; fileRef = E7194C4626ADC0A10018B189 /* Item+CoreDataProperties.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -62,6 +68,12 @@
 		BDC8DFA126AC2886008310AA /* UIButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIButton.swift; sourceTree = "<group>"; };
 		BDC8DFA326AC6C1E008310AA /* UITextField.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UITextField.swift; sourceTree = "<group>"; };
 		BDC8DFA526AC8D3B008310AA /* PresentationController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PresentationController.swift; sourceTree = "<group>"; };
+		E7194C2D26AD97BD0018B189 /* Inventory.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = Inventory.storyboard; sourceTree = "<group>"; };
+		E7194C2F26AD9C1A0018B189 /* DetailProductVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailProductVC.swift; sourceTree = "<group>"; };
+		E7194C3126ADA4CA0018B189 /* ProductCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProductCell.swift; sourceTree = "<group>"; };
+		E7194C3326ADA4D70018B189 /* ProductTableView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProductTableView.swift; sourceTree = "<group>"; };
+		E7194C4526ADC0A10018B189 /* Item+CoreDataClass.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Item+CoreDataClass.swift"; sourceTree = SOURCE_ROOT; };
+		E7194C4626ADC0A10018B189 /* Item+CoreDataProperties.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Item+CoreDataProperties.swift"; sourceTree = SOURCE_ROOT; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -118,6 +130,7 @@
 				BD1FFF2F26AB604100EB9AAD /* KeranjangCell.swift */,
 				BD1FFF3026AB604100EB9AAD /* KeranjangCell.xib */,
 				BD1CF23E26AC99F9001B7EC8 /* TransaksiSelesaiPasView.xib */,
+				E7194C2D26AD97BD0018B189 /* Inventory.storyboard */,
 			);
 			path = Views;
 			sourceTree = "<group>";
@@ -125,6 +138,8 @@
 		BD5AC59D26A36A2800A52336 /* Models */ = {
 			isa = PBXGroup;
 			children = (
+				E7194C4526ADC0A10018B189 /* Item+CoreDataClass.swift */,
+				E7194C4626ADC0A10018B189 /* Item+CoreDataProperties.swift */,
 				BD8C016626A3F15600FAF9C5 /* model.swift */,
 				BD1FFF3326AB65F800EB9AAD /* Product.swift */,
 			);
@@ -139,6 +154,9 @@
 				BD85A2D226A9F74B00FE1B9C /* KeranjangViewController.swift */,
 				BDC8DFA526AC8D3B008310AA /* PresentationController.swift */,
 				BD1CF24426ACAEA9001B7EC8 /* TransaksiSelesaiPasView.swift */,
+				E7194C2F26AD9C1A0018B189 /* DetailProductVC.swift */,
+				E7194C3126ADA4CA0018B189 /* ProductCell.swift */,
+				E7194C3326ADA4D70018B189 /* ProductTableView.swift */,
 			);
 			path = Controllers;
 			sourceTree = "<group>";
@@ -214,6 +232,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				3FE725FB26A96F24009F4D32 /* Pembayaran.storyboard in Resources */,
+				E7194C2E26AD97BD0018B189 /* Inventory.storyboard in Resources */,
 				BD1CF23F26AC99F9001B7EC8 /* TransaksiSelesaiPasView.xib in Resources */,
 				BD5AC59426A369F500A52336 /* LaunchScreen.storyboard in Resources */,
 				BD5AC59126A369F500A52336 /* Assets.xcassets in Resources */,
@@ -230,6 +249,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				E7194C4826ADC0A10018B189 /* Item+CoreDataProperties.swift in Sources */,
 				BD1CF24726ACB279001B7EC8 /* UIApplication.swift in Sources */,
 				3FE725FD26A96F7A009F4D32 /* PembayaranViewController.swift in Sources */,
 				BD8C016726A3F15600FAF9C5 /* model.swift in Sources */,
@@ -239,13 +259,17 @@
 				BD85A2D326A9F74B00FE1B9C /* KeranjangViewController.swift in Sources */,
 				BD5AC58F26A369F400A52336 /* iWarung.xcdatamodeld in Sources */,
 				BDC8DFA626AC8D3B008310AA /* PresentationController.swift in Sources */,
+				E7194C3426ADA4D70018B189 /* ProductTableView.swift in Sources */,
 				BD1FFF3426AB65F800EB9AAD /* Product.swift in Sources */,
 				BD74BCB026A4820B00E3EE75 /* constants.swift in Sources */,
 				BD1FFF3D26AC24D300EB9AAD /* UIColor.swift in Sources */,
 				BD5AC58526A369F400A52336 /* AppDelegate.swift in Sources */,
+				E7194C3026AD9C1A0018B189 /* DetailProductVC.swift in Sources */,
 				BDC8DFA426AC6C1E008310AA /* UITextField.swift in Sources */,
+				E7194C4726ADC0A10018B189 /* Item+CoreDataClass.swift in Sources */,
 				BD1CF24526ACAEA9001B7EC8 /* TransaksiSelesaiPasView.swift in Sources */,
 				BDC8DFA226AC2886008310AA /* UIButton.swift in Sources */,
+				E7194C3226ADA4CA0018B189 /* ProductCell.swift in Sources */,
 				BD1FFF3126AB604100EB9AAD /* KeranjangCell.swift in Sources */,
 				BD5AC58726A369F400A52336 /* SceneDelegate.swift in Sources */,
 			);
@@ -395,7 +419,7 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				CODE_SIGN_STYLE = Automatic;
-				DEVELOPMENT_TEAM = RMQNS23DVX;
+				DEVELOPMENT_TEAM = 43D74ZX25H;
 				INFOPLIST_FILE = iWarung/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
@@ -414,7 +438,7 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				CODE_SIGN_STYLE = Automatic;
-				DEVELOPMENT_TEAM = RMQNS23DVX;
+				DEVELOPMENT_TEAM = 43D74ZX25H;
 				INFOPLIST_FILE = iWarung/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
