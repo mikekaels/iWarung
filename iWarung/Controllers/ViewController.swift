@@ -160,3 +160,17 @@ extension ViewController: UIViewControllerTransitioningDelegate {
         PresentationController(presentedViewController: presented, presenting: presenting)
     }
 }
+
+extension ViewController {
+    override func viewDidLayoutSubviews() {
+        super.viewDidLayoutSubviews()
+        
+        if !Core.shared.isNewUser() {
+            // show onboarding
+            let controller = storyboard?.instantiateViewController(identifier: "Onboarding") as! OnboardingViewController
+            controller.modalPresentationStyle = .fullScreen
+            controller.modalTransitionStyle = .crossDissolve
+            present(controller, animated: true, completion: nil)
+        }
+    }
+}
