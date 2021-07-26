@@ -37,6 +37,9 @@
                                         <rect key="frame" x="332" y="73" width="23" height="26"/>
                                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                         <state key="normal" image="flashlight-off"/>
+                                        <connections>
+                                            <action selector="flashlightPressed:" destination="Y6W-OH-hqX" eventType="touchUpInside" id="53Z-PS-YP9"/>
+                                        </connections>
                                     </button>
                                     <segmentedControl opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="top" segmentControlStyle="plain" selectedSegmentIndex="0" translatesAutoresizingMaskIntoConstraints="NO" id="How-PL-X9w">
                                         <rect key="frame" x="101" y="9" width="189" height="32"/>
@@ -67,6 +70,10 @@
                         </constraints>
                     </view>
                     <navigationItem key="navigationItem" id="Hgv-9j-967"/>
+                    <connections>
+                        <outlet property="cameraView" destination="RwG-KP-HIk" id="MpY-Be-dxT"/>
+                        <outlet property="flashLightButton" destination="yAV-gz-2V2" id="fnI-h5-UN3"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Ief-a0-LHa" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
@@ -93,7 +100,7 @@
     </scenes>
     <resources>
         <image name="camera-button" width="213" height="213"/>
-        <image name="flashlight-off" width="96" height="108"/>
+        <image name="flashlight-off" width="78" height="96"/>
         <image name="kapal api" width="700" height="933"/>
         <systemColor name="systemBackgroundColor">
             <color white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
