@@ -38,6 +38,8 @@
 		BDC8DFA226AC2886008310AA /* UIButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = BDC8DFA126AC2886008310AA /* UIButton.swift */; };
 		BDC8DFA426AC6C1E008310AA /* UITextField.swift in Sources */ = {isa = PBXBuildFile; fileRef = BDC8DFA326AC6C1E008310AA /* UITextField.swift */; };
 		BDC8DFA626AC8D3B008310AA /* PresentationController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BDC8DFA526AC8D3B008310AA /* PresentationController.swift */; };
+		BDEA921D26AE7A6A00157FA6 /* KeranjangPopUp.xib in Resources */ = {isa = PBXBuildFile; fileRef = BDEA921C26AE7A6A00157FA6 /* KeranjangPopUp.xib */; };
+		BDEA921F26AE7B7A00157FA6 /* KeranjangPopUp.swift in Sources */ = {isa = PBXBuildFile; fileRef = BDEA921E26AE7B7A00157FA6 /* KeranjangPopUp.swift */; };
 		E7194C2E26AD97BD0018B189 /* Inventory.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = E7194C2D26AD97BD0018B189 /* Inventory.storyboard */; };
 		E7194C3026AD9C1A0018B189 /* DetailProductVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = E7194C2F26AD9C1A0018B189 /* DetailProductVC.swift */; };
 		E7194C3226ADA4CA0018B189 /* ProductCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = E7194C3126ADA4CA0018B189 /* ProductCell.swift */; };
@@ -80,6 +82,8 @@
 		BDC8DFA126AC2886008310AA /* UIButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIButton.swift; sourceTree = "<group>"; };
 		BDC8DFA326AC6C1E008310AA /* UITextField.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UITextField.swift; sourceTree = "<group>"; };
 		BDC8DFA526AC8D3B008310AA /* PresentationController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PresentationController.swift; sourceTree = "<group>"; };
+		BDEA921C26AE7A6A00157FA6 /* KeranjangPopUp.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = KeranjangPopUp.xib; sourceTree = "<group>"; };
+		BDEA921E26AE7B7A00157FA6 /* KeranjangPopUp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = KeranjangPopUp.swift; sourceTree = "<group>"; };
 		E7194C2D26AD97BD0018B189 /* Inventory.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = Inventory.storyboard; sourceTree = "<group>"; };
 		E7194C2F26AD9C1A0018B189 /* DetailProductVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailProductVC.swift; sourceTree = "<group>"; };
 		E7194C3126ADA4CA0018B189 /* ProductCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProductCell.swift; sourceTree = "<group>"; };
@@ -139,13 +143,13 @@
 				BD5AC58A26A369F400A52336 /* Main.storyboard */,
 				3FE725FA26A96F24009F4D32 /* Pembayaran.storyboard */,
 				BD85A2D026A9F72600FE1B9C /* Keranjang.storyboard */,
-				BD1FFF2F26AB604100EB9AAD /* KeranjangCell.swift */,
-				BD1FFF3026AB604100EB9AAD /* KeranjangCell.xib */,
-				BD1CF23E26AC99F9001B7EC8 /* TransaksiSelesaiPasView.xib */,
+				BDEA922126AE7B9900157FA6 /* KeranjangCell */,
+				BDEA922226AE7BBF00157FA6 /* TransaksiSelesaiPas */,
 				E7194C2D26AD97BD0018B189 /* Inventory.storyboard */,
 				BDC625C526AD507300E44675 /* TambahProdukScan.storyboard */,
 				BDB39A3726ADD05800296909 /* DaftarProduk.storyboard */,
 				3FF1EE7C26AE284000F4F122 /* DetectedProductView.xib */,
+				BDEA922026AE7B8000157FA6 /* KeranjangPopUp */,
 			);
 			path = Views;
 			sourceTree = "<group>";
@@ -168,7 +172,6 @@
 				3FE725FC26A96F7A009F4D32 /* PembayaranViewController.swift */,
 				BD85A2D226A9F74B00FE1B9C /* KeranjangViewController.swift */,
 				BDC8DFA526AC8D3B008310AA /* PresentationController.swift */,
-				BD1CF24426ACAEA9001B7EC8 /* TransaksiSelesaiPasView.swift */,
 				E7194C2F26AD9C1A0018B189 /* DetailProductVC.swift */,
 				E7194C3126ADA4CA0018B189 /* ProductCell.swift */,
 				E7194C3326ADA4D70018B189 /* ProductTableView.swift */,
@@ -190,6 +193,33 @@
 				BD1CF24626ACB279001B7EC8 /* UIApplication.swift */,
 			);
 			path = Extensions;
+			sourceTree = "<group>";
+		};
+		BDEA922026AE7B8000157FA6 /* KeranjangPopUp */ = {
+			isa = PBXGroup;
+			children = (
+				BDEA921C26AE7A6A00157FA6 /* KeranjangPopUp.xib */,
+				BDEA921E26AE7B7A00157FA6 /* KeranjangPopUp.swift */,
+			);
+			path = KeranjangPopUp;
+			sourceTree = "<group>";
+		};
+		BDEA922126AE7B9900157FA6 /* KeranjangCell */ = {
+			isa = PBXGroup;
+			children = (
+				BD1FFF2F26AB604100EB9AAD /* KeranjangCell.swift */,
+				BD1FFF3026AB604100EB9AAD /* KeranjangCell.xib */,
+			);
+			path = KeranjangCell;
+			sourceTree = "<group>";
+		};
+		BDEA922226AE7BBF00157FA6 /* TransaksiSelesaiPas */ = {
+			isa = PBXGroup;
+			children = (
+				BD1CF23E26AC99F9001B7EC8 /* TransaksiSelesaiPasView.xib */,
+				BD1CF24426ACAEA9001B7EC8 /* TransaksiSelesaiPasView.swift */,
+			);
+			path = TransaksiSelesaiPas;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -249,6 +279,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				BDEA921D26AE7A6A00157FA6 /* KeranjangPopUp.xib in Resources */,
 				3FE725FB26A96F24009F4D32 /* Pembayaran.storyboard in Resources */,
 				E7194C2E26AD97BD0018B189 /* Inventory.storyboard in Resources */,
 				BDC625C626AD507300E44675 /* TambahProdukScan.storyboard in Resources */,
@@ -276,6 +307,7 @@
 				BD8C016726A3F15600FAF9C5 /* model.swift in Sources */,
 				BD1FFF3926AB957100EB9AAD /* UIViewController.swift in Sources */,
 				BD5AC58926A369F400A52336 /* ViewController.swift in Sources */,
+				BDEA921F26AE7B7A00157FA6 /* KeranjangPopUp.swift in Sources */,
 				BD1FFF3B26AC237A00EB9AAD /* UIView.swift in Sources */,
 				BD85A2D326A9F74B00FE1B9C /* KeranjangViewController.swift in Sources */,
 				BD5AC58F26A369F400A52336 /* iWarung.xcdatamodeld in Sources */,

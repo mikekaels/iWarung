@@ -26,16 +26,17 @@
                                         </constraints>
                                         <state key="normal" image="camera-button"/>
                                     </button>
-                                    <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="HB7-8K-5Ma">
+                                    <button opaque="NO" contentMode="scaleAspectFit" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="HB7-8K-5Ma">
                                         <rect key="frame" x="332" y="73" width="23" height="26"/>
                                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                        <fontDescription key="fontDescription" type="system" pointSize="6"/>
                                         <state key="normal" image="flashlight-off"/>
                                         <connections>
-                                            <segue destination="Xo6-r7-51v" kind="show" id="Ice-EH-HYG"/>
+                                            <action selector="flashlightPressed:" destination="BYZ-38-t0r" eventType="touchUpInside" id="JNt-aA-vcK"/>
                                         </connections>
                                     </button>
                                     <segmentedControl opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="top" segmentControlStyle="plain" selectedSegmentIndex="0" translatesAutoresizingMaskIntoConstraints="NO" id="QRY-1u-rPv">
-                                        <rect key="frame" x="101" y="9" width="189" height="32"/>
+                                        <rect key="frame" x="101" y="9" width="183" height="32"/>
                                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                         <segments>
                                             <segment title="Barcode"/>
@@ -43,13 +44,31 @@
                                         </segments>
                                     </segmentedControl>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" id="XNA-j0-wSL">
-                                        <rect key="frame" x="47" y="73" width="28" height="28"/>
+                                        <rect key="frame" x="34" y="73" width="26" height="26"/>
                                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                         <state key="normal" image="inventory"/>
                                         <connections>
                                             <segue destination="DjZ-lU-yFH" kind="show" id="yIq-N4-LpP"/>
                                         </connections>
                                     </button>
+                                    <view contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="uj6-Pr-aHV">
+                                        <rect key="frame" x="51" y="124" width="289" height="72"/>
+                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                        <subviews>
+                                            <view contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="bFX-Xw-7Dp" customClass="KeranjangPopUp" customModule="iWarung" customModuleProvider="target">
+                                                <rect key="frame" x="20" y="20" width="249" height="33"/>
+                                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                                <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                            </view>
+                                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="R7w-zo-eJC">
+                                                <rect key="frame" x="20" y="22" width="251" height="34"/>
+                                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                                <connections>
+                                                    <segue destination="Xo6-r7-51v" kind="show" id="8I7-vO-noz"/>
+                                                </connections>
+                                            </button>
+                                        </subviews>
+                                    </view>
                                 </subviews>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <constraints>
@@ -81,6 +100,8 @@
                     </navigationItem>
                     <connections>
                         <outlet property="cameraView" destination="hF1-4q-Lhf" id="Btw-2E-v12"/>
+                        <outlet property="flashLightButton" destination="HB7-8K-5Ma" id="JlN-Up-NdA"/>
+                        <outlet property="keranjangPopUp" destination="bFX-Xw-7Dp" id="INw-as-IHf"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
@@ -128,8 +149,8 @@
     </scenes>
     <resources>
         <image name="camera-button" width="213" height="213"/>
-        <image name="flashlight-off" width="96" height="108"/>
-        <image name="inventory" width="70" height="70"/>
+        <image name="flashlight-off" width="78" height="96"/>
+        <image name="inventory" width="108" height="108"/>
         <image name="kapal api" width="700" height="933"/>
     </resources>
 </document>
