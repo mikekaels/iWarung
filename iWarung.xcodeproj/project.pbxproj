@@ -9,6 +9,8 @@
 /* Begin PBXBuildFile section */
 		3FE725FB26A96F24009F4D32 /* Pembayaran.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 3FE725FA26A96F24009F4D32 /* Pembayaran.storyboard */; };
 		3FE725FD26A96F7A009F4D32 /* PembayaranViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3FE725FC26A96F7A009F4D32 /* PembayaranViewController.swift */; };
+		3FF1EE7D26AE284000F4F122 /* DetectedProductView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3FF1EE7B26AE284000F4F122 /* DetectedProductView.swift */; };
+		3FF1EE7E26AE284000F4F122 /* DetectedProductView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 3FF1EE7C26AE284000F4F122 /* DetectedProductView.xib */; };
 		BD1CF23F26AC99F9001B7EC8 /* TransaksiSelesaiPasView.xib in Resources */ = {isa = PBXBuildFile; fileRef = BD1CF23E26AC99F9001B7EC8 /* TransaksiSelesaiPasView.xib */; };
 		BD1CF24526ACAEA9001B7EC8 /* TransaksiSelesaiPasView.swift in Sources */ = {isa = PBXBuildFile; fileRef = BD1CF24426ACAEA9001B7EC8 /* TransaksiSelesaiPasView.swift */; };
 		BD1CF24726ACB279001B7EC8 /* UIApplication.swift in Sources */ = {isa = PBXBuildFile; fileRef = BD1CF24626ACB279001B7EC8 /* UIApplication.swift */; };
@@ -47,6 +49,8 @@
 /* Begin PBXFileReference section */
 		3FE725FA26A96F24009F4D32 /* Pembayaran.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = Pembayaran.storyboard; sourceTree = "<group>"; };
 		3FE725FC26A96F7A009F4D32 /* PembayaranViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PembayaranViewController.swift; sourceTree = "<group>"; };
+		3FF1EE7B26AE284000F4F122 /* DetectedProductView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetectedProductView.swift; sourceTree = "<group>"; };
+		3FF1EE7C26AE284000F4F122 /* DetectedProductView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = DetectedProductView.xib; sourceTree = "<group>"; };
 		BD1CF23E26AC99F9001B7EC8 /* TransaksiSelesaiPasView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = TransaksiSelesaiPasView.xib; sourceTree = "<group>"; };
 		BD1CF24426ACAEA9001B7EC8 /* TransaksiSelesaiPasView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TransaksiSelesaiPasView.swift; sourceTree = "<group>"; };
 		BD1CF24626ACB279001B7EC8 /* UIApplication.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIApplication.swift; sourceTree = "<group>"; };
@@ -141,6 +145,7 @@
 				E7194C2D26AD97BD0018B189 /* Inventory.storyboard */,
 				BDC625C526AD507300E44675 /* TambahProdukScan.storyboard */,
 				BDB39A3726ADD05800296909 /* DaftarProduk.storyboard */,
+				3FF1EE7C26AE284000F4F122 /* DetectedProductView.xib */,
 			);
 			path = Views;
 			sourceTree = "<group>";
@@ -169,6 +174,7 @@
 				E7194C3326ADA4D70018B189 /* ProductTableView.swift */,
 				BDC625C726AD509500E44675 /* TambahProdukScanViewController.swift */,
 				BDB39A3926ADD06F00296909 /* DaftarProdukViewController.swift */,
+				3FF1EE7B26AE284000F4F122 /* DetectedProductView.swift */,
 			);
 			path = Controllers;
 			sourceTree = "<group>";
@@ -248,6 +254,7 @@
 				BDC625C626AD507300E44675 /* TambahProdukScan.storyboard in Resources */,
 				BD1CF23F26AC99F9001B7EC8 /* TransaksiSelesaiPasView.xib in Resources */,
 				BD5AC59426A369F500A52336 /* LaunchScreen.storyboard in Resources */,
+				3FF1EE7E26AE284000F4F122 /* DetectedProductView.xib in Resources */,
 				BDB39A3826ADD05800296909 /* DaftarProduk.storyboard in Resources */,
 				BD5AC59126A369F500A52336 /* Assets.xcassets in Resources */,
 				BD85A2D126A9F72600FE1B9C /* Keranjang.storyboard in Resources */,
@@ -279,6 +286,7 @@
 				BD1FFF3D26AC24D300EB9AAD /* UIColor.swift in Sources */,
 				BD5AC58526A369F400A52336 /* AppDelegate.swift in Sources */,
 				E7194C3026AD9C1A0018B189 /* DetailProductVC.swift in Sources */,
+				3FF1EE7D26AE284000F4F122 /* DetectedProductView.swift in Sources */,
 				BDC8DFA426AC6C1E008310AA /* UITextField.swift in Sources */,
 				E7194C4726ADC0A10018B189 /* Item+CoreDataClass.swift in Sources */,
 				BDB39A3A26ADD06F00296909 /* DaftarProdukViewController.swift in Sources */,
