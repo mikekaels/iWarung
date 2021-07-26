@@ -2,7 +2,7 @@
 //  Item+CoreDataProperties.swift
 //  iWarung
 //
-//  Created by Miftahul Jihad on 25/07/21.
+//  Created by Miftahul Jihad on 26/07/21.
 //
 //
 
@@ -20,6 +20,7 @@ extension Item {
     @NSManaged public var harga: String?
     @NSManaged public var id: Int32
     @NSManaged public var nama: String?
+    @NSManaged public var imageD: Data?
 
 }
 

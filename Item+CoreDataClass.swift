@@ -2,7 +2,7 @@
 //  Item+CoreDataClass.swift
 //  iWarung
 //
-//  Created by Miftahul Jihad on 25/07/21.
+//  Created by Miftahul Jihad on 26/07/21.
 //
 //
 

@@ -15,8 +15,25 @@
                     <view key="view" contentMode="scaleToFill" id="5EZ-qb-Rvc">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <view contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="LdN-gK-XsB">
+                                <rect key="frame" x="32" y="396" width="240" height="128"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                            </view>
+                            <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="rDq-Nh-Voe">
+                                <rect key="frame" x="0.0" y="88" width="414" height="774"/>
+                                <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                            </tableView>
+                        </subviews>
                         <viewLayoutGuide key="safeArea" id="vDu-zF-Fre"/>
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                        <constraints>
+                            <constraint firstItem="rDq-Nh-Voe" firstAttribute="leading" secondItem="vDu-zF-Fre" secondAttribute="leading" id="Yoa-gG-r36"/>
+                            <constraint firstItem="rDq-Nh-Voe" firstAttribute="top" secondItem="vDu-zF-Fre" secondAttribute="top" id="bqx-KI-j0P"/>
+                            <constraint firstItem="rDq-Nh-Voe" firstAttribute="trailing" secondItem="vDu-zF-Fre" secondAttribute="trailing" id="gFN-R4-ENy"/>
+                            <constraint firstItem="vDu-zF-Fre" firstAttribute="bottom" secondItem="rDq-Nh-Voe" secondAttribute="bottom" id="tOq-hY-RPQ"/>
+                        </constraints>
                     </view>
                     <navigationItem key="navigationItem" id="BJJ-TL-FaR">
                         <barButtonItem key="rightBarButtonItem" style="plain" systemItem="add" id="8Zv-g0-CtX"/>
