@@ -25,7 +25,6 @@ class ViewController: UIViewController, AVCaptureVideoDataOutputSampleBufferDele
         self.addCameraInput()
         self.configurePreviewLayer()
         self.addVideoOutput()
-        self.captureSession.startRunning()
 
         keranjangPopUp.cornerRadius()
         keranjangPopUp.addGradient()
@@ -85,10 +84,9 @@ class ViewController: UIViewController, AVCaptureVideoDataOutputSampleBufferDele
             debugPrint("unable to get image from sample buffer")
             return
         }
+        // TODO Gunakan data barcode untuk mencari barang yang sudah terdaftar
         if let barcode = self.extractBarcode(fromFrame: frame) {
-            showAlert(
-                withTitle: "Found barcode",
-                message: "\(barcode)")
+            showModal()
         }
     }
     
@@ -115,12 +113,14 @@ class ViewController: UIViewController, AVCaptureVideoDataOutputSampleBufferDele
     }
     
     @objc func showModal() {
-        let slideVC = TransaksiSelesaiPasView()
-        slideVC.modalPresentationStyle = .custom
-        slideVC.transitioningDelegate = self
-        self.present(slideVC, animated: true, completion: { () in
-            print("Modal opened")
-        })
+        DispatchQueue.main.async {
+            let slideVC = DetectedProductView()
+            slideVC.modalPresentationStyle = .custom
+            slideVC.transitioningDelegate = self
+            self.present(slideVC, animated: true, completion: { () in
+                print("Modal opened")
+            })
+        }
     }
     
     @IBAction func unwindToMain(segue: UIStoryboardSegue) {
@@ -138,6 +138,11 @@ extension ViewController {
         navigationController?.navigationBar.prefersLargeTitles = false
         self.navigationController?.isHiddenHairline = true
         super.viewWillAppear(animated)
+        self.captureSession.startRunning()
+    }
+    
+    override func viewWillDisappear(_ animated: Bool) {
+        self.captureSession.stopRunning()
     }
     
     private func showAlert(withTitle title: String, message: String) {
