@@ -12,9 +12,12 @@ import AVFoundation
 class ViewController: UIViewController, AVCaptureVideoDataOutputSampleBufferDelegate {
     
     @IBOutlet weak var cameraView: UIImageView!
+    @IBOutlet weak var flashLightButton: UIButton!
     private let captureSession = AVCaptureSession()
     private let videoOutput = AVCaptureVideoDataOutput()
     private let sequenceHandler = VNSequenceRequestHandler()
+    
+    @IBOutlet weak var keranjangPopUp: KeranjangPopUp!
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -23,8 +26,33 @@ class ViewController: UIViewController, AVCaptureVideoDataOutputSampleBufferDele
         self.configurePreviewLayer()
         self.addVideoOutput()
         self.captureSession.startRunning()
+
+        keranjangPopUp.cornerRadius()
+        keranjangPopUp.addGradient()
     }
     
+    @IBAction func flashlightPressed(_ sender: UIButton) {
+        let device = AVCaptureDevice.default(for: AVMediaType.video)!
+        
+        if (device.hasTorch) {
+            do {
+                try device.lockForConfiguration()
+                let torchOn = !device.isTorchActive
+                if torchOn == false {
+                    flashLightButton.setImage(UIImage(named: "flashlight-off.png"), for: .normal)
+                } else {
+                    flashLightButton.setImage(UIImage(named: "flashlight-on.png"), for: .normal)
+                }
+                
+                try device.setTorchModeOn(level: 1)
+                device.torchMode = torchOn ? AVCaptureDevice.TorchMode.on : AVCaptureDevice.TorchMode.off
+                device.unlockForConfiguration()
+            } catch {
+                print(error)
+            }
+        } else {
+        }
+    }
     fileprivate func setupNavBar(){
         navigationController?.navigationBar.barTintColor = UIColor.white
         let iWarungLogoImageView = UIImageView(image: UIImage(named: "iwarung_logo"))
