@@ -15,16 +15,10 @@ class OnboardingViewController: UIViewController{
     @IBOutlet weak var pageCtrl: UIPageControl!
     @IBOutlet weak var mulaiButton: UIButton!
     
-    let onboardingSlides: [Onboarding] = [
-        Onboarding(image: #imageLiteral(resourceName: "kasir 1x"), label: "Cepat", description: "Ketahui harga produk dan hitung penjualan dengan cepat"),
-        Onboarding(image: #imageLiteral(resourceName: "produk 1x"), label: "Mudah", description: "Kelola produk jualan anda dengan mudah"),
-        Onboarding(image: #imageLiteral(resourceName: "meningkat"), label: "Meningkat", description: "Kualitas manajemen warung anda akan semakin meningkat")
-    ]
-    
     var currentPage = 0 {
         didSet {
             pageCtrl.currentPage = currentPage
-            if currentPage == onboardingSlides.count - 1 {
+            if currentPage == K.onboardingSlides.count - 1 {
                 self.mulaiButton.isHidden = false
                 self.nextPageButton.isHidden = true
                 self.skipButton.isHidden = true
@@ -67,7 +61,7 @@ class OnboardingViewController: UIViewController{
 
     //MARK: - Actions
     @IBAction func nextPagePressed(_ sender: UIButton) {
-        if currentPage == onboardingSlides.count - 1 {
+        if currentPage == K.onboardingSlides.count - 1 {
             notNewUser()
         } else {
             currentPage += 1
@@ -78,7 +72,7 @@ class OnboardingViewController: UIViewController{
     }
     
     @IBAction func mulaiButtonPressed(_ sender: UIButton) {
-        if currentPage == onboardingSlides.count - 1 {
+        if currentPage == K.onboardingSlides.count - 1 {
             notNewUser()
         } else {
             currentPage += 1
@@ -107,13 +101,12 @@ extension OnboardingViewController {
 //MARK: - Delegate and Data Source
 extension OnboardingViewController: UICollectionViewDelegate, UICollectionViewDataSource {
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        return onboardingSlides.count
+        return K.onboardingSlides.count
     }
     
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         let cell = collectionView.dequeueReusableCell(withReuseIdentifier: OnboardingCollectionViewCell.identifier, for: indexPath) as! OnboardingCollectionViewCell
-        print("DATA: ",onboardingSlides[indexPath.row])
-        cell.setup(onboardingSlides[indexPath.row])
+        cell.setup(K.onboardingSlides[indexPath.row])
         return cell
     }
     
