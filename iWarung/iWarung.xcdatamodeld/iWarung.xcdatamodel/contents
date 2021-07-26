@@ -4,9 +4,10 @@
         <attribute name="deskripsi" optional="YES" attributeType="String"/>
         <attribute name="harga" optional="YES" attributeType="String"/>
         <attribute name="id" optional="YES" attributeType="Integer 32" defaultValueString="0" usesScalarValueType="YES"/>
+        <attribute name="imageD" optional="YES" attributeType="Binary" allowsExternalBinaryDataStorage="YES"/>
         <attribute name="nama" optional="YES" attributeType="String"/>
     </entity>
     <elements>
-        <element name="Item" positionX="-63" positionY="-18" width="128" height="89"/>
+        <element name="Item" positionX="-63" positionY="-18" width="128" height="104"/>
     </elements>
 </model>

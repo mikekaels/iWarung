@@ -26,7 +26,7 @@
                                 <rect key="frame" x="0.0" y="640" width="390" height="204"/>
                                 <subviews>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="JEr-g4-tBW">
-                                        <rect key="frame" x="157.66666666666663" y="48" width="75" height="75"/>
+                                        <rect key="frame" x="157.66666666666666" y="48" width="75" height="75"/>
                                         <constraints>
                                             <constraint firstAttribute="width" constant="75" id="H7Z-bC-3IR"/>
                                             <constraint firstAttribute="height" constant="75" id="Udh-9R-D3G"/>
