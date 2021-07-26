@@ -27,40 +27,75 @@
                                 </constraints>
                             </imageView>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Minyak Bimoli 240ml" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="EHm-YW-LSf">
-                                <rect key="frame" x="136" y="15" width="144" height="17"/>
+                                <rect key="frame" x="127" y="15" width="144" height="17"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <fontDescription key="fontDescription" type="boldSystem" pointSize="14"/>
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="20 - 10 - 2022" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Pnp-j1-7xj">
-                                <rect key="frame" x="136" y="39" width="85" height="15"/>
+                                <rect key="frame" x="127" y="39" width="85" height="15"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <fontDescription key="fontDescription" type="system" weight="semibold" pointSize="12"/>
                                 <color key="textColor" white="0.66666666669999997" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <nil key="highlightedColor"/>
                             </label>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Rp" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="kTq-Sg-3gq">
-                                <rect key="frame" x="136" y="86" width="14" height="12"/>
+                                <rect key="frame" x="127" y="86" width="14" height="12"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <fontDescription key="fontDescription" type="system" weight="semibold" pointSize="10"/>
                                 <color key="textColor" white="0.66666666669999997" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <nil key="highlightedColor"/>
                             </label>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="24.000" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="IBs-ba-Bke">
-                                <rect key="frame" x="152" y="85" width="60" height="21"/>
+                                <rect key="frame" x="143" y="85" width="60" height="21"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <fontDescription key="fontDescription" type="boldSystem" pointSize="17"/>
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="T3f-5f-KWq">
+                                <rect key="frame" x="229" y="86" width="91" height="25"/>
+                                <subviews>
+                                    <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="zFC-p7-Cbl">
+                                        <rect key="frame" x="69" y="4" width="17" height="17"/>
+                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                        <state key="normal" image="plus" catalog="system">
+                                            <color key="titleColor" red="0.68235294120000001" green="0.68235294120000001" blue="0.69803921570000005" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                        </state>
+                                    </button>
+                                    <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="0rH-7h-gIj">
+                                        <rect key="frame" x="6" y="4" width="17" height="17"/>
+                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                        <state key="normal" image="minus" catalog="system">
+                                            <color key="titleColor" red="0.68235294120000001" green="0.68235294120000001" blue="0.69803921570000005" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                        </state>
+                                    </button>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="2" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="kjn-ao-wEZ">
+                                        <rect key="frame" x="41" y="4" width="10" height="18"/>
+                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                        <fontDescription key="fontDescription" type="system" weight="medium" pointSize="15"/>
+                                        <nil key="textColor"/>
+                                        <nil key="highlightedColor"/>
+                                    </label>
+                                </subviews>
+                                <color key="backgroundColor" red="0.96470588239999999" green="0.97254901959999995" blue="0.98823529409999999" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="25" id="F2t-tY-aOh"/>
+                                    <constraint firstAttribute="width" constant="91" id="bQO-vi-5cK"/>
+                                </constraints>
+                            </view>
                         </subviews>
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                         <constraints>
+                            <constraint firstAttribute="bottom" secondItem="T3f-5f-KWq" secondAttribute="bottom" constant="10" id="4XU-an-u8O"/>
                             <constraint firstAttribute="bottom" secondItem="4EB-LU-t18" secondAttribute="bottom" constant="10" id="Afy-Tk-oDg"/>
                             <constraint firstItem="4EB-LU-t18" firstAttribute="leading" secondItem="g9R-v7-Ooq" secondAttribute="leading" constant="10" id="I6D-MI-Yh4"/>
                             <constraint firstAttribute="bottom" secondItem="4EB-LU-t18" secondAttribute="bottom" constant="10" id="PhM-0Q-CxN"/>
                             <constraint firstItem="4EB-LU-t18" firstAttribute="top" secondItem="g9R-v7-Ooq" secondAttribute="top" constant="10" id="SPA-Zj-B7I"/>
+                            <constraint firstAttribute="trailing" secondItem="T3f-5f-KWq" secondAttribute="trailing" constant="10" id="aIj-RC-sah"/>
                         </constraints>
                     </view>
                 </subviews>
@@ -74,16 +109,21 @@
             </constraints>
             <connections>
                 <outlet property="keranjangBackgroundView" destination="g9R-v7-Ooq" id="RDO-N1-bjo"/>
+                <outlet property="minusButton" destination="0rH-7h-gIj" id="Xye-pQ-yn3"/>
+                <outlet property="plusButton" destination="zFC-p7-Cbl" id="j3F-TP-kDH"/>
                 <outlet property="productExpired" destination="Pnp-j1-7xj" id="K1V-02-IA2"/>
                 <outlet property="productImage" destination="4EB-LU-t18" id="ntv-eL-USS"/>
                 <outlet property="productName" destination="EHm-YW-LSf" id="aGI-MR-AHA"/>
                 <outlet property="productPrice" destination="IBs-ba-Bke" id="Cac-xJ-1QH"/>
+                <outlet property="stepperBackground" destination="T3f-5f-KWq" id="rIq-lv-ymE"/>
             </connections>
             <point key="canvasLocation" x="-7.2463768115942031" y="116.18303571428571"/>
         </collectionViewCell>
     </objects>
     <resources>
         <image name="bimoli" width="256" height="197"/>
+        <image name="minus" catalog="system" width="128" height="24"/>
+        <image name="plus" catalog="system" width="128" height="113"/>
         <systemColor name="systemBackgroundColor">
             <color white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
         </systemColor>
