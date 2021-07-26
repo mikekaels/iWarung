@@ -33,4 +33,11 @@ struct K {
     //MARK: - Blue Gradient 2 Color
     let blueGradient2Example = #colorLiteral(red: 0.02745098039, green: 0.4705882353, blue: 0.8431372549, alpha: 1)
     static let blueGradient2 = 0x0778D7
+    
+    //MARK: - Onboarding
+    static let onboardingSlides: [Onboarding] = [
+        Onboarding(image: #imageLiteral(resourceName: "produk 1x"), label: "Cepat", description: "Ketahui harga produk dan hitung penjualan  dengan cepat"),
+        Onboarding(image: #imageLiteral(resourceName: "produk 1x"), label: "Mudah", description: "Kelola produk jualan anda dengan mudah"),
+        Onboarding(image: #imageLiteral(resourceName: "meningkat"), label: "Meningkat", description: "Kualitas manajemen warung anda akan semakin meningkat")
+    ]
 }

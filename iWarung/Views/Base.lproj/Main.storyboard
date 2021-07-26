@@ -7,6 +7,14 @@
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <scenes>
+        <!--Onboarding-->
+        <scene sceneID="Mbk-bJ-H1V">
+            <objects>
+                <viewControllerPlaceholder storyboardIdentifier="Onboarding" storyboardName="Onboarding" referencedIdentifier="Onboarding" id="bS4-ST-UIL" sceneMemberID="viewController"/>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="gOx-4a-kxv" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="1956" y="-341"/>
+        </scene>
         <!--View Controller-->
         <scene sceneID="tne-QT-ifu">
             <objects>
