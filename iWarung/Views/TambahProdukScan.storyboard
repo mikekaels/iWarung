@@ -38,6 +38,7 @@
                                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                         <state key="normal" image="flashlight-off"/>
                                         <connections>
+                                            <action selector="buttonFlash:" destination="Y6W-OH-hqX" eventType="touchUpInside" id="uvP-sx-gya"/>
                                             <action selector="flashlightPressed:" destination="Y6W-OH-hqX" eventType="touchUpInside" id="53Z-PS-YP9"/>
                                         </connections>
                                     </button>

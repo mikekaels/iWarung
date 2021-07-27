@@ -25,6 +25,7 @@ class ViewController: UIViewController, AVCaptureVideoDataOutputSampleBufferDele
         self.addCameraInput()
         self.configurePreviewLayer()
         self.addVideoOutput()
+        self.captureSession.startRunning()
 
         keranjangPopUp.cornerRadius()
         keranjangPopUp.addGradient()
