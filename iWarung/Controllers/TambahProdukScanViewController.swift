@@ -25,6 +25,13 @@ class TambahProdukScanViewController: UIViewController, AVCaptureVideoDataOutput
         self.addVideoOutput()
     }
     
+    @IBAction func buttonFlash(_ sender: Any) {
+//        let storyboard: UIStoryboard = UIStoryboard(name: "TambahProdukForm", bundle: nil)
+//        let vc = storyboard.instantiateViewController(identifier: "TambahProdukForm") as! TambahProdukFormViewController
+//
+//        self.present(vc, animated: true, completion: nil)
+    }
+    
     private func configurePreviewLayer() {
         let cameraPreviewLayer = AVCaptureVideoPreviewLayer(session: captureSession)
         cameraPreviewLayer.videoGravity = .resizeAspectFill
@@ -47,7 +54,15 @@ class TambahProdukScanViewController: UIViewController, AVCaptureVideoDataOutput
 
         if let barcode = self.extractBarcode(fromFrame: frame) {
             //MARK: - TODO Gunakan data barcode untuk disimpan
-            showAlert(withTitle: "Barcode Founde", message: barcode)
+//            showAlert(withTitle: "Barcode Founde", message: barcode)
+//
+            DispatchQueue.main.async {
+                let storyboard: UIStoryboard = UIStoryboard(name: "TambahProdukForm", bundle: nil)
+                let vc = storyboard.instantiateViewController(identifier: "TambahProdukForm") as! TambahProdukFormViewController
+                        
+                self.present(vc, animated: true, completion: nil)
+            }
+           
         }
     }
     

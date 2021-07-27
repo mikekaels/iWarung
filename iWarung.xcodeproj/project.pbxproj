@@ -52,6 +52,7 @@
 		E7194C5026AE6A700018B189 /* ProductViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = E7194C4E26AE6A700018B189 /* ProductViewCell.xib */; };
 		E7194C5326AE93F40018B189 /* Item+CoreDataClass.swift in Sources */ = {isa = PBXBuildFile; fileRef = E7194C5126AE93F40018B189 /* Item+CoreDataClass.swift */; };
 		E7194C5426AE93F40018B189 /* Item+CoreDataProperties.swift in Sources */ = {isa = PBXBuildFile; fileRef = E7194C5226AE93F40018B189 /* Item+CoreDataProperties.swift */; };
+		E7194C5626AFD3D50018B189 /* TambahProdukForm.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = E7194C5526AFD3D50018B189 /* TambahProdukForm.storyboard */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -102,6 +103,7 @@
 		E7194C4E26AE6A700018B189 /* ProductViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = ProductViewCell.xib; sourceTree = "<group>"; };
 		E7194C5126AE93F40018B189 /* Item+CoreDataClass.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Item+CoreDataClass.swift"; sourceTree = SOURCE_ROOT; };
 		E7194C5226AE93F40018B189 /* Item+CoreDataProperties.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Item+CoreDataProperties.swift"; sourceTree = SOURCE_ROOT; };
+		E7194C5526AFD3D50018B189 /* TambahProdukForm.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = TambahProdukForm.storyboard; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -165,6 +167,7 @@
 				3FF1EE7C26AE284000F4F122 /* DetectedProductView.xib */,
 				BDEA922026AE7B8000157FA6 /* KeranjangPopUp */,
 				BDE43C2026AF4283004CF3CC /* Onboarding.storyboard */,
+				E7194C5526AFD3D50018B189 /* TambahProdukForm.storyboard */,
 			);
 			path = Views;
 			sourceTree = "<group>";
@@ -310,6 +313,7 @@
 				BD85A2D126A9F72600FE1B9C /* Keranjang.storyboard in Resources */,
 				BDE43C2126AF4283004CF3CC /* Onboarding.storyboard in Resources */,
 				BD5AC58C26A369F400A52336 /* Main.storyboard in Resources */,
+				E7194C5626AFD3D50018B189 /* TambahProdukForm.storyboard in Resources */,
 				BD1FFF3226AB604100EB9AAD /* KeranjangCell.xib in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
