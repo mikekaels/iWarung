@@ -6,33 +6,45 @@
 //
 
 import UIKit
+import CoreData
 
-class DaftarProdukViewController: UIViewController {
+var productList = [Item]()
+
+class DaftarProdukViewController: UIViewController, UICollectionViewDataSource, UICollectionViewDelegate {
     @IBOutlet weak var daftarProdukCollectionView: UICollectionView!
     
-    let products: [Product] = [
-        Product(image: "bimoli", name: "Bimoli 2L", expired: "20-05-2022", price: 24000),
-        Product(image: "gulaku", name: "Gulaku", expired: "15-03-2025", price: 18000),
-        Product(image: "blue band", name: "Blue Band", expired: "31-01-2028", price: 30000),
-        Product(image: "bimoli", name: "Bimoli 2L", expired: "20-05-2022", price: 24000),
-        Product(image: "gulaku", name: "Gulaku", expired: "15-03-2025", price: 18000),
-        Product(image: "blue band", name: "Blue Band", expired: "31-01-2028", price: 30000),
-        Product(image: "bimoli", name: "Bimoli 2L", expired: "20-05-2022", price: 24000),
-        Product(image: "gulaku", name: "Gulaku", expired: "15-03-2025", price: 18000),
-        Product(image: "blue band", name: "Blue Band", expired: "31-01-2028", price: 30000)
-    ]
+    var firsLoad = true
     
-
     override func viewDidLoad() {
         super.viewDidLoad()
         title = "Daftar Produk"
         // Do any additional setup after loading the view.
         
-        let nibCell = UINib(nibName: "KeranjangCell", bundle: nil)
-        daftarProdukCollectionView.register(nibCell, forCellWithReuseIdentifier: "keranjangCell")
+        let nibCell = UINib(nibName: "ProductItemViewCell", bundle: nil)
+        daftarProdukCollectionView.register(nibCell, forCellWithReuseIdentifier: "productItemCell")
         
         daftarProdukCollectionView.dataSource = self
         daftarProdukCollectionView.delegate = self
+        
+        loadData()
+    }
+    
+    private func loadData(){
+        if (firsLoad){
+            firsLoad = false
+            let appDelegate = UIApplication.shared.delegate as! AppDelegate
+            let context: NSManagedObjectContext = appDelegate.persistentContainer.viewContext
+            let request = NSFetchRequest<NSFetchRequestResult>(entityName: "Item")
+            do {
+                let results:NSArray = try context.fetch(request) as NSArray
+                for result in results {
+                    let item = result as! Item
+                    productList.append(item)
+                }
+            } catch {
+                print("Fetch failed")
+            }
+        }
     }
     
     lazy var gradient: CAGradientLayer = {
@@ -53,33 +65,21 @@ class DaftarProdukViewController: UIViewController {
     }()
     
     
-
-    /*
-    // MARK: - Navigation
-
-    // In a storyboard-based application, you will often want to do a little preparation before navigation
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        // Get the new view controller using segue.destination.
-        // Pass the selected object to the new view controller.
-    }
-    */
-
-}
-
-extension DaftarProdukViewController: UICollectionViewDataSource, UICollectionViewDelegate {
-    
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        return products.count
+        return productList.count
     }
     
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         
-        let cell = daftarProdukCollectionView.dequeueReusableCell(withReuseIdentifier: "keranjangCell", for: indexPath) as! KeranjangCell
+        let cell = daftarProdukCollectionView.dequeueReusableCell(withReuseIdentifier: "productItemCell", for: indexPath) as! ProductItemViewCell
         
-        cell.productImage.image = UIImage(named: products[indexPath.row].image)
-        cell.productName.text = products[indexPath.row].name
-        cell.productExpired.text = products[indexPath.row].expired
-        cell.productPrice.text = String(products[indexPath.row].price)
+        let item: Item!
+        item = productList[indexPath.row]
+        
+        cell.productImage.image = UIImage(data: item.imageD!)
+        cell.productName.text = item.nama
+        cell.productDesc.text = item.deskripsi
+        cell.productPrice.text = item.harga
         
         // giving shadow to the cell
         cell.layer.cornerRadius = 15.0
@@ -94,8 +94,32 @@ extension DaftarProdukViewController: UICollectionViewDataSource, UICollectionVi
     }
     
     
+    override func viewDidAppear(_ animated: Bool) {
+        
+        if productList.isEmpty {
+            print("data count \(productList.count)")
+        } else {
+            print("CoreData \(String(describing: productList[0].nama))")
+        }
+        
+        daftarProdukCollectionView.reloadData()
+    }
+    
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
-        print(indexPath)
+        self.performSegue(withIdentifier: "productDetail", sender: self)
+    }
+    
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        if (segue.identifier == "productDetail"){
+            
+            
+            if let destination = segue.destination as?
+                    TambahProdukFormViewController, let index =
+                    daftarProdukCollectionView.indexPathsForSelectedItems?.first {
+                    destination.selectedItem = productList[index.row]
+                }
+            
+        }
     }
     
 }

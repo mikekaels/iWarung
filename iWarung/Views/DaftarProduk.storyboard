@@ -58,6 +58,7 @@
                     </navigationItem>
                     <connections>
                         <outlet property="daftarProdukCollectionView" destination="F1U-H5-yeY" id="aTJ-NR-CnS"/>
+                        <segue destination="eqX-LC-E1A" kind="presentation" identifier="productDetail" id="fIe-CK-tOK"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Ief-a0-LHa" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
@@ -73,6 +74,14 @@
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Dc9-0v-gpT" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="1707" y="-30"/>
+        </scene>
+        <!--TambahProdukForm-->
+        <scene sceneID="EH9-G1-8S7">
+            <objects>
+                <viewControllerPlaceholder storyboardName="TambahProdukForm" referencedIdentifier="TambahProdukForm" id="eqX-LC-E1A" sceneMemberID="viewController"/>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="8lX-Xd-rzo" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="1608" y="126"/>
         </scene>
         <!--Navigation Controller-->
         <scene sceneID="Gkc-fH-Fht">
