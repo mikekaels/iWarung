@@ -50,6 +50,9 @@
                                             <segment title="Barcode"/>
                                             <segment title="No-Barcode"/>
                                         </segments>
+                                        <connections>
+                                            <action selector="indexChanged:" destination="BYZ-38-t0r" eventType="valueChanged" id="Y5I-pq-2c6"/>
+                                        </connections>
                                     </segmentedControl>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" id="XNA-j0-wSL">
                                         <rect key="frame" x="34" y="73" width="26" height="26"/>
@@ -110,6 +113,7 @@
                         <outlet property="cameraView" destination="hF1-4q-Lhf" id="Btw-2E-v12"/>
                         <outlet property="flashLightButton" destination="HB7-8K-5Ma" id="JlN-Up-NdA"/>
                         <outlet property="keranjangPopUp" destination="bFX-Xw-7Dp" id="INw-as-IHf"/>
+                        <outlet property="segmentedControl" destination="QRY-1u-rPv" id="XIA-hm-gl1"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
