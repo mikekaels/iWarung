@@ -27,6 +27,11 @@ class SelectProductView: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         setupCollectionView()
+        self.navigationItem.leftBarButtonItem = UIBarButtonItem(title: "Abcd", style: .done, target: self, action: #selector(backAction))
+    }
+    
+    @IBAction func backAction(_ sender: Any) {
+        dismiss(animated: true)
     }
     
     private func setupCollectionView() {

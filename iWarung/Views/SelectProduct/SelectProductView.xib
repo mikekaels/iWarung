@@ -3,6 +3,7 @@
     <device id="retina6_1" orientation="portrait" appearance="light"/>
     <dependencies>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="18093"/>
+        <capability name="Image references" minToolsVersion="12.0"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="System colors in document resources" minToolsVersion="11.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
@@ -27,14 +28,8 @@
                         <constraint firstAttribute="height" constant="3.5" id="LrA-Mz-7re"/>
                     </constraints>
                 </view>
-                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Pilih Produk" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="jli-sX-XWU">
-                    <rect key="frame" x="94" y="30.5" width="226" height="19.5"/>
-                    <fontDescription key="fontDescription" type="system" weight="semibold" pointSize="16"/>
-                    <nil key="textColor"/>
-                    <nil key="highlightedColor"/>
-                </label>
                 <collectionView clipsSubviews="YES" contentMode="scaleToFill" dataMode="none" translatesAutoresizingMaskIntoConstraints="NO" id="QNM-MF-m8W">
-                    <rect key="frame" x="30" y="94" width="354" height="686"/>
+                    <rect key="frame" x="0.0" y="60" width="414" height="740"/>
                     <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                     <collectionViewFlowLayout key="collectionViewLayout" minimumLineSpacing="10" minimumInteritemSpacing="10" sectionInsetReference="safeArea" id="2u8-qa-aDp">
                         <size key="itemSize" width="348" height="117"/>
@@ -43,19 +38,38 @@
                         <inset key="sectionInset" minX="0.0" minY="30" maxX="0.0" maxY="45"/>
                     </collectionViewFlowLayout>
                 </collectionView>
+                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Pilih Produk" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="jli-sX-XWU">
+                    <rect key="frame" x="162" y="30.5" width="90.5" height="19.5"/>
+                    <fontDescription key="fontDescription" type="system" weight="semibold" pointSize="16"/>
+                    <nil key="textColor"/>
+                    <nil key="highlightedColor"/>
+                </label>
+                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="1Pf-35-cPh">
+                    <rect key="frame" x="8" y="28" width="86.5" height="22"/>
+                    <inset key="imageEdgeInsets" minX="0.0" minY="0.0" maxX="8" maxY="0.0"/>
+                    <state key="normal" title="Kembali">
+                        <color key="titleColor" systemColor="linkColor"/>
+                        <imageReference key="image" image="chevron.backward" catalog="system" symbolScale="large"/>
+                    </state>
+                    <connections>
+                        <action selector="backAction:" destination="-1" eventType="touchUpInside" id="Yng-ei-1it"/>
+                    </connections>
+                </button>
             </subviews>
             <viewLayoutGuide key="safeArea" id="vUN-kp-3ea"/>
             <color key="backgroundColor" systemColor="systemBackgroundColor"/>
             <constraints>
-                <constraint firstItem="vUN-kp-3ea" firstAttribute="trailing" secondItem="jli-sX-XWU" secondAttribute="trailing" constant="94" id="DCG-nP-mbg"/>
-                <constraint firstItem="vUN-kp-3ea" firstAttribute="trailing" secondItem="QNM-MF-m8W" secondAttribute="trailing" constant="30" id="FKy-Gz-ZaD"/>
+                <constraint firstItem="1Pf-35-cPh" firstAttribute="leading" secondItem="vUN-kp-3ea" secondAttribute="leading" constant="8" id="7bW-Ox-DRI"/>
+                <constraint firstItem="1Pf-35-cPh" firstAttribute="firstBaseline" secondItem="jli-sX-XWU" secondAttribute="baseline" id="BEj-8U-AWh"/>
+                <constraint firstItem="vUN-kp-3ea" firstAttribute="trailing" secondItem="QNM-MF-m8W" secondAttribute="trailing" id="FKy-Gz-ZaD"/>
                 <constraint firstAttribute="trailing" secondItem="b7x-fo-NTy" secondAttribute="trailing" constant="174" id="I1N-dy-fJa"/>
-                <constraint firstItem="jli-sX-XWU" firstAttribute="leading" secondItem="vUN-kp-3ea" secondAttribute="leading" constant="94" id="RLM-2d-7Lj"/>
                 <constraint firstItem="b7x-fo-NTy" firstAttribute="leading" secondItem="iN0-l3-epB" secondAttribute="leading" constant="174" id="Su9-m2-F0C"/>
-                <constraint firstItem="QNM-MF-m8W" firstAttribute="leading" secondItem="vUN-kp-3ea" secondAttribute="leading" constant="30" id="XSL-fY-kCE"/>
-                <constraint firstItem="QNM-MF-m8W" firstAttribute="top" secondItem="jli-sX-XWU" secondAttribute="bottom" constant="44" id="ZJr-UO-mez"/>
+                <constraint firstItem="QNM-MF-m8W" firstAttribute="leading" secondItem="vUN-kp-3ea" secondAttribute="leading" id="XSL-fY-kCE"/>
+                <constraint firstItem="1Pf-35-cPh" firstAttribute="bottom" secondItem="jli-sX-XWU" secondAttribute="bottom" id="Z39-z2-TEF"/>
+                <constraint firstItem="QNM-MF-m8W" firstAttribute="top" secondItem="jli-sX-XWU" secondAttribute="bottom" constant="10" id="ZJr-UO-mez"/>
                 <constraint firstItem="b7x-fo-NTy" firstAttribute="top" secondItem="iN0-l3-epB" secondAttribute="top" constant="12" id="ZT6-WB-HLd"/>
-                <constraint firstItem="vUN-kp-3ea" firstAttribute="bottom" secondItem="QNM-MF-m8W" secondAttribute="bottom" constant="20" id="dxz-FT-3Tg"/>
+                <constraint firstItem="jli-sX-XWU" firstAttribute="centerX" secondItem="b7x-fo-NTy" secondAttribute="centerX" constant="0.25" id="cTW-fe-7O5"/>
+                <constraint firstItem="vUN-kp-3ea" firstAttribute="bottom" secondItem="QNM-MF-m8W" secondAttribute="bottom" id="dxz-FT-3Tg"/>
                 <constraint firstItem="jli-sX-XWU" firstAttribute="top" secondItem="b7x-fo-NTy" secondAttribute="bottom" constant="15" id="trF-qO-izh"/>
             </constraints>
             <freeformSimulatedSizeMetrics key="simulatedDestinationMetrics"/>
@@ -63,6 +77,10 @@
         </view>
     </objects>
     <resources>
+        <image name="chevron.backward" catalog="system" width="96" height="128"/>
+        <systemColor name="linkColor">
+            <color red="0.0" green="0.47843137254901963" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+        </systemColor>
         <systemColor name="systemBackgroundColor">
             <color white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
         </systemColor>
