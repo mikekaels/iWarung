@@ -118,6 +118,9 @@
                     <state key="normal" title="Tambahkan  ke keranjang">
                         <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                     </state>
+                    <connections>
+                        <action selector="addToCartAction:" destination="-1" eventType="touchUpInside" id="kSL-cM-5xV"/>
+                    </connections>
                 </button>
             </subviews>
             <viewLayoutGuide key="safeArea" id="vUN-kp-3ea"/>

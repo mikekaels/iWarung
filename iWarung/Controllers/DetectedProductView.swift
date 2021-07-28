@@ -32,6 +32,9 @@ class DetectedProductView: UIViewController {
             pointOrigin = self.view.frame.origin
         }
     }
+    @IBAction func addToCartAction(_ sender: Any) {
+        dismiss(animated: true)
+    }
     
     lazy var gradient: CAGradientLayer = {
         let gradient = CAGradientLayer()
