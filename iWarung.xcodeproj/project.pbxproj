@@ -7,6 +7,8 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		3FA214B726B0DB320036633F /* SelectProductView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3FA214B526B0DB320036633F /* SelectProductView.swift */; };
+		3FA214B826B0DB320036633F /* SelectProductView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 3FA214B626B0DB320036633F /* SelectProductView.xib */; };
 		3FE725FB26A96F24009F4D32 /* Pembayaran.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 3FE725FA26A96F24009F4D32 /* Pembayaran.storyboard */; };
 		3FE725FD26A96F7A009F4D32 /* PembayaranViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3FE725FC26A96F7A009F4D32 /* PembayaranViewController.swift */; };
 		3FF1EE7D26AE284000F4F122 /* DetectedProductView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3FF1EE7B26AE284000F4F122 /* DetectedProductView.swift */; };
@@ -56,6 +58,8 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		3FA214B526B0DB320036633F /* SelectProductView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SelectProductView.swift; sourceTree = "<group>"; };
+		3FA214B626B0DB320036633F /* SelectProductView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = SelectProductView.xib; sourceTree = "<group>"; };
 		3FE725FA26A96F24009F4D32 /* Pembayaran.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = Pembayaran.storyboard; sourceTree = "<group>"; };
 		3FE725FC26A96F7A009F4D32 /* PembayaranViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PembayaranViewController.swift; sourceTree = "<group>"; };
 		3FF1EE7B26AE284000F4F122 /* DetectedProductView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetectedProductView.swift; sourceTree = "<group>"; };
@@ -117,6 +121,15 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		3FA214B426B0DA630036633F /* SelectProduct */ = {
+			isa = PBXGroup;
+			children = (
+				3FA214B526B0DB320036633F /* SelectProductView.swift */,
+				3FA214B626B0DB320036633F /* SelectProductView.xib */,
+			);
+			path = SelectProduct;
+			sourceTree = "<group>";
+		};
 		BD5AC57826A369F400A52336 = {
 			isa = PBXGroup;
 			children = (
@@ -168,6 +181,7 @@
 				BDEA922026AE7B8000157FA6 /* KeranjangPopUp */,
 				BDE43C2026AF4283004CF3CC /* Onboarding.storyboard */,
 				E7194C5526AFD3D50018B189 /* TambahProdukForm.storyboard */,
+				3FA214B426B0DA630036633F /* SelectProduct */,
 			);
 			path = Views;
 			sourceTree = "<group>";
@@ -302,6 +316,7 @@
 			files = (
 				BDEA921D26AE7A6A00157FA6 /* KeranjangPopUp.xib in Resources */,
 				3FE725FB26A96F24009F4D32 /* Pembayaran.storyboard in Resources */,
+				3FA214B826B0DB320036633F /* SelectProductView.xib in Resources */,
 				E7194C5026AE6A700018B189 /* ProductViewCell.xib in Resources */,
 				E7194C2E26AD97BD0018B189 /* Inventory.storyboard in Resources */,
 				BDC625C626AD507300E44675 /* TambahProdukScan.storyboard in Resources */,
@@ -339,6 +354,7 @@
 				BDC8DFA626AC8D3B008310AA /* PresentationController.swift in Sources */,
 				BDE43C2526AF4B36004CF3CC /* Onboarding.swift in Sources */,
 				E7194C3426ADA4D70018B189 /* ProductTableView.swift in Sources */,
+				3FA214B726B0DB320036633F /* SelectProductView.swift in Sources */,
 				BDE43C2326AF4947004CF3CC /* OnboardingViewController.swift in Sources */,
 				BD1FFF3426AB65F800EB9AAD /* Product.swift in Sources */,
 				BD74BCB026A4820B00E3EE75 /* constants.swift in Sources */,

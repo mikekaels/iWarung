@@ -11,11 +11,13 @@ import AVFoundation
 
 class ViewController: UIViewController, AVCaptureVideoDataOutputSampleBufferDelegate {
     
+    @IBOutlet weak var segmentedControl: UISegmentedControl!
     @IBOutlet weak var cameraView: UIImageView!
     @IBOutlet weak var flashLightButton: UIButton!
     private let captureSession = AVCaptureSession()
     private let videoOutput = AVCaptureVideoDataOutput()
     private let sequenceHandler = VNSequenceRequestHandler()
+    private var isBarcode = true
     
     @IBOutlet weak var keranjangPopUp: KeranjangPopUp!
     
@@ -29,6 +31,18 @@ class ViewController: UIViewController, AVCaptureVideoDataOutputSampleBufferDele
 
         keranjangPopUp.cornerRadius()
         keranjangPopUp.addGradient()
+    }
+    
+    @IBAction func indexChanged(_ sender: Any) {
+        switch segmentedControl.selectedSegmentIndex
+            {
+            case 0:
+                isBarcode = true
+            case 1:
+                isBarcode = false
+            default:
+                break
+            }
     }
     
     @IBAction func flashlightPressed(_ sender: UIButton) {
@@ -87,7 +101,11 @@ class ViewController: UIViewController, AVCaptureVideoDataOutputSampleBufferDele
         }
         // TODO Gunakan data barcode untuk mencari barang yang sudah terdaftar
         if let barcode = self.extractBarcode(fromFrame: frame) {
-            showModal()
+            if isBarcode {
+                showModal()
+            } else {
+                showModalSelectProduct()
+            }
         }
     }
     
@@ -117,6 +135,16 @@ class ViewController: UIViewController, AVCaptureVideoDataOutputSampleBufferDele
         DispatchQueue.main.async {
             let slideVC = DetectedProductView()
             slideVC.modalPresentationStyle = .custom
+            slideVC.transitioningDelegate = self
+            self.present(slideVC, animated: true, completion: { () in
+                print("Modal opened")
+            })
+        }
+    }
+    
+    @objc func showModalSelectProduct() {
+        DispatchQueue.main.async {
+            let slideVC = SelectProductView()
             slideVC.transitioningDelegate = self
             self.present(slideVC, animated: true, completion: { () in
                 print("Modal opened")
