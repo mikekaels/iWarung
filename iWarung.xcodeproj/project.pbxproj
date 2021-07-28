@@ -46,15 +46,12 @@
 		BDE43C2726AF515E004CF3CC /* Core.swift in Sources */ = {isa = PBXBuildFile; fileRef = BDE43C2626AF515E004CF3CC /* Core.swift */; };
 		BDEA921D26AE7A6A00157FA6 /* KeranjangPopUp.xib in Resources */ = {isa = PBXBuildFile; fileRef = BDEA921C26AE7A6A00157FA6 /* KeranjangPopUp.xib */; };
 		BDEA921F26AE7B7A00157FA6 /* KeranjangPopUp.swift in Sources */ = {isa = PBXBuildFile; fileRef = BDEA921E26AE7B7A00157FA6 /* KeranjangPopUp.swift */; };
-		E7194C2E26AD97BD0018B189 /* Inventory.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = E7194C2D26AD97BD0018B189 /* Inventory.storyboard */; };
-		E7194C3026AD9C1A0018B189 /* DetailProductVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = E7194C2F26AD9C1A0018B189 /* DetailProductVC.swift */; };
-		E7194C3426ADA4D70018B189 /* ProductTableView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E7194C3326ADA4D70018B189 /* ProductTableView.swift */; };
 		E7194C4C26ADD7D70018B189 /* TambahProdukFormViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E7194C4B26ADD7D70018B189 /* TambahProdukFormViewController.swift */; };
-		E7194C4F26AE6A700018B189 /* ProductViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = E7194C4D26AE6A700018B189 /* ProductViewCell.swift */; };
-		E7194C5026AE6A700018B189 /* ProductViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = E7194C4E26AE6A700018B189 /* ProductViewCell.xib */; };
 		E7194C5326AE93F40018B189 /* Item+CoreDataClass.swift in Sources */ = {isa = PBXBuildFile; fileRef = E7194C5126AE93F40018B189 /* Item+CoreDataClass.swift */; };
 		E7194C5426AE93F40018B189 /* Item+CoreDataProperties.swift in Sources */ = {isa = PBXBuildFile; fileRef = E7194C5226AE93F40018B189 /* Item+CoreDataProperties.swift */; };
 		E7194C5626AFD3D50018B189 /* TambahProdukForm.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = E7194C5526AFD3D50018B189 /* TambahProdukForm.storyboard */; };
+		E7AF66B426B165B00039A44B /* ProductItemViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = E7AF66B226B165B00039A44B /* ProductItemViewCell.swift */; };
+		E7AF66B526B165B00039A44B /* ProductItemViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = E7AF66B326B165B00039A44B /* ProductItemViewCell.xib */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -99,15 +96,12 @@
 		BDE43C2626AF515E004CF3CC /* Core.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Core.swift; sourceTree = "<group>"; };
 		BDEA921C26AE7A6A00157FA6 /* KeranjangPopUp.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = KeranjangPopUp.xib; sourceTree = "<group>"; };
 		BDEA921E26AE7B7A00157FA6 /* KeranjangPopUp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = KeranjangPopUp.swift; sourceTree = "<group>"; };
-		E7194C2D26AD97BD0018B189 /* Inventory.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = Inventory.storyboard; sourceTree = "<group>"; };
-		E7194C2F26AD9C1A0018B189 /* DetailProductVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailProductVC.swift; sourceTree = "<group>"; };
-		E7194C3326ADA4D70018B189 /* ProductTableView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProductTableView.swift; sourceTree = "<group>"; };
 		E7194C4B26ADD7D70018B189 /* TambahProdukFormViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TambahProdukFormViewController.swift; sourceTree = "<group>"; };
-		E7194C4D26AE6A700018B189 /* ProductViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProductViewCell.swift; sourceTree = "<group>"; };
-		E7194C4E26AE6A700018B189 /* ProductViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = ProductViewCell.xib; sourceTree = "<group>"; };
 		E7194C5126AE93F40018B189 /* Item+CoreDataClass.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Item+CoreDataClass.swift"; sourceTree = SOURCE_ROOT; };
 		E7194C5226AE93F40018B189 /* Item+CoreDataProperties.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Item+CoreDataProperties.swift"; sourceTree = SOURCE_ROOT; };
 		E7194C5526AFD3D50018B189 /* TambahProdukForm.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = TambahProdukForm.storyboard; sourceTree = "<group>"; };
+		E7AF66B226B165B00039A44B /* ProductItemViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = ProductItemViewCell.swift; path = ProductItemCell/ProductItemViewCell.swift; sourceTree = "<group>"; };
+		E7AF66B326B165B00039A44B /* ProductItemViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = ProductItemViewCell.xib; path = ProductItemCell/ProductItemViewCell.xib; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -172,16 +166,15 @@
 				BD85A2D026A9F72600FE1B9C /* Keranjang.storyboard */,
 				BDEA922126AE7B9900157FA6 /* KeranjangCell */,
 				BDEA922226AE7BBF00157FA6 /* TransaksiSelesaiPas */,
-				E7194C2D26AD97BD0018B189 /* Inventory.storyboard */,
 				BDC625C526AD507300E44675 /* TambahProdukScan.storyboard */,
 				BDB39A3726ADD05800296909 /* DaftarProduk.storyboard */,
-				E7194C4D26AE6A700018B189 /* ProductViewCell.swift */,
-				E7194C4E26AE6A700018B189 /* ProductViewCell.xib */,
 				3FF1EE7C26AE284000F4F122 /* DetectedProductView.xib */,
 				BDEA922026AE7B8000157FA6 /* KeranjangPopUp */,
 				BDE43C2026AF4283004CF3CC /* Onboarding.storyboard */,
 				E7194C5526AFD3D50018B189 /* TambahProdukForm.storyboard */,
 				3FA214B426B0DA630036633F /* SelectProduct */,
+				E7AF66B226B165B00039A44B /* ProductItemViewCell.swift */,
+				E7AF66B326B165B00039A44B /* ProductItemViewCell.xib */,
 			);
 			path = Views;
 			sourceTree = "<group>";
@@ -206,8 +199,6 @@
 				3FE725FC26A96F7A009F4D32 /* PembayaranViewController.swift */,
 				BD85A2D226A9F74B00FE1B9C /* KeranjangViewController.swift */,
 				BDC8DFA526AC8D3B008310AA /* PresentationController.swift */,
-				E7194C2F26AD9C1A0018B189 /* DetailProductVC.swift */,
-				E7194C3326ADA4D70018B189 /* ProductTableView.swift */,
 				BDC625C726AD509500E44675 /* TambahProdukScanViewController.swift */,
 				BDB39A3926ADD06F00296909 /* DaftarProdukViewController.swift */,
 				E7194C4B26ADD7D70018B189 /* TambahProdukFormViewController.swift */,
@@ -315,10 +306,9 @@
 			buildActionMask = 2147483647;
 			files = (
 				BDEA921D26AE7A6A00157FA6 /* KeranjangPopUp.xib in Resources */,
+				E7AF66B526B165B00039A44B /* ProductItemViewCell.xib in Resources */,
 				3FE725FB26A96F24009F4D32 /* Pembayaran.storyboard in Resources */,
 				3FA214B826B0DB320036633F /* SelectProductView.xib in Resources */,
-				E7194C5026AE6A700018B189 /* ProductViewCell.xib in Resources */,
-				E7194C2E26AD97BD0018B189 /* Inventory.storyboard in Resources */,
 				BDC625C626AD507300E44675 /* TambahProdukScan.storyboard in Resources */,
 				BD1CF23F26AC99F9001B7EC8 /* TransaksiSelesaiPasView.xib in Resources */,
 				BD5AC59426A369F500A52336 /* LaunchScreen.storyboard in Resources */,
@@ -341,7 +331,6 @@
 			buildActionMask = 2147483647;
 			files = (
 				E7194C4C26ADD7D70018B189 /* TambahProdukFormViewController.swift in Sources */,
-				E7194C4F26AE6A700018B189 /* ProductViewCell.swift in Sources */,
 				BD1CF24726ACB279001B7EC8 /* UIApplication.swift in Sources */,
 				3FE725FD26A96F7A009F4D32 /* PembayaranViewController.swift in Sources */,
 				BD8C016726A3F15600FAF9C5 /* model.swift in Sources */,
@@ -353,17 +342,16 @@
 				BD5AC58F26A369F400A52336 /* iWarung.xcdatamodeld in Sources */,
 				BDC8DFA626AC8D3B008310AA /* PresentationController.swift in Sources */,
 				BDE43C2526AF4B36004CF3CC /* Onboarding.swift in Sources */,
-				E7194C3426ADA4D70018B189 /* ProductTableView.swift in Sources */,
 				3FA214B726B0DB320036633F /* SelectProductView.swift in Sources */,
 				BDE43C2326AF4947004CF3CC /* OnboardingViewController.swift in Sources */,
 				BD1FFF3426AB65F800EB9AAD /* Product.swift in Sources */,
 				BD74BCB026A4820B00E3EE75 /* constants.swift in Sources */,
 				BD1FFF3D26AC24D300EB9AAD /* UIColor.swift in Sources */,
 				BD5AC58526A369F400A52336 /* AppDelegate.swift in Sources */,
-				E7194C3026AD9C1A0018B189 /* DetailProductVC.swift in Sources */,
 				3FF1EE7D26AE284000F4F122 /* DetectedProductView.swift in Sources */,
 				BDC8DFA426AC6C1E008310AA /* UITextField.swift in Sources */,
 				BDE43C2726AF515E004CF3CC /* Core.swift in Sources */,
+				E7AF66B426B165B00039A44B /* ProductItemViewCell.swift in Sources */,
 				E7194C5426AE93F40018B189 /* Item+CoreDataProperties.swift in Sources */,
 				BDB39A3A26ADD06F00296909 /* DaftarProdukViewController.swift in Sources */,
 				BDC625C826AD509500E44675 /* TambahProdukScanViewController.swift in Sources */,
