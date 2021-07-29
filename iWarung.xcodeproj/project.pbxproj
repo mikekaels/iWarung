@@ -52,6 +52,7 @@
 		E7194C5626AFD3D50018B189 /* TambahProdukForm.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = E7194C5526AFD3D50018B189 /* TambahProdukForm.storyboard */; };
 		E7AF66B426B165B00039A44B /* ProductItemViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = E7AF66B226B165B00039A44B /* ProductItemViewCell.swift */; };
 		E7AF66B526B165B00039A44B /* ProductItemViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = E7AF66B326B165B00039A44B /* ProductItemViewCell.xib */; };
+		E7AF66B826B213E20039A44B /* Persisten.swift in Sources */ = {isa = PBXBuildFile; fileRef = E7AF66B726B213E20039A44B /* Persisten.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -102,6 +103,7 @@
 		E7194C5526AFD3D50018B189 /* TambahProdukForm.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = TambahProdukForm.storyboard; sourceTree = "<group>"; };
 		E7AF66B226B165B00039A44B /* ProductItemViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = ProductItemViewCell.swift; path = ProductItemCell/ProductItemViewCell.swift; sourceTree = "<group>"; };
 		E7AF66B326B165B00039A44B /* ProductItemViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = ProductItemViewCell.xib; path = ProductItemCell/ProductItemViewCell.xib; sourceTree = "<group>"; };
+		E7AF66B726B213E20039A44B /* Persisten.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Persisten.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -143,6 +145,7 @@
 		BD5AC58326A369F400A52336 /* iWarung */ = {
 			isa = PBXGroup;
 			children = (
+				E7AF66B626B213BC0039A44B /* Service */,
 				BD5AC59F26A36A3800A52336 /* Extensions */,
 				BD5AC59E26A36A2F00A52336 /* Controllers */,
 				BD5AC59D26A36A2800A52336 /* Models */,
@@ -248,6 +251,14 @@
 			path = TransaksiSelesaiPas;
 			sourceTree = "<group>";
 		};
+		E7AF66B626B213BC0039A44B /* Service */ = {
+			isa = PBXGroup;
+			children = (
+				E7AF66B726B213E20039A44B /* Persisten.swift */,
+			);
+			path = Service;
+			sourceTree = "<group>";
+		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
@@ -332,6 +343,7 @@
 			files = (
 				E7194C4C26ADD7D70018B189 /* TambahProdukFormViewController.swift in Sources */,
 				BD1CF24726ACB279001B7EC8 /* UIApplication.swift in Sources */,
+				E7AF66B826B213E20039A44B /* Persisten.swift in Sources */,
 				3FE725FD26A96F7A009F4D32 /* PembayaranViewController.swift in Sources */,
 				BD8C016726A3F15600FAF9C5 /* model.swift in Sources */,
 				BD1FFF3926AB957100EB9AAD /* UIViewController.swift in Sources */,

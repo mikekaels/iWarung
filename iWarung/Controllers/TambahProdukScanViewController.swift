@@ -62,7 +62,7 @@ class TambahProdukScanViewController: UIViewController, AVCaptureVideoDataOutput
                         
                 vc.scanningBarcode = barcode
                 self.present(vc, animated: true, completion: nil)
-                self.navigationController?.popViewController(animated: true)
+//                self.navigationController?.popViewController(animated: true)
             }
            
         }
