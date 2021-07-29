@@ -14,10 +14,15 @@ class ViewController: UIViewController, AVCaptureVideoDataOutputSampleBufferDele
     @IBOutlet weak var segmentedControl: UISegmentedControl!
     @IBOutlet weak var cameraView: UIImageView!
     @IBOutlet weak var flashLightButton: UIButton!
+    @IBOutlet weak var pickerView: UIPickerView!
     private let captureSession = AVCaptureSession()
     private let videoOutput = AVCaptureVideoDataOutput()
     private let sequenceHandler = VNSequenceRequestHandler()
     private var isBarcode = true
+    var pickerData: [String] = [String]()
+    var rotationAngle: CGFloat!
+    var pickerWidth: CGFloat = 100
+    var pickerHeight: CGFloat = 100
     
     @IBOutlet weak var keranjangPopUp: KeranjangPopUp!
     
@@ -31,6 +36,19 @@ class ViewController: UIViewController, AVCaptureVideoDataOutputSampleBufferDele
 
         keranjangPopUp.cornerRadius()
         keranjangPopUp.addGradient()
+        
+        pickerData = ["Barcode", "No-Barcode"]
+        
+        // picker rotation
+        rotationAngle = -90 * (.pi/180)
+        pickerView.transform = CGAffineTransform(rotationAngle: rotationAngle )
+        
+        // picker frame
+        pickerView.frame = CGRect(x: 0, y: 0, width: view.frame.width, height: 100)
+        pickerView.center = self.view.center
+        
+        self.pickerView.dataSource = self
+        self.pickerView.delegate = self
     }
     
     @IBAction func indexChanged(_ sender: Any) {
@@ -164,13 +182,17 @@ class ViewController: UIViewController, AVCaptureVideoDataOutputSampleBufferDele
 //MARK: - Remove Nav bar
 extension ViewController {
     override func viewWillAppear(_ animated: Bool) {
-        navigationController?.navigationBar.prefersLargeTitles = false
         self.navigationController?.isHiddenHairline = true
+        self.segmentedControl.removeBorders()
         super.viewWillAppear(animated)
+        navigationController?.setNavigationBarHidden(true, animated: animated)
+        navigationController?.navigationBar.prefersLargeTitles = false
         self.captureSession.startRunning()
     }
     
     override func viewWillDisappear(_ animated: Bool) {
+        super.viewWillDisappear(animated)
+            navigationController?.setNavigationBarHidden(false, animated: animated)
         self.captureSession.stopRunning()
     }
     
@@ -202,4 +224,48 @@ extension ViewController {
             present(controller, animated: true, completion: nil)
         }
     }
+}
+
+extension ViewController: UIPickerViewDelegate , UIPickerViewDataSource {
+    
+    override func didReceiveMemoryWarning() {
+        super.didReceiveMemoryWarning()
+    }
+    
+    func numberOfComponents(in pickerView: UIPickerView) -> Int {
+        return 1
+    }
+    
+    func pickerView(_ pickerView: UIPickerView, numberOfRowsInComponent component: Int) -> Int {
+        return pickerData.count
+    }
+    
+    func pickerView(_ pickerView: UIPickerView, titleForRow row: Int, forComponent component: Int) -> String? {
+        return pickerData[row]
+    }
+    
+    func pickerView(_ pickerView: UIPickerView, rowHeightForComponent component: Int) -> CGFloat {
+        return 90
+    }
+    
+    func pickerView(_ pickerView: UIPickerView, widthForComponent component: Int) -> CGFloat {
+        return 100
+    }
+    
+    func pickerView(_ pickerView: UIPickerView, viewForRow row: Int, forComponent component: Int, reusing view: UIView?) -> UIView {
+        let view = UIView()
+        view.frame = CGRect(x: 0, y: 0, width: pickerWidth, height: pickerHeight)
+        
+        let label = UILabel()
+        label.frame = CGRect(x: 0, y: 0, width: pickerWidth, height: pickerHeight)
+        label.textAlignment = .center
+        label.text = pickerData[row]
+        view.addSubview(label)
+        
+        // view transform
+        view.transform = CGAffineTransform(rotationAngle: 90 * (.pi / 180))
+        
+        return view
+    }
+    
 }
