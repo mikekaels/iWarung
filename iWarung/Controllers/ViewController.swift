@@ -10,11 +10,11 @@ import Vision
 import AVFoundation
 
 class ViewController: UIViewController, AVCaptureVideoDataOutputSampleBufferDelegate {
-    
-    @IBOutlet weak var segmentedControl: UISegmentedControl!
     @IBOutlet weak var cameraView: UIImageView!
     @IBOutlet weak var flashLightButton: UIButton!
     @IBOutlet weak var pickerView: UIPickerView!
+    @IBOutlet weak var scanButton: UIButton!
+    
     private let captureSession = AVCaptureSession()
     private let videoOutput = AVCaptureVideoDataOutput()
     private let sequenceHandler = VNSequenceRequestHandler()
@@ -23,6 +23,7 @@ class ViewController: UIViewController, AVCaptureVideoDataOutputSampleBufferDele
     var rotationAngle: CGFloat!
     var pickerWidth: CGFloat = 100
     var pickerHeight: CGFloat = 100
+    var isPressed: Bool = false
     
     @IBOutlet weak var keranjangPopUp: KeranjangPopUp!
     
@@ -44,24 +45,26 @@ class ViewController: UIViewController, AVCaptureVideoDataOutputSampleBufferDele
         pickerView.transform = CGAffineTransform(rotationAngle: rotationAngle )
         
         // picker frame
-        pickerView.frame = CGRect(x: 0, y: 0, width: view.frame.width, height: 100)
-        pickerView.center = self.view.center
+        pickerView.frame = CGRect(x: 0, y: 0, width: view.frame.width - 100, height: -100)
+//        pickerView.center = self.view.
         
         self.pickerView.dataSource = self
         self.pickerView.delegate = self
+        
+        
     }
     
-    @IBAction func indexChanged(_ sender: Any) {
-        switch segmentedControl.selectedSegmentIndex
-            {
-            case 0:
-                isBarcode = true
-            case 1:
-                isBarcode = false
-            default:
-                break
-            }
-    }
+//    @IBAction func indexChanged(_ sender: Any) {
+//        switch segmentedControl.selectedSegmentIndex
+//            {
+//            case 0:
+//                isBarcode = true
+//            case 1:
+//                isBarcode = false
+//            default:
+//                break
+//            }
+//    }
     
     @IBAction func flashlightPressed(_ sender: UIButton) {
         let device = AVCaptureDevice.default(for: AVMediaType.video)!
@@ -170,6 +173,7 @@ class ViewController: UIViewController, AVCaptureVideoDataOutputSampleBufferDele
         }
     }
     
+   
     @IBAction func unwindToMain(segue: UIStoryboardSegue) {
         print("This is the First View Controller")
     }
@@ -177,17 +181,24 @@ class ViewController: UIViewController, AVCaptureVideoDataOutputSampleBufferDele
     @IBAction func openModal(_ sender: UIButton) {
         showModal()
     }
+    
+    
 }
 
 //MARK: - Remove Nav bar
 extension ViewController {
     override func viewWillAppear(_ animated: Bool) {
         self.navigationController?.isHiddenHairline = true
-        self.segmentedControl.removeBorders()
+//        self.segmentedControl.removeBorders()
         super.viewWillAppear(animated)
         navigationController?.setNavigationBarHidden(true, animated: animated)
         navigationController?.navigationBar.prefersLargeTitles = false
         self.captureSession.startRunning()
+        
+        // Scanner Button
+        let longPressRecognizer = UILongPressGestureRecognizer(target: self, action: #selector(longPressed))
+        
+        self.scanButton.addGestureRecognizer(longPressRecognizer)
     }
     
     override func viewWillDisappear(_ animated: Bool) {
@@ -240,8 +251,13 @@ extension ViewController: UIPickerViewDelegate , UIPickerViewDataSource {
         return pickerData.count
     }
     
-    func pickerView(_ pickerView: UIPickerView, titleForRow row: Int, forComponent component: Int) -> String? {
-        return pickerData[row]
+//    func pickerView(_ pickerView: UIPickerView, titleForRow row: Int, forComponent component: Int) -> String? {
+//        return pickerData[row]
+//    }
+    
+    func pickerView(_ pickerView: UIPickerView, attributedTitleForRow row: Int, forComponent component: Int) -> NSAttributedString? {
+        let string = pickerData[row]
+        return NSAttributedString(string: string, attributes: [NSAttributedString.Key.foregroundColor: UIColor.white])
     }
     
     func pickerView(_ pickerView: UIPickerView, rowHeightForComponent component: Int) -> CGFloat {
@@ -249,13 +265,15 @@ extension ViewController: UIPickerViewDelegate , UIPickerViewDataSource {
     }
     
     func pickerView(_ pickerView: UIPickerView, widthForComponent component: Int) -> CGFloat {
-        return 100
+        return 45
     }
     
     func pickerView(_ pickerView: UIPickerView, viewForRow row: Int, forComponent component: Int, reusing view: UIView?) -> UIView {
         let view = UIView()
-        view.frame = CGRect(x: 0, y: 0, width: pickerWidth, height: pickerHeight)
+        view.frame = CGRect(x: 0, y: 0, width: pickerWidth, height: pickerHeight )
+        view.backgroundColor = .clear
         
+        // Label inside uiPicker Label
         let label = UILabel()
         label.frame = CGRect(x: 0, y: 0, width: pickerWidth, height: pickerHeight)
         label.textAlignment = .center
@@ -265,7 +283,30 @@ extension ViewController: UIPickerViewDelegate , UIPickerViewDataSource {
         // view transform
         view.transform = CGAffineTransform(rotationAngle: 90 * (.pi / 180))
         
+        // selection area
+        pickerView.subviews[1].backgroundColor = UIColor.white.withAlphaComponent(0)
+        pickerView.tintColor = .red
+        
         return view
     }
     
+}
+
+// Scan Button
+extension ViewController {
+    @objc func longPressed(sender: UILongPressGestureRecognizer)
+    {
+        if sender.state == .began {
+            print("Start scanning...")
+            UIView.animate(withDuration: 0.3,
+                animations: {
+                    self.scanButton.transform = CGAffineTransform(scaleX: 0.9, y: 0.9)
+                },completion: nil)
+        } else if sender.state == .ended {
+            print("Stop scanning...")
+            UIView.animate(withDuration: 0.2) {
+                self.scanButton.transform = CGAffineTransform.identity
+            }
+        }
+    }
 }

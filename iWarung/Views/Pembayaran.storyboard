@@ -106,6 +106,7 @@
                         </constraints>
                     </view>
                     <connections>
+                        <outlet property="changeLabel" destination="C3f-UE-Hy4" id="xb6-zo-6JN"/>
                         <outlet property="finishTransactionButton" destination="M3c-Xs-xos" id="5rs-B6-Jx2"/>
                         <outlet property="receivedMoneyTextfield" destination="guM-mQ-ZNq" id="YRr-Xo-p1h"/>
                         <outlet property="totalTagihan" destination="RDQ-GJ-zb8" id="oPH-R6-ESb"/>

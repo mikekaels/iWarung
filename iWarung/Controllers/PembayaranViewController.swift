@@ -15,6 +15,7 @@ class PembayaranViewController: UIViewController {
     @IBOutlet weak var totalTagihan: UILabel!
     @IBOutlet weak var finishTransactionButton: UIButton!
     @IBOutlet weak var receivedMoneyTextfield: UITextField!
+    @IBOutlet weak var changeLabel: UILabel!
     
     
     
@@ -33,6 +34,22 @@ extension PembayaranViewController {
         super.viewDidLoad()
         title = "Pembayaran"
         self.hideKeyboardWhenTappedAround()
+        totalTagihan.text = String(50000)
+        
+        self.receivedMoneyTextfield.addTarget(self, action: #selector(PembayaranViewController.textFieldDidChange(_:)), for: .editingChanged)
+    }
+    
+    @objc func textFieldDidChange(_ textField: UITextField) {
+        guard let money = Int(textField.text!) else {
+            return
+        }
+        
+        guard let bill = Int(self.totalTagihan.text!) else {
+            return
+        }
+        let total =  money - bill
+        
+        self.changeLabel.text = String(total)
     }
 }
 
