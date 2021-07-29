@@ -29,22 +29,11 @@ class DaftarProdukViewController: UIViewController, UICollectionViewDataSource, 
         loadData()
     }
     
-    private func loadData(){
-        if (firsLoad){
-            firsLoad = false
-            let appDelegate = UIApplication.shared.delegate as! AppDelegate
-            let context: NSManagedObjectContext = appDelegate.persistentContainer.viewContext
-            let request = NSFetchRequest<NSFetchRequestResult>(entityName: "Item")
-            do {
-                let results:NSArray = try context.fetch(request) as NSArray
-                for result in results {
-                    let item = result as! Item
-                    productList.append(item)
-                }
-            } catch {
-                print("Fetch failed")
-            }
-        }
+    @objc func loadData(){
+        
+        productList = Persisten.shared.fetchProducts()
+        daftarProdukCollectionView.reloadData()
+        
     }
     
     lazy var gradient: CAGradientLayer = {
@@ -63,6 +52,10 @@ class DaftarProdukViewController: UIViewController, UICollectionViewDataSource, 
         gradient.endPoint = CGPoint(x: 1, y: endY)
         return gradient
     }()
+    
+    @objc func refresh() {
+        self.daftarProdukCollectionView.reloadData()
+    }
     
     
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
@@ -95,14 +88,9 @@ class DaftarProdukViewController: UIViewController, UICollectionViewDataSource, 
     
     
     override func viewDidAppear(_ animated: Bool) {
-        
-        if productList.isEmpty {
-            print("data count \(productList.count)")
-        } else {
-            print("CoreData \(String(describing: productList[0].nama))")
-        }
-        
+        loadData()
         daftarProdukCollectionView.reloadData()
+        
     }
     
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {

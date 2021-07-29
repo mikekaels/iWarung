@@ -9,7 +9,7 @@ import UIKit
 import CoreData
 
 class TambahProdukFormViewController: UIViewController {
-
+    
     @IBOutlet weak var addProdItem: UIButton!
     @IBOutlet weak var deleteProdukButton: UIButton!
     @IBOutlet weak var idTF: UITextField!
@@ -26,7 +26,7 @@ class TambahProdukFormViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-            
+        
         
         imageThumnail.cornerRadius()
         
@@ -41,6 +41,7 @@ class TambahProdukFormViewController: UIViewController {
             namaTF.text = selectedItem?.nama
             deskTF.text = selectedItem?.deskripsi
             hargaTF.text = selectedItem?.harga
+            imageThumnail.image = UIImage(data: (selectedItem?.imageD)!)
             
         } else {
             idTF.text = scanningBarcode
@@ -50,17 +51,17 @@ class TambahProdukFormViewController: UIViewController {
     }
     
     /// Call this once to dismiss open keyboards by tapping anywhere in the view controller
-        func setupHideKeyboardOnTap() {
-           self.view.addGestureRecognizer(self.endEditingRecognizer())
-           self.navigationController?.navigationBar.addGestureRecognizer(self.endEditingRecognizer())
-       }
-
-       /// Dismisses the keyboard from self.view
-       private func endEditingRecognizer() -> UIGestureRecognizer {
-           let tap = UITapGestureRecognizer(target: self.view, action: #selector(self.view.endEditing(_:)))
-           tap.cancelsTouchesInView = false
-           return tap
-       }
+    func setupHideKeyboardOnTap() {
+        self.view.addGestureRecognizer(self.endEditingRecognizer())
+        self.navigationController?.navigationBar.addGestureRecognizer(self.endEditingRecognizer())
+    }
+    
+    /// Dismisses the keyboard from self.view
+    private func endEditingRecognizer() -> UIGestureRecognizer {
+        let tap = UITapGestureRecognizer(target: self.view, action: #selector(self.view.endEditing(_:)))
+        tap.cancelsTouchesInView = false
+        return tap
+    }
     
     @IBAction func addImage(_ sender: Any){
         self.takePhotoWithCamera()
@@ -71,57 +72,81 @@ class TambahProdukFormViewController: UIViewController {
         let appDelegate = UIApplication.shared.delegate as! AppDelegate
         let context: NSManagedObjectContext = appDelegate.persistentContainer.viewContext
         
+        
         if (selectedItem == nil) {
-            let entity = NSEntityDescription.entity(forEntityName: "Item", in: context)
-            let newProduct = Item(entity: entity!, insertInto: context)
-            
-            newProduct.imageD = imageThumnail.image?.pngData()
-            newProduct.id = Int32(truncating: productList.count as NSNumber)
-            newProduct.nama = namaTF.text
-            newProduct.harga = hargaTF.text
-            newProduct.deskripsi = deskTF.text
-            
-            do {
-                try context.save()
-                productList.append(newProduct)
-                dismiss(animated: true)
-    //            navigationController?.popViewController(animated: true)
-                print("Saved")
-            } catch {
-                print("error saving dataa")
+        guard let id = idTF.text else {
+            print("erorr id")
+            return
+        }
+        
+        guard let nama = namaTF.text else {
+            print("error nama")
+            return
+        }
+        
+        guard let desc = deskTF.text else {
+            print("error deskripsi")
+            return
+        }
+        
+        guard let price = hargaTF.text else {
+            print("error harga")
+            return
+        }
+        
+        guard  let image = imageThumnail.image?.pngData() else {
+            print("error image ")
+            return
+        }
+            Persisten.shared.insertProduct(id: id, name: nama, description: desc, price: price, image: image)
+            self.dismiss(animated: true, completion: nil)
+            DispatchQueue.main.async {
+                self.navigationController?.popViewController(animated: true)
             }
-            
             // edit
         } else {
-            let request = NSFetchRequest<NSFetchRequestResult>(entityName: "Item")
-            do {
-                let results:NSArray = try context.fetch(request) as NSArray
-                for result in results {
-                    let item = result as! Item
-                    if (item == selectedItem) {
-                        item.id = Int32(truncating: productList.count as NSNumber)
-                        item.nama = namaTF.text
-                        item.harga = hargaTF.text
-                        item.deskripsi = deskTF.text
-                        item.imageD = imageThumnail.image?.pngData()
-                        try context.save()
-                        dismiss(animated: true)
-                    }
-                }
-            } catch {
-                print("Fetch failed")
+            
+            guard let nama = namaTF.text else {
+                print("error nama")
+                return
             }
+            
+            guard let desc = deskTF.text else {
+                print("error deskripsi")
+                return
+            }
+            
+            guard let price = hargaTF.text else {
+                print("error harga")
+                return
+            }
+            
+            guard  let image = imageThumnail.image?.pngData() else {
+                print("error image ")
+                return
+            }
+            
+            self.selectedItem?.nama = nama
+            self.selectedItem?.deskripsi = desc
+            self.selectedItem?.harga = price
+            self.selectedItem?.imageD = image
+            
+            Persisten.shared.saveContext()
+            self.dismiss(animated: true, completion: nil)
         }
     }
     
     @IBAction func deleteProduk(_ sender: Any) {
-        
+        if (selectedItem != nil) {
+            Persisten.shared.deleteProduct(item: selectedItem!)
+            self.dismiss(animated: true, completion: nil)
+        }
     }
     
     func onButtonTapped() {
         self.performSegue(withIdentifier: "backToMainController", sender: self)
     }
-
+    
 }
 
 
@@ -133,7 +158,7 @@ extension TambahProdukFormViewController: UIImagePickerControllerDelegate, UINav
         imagePicker.delegate = self
         imagePicker.allowsEditing = true
         present(imagePicker, animated: true, completion: nil)
-      }
+    }
     
     func imagePickerController(_ picker: UIImagePickerController, didFinishPickingMediaWithInfo info: [UIImagePickerController.InfoKey : Any]) {
         
