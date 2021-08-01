@@ -30,6 +30,9 @@
 		BD5AC58F26A369F400A52336 /* iWarung.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = BD5AC58D26A369F400A52336 /* iWarung.xcdatamodeld */; };
 		BD5AC59126A369F500A52336 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = BD5AC59026A369F500A52336 /* Assets.xcassets */; };
 		BD5AC59426A369F500A52336 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = BD5AC59226A369F500A52336 /* LaunchScreen.storyboard */; };
+		BD726E3026B5EBBB00EAFD14 /* SBCardPopUpViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BD726E2F26B5EBBB00EAFD14 /* SBCardPopUpViewController.swift */; };
+		BD726E3226B5EC4F00EAFD14 /* CameraInactivePopUpViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BD726E3126B5EC4F00EAFD14 /* CameraInactivePopUpViewController.swift */; };
+		BD726E3526B60CB100EAFD14 /* PopUpDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = BD726E3426B60CB100EAFD14 /* PopUpDelegate.swift */; };
 		BD74BCB026A4820B00E3EE75 /* constants.swift in Sources */ = {isa = PBXBuildFile; fileRef = BD74BCAF26A4820B00E3EE75 /* constants.swift */; };
 		BD85A2D126A9F72600FE1B9C /* Keranjang.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = BD85A2D026A9F72600FE1B9C /* Keranjang.storyboard */; };
 		BD85A2D326A9F74B00FE1B9C /* KeranjangViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BD85A2D226A9F74B00FE1B9C /* KeranjangViewController.swift */; };
@@ -82,6 +85,9 @@
 		BD5AC59026A369F500A52336 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		BD5AC59326A369F500A52336 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		BD5AC59526A369F500A52336 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		BD726E2F26B5EBBB00EAFD14 /* SBCardPopUpViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SBCardPopUpViewController.swift; sourceTree = "<group>"; };
+		BD726E3126B5EC4F00EAFD14 /* CameraInactivePopUpViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CameraInactivePopUpViewController.swift; sourceTree = "<group>"; };
+		BD726E3426B60CB100EAFD14 /* PopUpDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PopUpDelegate.swift; sourceTree = "<group>"; };
 		BD74BCAF26A4820B00E3EE75 /* constants.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = constants.swift; sourceTree = "<group>"; };
 		BD85A2D026A9F72600FE1B9C /* Keranjang.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = Keranjang.storyboard; sourceTree = "<group>"; };
 		BD85A2D226A9F74B00FE1B9C /* KeranjangViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = KeranjangViewController.swift; sourceTree = "<group>"; };
@@ -147,6 +153,7 @@
 		BD5AC58326A369F400A52336 /* iWarung */ = {
 			isa = PBXGroup;
 			children = (
+				BD726E3326B60C9E00EAFD14 /* Protocols */,
 				E7AF66B626B213BC0039A44B /* Service */,
 				BD5AC59F26A36A3800A52336 /* Extensions */,
 				BD5AC59E26A36A2F00A52336 /* Controllers */,
@@ -209,6 +216,8 @@
 				E7194C4B26ADD7D70018B189 /* TambahProdukFormViewController.swift */,
 				3FF1EE7B26AE284000F4F122 /* DetectedProductView.swift */,
 				BDE43C2226AF4947004CF3CC /* OnboardingViewController.swift */,
+				BD726E2F26B5EBBB00EAFD14 /* SBCardPopUpViewController.swift */,
+				BD726E3126B5EC4F00EAFD14 /* CameraInactivePopUpViewController.swift */,
 			);
 			path = Controllers;
 			sourceTree = "<group>";
@@ -225,6 +234,14 @@
 				BD3A595626B249C400BA4234 /* UISegmented.swift */,
 			);
 			path = Extensions;
+			sourceTree = "<group>";
+		};
+		BD726E3326B60C9E00EAFD14 /* Protocols */ = {
+			isa = PBXGroup;
+			children = (
+				BD726E3426B60CB100EAFD14 /* PopUpDelegate.swift */,
+			);
+			path = Protocols;
 			sourceTree = "<group>";
 		};
 		BDEA922026AE7B8000157FA6 /* KeranjangPopUp */ = {
@@ -352,12 +369,15 @@
 				BD1FFF3926AB957100EB9AAD /* UIViewController.swift in Sources */,
 				BD3A595726B249C400BA4234 /* UISegmented.swift in Sources */,
 				BD5AC58926A369F400A52336 /* ViewController.swift in Sources */,
+				BD726E3026B5EBBB00EAFD14 /* SBCardPopUpViewController.swift in Sources */,
 				BDEA921F26AE7B7A00157FA6 /* KeranjangPopUp.swift in Sources */,
 				E7AF66BF26B427C00039A44B /* ProductItem+CoreDataClass.swift in Sources */,
 				E7AF66C026B427C00039A44B /* ProductItem+CoreDataProperties.swift in Sources */,
+				BD726E3526B60CB100EAFD14 /* PopUpDelegate.swift in Sources */,
 				BD1FFF3B26AC237A00EB9AAD /* UIView.swift in Sources */,
 				BD85A2D326A9F74B00FE1B9C /* KeranjangViewController.swift in Sources */,
 				BD5AC58F26A369F400A52336 /* iWarung.xcdatamodeld in Sources */,
+				BD726E3226B5EC4F00EAFD14 /* CameraInactivePopUpViewController.swift in Sources */,
 				BDC8DFA626AC8D3B008310AA /* PresentationController.swift in Sources */,
 				BDE43C2526AF4B36004CF3CC /* Onboarding.swift in Sources */,
 				3FA214B726B0DB320036633F /* SelectProductView.swift in Sources */,

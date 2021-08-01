@@ -9,31 +9,39 @@ import UIKit
 import Vision
 import AVFoundation
 
-class ViewController: UIViewController, AVCaptureVideoDataOutputSampleBufferDelegate {
-    @IBOutlet weak var cameraView: UIImageView!
-    @IBOutlet weak var flashLightButton: UIButton!
-    @IBOutlet weak var pickerView: UIPickerView!
-    @IBOutlet weak var scanButton: UIButton!
+class ViewController: UIViewController {
+    @IBOutlet weak var cameraView: UIView!
+//    @IBOutlet weak var cameraView       : UIImageView!
+    @IBOutlet weak var flashLightButton : UIButton!
+    @IBOutlet weak var pickerView       : UIPickerView!
+    @IBOutlet weak var scanButton       : UIButton!
+    @IBOutlet weak var keranjangPopUp   : KeranjangPopUp!
     
-    private let captureSession = AVCaptureSession()
-    private let videoOutput = AVCaptureVideoDataOutput()
-    private let sequenceHandler = VNSequenceRequestHandler()
-    private var isBarcode = true
-    var pickerData: [String] = [String]()
-    var rotationAngle: CGFloat!
-    var pickerWidth: CGFloat = 100
-    var pickerHeight: CGFloat = 100
-    var isPressed: Bool = false
+    private let captureSession                          = AVCaptureSession()
+    private let videoOutput                             = AVCaptureVideoDataOutput()
+    private let sequenceHandler                         = VNSequenceRequestHandler()
+    private var isBarcode                               = true
+  
+    var pickerData          : [String]      = [String]()
+    var rotationAngle       : CGFloat!
+    var pickerWidth         : CGFloat       = 100
+    var pickerHeight        : CGFloat       = 100
+    var isPressed           : Bool          = false
+    var torchOn             : Bool          = false
+    let device                              = AVCaptureDevice.default(for: AVMediaType.video)!
+    var timer               : Timer?
+    let scanView            : UIView        = createRectView(x: 0, y: 0, width: 390, height: 543, color: UIColor(rgb: K.blueColor1), transparency: 1)
     
-    @IBOutlet weak var keranjangPopUp: KeranjangPopUp!
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        cameraView.backgroundColor = UIColor(rgb: K.blueColor1)
         setupNavBar()
         self.addCameraInput()
         self.configurePreviewLayer()
         self.addVideoOutput()
-        self.captureSession.startRunning()
+//        self.captureSession.startRunning()
+        toggleControls()
 
         keranjangPopUp.cornerRadius()
         keranjangPopUp.addGradient()
@@ -52,42 +60,38 @@ class ViewController: UIViewController, AVCaptureVideoDataOutputSampleBufferDele
         self.pickerView.delegate = self
         
         
+        NotificationCenter.default.addObserver(
+            self,
+            selector: #selector(self.popUpDismissed),
+            name: NSNotification.Name(K.NSpopUpDismissed),
+            object: nil)
+        
     }
     
-//    @IBAction func indexChanged(_ sender: Any) {
-//        switch segmentedControl.selectedSegmentIndex
-//            {
-//            case 0:
-//                isBarcode = true
-//            case 1:
-//                isBarcode = false
-//            default:
-//                break
-//            }
-//    }
+    @objc func popUpDismissed(notification: NSNotification){
+        self.toggleControls()
+    }
+    
+    static func createRectView(x:Float, y:Float, width:Float, height:Float, color: UIColor, transparency: Float) -> UIView{
+            let viewRectFrame = CGRect(x:CGFloat(x), y:CGFloat(y), width:CGFloat(width), height:CGFloat(height))
+            let retView = UIView(frame:viewRectFrame)
+            retView.backgroundColor = color
+            retView.alpha = CGFloat(transparency)
+            return retView
+        }
     
     @IBAction func flashlightPressed(_ sender: UIButton) {
-        let device = AVCaptureDevice.default(for: AVMediaType.video)!
         
-        if (device.hasTorch) {
-            do {
-                try device.lockForConfiguration()
-                let torchOn = !device.isTorchActive
-                if torchOn == false {
-                    flashLightButton.setImage(UIImage(named: "flashlight-off.png"), for: .normal)
-                } else {
-                    flashLightButton.setImage(UIImage(named: "flashlight-on.png"), for: .normal)
-                }
-                
-                try device.setTorchModeOn(level: 1)
-                device.torchMode = torchOn ? AVCaptureDevice.TorchMode.on : AVCaptureDevice.TorchMode.off
-                device.unlockForConfiguration()
-            } catch {
-                print(error)
-            }
+        if torchOn == false {
+            self.torchOn = true
+            flashLightButton.setImage(UIImage(named: "flashlight-on.png"), for: .normal)
         } else {
+            self.torchOn = false
+            flashLightButton.setImage(UIImage(named: "flashlight-off.png"), for: .normal)
+            
         }
     }
+    
     fileprivate func setupNavBar(){
         navigationController?.navigationBar.barTintColor = UIColor.white
         let iWarungLogoImageView = UIImageView(image: UIImage(named: "iwarung_logo"))
@@ -101,56 +105,7 @@ class ViewController: UIViewController, AVCaptureVideoDataOutputSampleBufferDele
         navigationItem.titleView = titleView
     }
     
-    private func configurePreviewLayer() {
-        let cameraPreviewLayer = AVCaptureVideoPreviewLayer(session: captureSession)
-        cameraPreviewLayer.videoGravity = .resizeAspectFill
-        cameraPreviewLayer.connection?.videoOrientation = .portrait
-        cameraPreviewLayer.frame = view.frame
-        view.layer.insertSublayer(cameraPreviewLayer, at: 0)
-        
-        cameraPreviewLayer.position = CGPoint(x: self.cameraView.frame.width / 2, y: self.cameraView.frame.height / 2)
-        cameraPreviewLayer.bounds = cameraView.frame
-        cameraView.layer.addSublayer(cameraPreviewLayer)
-    }
     
-    func captureOutput(_ output: AVCaptureOutput,
-                       didOutput sampleBuffer: CMSampleBuffer,
-                       from connection: AVCaptureConnection) {
-        guard let frame = CMSampleBufferGetImageBuffer(sampleBuffer) else {
-            debugPrint("unable to get image from sample buffer")
-            return
-        }
-        // TODO Gunakan data barcode untuk mencari barang yang sudah terdaftar
-        if let barcode = self.extractBarcode(fromFrame: frame) {
-            if isBarcode {
-                showModal()
-            } else {
-                showModalSelectProduct()
-            }
-        }
-    }
-    
-    private func extractBarcode(fromFrame frame: CVImageBuffer) -> String? {
-        let barcodeRequest = VNDetectBarcodesRequest()
-        barcodeRequest.symbologies = [.EAN13]
-        try? self.sequenceHandler.perform([barcodeRequest], on: frame)
-        guard let results = barcodeRequest.results as? [VNBarcodeObservation], let firstBarcode = results.first?.payloadStringValue else {
-            return nil
-        }
-        return firstBarcode
-    }
-    
-    private func addCameraInput() {
-        guard let device = AVCaptureDevice.default(for: .video) else { return print("No camera detected") }
-        let cameraInput = try! AVCaptureDeviceInput(device: device)
-        self.captureSession.addInput(cameraInput)
-    }
-    
-    private func addVideoOutput() {
-        self.videoOutput.videoSettings = [(kCVPixelBufferPixelFormatTypeKey as NSString) : NSNumber(value: kCVPixelFormatType_32BGRA)] as [String : Any]
-        self.videoOutput.setSampleBufferDelegate(self, queue: DispatchQueue(label: "my.image.handling.queue"))
-        self.captureSession.addOutput(self.videoOutput)
-    }
     
     @objc func showModal() {
         DispatchQueue.main.async {
@@ -159,6 +114,17 @@ class ViewController: UIViewController, AVCaptureVideoDataOutputSampleBufferDele
             slideVC.transitioningDelegate = self
             self.present(slideVC, animated: true, completion: { () in
                 print("Modal opened")
+                self.isPressed = false
+                
+                if self.torchOn == true {
+                    do {
+                        try self.device.lockForConfiguration()
+                        self.device.torchMode = AVCaptureDevice.TorchMode.off
+                        self.device.unlockForConfiguration()
+                    } catch  {
+                        print(error)
+                    }
+                }
             })
         }
     }
@@ -173,9 +139,15 @@ class ViewController: UIViewController, AVCaptureVideoDataOutputSampleBufferDele
         }
     }
     
-   
+    func showCameraInactivePopUp() {
+        let popUp = CameraInactivePopUpViewController.create()
+        let sbPopUp = SBCardPopupViewController(contentViewController: popUp)
+        sbPopUp.show(onViewController: self)
+        navigationController?.popViewController(animated: true)
+    }
+    
     @IBAction func unwindToMain(segue: UIStoryboardSegue) {
-        print("This is the First View Controller")
+        print("This is the First View Controllers")
     }
     
     @IBAction func openModal(_ sender: UIButton) {
@@ -185,26 +157,88 @@ class ViewController: UIViewController, AVCaptureVideoDataOutputSampleBufferDele
     
 }
 
+//MARK: - Check Inactivity
+extension ViewController {
+    
+    override func viewDidAppear(_ animated: Bool) {
+        resetTimer()
+
+        let longPressRecognizer = UILongPressGestureRecognizer(target: self, action: #selector(toggleControls2))
+        let tapGesture = UITapGestureRecognizer(target: self, action: #selector(toggleControls))
+        let longTapGesture = UILongPressGestureRecognizer(target: self, action: #selector(toggleControls))
+
+        self.scanButton.addGestureRecognizer(longTapGesture)
+        self.scanButton.addGestureRecognizer(longPressRecognizer)
+        self.view.addGestureRecognizer(tapGesture)
+
+    }
+    
+    func resetTimer() {
+        timer?.invalidate()
+        timer = Timer.scheduledTimer(timeInterval: 20, target: self, selector: #selector(hideControls), userInfo: nil, repeats: false)
+    }
+    
+    @objc func hideControls() {
+        print("APP is Inactive")
+        self.captureSession.stopRunning()
+        scanView.removeFromSuperview()
+        showCameraInactivePopUp()
+    }
+    
+    @objc func toggleControls() {
+        print("Touched")
+        resetTimer()
+        
+        view.addSubview(scanView)
+        scanView.translatesAutoresizingMaskIntoConstraints = false
+        NSLayoutConstraint.activate([
+            scanView.topAnchor.constraint(equalTo: view.topAnchor, constant: 98),
+            scanView.trailingAnchor.constraint(equalTo: view.trailingAnchor, constant: 0),
+            scanView.bottomAnchor.constraint(equalTo: view.bottomAnchor, constant: -203),
+            scanView.leadingAnchor.constraint(equalTo: view.leadingAnchor, constant: 0),
+        ])
+        self.captureSession.startRunning()
+    }
+    
+    @objc func toggleControls2(sender:UILongPressGestureRecognizer) {
+        print("Touched")
+        resetTimer()
+        
+        view.addSubview(scanView)
+        scanView.translatesAutoresizingMaskIntoConstraints = false
+        NSLayoutConstraint.activate([
+            scanView.topAnchor.constraint(equalTo: view.topAnchor, constant: 98),
+            scanView.trailingAnchor.constraint(equalTo: view.trailingAnchor, constant: 0),
+            scanView.bottomAnchor.constraint(equalTo: view.bottomAnchor, constant: -203),
+            scanView.leadingAnchor.constraint(equalTo: view.leadingAnchor, constant: 0),
+        ])
+        self.captureSession.startRunning()
+        longPressed(sender: sender)
+    }
+}
+
 //MARK: - Remove Nav bar
 extension ViewController {
     override func viewWillAppear(_ animated: Bool) {
+        if !Core.shared.isNewUser() {
+            // show onboarding
+            let controller = storyboard?.instantiateViewController(identifier: "Onboarding") as! OnboardingViewController
+            controller.modalPresentationStyle = .fullScreen
+            controller.modalTransitionStyle = .crossDissolve
+            present(controller, animated: true, completion: nil)
+        }
+        
         self.navigationController?.isHiddenHairline = true
-//        self.segmentedControl.removeBorders()
         super.viewWillAppear(animated)
         navigationController?.setNavigationBarHidden(true, animated: animated)
         navigationController?.navigationBar.prefersLargeTitles = false
-        self.captureSession.startRunning()
-        
-        // Scanner Button
-        let longPressRecognizer = UILongPressGestureRecognizer(target: self, action: #selector(longPressed))
-        
-        self.scanButton.addGestureRecognizer(longPressRecognizer)
     }
     
     override func viewWillDisappear(_ animated: Bool) {
         super.viewWillDisappear(animated)
-            navigationController?.setNavigationBarHidden(false, animated: animated)
-        self.captureSession.stopRunning()
+        navigationController?.setNavigationBarHidden(false, animated: animated)
+        timer?.invalidate()
+//        self.captureSession.stopRunning()
     }
     
     private func showAlert(withTitle title: String, message: String) {
@@ -227,16 +261,11 @@ extension ViewController {
     override func viewDidLayoutSubviews() {
         super.viewDidLayoutSubviews()
         
-        if !Core.shared.isNewUser() {
-            // show onboarding
-            let controller = storyboard?.instantiateViewController(identifier: "Onboarding") as! OnboardingViewController
-            controller.modalPresentationStyle = .fullScreen
-            controller.modalTransitionStyle = .crossDissolve
-            present(controller, animated: true, completion: nil)
-        }
+        
     }
 }
 
+//MARK: - UIPicker Non Barcode or Barcode
 extension ViewController: UIPickerViewDelegate , UIPickerViewDataSource {
     
     override func didReceiveMemoryWarning() {
@@ -250,10 +279,6 @@ extension ViewController: UIPickerViewDelegate , UIPickerViewDataSource {
     func pickerView(_ pickerView: UIPickerView, numberOfRowsInComponent component: Int) -> Int {
         return pickerData.count
     }
-    
-//    func pickerView(_ pickerView: UIPickerView, titleForRow row: Int, forComponent component: Int) -> String? {
-//        return pickerData[row]
-//    }
     
     func pickerView(_ pickerView: UIPickerView, attributedTitleForRow row: Int, forComponent component: Int) -> NSAttributedString? {
         let string = pickerData[row]
@@ -292,21 +317,127 @@ extension ViewController: UIPickerViewDelegate , UIPickerViewDataSource {
     
 }
 
-// Scan Button
+//MARK: - Scan Button
 extension ViewController {
     @objc func longPressed(sender: UILongPressGestureRecognizer)
     {
         if sender.state == .began {
+            self.captureSession.startRunning()
+            self.isPressed = true
             print("Start scanning...")
             UIView.animate(withDuration: 0.3,
                 animations: {
                     self.scanButton.transform = CGAffineTransform(scaleX: 0.9, y: 0.9)
-                },completion: nil)
+                    
+                    if self.torchOn == true {
+                        do {
+                            try self.device.lockForConfiguration()
+                            try self.device.setTorchModeOn(level: 1)
+                            self.device.torchMode = AVCaptureDevice.TorchMode.on
+                            self.device.unlockForConfiguration()
+                        } catch {
+                            print(error)
+                        }
+                    }
+                    },completion: nil)
         } else if sender.state == .ended {
+            self.isPressed = false
             print("Stop scanning...")
             UIView.animate(withDuration: 0.2) {
                 self.scanButton.transform = CGAffineTransform.identity
+                
+                // Flashlight
+                if self.torchOn == true {
+                    do {
+                        try self.device.lockForConfiguration()
+                        self.device.torchMode = AVCaptureDevice.TorchMode.off
+                        self.device.unlockForConfiguration()
+                    } catch  {
+                        print(error)
+                    }
+                }
             }
+        }
+    }
+}
+
+//MARK: - CaptureSession
+extension ViewController: AVCaptureVideoDataOutputSampleBufferDelegate {
+    private func configurePreviewLayer() {
+        let cameraPreviewLayer = AVCaptureVideoPreviewLayer(session: captureSession)
+        cameraPreviewLayer.videoGravity = .resizeAspectFill
+        cameraPreviewLayer.connection?.videoOrientation = .portrait
+        cameraPreviewLayer.frame = scanView.frame
+        scanView.layer.insertSublayer(cameraPreviewLayer, at: 0)
+        
+        cameraPreviewLayer.frame = CGRect(x: 100, y: 100, width: scanView.layer.frame.width, height: scanView.layer.frame.height)
+        cameraPreviewLayer.frame = scanView.layer.frame
+        scanView.layer.addSublayer(cameraPreviewLayer)
+    }
+    
+    func captureOutput(_ output: AVCaptureOutput,
+                       didOutput sampleBuffer: CMSampleBuffer,
+                       from connection: AVCaptureConnection) {
+        guard let frame = CMSampleBufferGetImageBuffer(sampleBuffer) else {
+            debugPrint("unable to get image from sample buffer")
+            return
+        }
+        // TODO Gunakan data barcode untuk mencari barang yang sudah terdaftar
+        if self.isPressed == true && self.extractBarcode(fromFrame: frame) != nil {
+            if isBarcode {
+                showModal()
+            } else {
+                showModalSelectProduct()
+            }
+        }
+    }
+    
+    private func extractBarcode(fromFrame frame: CVImageBuffer) -> String? {
+        let barcodeRequest = VNDetectBarcodesRequest()
+        barcodeRequest.symbologies = [.EAN13]
+        try? self.sequenceHandler.perform([barcodeRequest], on: frame)
+        guard let results = barcodeRequest.results as? [VNBarcodeObservation], let firstBarcode = results.first?.payloadStringValue else {
+            return nil
+        }
+        return firstBarcode
+    }
+    
+    private func addCameraInput() {
+        guard let device = AVCaptureDevice.default(for: .video) else { return print("No camera detected") }
+        let cameraInput = try! AVCaptureDeviceInput(device: device)
+        self.captureSession.addInput(cameraInput)
+    }
+    
+    private func addVideoOutput() {
+        self.videoOutput.videoSettings = [(kCVPixelBufferPixelFormatTypeKey as NSString) : NSNumber(value: kCVPixelFormatType_32BGRA)] as [String : Any]
+        self.videoOutput.setSampleBufferDelegate(self, queue: DispatchQueue(label: "my.image.handling.queue"))
+        self.captureSession.addOutput(self.videoOutput)
+    }
+    
+    static func checkPermission() {
+        let accessStatus = AVCaptureDevice.authorizationStatus(for: .video)
+        switch accessStatus  {
+        case .denied:
+            print("Denied")
+            break
+        case .restricted:
+            print("Restricted")
+            break
+        case .authorized:
+            print("Authorized")
+            break
+        case .notDetermined:
+            print("Not Determined")
+            AVCaptureDevice.requestAccess(for: .video) { (success) in
+                if success {
+                    print("Permission granted")
+                } else {
+                    print("Permission not granted ")
+                }
+            }
+            break
+        default:
+            break
         }
     }
 }
