@@ -5,7 +5,7 @@
 	<key>LSSupportsOpeningDocumentsInPlace</key>
 	<true/>
 	<key>NSCameraUsageDescription</key>
-	<string>$(PRODUCT_NAME) need your permission to use your camera</string>
+	<string>$(PRODUCT_NAME) need your to access your camera</string>
 	<key>CFBundleDevelopmentRegion</key>
 	<string>$(DEVELOPMENT_LANGUAGE)</string>
 	<key>CFBundleExecutable</key>
