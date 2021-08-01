@@ -21,6 +21,7 @@ class ViewController: UIViewController {
     private let videoOutput                             = AVCaptureVideoDataOutput()
     private let sequenceHandler                         = VNSequenceRequestHandler()
     private var isBarcode                               = true
+  
     var pickerData          : [String]      = [String]()
     var rotationAngle       : CGFloat!
     var pickerWidth         : CGFloat       = 100
@@ -169,6 +170,7 @@ extension ViewController {
         self.scanButton.addGestureRecognizer(longTapGesture)
         self.scanButton.addGestureRecognizer(longPressRecognizer)
         self.view.addGestureRecognizer(tapGesture)
+
     }
     
     func resetTimer() {
@@ -446,6 +448,9 @@ class PassThroughView: UIView {
             if !subview.isHidden && subview.isUserInteractionEnabled && subview.point(inside: convert(point, to: subview), with: event) {
                 return true
             }
+            break
+        default:
+            break
         }
         return false
     }
