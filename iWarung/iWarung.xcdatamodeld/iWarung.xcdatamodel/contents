@@ -1,15 +1,17 @@
 <?xml version="1.0" encoding="UTF-8" standalone="yes"?>
 <model type="com.apple.IDECoreDataModeler.DataModel" documentVersion="1.0" lastSavedToolsVersion="18154" systemVersion="20F71" minimumToolsVersion="Automatic" sourceLanguage="Swift" usedWithCloudKit="YES" userDefinedModelVersionIdentifier="">
-    <entity name="Item" representedClassName="Item" syncable="YES">
-        <attribute name="deskripsi" optional="YES" attributeType="String"/>
-        <attribute name="harga" optional="YES" attributeType="String"/>
-        <attribute name="harga_modal" optional="YES" attributeType="Double" defaultValueString="0.0" usesScalarValueType="YES"/>
-        <attribute name="id" optional="YES" attributeType="Integer 32" defaultValueString="0" usesScalarValueType="YES"/>
-        <attribute name="imageD" optional="YES" attributeType="Binary" allowsExternalBinaryDataStorage="YES"/>
-        <attribute name="nama" optional="YES" attributeType="String"/>
+    <entity name="ProductItem" representedClassName="ProductItem" syncable="YES">
+        <attribute name="barcode_value" optional="YES" attributeType="String"/>
+        <attribute name="desc" optional="YES" attributeType="String"/>
+        <attribute name="exp_date" optional="YES" attributeType="Date" usesScalarValueType="NO"/>
+        <attribute name="image_data" optional="YES" attributeType="Binary" allowsExternalBinaryDataStorage="YES"/>
+        <attribute name="name" optional="YES" attributeType="String"/>
+        <attribute name="price" optional="YES" attributeType="Float" defaultValueString="0.0" usesScalarValueType="YES"/>
         <attribute name="stock" optional="YES" attributeType="Integer 64" defaultValueString="0" usesScalarValueType="YES"/>
+        <attribute name="type_scan" optional="YES" attributeType="String"/>
+        <attribute name="vision_value" optional="YES" attributeType="String"/>
     </entity>
     <elements>
-        <element name="Item" positionX="-63" positionY="-18" width="128" height="134"/>
+        <element name="ProductItem" positionX="-63" positionY="-18" width="128" height="164"/>
     </elements>
 </model>

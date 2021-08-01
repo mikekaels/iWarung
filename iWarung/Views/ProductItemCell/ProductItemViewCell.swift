@@ -13,8 +13,9 @@ class ProductItemViewCell: UICollectionViewCell {
     @IBOutlet weak var productName: UILabel!
     @IBOutlet weak var productDesc: UILabel!
     @IBOutlet weak var productPrice: UILabel!
-    @IBOutlet weak var productStock: UIView!
-
+    @IBOutlet weak var productExpired: UILabel!
+    @IBOutlet weak var productStock: UILabel!
+    
     override func awakeFromNib() {
         super.awakeFromNib()
         // Initialization code

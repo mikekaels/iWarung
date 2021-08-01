@@ -51,12 +51,12 @@
 		BDEA921D26AE7A6A00157FA6 /* KeranjangPopUp.xib in Resources */ = {isa = PBXBuildFile; fileRef = BDEA921C26AE7A6A00157FA6 /* KeranjangPopUp.xib */; };
 		BDEA921F26AE7B7A00157FA6 /* KeranjangPopUp.swift in Sources */ = {isa = PBXBuildFile; fileRef = BDEA921E26AE7B7A00157FA6 /* KeranjangPopUp.swift */; };
 		E7194C4C26ADD7D70018B189 /* TambahProdukFormViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E7194C4B26ADD7D70018B189 /* TambahProdukFormViewController.swift */; };
-		E7194C5326AE93F40018B189 /* Item+CoreDataClass.swift in Sources */ = {isa = PBXBuildFile; fileRef = E7194C5126AE93F40018B189 /* Item+CoreDataClass.swift */; };
-		E7194C5426AE93F40018B189 /* Item+CoreDataProperties.swift in Sources */ = {isa = PBXBuildFile; fileRef = E7194C5226AE93F40018B189 /* Item+CoreDataProperties.swift */; };
 		E7194C5626AFD3D50018B189 /* TambahProdukForm.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = E7194C5526AFD3D50018B189 /* TambahProdukForm.storyboard */; };
 		E7AF66B426B165B00039A44B /* ProductItemViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = E7AF66B226B165B00039A44B /* ProductItemViewCell.swift */; };
 		E7AF66B526B165B00039A44B /* ProductItemViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = E7AF66B326B165B00039A44B /* ProductItemViewCell.xib */; };
 		E7AF66B826B213E20039A44B /* Persisten.swift in Sources */ = {isa = PBXBuildFile; fileRef = E7AF66B726B213E20039A44B /* Persisten.swift */; };
+		E7AF66BF26B427C00039A44B /* ProductItem+CoreDataClass.swift in Sources */ = {isa = PBXBuildFile; fileRef = E7AF66BD26B427C00039A44B /* ProductItem+CoreDataClass.swift */; };
+		E7AF66C026B427C00039A44B /* ProductItem+CoreDataProperties.swift in Sources */ = {isa = PBXBuildFile; fileRef = E7AF66BE26B427C00039A44B /* ProductItem+CoreDataProperties.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -106,12 +106,12 @@
 		BDEA921C26AE7A6A00157FA6 /* KeranjangPopUp.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = KeranjangPopUp.xib; sourceTree = "<group>"; };
 		BDEA921E26AE7B7A00157FA6 /* KeranjangPopUp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = KeranjangPopUp.swift; sourceTree = "<group>"; };
 		E7194C4B26ADD7D70018B189 /* TambahProdukFormViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TambahProdukFormViewController.swift; sourceTree = "<group>"; };
-		E7194C5126AE93F40018B189 /* Item+CoreDataClass.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Item+CoreDataClass.swift"; sourceTree = SOURCE_ROOT; };
-		E7194C5226AE93F40018B189 /* Item+CoreDataProperties.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Item+CoreDataProperties.swift"; sourceTree = SOURCE_ROOT; };
 		E7194C5526AFD3D50018B189 /* TambahProdukForm.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = TambahProdukForm.storyboard; sourceTree = "<group>"; };
 		E7AF66B226B165B00039A44B /* ProductItemViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = ProductItemViewCell.swift; path = ProductItemCell/ProductItemViewCell.swift; sourceTree = "<group>"; };
 		E7AF66B326B165B00039A44B /* ProductItemViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = ProductItemViewCell.xib; path = ProductItemCell/ProductItemViewCell.xib; sourceTree = "<group>"; };
 		E7AF66B726B213E20039A44B /* Persisten.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Persisten.swift; sourceTree = "<group>"; };
+		E7AF66BD26B427C00039A44B /* ProductItem+CoreDataClass.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "ProductItem+CoreDataClass.swift"; sourceTree = SOURCE_ROOT; };
+		E7AF66BE26B427C00039A44B /* ProductItem+CoreDataProperties.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "ProductItem+CoreDataProperties.swift"; sourceTree = SOURCE_ROOT; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -194,8 +194,8 @@
 		BD5AC59D26A36A2800A52336 /* Models */ = {
 			isa = PBXGroup;
 			children = (
-				E7194C5126AE93F40018B189 /* Item+CoreDataClass.swift */,
-				E7194C5226AE93F40018B189 /* Item+CoreDataProperties.swift */,
+				E7AF66BD26B427C00039A44B /* ProductItem+CoreDataClass.swift */,
+				E7AF66BE26B427C00039A44B /* ProductItem+CoreDataProperties.swift */,
 				BD8C016626A3F15600FAF9C5 /* model.swift */,
 				BD1FFF3326AB65F800EB9AAD /* Product.swift */,
 				BDE43C2426AF4B36004CF3CC /* Onboarding.swift */,
@@ -371,6 +371,8 @@
 				BD5AC58926A369F400A52336 /* ViewController.swift in Sources */,
 				BD726E3026B5EBBB00EAFD14 /* SBCardPopUpViewController.swift in Sources */,
 				BDEA921F26AE7B7A00157FA6 /* KeranjangPopUp.swift in Sources */,
+				E7AF66BF26B427C00039A44B /* ProductItem+CoreDataClass.swift in Sources */,
+				E7AF66C026B427C00039A44B /* ProductItem+CoreDataProperties.swift in Sources */,
 				BD726E3526B60CB100EAFD14 /* PopUpDelegate.swift in Sources */,
 				BD1FFF3B26AC237A00EB9AAD /* UIView.swift in Sources */,
 				BD85A2D326A9F74B00FE1B9C /* KeranjangViewController.swift in Sources */,
@@ -388,10 +390,8 @@
 				BDC8DFA426AC6C1E008310AA /* UITextField.swift in Sources */,
 				BDE43C2726AF515E004CF3CC /* Core.swift in Sources */,
 				E7AF66B426B165B00039A44B /* ProductItemViewCell.swift in Sources */,
-				E7194C5426AE93F40018B189 /* Item+CoreDataProperties.swift in Sources */,
 				BDB39A3A26ADD06F00296909 /* DaftarProdukViewController.swift in Sources */,
 				BDC625C826AD509500E44675 /* TambahProdukScanViewController.swift in Sources */,
-				E7194C5326AE93F40018B189 /* Item+CoreDataClass.swift in Sources */,
 				BD1CF24526ACAEA9001B7EC8 /* TransaksiSelesaiPasView.swift in Sources */,
 				BDC8DFA226AC2886008310AA /* UIButton.swift in Sources */,
 				BD1FFF3126AB604100EB9AAD /* KeranjangCell.swift in Sources */,

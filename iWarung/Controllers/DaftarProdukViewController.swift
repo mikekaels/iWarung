@@ -8,7 +8,7 @@
 import UIKit
 import CoreData
 
-var productList = [Item]()
+var productList = [ProductItem]()
 
 class DaftarProdukViewController: UIViewController, UICollectionViewDataSource, UICollectionViewDelegate {
     @IBOutlet weak var daftarProdukCollectionView: UICollectionView!
@@ -66,13 +66,15 @@ class DaftarProdukViewController: UIViewController, UICollectionViewDataSource, 
         
         let cell = daftarProdukCollectionView.dequeueReusableCell(withReuseIdentifier: "productItemCell", for: indexPath) as! ProductItemViewCell
         
-        let item: Item!
+        let item: ProductItem!
         item = productList[indexPath.row]
         
-        cell.productImage.image = UIImage(data: item.imageD!)
-        cell.productName.text = item.nama
-        cell.productDesc.text = item.deskripsi
-        cell.productPrice.text = item.harga
+        cell.productImage.image = UIImage(data: item.image_data!)
+        cell.productName.text = item.name
+        cell.productDesc.text = item.desc
+        cell.productPrice.text = String("Rp.\(item.price)")
+        cell.productStock.text = String("Stock \(item.stock)")
+        cell.productExpired.text = formatterDate(deadline: item.exp_date!)
         
         // giving shadow to the cell
         cell.layer.cornerRadius = 15.0
@@ -84,6 +86,20 @@ class DaftarProdukViewController: UIViewController, UICollectionViewDataSource, 
         cell.layer.masksToBounds = false //<-
         
         return cell
+    }
+    
+    func formatterDate(deadline: Date) -> String {
+        let dateNow = Date()
+        let formatter = DateFormatter()
+        formatter.dateFormat = "MMM d, yyyy"
+        let data = deadline.days(from: dateNow)
+        
+        if (data >= 30) {
+            return formatter.string(from: deadline)
+        } else if (data < 0) {
+            return formatter.string(from: deadline)
+        }
+        return "Exp. \(data+1) days left"
     }
     
     
@@ -110,4 +126,17 @@ class DaftarProdukViewController: UIViewController, UICollectionViewDataSource, 
         }
     }
     
+}
+
+
+extension Date {
+    func days(from date: Date) -> Int {
+        Calendar.current.dateComponents([.day], from: date, to: self).day!
+    }
+    func adding(days: Int) -> Date {
+        Calendar.current.date(byAdding: .day, value: days, to: self)!
+    }
+    func adding(weeks: Int) -> Date {
+        Calendar.current.date(byAdding: .weekOfYear, value: weeks, to: self)!
+    }
 }

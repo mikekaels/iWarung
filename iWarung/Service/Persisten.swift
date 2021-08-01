@@ -42,17 +42,17 @@ class Persisten {
         }
     }
     
-    func insertProduct(id: String, name: String, description: String, price: String, image: Data){
-        
-    
+    func insertProduct(scanValue: String,  name: String, description: String, price: Float, image: Data, expired: Date, stock: Int64){
         
         do {
-            let product = Item(context: context)
-            product.id = Int32(truncating: productList.count as NSNumber)
-            product.nama = name
-            product.harga = price
-            product.deskripsi = description
-            product.imageD = image
+            let product = ProductItem(context: context)
+            product.barcode_value = scanValue
+            product.name = name
+            product.price = price
+            product.desc = description
+            product.stock = stock
+            product.exp_date = expired
+            product.image_data = image
             saveContext()
         }
         catch {
@@ -60,10 +60,10 @@ class Persisten {
         }
     }
     
-    func fetchProducts() -> [Item] {
-        let request : NSFetchRequest<Item> = Item.fetchRequest()
-        request.sortDescriptors = [NSSortDescriptor(key: "nama", ascending: true)]
-        var products: [Item] = []
+    func fetchProducts() -> [ProductItem] {
+        let request : NSFetchRequest<ProductItem> = ProductItem.fetchRequest()
+        request.sortDescriptors = [NSSortDescriptor(key: "name", ascending: true)]
+        var products: [ProductItem] = []
         
         do {
             products = try context.fetch(request)
@@ -75,7 +75,7 @@ class Persisten {
         return products
     }
     
-    func deleteProduct(item: Item) {
+    func deleteProduct(item: ProductItem) {
         
         guard let itemcontext = item.managedObjectContext else { return }
 
@@ -87,8 +87,6 @@ class Persisten {
             }
       }
 
-//          try? self.viewContext.save()
-//        context.delete(item)
         saveContext()
     }
 }

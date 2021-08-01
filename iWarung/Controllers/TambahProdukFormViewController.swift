@@ -12,17 +12,17 @@ class TambahProdukFormViewController: UIViewController {
     
     @IBOutlet weak var addProdItem: UIButton!
     @IBOutlet weak var deleteProdukButton: UIButton!
-    @IBOutlet weak var idTF: UITextField!
     @IBOutlet weak var namaTF: UITextField!
-    @IBOutlet weak var hargamodalTF: UITextField!
     @IBOutlet weak var hargaTF: UITextField!
     @IBOutlet weak var stockTF: UITextField!
     @IBOutlet weak var deskTF: UITextView!
     @IBOutlet weak var imageButton: UIButton!
     @IBOutlet weak var imageThumnail: UIImageView!
+    @IBOutlet weak var kadaluwarsaPicker: UIDatePicker!
     
-    var selectedItem: Item? = nil
+    var selectedItem: ProductItem? = nil
     var scanningBarcode: String? = nil
+    var datePicker: Date!
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -37,15 +37,17 @@ class TambahProdukFormViewController: UIViewController {
         
         
         if (selectedItem != nil) {
-            idTF.text = "\(String(describing: selectedItem?.id))"
-            namaTF.text = selectedItem?.nama
-            deskTF.text = selectedItem?.deskripsi
-            hargaTF.text = selectedItem?.harga
-            imageThumnail.image = UIImage(data: (selectedItem?.imageD)!)
+            namaTF.text = selectedItem?.name
+            deskTF.text = selectedItem?.desc
+            hargaTF.text = "\(String(describing: selectedItem?.price))"
+            imageThumnail.image = UIImage(data: (selectedItem?.image_data)!)
             
         } else {
-            idTF.text = scanningBarcode
+//            idTF.text = scanningBarcode
         }
+        
+        kadaluwarsaPicker.datePickerMode = .dateAndTime
+        kadaluwarsaPicker.addTarget(self, action: #selector(datePickerValueChanged(sender: )), for: UIControl.Event.valueChanged)
         
         self.setupHideKeyboardOnTap()
     }
@@ -63,18 +65,21 @@ class TambahProdukFormViewController: UIViewController {
         return tap
     }
     
+    @objc func datePickerValueChanged(sender: UIDatePicker){
+        print(sender.date)
+        datePicker = sender.date
+    }
+    
     @IBAction func addImage(_ sender: Any){
         self.takePhotoWithCamera()
     }
     
     @IBAction func addProduct(_ sender: Any){
         print("Saving...")
-        let appDelegate = UIApplication.shared.delegate as! AppDelegate
-        let context: NSManagedObjectContext = appDelegate.persistentContainer.viewContext
         
         
         if (selectedItem == nil) {
-        guard let id = idTF.text else {
+        guard let codeValue = scanningBarcode else {
             print("erorr id")
             return
         }
@@ -93,16 +98,28 @@ class TambahProdukFormViewController: UIViewController {
             print("error harga")
             return
         }
+            
+        guard let stock = stockTF.text else {
+            print("error harga")
+            return
+            
+        }
         
         guard  let image = imageThumnail.image?.pngData() else {
             print("error image ")
             return
         }
-            Persisten.shared.insertProduct(id: id, name: nama, description: desc, price: price, image: image)
-            self.dismiss(animated: true, completion: nil)
-            DispatchQueue.main.async {
-                self.navigationController?.popViewController(animated: true)
-            }
+        
+        guard let date = datePicker else {
+            print("error date")
+            return
+        }
+        
+        Persisten.shared.insertProduct(scanValue: codeValue, name: nama, description: desc, price: (price as NSString).floatValue, image: image, expired: date, stock: Int64(stock)!)
+        self.dismiss(animated: true, completion: nil)
+        DispatchQueue.main.async {
+            self.navigationController?.popViewController(animated: true)
+        }
             
             // edit
         } else {
@@ -127,10 +144,10 @@ class TambahProdukFormViewController: UIViewController {
                 return
             }
             
-            self.selectedItem?.nama = nama
-            self.selectedItem?.deskripsi = desc
-            self.selectedItem?.harga = price
-            self.selectedItem?.imageD = image
+            self.selectedItem?.name = nama
+            self.selectedItem?.desc = desc
+            self.selectedItem?.price = (price as NSString).floatValue
+            self.selectedItem?.image_data = image
             
             Persisten.shared.saveContext()
             self.dismiss(animated: true, completion: nil)
