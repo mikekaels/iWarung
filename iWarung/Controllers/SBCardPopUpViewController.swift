@@ -72,7 +72,7 @@ public class SBCardPopupViewController: UIViewController {
     
     // MARK: - Properties
     
-    private let backgroundOpacity = CGFloat(0.3)
+    private let backgroundOpacity = CGFloat(0.0)
     
     private var displayLink: CADisplayLink!
     private var lastTimeStamp: CFTimeInterval?

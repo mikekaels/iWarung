@@ -21,15 +21,15 @@ class ViewController: UIViewController {
     private let videoOutput                             = AVCaptureVideoDataOutput()
     private let sequenceHandler                         = VNSequenceRequestHandler()
     private var isBarcode                               = true
-    var pickerData                      : [String]      = [String]()
-    var rotationAngle                   : CGFloat!
-    var pickerWidth                     : CGFloat       = 100
-    var pickerHeight                    : CGFloat       = 100
-    var isPressed                       : Bool          = false
-    var torchOn                         : Bool          = false
-    let device                                          = AVCaptureDevice.default(for: AVMediaType.video)!
-    var timer                           : Timer?
-    let scanView                        : UIView        = createRectView(x: 0, y: 0, width: 390, height: 543, color: UIColor(rgb: K.blueColor1), transparency: 1)
+    var pickerData          : [String]      = [String]()
+    var rotationAngle       : CGFloat!
+    var pickerWidth         : CGFloat       = 100
+    var pickerHeight        : CGFloat       = 100
+    var isPressed           : Bool          = false
+    var torchOn             : Bool          = false
+    let device                              = AVCaptureDevice.default(for: AVMediaType.video)!
+    var timer               : Timer?
+    let scanView            : UIView        = createRectView(x: 0, y: 0, width: 390, height: 543, color: UIColor(rgb: K.blueColor1), transparency: 1)
     
     
     override func viewDidLoad() {
@@ -72,15 +72,10 @@ class ViewController: UIViewController {
     }
     
     static func createRectView(x:Float, y:Float, width:Float, height:Float, color: UIColor, transparency: Float) -> UIView{
-            
             let viewRectFrame = CGRect(x:CGFloat(x), y:CGFloat(y), width:CGFloat(width), height:CGFloat(height))
-            
             let retView = UIView(frame:viewRectFrame)
-            
             retView.backgroundColor = color
-            
             retView.alpha = CGFloat(transparency)
-            
             return retView
         }
     
@@ -118,6 +113,17 @@ class ViewController: UIViewController {
             slideVC.transitioningDelegate = self
             self.present(slideVC, animated: true, completion: { () in
                 print("Modal opened")
+                self.isPressed = false
+                
+                if self.torchOn == true {
+                    do {
+                        try self.device.lockForConfiguration()
+                        self.device.torchMode = AVCaptureDevice.TorchMode.off
+                        self.device.unlockForConfiguration()
+                    } catch  {
+                        print(error)
+                    }
+                }
             })
         }
     }
@@ -139,7 +145,6 @@ class ViewController: UIViewController {
         navigationController?.popViewController(animated: true)
     }
     
-   
     @IBAction func unwindToMain(segue: UIStoryboardSegue) {
         print("This is the First View Controller")
     }
@@ -160,17 +165,15 @@ extension ViewController {
         let longPressRecognizer = UILongPressGestureRecognizer(target: self, action: #selector(toggleControls2))
         let tapGesture = UITapGestureRecognizer(target: self, action: #selector(toggleControls))
         let longTapGesture = UILongPressGestureRecognizer(target: self, action: #selector(toggleControls))
-        
-//        self.scanButton.addGestureRecognizer(longPressRecognizer)
-        self.view.addGestureRecognizer(tapGesture)
-        self.scanButton.addGestureRecognizer(tapGesture)
+
         self.scanButton.addGestureRecognizer(longTapGesture)
         self.scanButton.addGestureRecognizer(longPressRecognizer)
+        self.view.addGestureRecognizer(tapGesture)
     }
     
     func resetTimer() {
         timer?.invalidate()
-        timer = Timer.scheduledTimer(timeInterval: 15, target: self, selector: #selector(hideControls), userInfo: nil, repeats: false)
+        timer = Timer.scheduledTimer(timeInterval: 5, target: self, selector: #selector(hideControls), userInfo: nil, repeats: false)
     }
     
     @objc func hideControls() {
@@ -224,18 +227,15 @@ extension ViewController {
         }
         
         self.navigationController?.isHiddenHairline = true
-//        self.segmentedControl.removeBorders()
         super.viewWillAppear(animated)
         navigationController?.setNavigationBarHidden(true, animated: animated)
         navigationController?.navigationBar.prefersLargeTitles = false
-        
-        
-        
     }
     
     override func viewWillDisappear(_ animated: Bool) {
         super.viewWillDisappear(animated)
-            navigationController?.setNavigationBarHidden(false, animated: animated)
+        navigationController?.setNavigationBarHidden(false, animated: animated)
+        timer?.invalidate()
 //        self.captureSession.stopRunning()
     }
     
@@ -277,10 +277,6 @@ extension ViewController: UIPickerViewDelegate , UIPickerViewDataSource {
     func pickerView(_ pickerView: UIPickerView, numberOfRowsInComponent component: Int) -> Int {
         return pickerData.count
     }
-    
-//    func pickerView(_ pickerView: UIPickerView, titleForRow row: Int, forComponent component: Int) -> String? {
-//        return pickerData[row]
-//    }
     
     func pickerView(_ pickerView: UIPickerView, attributedTitleForRow row: Int, forComponent component: Int) -> NSAttributedString? {
         let string = pickerData[row]
@@ -343,11 +339,6 @@ extension ViewController {
                     }
                     },completion: nil)
         } else if sender.state == .ended {
-//            self.captureSession.stopRunning()
-//            let imageView = UIImageView(frame: CGRect(x: 0, y: 0, width: 390, height: 640))
-//            imageView.image = UIImage(named: "camera-inactive")
-//            cameraView.addSubview(imageView)
-            
             self.isPressed = false
             print("Stop scanning...")
             UIView.animate(withDuration: 0.2) {
@@ -370,14 +361,11 @@ extension ViewController {
 
 //MARK: - CaptureSession
 extension ViewController: AVCaptureVideoDataOutputSampleBufferDelegate {
-    
-    
-    
     private func configurePreviewLayer() {
         let cameraPreviewLayer = AVCaptureVideoPreviewLayer(session: captureSession)
         cameraPreviewLayer.videoGravity = .resizeAspectFill
         cameraPreviewLayer.connection?.videoOrientation = .portrait
-//        cameraPreviewLayer.frame = scanView.frame
+        cameraPreviewLayer.frame = scanView.frame
         scanView.layer.insertSublayer(cameraPreviewLayer, at: 0)
         
         cameraPreviewLayer.frame = CGRect(x: 100, y: 100, width: scanView.layer.frame.width, height: scanView.layer.frame.height)
@@ -449,5 +437,16 @@ extension ViewController: AVCaptureVideoDataOutputSampleBufferDelegate {
         default:
             break
         }
+    }
+}
+
+class PassThroughView: UIView {
+    override func point(inside point: CGPoint, with event: UIEvent?) -> Bool {
+        for subview in subviews {
+            if !subview.isHidden && subview.isUserInteractionEnabled && subview.point(inside: convert(point, to: subview), with: event) {
+                return true
+            }
+        }
+        return false
     }
 }
