@@ -56,7 +56,9 @@ class OnboardingViewController: UIViewController{
     
     func notNewUser() {
         Core.shared.setIsNotNewUser()
-        dismiss(animated: true, completion: nil)
+        dismiss(animated: true, completion: {
+            ViewController.checkPermission()
+        })
     }
 
     //MARK: - Actions

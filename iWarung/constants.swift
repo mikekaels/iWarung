@@ -40,4 +40,7 @@ struct K {
         Onboarding(image: #imageLiteral(resourceName: "produk 1x"), label: "Mudah", description: "Kelola produk jualan anda dengan mudah"),
         Onboarding(image: #imageLiteral(resourceName: "meningkat"), label: "Meningkat", description: "Kualitas manajemen warung anda akan semakin meningkat")
     ]
+    
+    //MARK: - Notification Name
+    static let NSpopUpDismissed = "PopUpDismissed"
 }
