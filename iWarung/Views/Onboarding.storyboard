@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="18122" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="Y6W-OH-hqX">
-    <device id="retina6_1" orientation="portrait" appearance="light"/>
+    <device id="retina4_7" orientation="portrait" appearance="light"/>
     <dependencies>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="18093"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
@@ -14,11 +14,11 @@
             <objects>
                 <viewController storyboardIdentifier="Onboarding" useStoryboardIdentifierAsRestorationIdentifier="YES" id="Y6W-OH-hqX" customClass="OnboardingViewController" customModule="iWarung" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="5EZ-qb-Rvc">
-                        <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" pagingEnabled="YES" showsHorizontalScrollIndicator="NO" showsVerticalScrollIndicator="NO" dataMode="prototypes" translatesAutoresizingMaskIntoConstraints="NO" id="cPL-Un-RjF">
-                                <rect key="frame" x="0.0" y="0.0" width="414" height="640.5"/>
+                                <rect key="frame" x="0.0" y="0.0" width="375" height="411.5"/>
                                 <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                                 <collectionViewFlowLayout key="collectionViewLayout" scrollDirection="horizontal" minimumLineSpacing="0.0" minimumInteritemSpacing="0.0" id="Rw4-x6-HUc">
                                     <size key="itemSize" width="390" height="582"/>
@@ -28,7 +28,7 @@
                                 </collectionViewFlowLayout>
                                 <cells>
                                     <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" restorationIdentifier="OnboardingCollectionViewCell" reuseIdentifier="OnboardingCollectionViewCell" id="xcg-tG-CyE" customClass="OnboardingCollectionViewCell" customModule="iWarung" customModuleProvider="target">
-                                        <rect key="frame" x="0.0" y="29.5" width="413" height="582"/>
+                                        <rect key="frame" x="0.0" y="-85.5" width="413" height="582"/>
                                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                         <collectionViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" insetsLayoutMarginsFromSafeArea="NO" id="51l-Ab-A2C">
                                             <rect key="frame" x="0.0" y="0.0" width="413" height="582"/>
@@ -80,12 +80,12 @@ dengan cepat</string>
                                 </cells>
                             </collectionView>
                             <pageControl opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" numberOfPages="3" translatesAutoresizingMaskIntoConstraints="NO" id="gd2-he-gZb">
-                                <rect key="frame" x="146.5" y="660.5" width="121.5" height="27.5"/>
+                                <rect key="frame" x="127" y="431.5" width="121.5" height="27.5"/>
                                 <color key="pageIndicatorTintColor" systemColor="systemGray6Color"/>
                                 <color key="currentPageIndicatorTintColor" red="0.17645967849999999" green="0.63856436679999995" blue="0.96620899439999997" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
                             </pageControl>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="TKw-M0-hNQ">
-                                <rect key="frame" x="36" y="706" width="342" height="106"/>
+                                <rect key="frame" x="36" y="477" width="303" height="106"/>
                                 <subviews>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="0IN-ng-0xM">
                                         <rect key="frame" x="0.0" y="28" width="160" height="50"/>
@@ -95,7 +95,7 @@ dengan cepat</string>
                                         <state key="normal" title="Lewati"/>
                                     </button>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="b7X-Hr-0xc">
-                                        <rect key="frame" x="182" y="28" width="160" height="50"/>
+                                        <rect key="frame" x="143" y="28" width="160" height="50"/>
                                         <color key="backgroundColor" red="0.17645967849999999" green="0.63856436679999995" blue="0.96620899439999997" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
                                         <constraints>
                                             <constraint firstAttribute="height" constant="50" id="P2f-3P-X2x"/>
@@ -109,7 +109,7 @@ dengan cepat</string>
                                         </connections>
                                     </button>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="0Zf-uE-8Oi">
-                                        <rect key="frame" x="91" y="28" width="160" height="50"/>
+                                        <rect key="frame" x="71.5" y="28" width="160" height="50"/>
                                         <color key="backgroundColor" red="0.17645967849999999" green="0.63856436679999995" blue="0.96620899439999997" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
                                         <constraints>
                                             <constraint firstAttribute="height" constant="50" id="PNB-lH-NdB"/>
