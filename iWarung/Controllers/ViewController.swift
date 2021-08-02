@@ -11,8 +11,10 @@ import AVFoundation
 
 class ViewController: UIViewController {
     @IBOutlet weak var cameraView: UIView!
-//    @IBOutlet weak var cameraView       : UIImageView!
     @IBOutlet weak var flashLightButton : UIButton!
+    @IBOutlet weak var flashlightView: UIView!
+    @IBOutlet weak var inventoryView: UIView!
+    @IBOutlet weak var inventoryButton: UIButton!
     @IBOutlet weak var pickerView       : UIPickerView!
     @IBOutlet weak var scanButton       : UIButton!
     @IBOutlet weak var keranjangPopUp   : KeranjangPopUp!
@@ -22,31 +24,29 @@ class ViewController: UIViewController {
     private let sequenceHandler                         = VNSequenceRequestHandler()
     private var isBarcode                               = true
   
-    var pickerData          : [String]      = [String]()
+    var pickerData          : [String]      = K.pickerData
     var rotationAngle       : CGFloat!
     var pickerWidth         : CGFloat       = 100
     var pickerHeight        : CGFloat       = 100
     var isPressed           : Bool          = false
     var torchOn             : Bool          = false
-    let device                              = AVCaptureDevice.default(for: AVMediaType.video)!
     var timer               : Timer?
-    let scanView            : UIView        = createRectView(x: 0, y: 0, width: 390, height: 543, color: UIColor(rgb: K.blueColor1), transparency: 1)
-    
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        cameraView.backgroundColor = UIColor(rgb: K.blueColor1)
         setupNavBar()
+        
+        flashLightButton.backgroundColor = .white
+        flashLightButton.cornerRadius(width: 4, height: 4)
+        inventoryView.cornerRadius(width: 7, height: 7)
+        flashlightView.cornerRadius(width: 7, height: 7)
+        cameraView.backgroundColor = UIColor(rgb: K.blueColor1)
         self.addCameraInput()
         self.configurePreviewLayer()
         self.addVideoOutput()
-//        self.captureSession.startRunning()
-        toggleControls()
 
         keranjangPopUp.cornerRadius()
         keranjangPopUp.addGradient()
-        
-        pickerData = ["Barcode", "No-Barcode"]
         
         // picker rotation
         rotationAngle = -90 * (.pi/180)
@@ -79,15 +79,40 @@ class ViewController: UIViewController {
             retView.alpha = CGFloat(transparency)
             return retView
         }
+    @IBAction func cameraSwitchPressed(_ sender: UISwitch) {
+        if sender.isOn {
+            configurePreviewLayer()
+        } else {
+            
+//            cameraActive.layer.removeFromSuperlayer()
+        }
+    }
     
     @IBAction func flashlightPressed(_ sender: UIButton) {
         
         if torchOn == false {
             self.torchOn = true
             flashLightButton.setImage(UIImage(named: "flashlight-on.png"), for: .normal)
+            do {
+                guard let device = AVCaptureDevice.default(for: .video) else { return print("No camera detected") }
+                try device.lockForConfiguration()
+                try device.setTorchModeOn(level: 1)
+                device.torchMode = AVCaptureDevice.TorchMode.on
+                device.unlockForConfiguration()
+            } catch {
+                print(error)
+            }
         } else {
             self.torchOn = false
             flashLightButton.setImage(UIImage(named: "flashlight-off.png"), for: .normal)
+            do {
+                guard let device = AVCaptureDevice.default(for: .video) else { return print("No camera detected") }
+                try device.lockForConfiguration()
+                device.torchMode = AVCaptureDevice.TorchMode.off
+                device.unlockForConfiguration()
+            } catch  {
+                print(error)
+            }
             
         }
     }
@@ -116,15 +141,15 @@ class ViewController: UIViewController {
                 print("Modal opened")
                 self.isPressed = false
                 
-                if self.torchOn == true {
-                    do {
-                        try self.device.lockForConfiguration()
-                        self.device.torchMode = AVCaptureDevice.TorchMode.off
-                        self.device.unlockForConfiguration()
-                    } catch  {
-                        print(error)
-                    }
-                }
+//                if self.torchOn == true {
+//                    do {
+//                        try self.device.lockForConfiguration()
+//                        self.device.torchMode = AVCaptureDevice.TorchMode.off
+//                        self.device.unlockForConfiguration()
+//                    } catch  {
+//                        print(error)
+//                    }
+//                }
             })
         }
     }
@@ -180,38 +205,29 @@ extension ViewController {
     
     @objc func hideControls() {
         print("APP is Inactive")
-        self.captureSession.stopRunning()
-        scanView.removeFromSuperview()
-        showCameraInactivePopUp()
+        if let layers = cameraView.layer.sublayers {
+            for layer in layers {
+                if layer.name == "camera-active" {
+                    layer.removeFromSuperlayer()
+                    self.captureSession.stopRunning()
+                }
+            }
+        }
+
+//        showCameraInactivePopUp()
     }
     
     @objc func toggleControls() {
-        print("Touched")
+        print("Touched 1")
         resetTimer()
-        
-        view.addSubview(scanView)
-        scanView.translatesAutoresizingMaskIntoConstraints = false
-        NSLayoutConstraint.activate([
-            scanView.topAnchor.constraint(equalTo: view.topAnchor, constant: 98),
-            scanView.trailingAnchor.constraint(equalTo: view.trailingAnchor, constant: 0),
-            scanView.bottomAnchor.constraint(equalTo: view.bottomAnchor, constant: -203),
-            scanView.leadingAnchor.constraint(equalTo: view.leadingAnchor, constant: 0),
-        ])
+        if !captureSession.isRunning {configurePreviewLayer()}
         self.captureSession.startRunning()
     }
     
     @objc func toggleControls2(sender:UILongPressGestureRecognizer) {
-        print("Touched")
+        print("Touched 2")
         resetTimer()
-        
-        view.addSubview(scanView)
-        scanView.translatesAutoresizingMaskIntoConstraints = false
-        NSLayoutConstraint.activate([
-            scanView.topAnchor.constraint(equalTo: view.topAnchor, constant: 98),
-            scanView.trailingAnchor.constraint(equalTo: view.trailingAnchor, constant: 0),
-            scanView.bottomAnchor.constraint(equalTo: view.bottomAnchor, constant: -203),
-            scanView.leadingAnchor.constraint(equalTo: view.leadingAnchor, constant: 0),
-        ])
+        if !captureSession.isRunning {configurePreviewLayer()}
         self.captureSession.startRunning()
         longPressed(sender: sender)
     }
@@ -232,12 +248,21 @@ extension ViewController {
         super.viewWillAppear(animated)
         navigationController?.setNavigationBarHidden(true, animated: animated)
         navigationController?.navigationBar.prefersLargeTitles = false
+        
+        toggleControls()
     }
     
     override func viewWillDisappear(_ animated: Bool) {
         super.viewWillDisappear(animated)
         navigationController?.setNavigationBarHidden(false, animated: animated)
-        timer?.invalidate()
+        if let layers = cameraView.layer.sublayers {
+            for layer in layers {
+                if layer.name == "camera-active" {
+                    layer.removeFromSuperlayer()
+                    self.captureSession.stopRunning()
+                }
+            }
+        }
 //        self.captureSession.stopRunning()
     }
     
@@ -260,8 +285,6 @@ extension ViewController: UIViewControllerTransitioningDelegate {
 extension ViewController {
     override func viewDidLayoutSubviews() {
         super.viewDidLayoutSubviews()
-        
-        
     }
 }
 
@@ -321,43 +344,38 @@ extension ViewController: UIPickerViewDelegate , UIPickerViewDataSource {
 extension ViewController {
     @objc func longPressed(sender: UILongPressGestureRecognizer)
     {
+        print("Shoot..")
         if sender.state == .began {
+            print("Start scanning...")
+            scanButton.setImage(UIImage(named: "camera-button-pressed"), for: .normal)
             self.captureSession.startRunning()
             self.isPressed = true
-            print("Start scanning...")
-            UIView.animate(withDuration: 0.3,
-                animations: {
-                    self.scanButton.transform = CGAffineTransform(scaleX: 0.9, y: 0.9)
-                    
-                    if self.torchOn == true {
-                        do {
-                            try self.device.lockForConfiguration()
-                            try self.device.setTorchModeOn(level: 1)
-                            self.device.torchMode = AVCaptureDevice.TorchMode.on
-                            self.device.unlockForConfiguration()
-                        } catch {
-                            print(error)
-                        }
-                    }
-                    },completion: nil)
+            UIView.animate(withDuration: 0.3, animations: {self.scanButton.transform = CGAffineTransform(scaleX: 0.9, y: 0.9)},completion: nil)
+//            if self.torchOn == true {
+//                do {
+//                    print("HEREEE")
+//                    try self.device.lockForConfiguration()
+//                    try self.device.setTorchModeOn(level: 1)
+//                    self.device.torchMode = AVCaptureDevice.TorchMode.on
+//                    self.device.unlockForConfiguration()
+//                } catch {
+//                    print(error)
+//                }
+//            }
         } else if sender.state == .ended {
+            print("Scan stopped...")
+            scanButton.setImage(UIImage(named: "camera-button"), for: .normal)
             self.isPressed = false
-            print("Stop scanning...")
-            UIView.animate(withDuration: 0.2) {
-                self.scanButton.transform = CGAffineTransform.identity
-                
-                // Flashlight
-                if self.torchOn == true {
-                    do {
-                        try self.device.lockForConfiguration()
-                        self.device.torchMode = AVCaptureDevice.TorchMode.off
-                        self.device.unlockForConfiguration()
-                    } catch  {
-                        print(error)
-                    }
-                }
-            }
-        }
+            UIView.animate(withDuration: 0.2) {self.scanButton.transform = CGAffineTransform.identity}}
+//            if self.torchOn == true {
+//                do {
+//                    try self.device.lockForConfiguration()
+//                    self.device.torchMode = AVCaptureDevice.TorchMode.off
+//                    try self.device.unlockForConfiguration()
+//                } catch  {
+//                    print(error)
+//                }
+//            }
     }
 }
 
@@ -365,14 +383,12 @@ extension ViewController {
 extension ViewController: AVCaptureVideoDataOutputSampleBufferDelegate {
     private func configurePreviewLayer() {
         let cameraPreviewLayer = AVCaptureVideoPreviewLayer(session: captureSession)
+        cameraPreviewLayer.name = "camera-active"
         cameraPreviewLayer.videoGravity = .resizeAspectFill
         cameraPreviewLayer.connection?.videoOrientation = .portrait
-        cameraPreviewLayer.frame = scanView.frame
-        scanView.layer.insertSublayer(cameraPreviewLayer, at: 0)
-        
-        cameraPreviewLayer.frame = CGRect(x: 100, y: 100, width: scanView.layer.frame.width, height: scanView.layer.frame.height)
-        cameraPreviewLayer.frame = scanView.layer.frame
-        scanView.layer.addSublayer(cameraPreviewLayer)
+        cameraPreviewLayer.frame = cameraView.frame
+        cameraPreviewLayer.frame = cameraView.bounds
+        cameraView.layer.addSublayer(cameraPreviewLayer)
     }
     
     func captureOutput(_ output: AVCaptureOutput,
