@@ -39,11 +39,15 @@ class TambahProdukFormViewController: UIViewController {
         if (selectedItem != nil) {
             namaTF.text = selectedItem?.name
             deskTF.text = selectedItem?.desc
-            hargaTF.text = "\(String(describing: selectedItem?.price))"
+            hargaTF.text = "\(selectedItem?.price ?? 0)"
+            stockTF.text = "\(selectedItem?.stock ?? 0)"
+            kadaluwarsaPicker.date = (selectedItem?.exp_date!)!
             imageThumnail.image = UIImage(data: (selectedItem?.image_data)!)
             
+            addProdItem.setTitle("Simpan Perubahan", for: UIControl.State.normal)
+            
         } else {
-//            idTF.text = scanningBarcode
+            deleteProdukButton.isHidden = true
         }
         
         kadaluwarsaPicker.datePickerMode = .dateAndTime
