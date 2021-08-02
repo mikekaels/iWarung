@@ -38,8 +38,8 @@ class ViewController: UIViewController {
         
         flashLightButton.backgroundColor = .white
         flashLightButton.cornerRadius(width: 4, height: 4)
-        inventoryView.cornerRadius(width: 7, height: 7)
-        flashlightView.cornerRadius(width: 7, height: 7)
+        inventoryView.cornerRadius(width: 10, height: 10)
+        flashlightView.cornerRadius(width: 10, height: 10)
         cameraView.backgroundColor = UIColor(rgb: K.blueColor1)
         self.addCameraInput()
         self.configurePreviewLayer()
