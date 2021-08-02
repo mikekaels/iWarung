@@ -90,43 +90,69 @@
                                 </constraints>
                             </imageView>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="x02-0h-Ge7">
-                                <rect key="frame" x="0.0" y="99" width="390" height="541"/>
+                                <rect key="frame" x="0.0" y="0.0" width="390" height="640"/>
                                 <subviews>
-                                    <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="camera-inactive" translatesAutoresizingMaskIntoConstraints="NO" id="gKc-Rg-JGR">
-                                        <rect key="frame" x="53" y="138" width="284" height="264"/>
-                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                    <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="camera-inactive" translatesAutoresizingMaskIntoConstraints="NO" id="gKc-Rg-JGR">
+                                        <rect key="frame" x="53" y="205" width="284" height="264"/>
                                     </imageView>
                                 </subviews>
                                 <color key="backgroundColor" red="0.17645967849999999" green="0.63856436679999995" blue="0.96620899439999997" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
-                            </view>
-                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="nm7-3M-R9O">
-                                <rect key="frame" x="0.0" y="0.0" width="390" height="99"/>
-                                <subviews>
-                                    <button opaque="NO" contentMode="scaleAspectFit" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="HB7-8K-5Ma">
-                                        <rect key="frame" x="336" y="62" width="20" height="23"/>
-                                        <constraints>
-                                            <constraint firstAttribute="width" constant="20" id="4kV-OM-IM1"/>
-                                            <constraint firstAttribute="height" constant="23" id="UKc-3z-7xb"/>
-                                        </constraints>
-                                        <fontDescription key="fontDescription" type="system" pointSize="6"/>
-                                        <state key="normal" image="flashlight-off"/>
-                                        <connections>
-                                            <action selector="flashlightPressed:" destination="BYZ-38-t0r" eventType="touchUpInside" id="JNt-aA-vcK"/>
-                                        </connections>
-                                    </button>
-                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" id="XNA-j0-wSL">
-                                        <rect key="frame" x="31" y="63" width="20" height="20"/>
-                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                        <state key="normal" image="inventory"/>
-                                        <connections>
-                                            <segue destination="DjZ-lU-yFH" kind="show" id="yIq-N4-LpP"/>
-                                        </connections>
-                                    </button>
-                                </subviews>
-                                <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                                 <constraints>
-                                    <constraint firstAttribute="trailing" secondItem="HB7-8K-5Ma" secondAttribute="trailing" constant="34" id="wQR-Rj-o8D"/>
-                                    <constraint firstAttribute="bottom" secondItem="HB7-8K-5Ma" secondAttribute="bottom" constant="14" id="wYt-DG-uqZ"/>
+                                    <constraint firstItem="gKc-Rg-JGR" firstAttribute="leading" secondItem="x02-0h-Ge7" secondAttribute="leading" constant="53" id="4No-g5-TqN"/>
+                                    <constraint firstAttribute="bottom" secondItem="gKc-Rg-JGR" secondAttribute="bottom" constant="171" id="Nlr-YZ-o7c"/>
+                                    <constraint firstAttribute="trailing" secondItem="gKc-Rg-JGR" secondAttribute="trailing" constant="53" id="Te7-fI-zoh"/>
+                                    <constraint firstItem="gKc-Rg-JGR" firstAttribute="top" secondItem="x02-0h-Ge7" secondAttribute="top" constant="205" id="tcV-iw-FiC"/>
+                                </constraints>
+                            </view>
+                            <view contentMode="scaleToFill" misplaced="YES" translatesAutoresizingMaskIntoConstraints="NO" id="nm7-3M-R9O">
+                                <rect key="frame" x="0.0" y="68" width="390" height="99"/>
+                                <subviews>
+                                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="iOY-dg-bds">
+                                        <rect key="frame" x="25" y="57" width="32" height="32"/>
+                                        <subviews>
+                                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" id="XNA-j0-wSL">
+                                                <rect key="frame" x="6" y="6" width="20" height="20"/>
+                                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                                <state key="normal" image="inventory"/>
+                                                <connections>
+                                                    <segue destination="DjZ-lU-yFH" kind="show" id="yIq-N4-LpP"/>
+                                                </connections>
+                                            </button>
+                                        </subviews>
+                                        <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                                    </view>
+                                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="J2f-xx-oNM">
+                                        <rect key="frame" x="330" y="57" width="32" height="32"/>
+                                        <subviews>
+                                            <button opaque="NO" contentMode="scaleAspectFit" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="HB7-8K-5Ma">
+                                                <rect key="frame" x="6" y="4.6666666666666643" width="20" height="23"/>
+                                                <constraints>
+                                                    <constraint firstAttribute="width" constant="20" id="4kV-OM-IM1"/>
+                                                    <constraint firstAttribute="height" constant="23" id="UKc-3z-7xb"/>
+                                                </constraints>
+                                                <fontDescription key="fontDescription" type="system" pointSize="6"/>
+                                                <state key="normal" image="flashlight-off"/>
+                                                <connections>
+                                                    <action selector="flashlightPressed:" destination="BYZ-38-t0r" eventType="touchUpInside" id="JNt-aA-vcK"/>
+                                                </connections>
+                                            </button>
+                                        </subviews>
+                                        <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                                        <constraints>
+                                            <constraint firstItem="HB7-8K-5Ma" firstAttribute="centerX" secondItem="J2f-xx-oNM" secondAttribute="centerX" id="88q-oi-hJU"/>
+                                            <constraint firstItem="HB7-8K-5Ma" firstAttribute="centerY" secondItem="J2f-xx-oNM" secondAttribute="centerY" id="8r3-SQ-QLE"/>
+                                            <constraint firstItem="HB7-8K-5Ma" firstAttribute="leading" secondItem="J2f-xx-oNM" secondAttribute="leading" constant="6" id="Qsa-sF-DG6"/>
+                                        </constraints>
+                                    </view>
+                                </subviews>
+                                <constraints>
+                                    <constraint firstItem="J2f-xx-oNM" firstAttribute="top" secondItem="nm7-3M-R9O" secondAttribute="top" constant="57" id="IB4-8U-PEE"/>
+                                    <constraint firstAttribute="bottom" secondItem="J2f-xx-oNM" secondAttribute="bottom" constant="10" id="L9h-Hf-8gB"/>
+                                    <constraint firstAttribute="trailing" secondItem="J2f-xx-oNM" secondAttribute="trailing" constant="28" id="OQi-wW-cOe"/>
+                                    <constraint firstItem="J2f-xx-oNM" firstAttribute="bottom" secondItem="iOY-dg-bds" secondAttribute="bottom" id="mql-XP-sZV"/>
+                                    <constraint firstItem="J2f-xx-oNM" firstAttribute="top" secondItem="iOY-dg-bds" secondAttribute="top" id="nwx-9Z-VFY"/>
+                                    <constraint firstItem="iOY-dg-bds" firstAttribute="leading" secondItem="nm7-3M-R9O" secondAttribute="leading" constant="25" id="sdi-FM-A3z"/>
+                                    <constraint firstAttribute="trailing" secondItem="iOY-dg-bds" secondAttribute="trailing" constant="333" id="wMA-4Z-s6k"/>
                                 </constraints>
                             </view>
                         </subviews>
@@ -141,7 +167,7 @@
                             <constraint firstItem="32U-rT-DQT" firstAttribute="trailing" secondItem="x02-0h-Ge7" secondAttribute="trailing" id="Kyf-9c-cOM"/>
                             <constraint firstItem="x02-0h-Ge7" firstAttribute="leading" secondItem="32U-rT-DQT" secondAttribute="leading" id="OYD-pG-ImW"/>
                             <constraint firstItem="nm7-3M-R9O" firstAttribute="leading" secondItem="hF1-4q-Lhf" secondAttribute="leading" id="XUD-AQ-zJG"/>
-                            <constraint firstItem="x02-0h-Ge7" firstAttribute="top" secondItem="nm7-3M-R9O" secondAttribute="bottom" id="YYE-i9-lN9"/>
+                            <constraint firstItem="x02-0h-Ge7" firstAttribute="top" secondItem="SPq-km-g6a" secondAttribute="top" id="YYE-i9-lN9"/>
                             <constraint firstItem="MbA-Ne-jev" firstAttribute="leading" secondItem="hF1-4q-Lhf" secondAttribute="leading" id="eQG-WF-JrK"/>
                             <constraint firstAttribute="bottom" secondItem="nm7-3M-R9O" secondAttribute="bottom" constant="745" id="fzg-oK-qu4"/>
                             <constraint firstItem="MbA-Ne-jev" firstAttribute="top" secondItem="x02-0h-Ge7" secondAttribute="bottom" id="gZq-co-Kvq"/>
@@ -156,6 +182,9 @@
                     <connections>
                         <outlet property="cameraView" destination="x02-0h-Ge7" id="KVx-B8-Wth"/>
                         <outlet property="flashLightButton" destination="HB7-8K-5Ma" id="JlN-Up-NdA"/>
+                        <outlet property="flashlightView" destination="J2f-xx-oNM" id="bPp-9q-ge3"/>
+                        <outlet property="inventoryButton" destination="XNA-j0-wSL" id="0bF-fi-Gxa"/>
+                        <outlet property="inventoryView" destination="iOY-dg-bds" id="US2-Pp-AEg"/>
                         <outlet property="keranjangPopUp" destination="bFX-Xw-7Dp" id="INw-as-IHf"/>
                         <outlet property="pickerView" destination="Cbz-bd-7Wm" id="HiC-Th-IQf"/>
                         <outlet property="scanButton" destination="dB1-kR-8pn" id="y1A-4V-Aeb"/>

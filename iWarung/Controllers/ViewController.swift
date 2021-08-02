@@ -12,6 +12,9 @@ import AVFoundation
 class ViewController: UIViewController {
     @IBOutlet weak var cameraView: UIView!
     @IBOutlet weak var flashLightButton : UIButton!
+    @IBOutlet weak var flashlightView: UIView!
+    @IBOutlet weak var inventoryView: UIView!
+    @IBOutlet weak var inventoryButton: UIButton!
     @IBOutlet weak var pickerView       : UIPickerView!
     @IBOutlet weak var scanButton       : UIButton!
     @IBOutlet weak var keranjangPopUp   : KeranjangPopUp!
@@ -27,18 +30,20 @@ class ViewController: UIViewController {
     var pickerHeight        : CGFloat       = 100
     var isPressed           : Bool          = false
     var torchOn             : Bool          = false
-    let device                              = AVCaptureDevice.default(for: AVMediaType.video)
     var timer               : Timer?
     
     override func viewDidLoad() {
         super.viewDidLoad()
         setupNavBar()
         
+        flashLightButton.backgroundColor = .white
+        flashLightButton.cornerRadius(width: 4, height: 4)
+        inventoryView.cornerRadius(width: 7, height: 7)
+        flashlightView.cornerRadius(width: 7, height: 7)
         cameraView.backgroundColor = UIColor(rgb: K.blueColor1)
         self.addCameraInput()
         self.configurePreviewLayer()
         self.addVideoOutput()
-        toggleControls()
 
         keranjangPopUp.cornerRadius()
         keranjangPopUp.addGradient()
@@ -88,9 +93,26 @@ class ViewController: UIViewController {
         if torchOn == false {
             self.torchOn = true
             flashLightButton.setImage(UIImage(named: "flashlight-on.png"), for: .normal)
+            do {
+                guard let device = AVCaptureDevice.default(for: .video) else { return print("No camera detected") }
+                try device.lockForConfiguration()
+                try device.setTorchModeOn(level: 1)
+                device.torchMode = AVCaptureDevice.TorchMode.on
+                device.unlockForConfiguration()
+            } catch {
+                print(error)
+            }
         } else {
             self.torchOn = false
             flashLightButton.setImage(UIImage(named: "flashlight-off.png"), for: .normal)
+            do {
+                guard let device = AVCaptureDevice.default(for: .video) else { return print("No camera detected") }
+                try device.lockForConfiguration()
+                device.torchMode = AVCaptureDevice.TorchMode.off
+                device.unlockForConfiguration()
+            } catch  {
+                print(error)
+            }
             
         }
     }
@@ -119,15 +141,15 @@ class ViewController: UIViewController {
                 print("Modal opened")
                 self.isPressed = false
                 
-                if self.torchOn == true {
-                    do {
-                        try self.device?.lockForConfiguration()
-                        self.device?.torchMode = AVCaptureDevice.TorchMode.off
-                        self.device?.unlockForConfiguration()
-                    } catch  {
-                        print(error)
-                    }
-                }
+//                if self.torchOn == true {
+//                    do {
+//                        try self.device.lockForConfiguration()
+//                        self.device.torchMode = AVCaptureDevice.TorchMode.off
+//                        self.device.unlockForConfiguration()
+//                    } catch  {
+//                        print(error)
+//                    }
+//                }
             })
         }
     }
@@ -178,7 +200,7 @@ extension ViewController {
     
     func resetTimer() {
         timer?.invalidate()
-        timer = Timer.scheduledTimer(timeInterval: 5, target: self, selector: #selector(hideControls), userInfo: nil, repeats: false)
+        timer = Timer.scheduledTimer(timeInterval: 20, target: self, selector: #selector(hideControls), userInfo: nil, repeats: false)
     }
     
     @objc func hideControls() {
@@ -226,12 +248,21 @@ extension ViewController {
         super.viewWillAppear(animated)
         navigationController?.setNavigationBarHidden(true, animated: animated)
         navigationController?.navigationBar.prefersLargeTitles = false
+        
+        toggleControls()
     }
     
     override func viewWillDisappear(_ animated: Bool) {
         super.viewWillDisappear(animated)
         navigationController?.setNavigationBarHidden(false, animated: animated)
-        timer?.invalidate()
+        if let layers = cameraView.layer.sublayers {
+            for layer in layers {
+                if layer.name == "camera-active" {
+                    layer.removeFromSuperlayer()
+                    self.captureSession.stopRunning()
+                }
+            }
+        }
 //        self.captureSession.stopRunning()
     }
     
@@ -313,37 +344,38 @@ extension ViewController: UIPickerViewDelegate , UIPickerViewDataSource {
 extension ViewController {
     @objc func longPressed(sender: UILongPressGestureRecognizer)
     {
+        print("Shoot..")
         if sender.state == .began {
             print("Start scanning...")
             scanButton.setImage(UIImage(named: "camera-button-pressed"), for: .normal)
             self.captureSession.startRunning()
             self.isPressed = true
             UIView.animate(withDuration: 0.3, animations: {self.scanButton.transform = CGAffineTransform(scaleX: 0.9, y: 0.9)},completion: nil)
-            if self.torchOn == true {
-                do {
-                    print("HEREEE")
-                    try self.device?.lockForConfiguration()
-                    try self.device?.setTorchModeOn(level: 1)
-                    self.device?.torchMode = AVCaptureDevice.TorchMode.on
-                    self.device?.unlockForConfiguration()
-                } catch {
-                    print(error)
-                }
-            }
+//            if self.torchOn == true {
+//                do {
+//                    print("HEREEE")
+//                    try self.device.lockForConfiguration()
+//                    try self.device.setTorchModeOn(level: 1)
+//                    self.device.torchMode = AVCaptureDevice.TorchMode.on
+//                    self.device.unlockForConfiguration()
+//                } catch {
+//                    print(error)
+//                }
+//            }
         } else if sender.state == .ended {
             print("Scan stopped...")
             scanButton.setImage(UIImage(named: "camera-button"), for: .normal)
             self.isPressed = false
             UIView.animate(withDuration: 0.2) {self.scanButton.transform = CGAffineTransform.identity}}
-            if self.torchOn == true {
-                do {
-                    try self.device?.lockForConfiguration()
-                    self.device?.torchMode = AVCaptureDevice.TorchMode.off
-                    self.device?.unlockForConfiguration()
-                } catch  {
-                    print(error)
-                }
-            }
+//            if self.torchOn == true {
+//                do {
+//                    try self.device.lockForConfiguration()
+//                    self.device.torchMode = AVCaptureDevice.TorchMode.off
+//                    try self.device.unlockForConfiguration()
+//                } catch  {
+//                    print(error)
+//                }
+//            }
     }
 }
 
