@@ -196,24 +196,25 @@ extension ViewController {
     }
     
     @objc func toggleControls() {
-        print("Touched")
+        print("Touched 1")
         resetTimer()
         if !captureSession.isRunning {
             print("1")
             configurePreviewLayer()
-            self.captureSession.startRunning()
+            
         }
+        self.captureSession.startRunning()
     }
     
     @objc func toggleControls2(sender:UILongPressGestureRecognizer) {
-        print("Touched")
+        print("Touched 2")
         resetTimer()
         if !captureSession.isRunning {
             print("2")
             configurePreviewLayer()
-            self.captureSession.startRunning()
-            longPressed(sender: sender)
         }
+        self.captureSession.startRunning()
+        longPressed(sender: sender)
     }
 }
 
@@ -321,11 +322,13 @@ extension ViewController {
     {
         if sender.state == .began {
             print("Start scanning...")
+            scanButton.setImage(UIImage(named: "camera-button-pressed"), for: .normal)
             self.captureSession.startRunning()
             self.isPressed = true
             UIView.animate(withDuration: 0.3, animations: {self.scanButton.transform = CGAffineTransform(scaleX: 0.9, y: 0.9)},completion: nil)
             if self.torchOn == true {
                 do {
+                    print("HEREEE")
                     try self.device?.lockForConfiguration()
                     try self.device?.setTorchModeOn(level: 1)
                     self.device?.torchMode = AVCaptureDevice.TorchMode.on
@@ -336,6 +339,7 @@ extension ViewController {
             }
         } else if sender.state == .ended {
             print("Scan stopped...")
+            scanButton.setImage(UIImage(named: "camera-button"), for: .normal)
             self.isPressed = false
             UIView.animate(withDuration: 0.2) {self.scanButton.transform = CGAffineTransform.identity}}
             if self.torchOn == true {
