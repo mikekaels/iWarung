@@ -198,21 +198,14 @@ extension ViewController {
     @objc func toggleControls() {
         print("Touched 1")
         resetTimer()
-        if !captureSession.isRunning {
-            print("1")
-            configurePreviewLayer()
-            
-        }
+        if !captureSession.isRunning {configurePreviewLayer()}
         self.captureSession.startRunning()
     }
     
     @objc func toggleControls2(sender:UILongPressGestureRecognizer) {
         print("Touched 2")
         resetTimer()
-        if !captureSession.isRunning {
-            print("2")
-            configurePreviewLayer()
-        }
+        if !captureSession.isRunning {configurePreviewLayer()}
         self.captureSession.startRunning()
         longPressed(sender: sender)
     }
