@@ -44,7 +44,7 @@ class TambahProdukFormViewController: UIViewController {
             kadaluwarsaPicker.date = (selectedItem?.exp_date!)!
             imageThumnail.image = UIImage(data: (selectedItem?.image_data)!)
             
-            addProdItem.setTitle("Simpan Perubahan", for: UIControl.State.normal)
+            addProdItem.setTitle("Simpan Perubahan", for: UIControl.State.highlighted)
             
         } else {
             deleteProdukButton.isHidden = true
