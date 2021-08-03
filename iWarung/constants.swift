@@ -10,6 +10,9 @@ import UIKit
 struct K {
     static let appName = "iWarung"
     
+    //MARK: - Picker
+    static let pickerData = ["Barcode", "No-Barcode"]
+    
     //MARK: - Blue Main Color
     let blueColor1Example = #colorLiteral(red: 0.03921568627, green: 0.4784313725, blue: 1, alpha: 1)
     static let blueColor1 = 0x0A7AFF
