@@ -21,12 +21,13 @@ class ViewController: UIViewController {
     @IBOutlet weak var pickerView       : UIPickerView!
     @IBOutlet weak var scanButton       : UIButton!
     @IBOutlet weak var keranjangPopUp   : KeranjangPopUp!
+    @IBOutlet weak var cameraOverlay: UIImageView!
     
     private let captureSession                          = AVCaptureSession()
     private let videoOutput                             = AVCaptureVideoDataOutput()
     private let sequenceHandler                         = VNSequenceRequestHandler()
     private var isBarcode                               = true
-  
+    
     var pickerData          : [String]      = K.pickerData
     var rotationAngle       : CGFloat!
     var pickerWidth         : CGFloat       = 100
@@ -35,9 +36,13 @@ class ViewController: UIViewController {
     var torchOn             : Bool          = false
     var timer               : Timer?
     
+    let productService      : Persisten = Persisten()
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         setupNavBar()
+        cameraOverlay.isHidden = true
+        cameraOverlay.alpha = 0
         
         flashLightButton.backgroundColor = .white
         flashLightButton.cornerRadius(width: 4, height: 4)
@@ -47,15 +52,11 @@ class ViewController: UIViewController {
         
         keranjangPopUp.cornerRadius()
         keranjangPopUp.addGradient()
-//        keranjangPopUp.jumlahProduk.text =  "Produk"
         
-        // picker rotation
         rotationAngle = -90 * (.pi/180)
         pickerView.transform = CGAffineTransform(rotationAngle: rotationAngle )
         
-        // picker frame
         pickerView.frame = CGRect(x: 0, y: 0, width: view.frame.width - 100, height: -100)
-//        pickerView.center = self.view.
         
         self.pickerView.dataSource = self
         self.pickerView.delegate = self
@@ -86,12 +87,11 @@ class ViewController: UIViewController {
     override func viewDidDisappear(_ animated: Bool) {
         print("Jumlah produk \(keranjangList.count)")
     }
-
+    
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         if (segue.identifier == "toKeranjang"){
-            
             let landingVC = segue.destination as! KeranjangViewController
-            landingVC.products = keranjangList
+            //            landingVC.products = keranjangList
         }
     }
     
@@ -100,19 +100,11 @@ class ViewController: UIViewController {
     }
     
     static func createRectView(x:Float, y:Float, width:Float, height:Float, color: UIColor, transparency: Float) -> UIView{
-            let viewRectFrame = CGRect(x:CGFloat(x), y:CGFloat(y), width:CGFloat(width), height:CGFloat(height))
-            let retView = UIView(frame:viewRectFrame)
-            retView.backgroundColor = color
-            retView.alpha = CGFloat(transparency)
-            return retView
-        }
-    @IBAction func cameraSwitchPressed(_ sender: UISwitch) {
-        if sender.isOn {
-            configurePreviewLayer()
-        } else {
-            
-//            cameraActive.layer.removeFromSuperlayer()
-        }
+        let viewRectFrame = CGRect(x:CGFloat(x), y:CGFloat(y), width:CGFloat(width), height:CGFloat(height))
+        let retView = UIView(frame:viewRectFrame)
+        retView.backgroundColor = color
+        retView.alpha = CGFloat(transparency)
+        return retView
     }
     
     @IBAction func flashlightPressed(_ sender: UIButton) {
@@ -157,9 +149,7 @@ class ViewController: UIViewController {
         navigationItem.titleView = titleView
     }
     
-    
-    
-    @objc func showModal(product: ProductItem) {
+    @objc func showModalDetectedProduct(product: ProductItem) {
         DispatchQueue.main.async {
             let slideVC = DetectedProductView()
             slideVC.productItem = product
@@ -168,16 +158,6 @@ class ViewController: UIViewController {
             self.present(slideVC, animated: true, completion: { () in
                 print("Modal opened")
                 self.isPressed = false
-                
-//                if self.torchOn == true {
-//                    do {
-//                        try self.device.lockForConfiguration()
-//                        self.device.torchMode = AVCaptureDevice.TorchMode.off
-//                        self.device.unlockForConfiguration()
-//                    } catch  {
-//                        print(error)
-//                    }
-//                }
             })
         }
     }
@@ -204,7 +184,7 @@ class ViewController: UIViewController {
     }
     
     @IBAction func openModal(_ sender: UIButton) {
-//        showModal()
+        //        showModal()
     }
     
     
@@ -215,15 +195,15 @@ extension ViewController {
     
     override func viewDidAppear(_ animated: Bool) {
         resetTimer()
-
+        
         let longPressRecognizer = UILongPressGestureRecognizer(target: self, action: #selector(toggleControls2))
         let tapGesture = UITapGestureRecognizer(target: self, action: #selector(toggleControls))
         let longTapGesture = UILongPressGestureRecognizer(target: self, action: #selector(toggleControls))
-
+        
         self.scanButton.addGestureRecognizer(longTapGesture)
         self.scanButton.addGestureRecognizer(longPressRecognizer)
         self.view.addGestureRecognizer(tapGesture)
-
+        
     }
     
     func resetTimer() {
@@ -232,32 +212,24 @@ extension ViewController {
     }
     
     @objc func hideControls() {
-        print("APP is Inactive")
         if let layers = cameraView.layer.sublayers {
             for layer in layers {
                 if layer.name == "camera-active" {
                     layer.removeFromSuperlayer()
                     self.captureSession.stopRunning()
+                    self.cameraOverlay.isHidden = true
                 }
             }
         }
-
-//        showCameraInactivePopUp()
     }
     
     @objc func toggleControls() {
-        
-        print("Touched 1")
-        
         resetTimer()
         if !captureSession.isRunning {configurePreviewLayer()}
         self.captureSession.startRunning()
     }
     
     @objc func toggleControls2(sender:UILongPressGestureRecognizer) {
-        
-        print("Touched 2")
-        
         resetTimer()
         if !captureSession.isRunning {configurePreviewLayer()}
         self.captureSession.startRunning()
@@ -293,7 +265,6 @@ extension ViewController {
                 }
             }
         }
-//        self.captureSession.stopRunning()
     }
     
     private func showAlert(withTitle title: String, message: String) {
@@ -380,32 +351,23 @@ extension ViewController {
             scanButton.setImage(UIImage(named: "camera-button-pressed"), for: .normal)
             self.captureSession.startRunning()
             self.isPressed = true
-            UIView.animate(withDuration: 0.3, animations: {self.scanButton.transform = CGAffineTransform(scaleX: 0.9, y: 0.9)},completion: nil)
-//            if self.torchOn == true {
-//                do {
-//                    print("HEREEE")
-//                    try self.device.lockForConfiguration()
-//                    try self.device.setTorchModeOn(level: 1)
-//                    self.device.torchMode = AVCaptureDevice.TorchMode.on
-//                    self.device.unlockForConfiguration()
-//                } catch {
-//                    print(error)
-//                }
-//            }
+            
+            UIView.animate(withDuration: 0.3, animations: {
+                self.scanButton.transform = CGAffineTransform(scaleX: 0.9, y: 0.9)
+            },completion: nil)
+            
+            cameraOverlay.isHidden = false
+            UIView.animateKeyframes(withDuration: 0.5, delay: 0, options: [.autoreverse, .repeat], animations: {
+                self.cameraOverlay.alpha = 1
+            }, completion: nil)
+            
         } else if sender.state == .ended {
+            cameraOverlay.alpha = 0
+            cameraOverlay.isHidden = true
             print("Scan stopped...")
             scanButton.setImage(UIImage(named: "camera-button"), for: .normal)
             self.isPressed = false
             UIView.animate(withDuration: 0.2) {self.scanButton.transform = CGAffineTransform.identity}}
-//            if self.torchOn == true {
-//                do {
-//                    try self.device.lockForConfiguration()
-//                    self.device.torchMode = AVCaptureDevice.TorchMode.off
-//                    try self.device.unlockForConfiguration()
-//                } catch  {
-//                    print(error)
-//                }
-//            }
     }
 }
 
@@ -416,7 +378,7 @@ extension ViewController: AVCaptureVideoDataOutputSampleBufferDelegate {
         cameraPreviewLayer.name = "camera-active"
         cameraPreviewLayer.videoGravity = .resizeAspectFill
         cameraPreviewLayer.connection?.videoOrientation = .portrait
-//        cameraPreviewLayer.frame = cameraView.frame
+        //        cameraPreviewLayer.frame = cameraView.frame
         cameraPreviewLayer.frame = cameraView.bounds
         cameraView.layer.addSublayer(cameraPreviewLayer)
     }
@@ -428,67 +390,19 @@ extension ViewController: AVCaptureVideoDataOutputSampleBufferDelegate {
             debugPrint("unable to get image from sample buffer")
             return
         }
-        // TODO Gunakan data barcode untuk mencari barang yang sudah terdaftar
         if self.isPressed == true && self.extractBarcode(fromFrame: frame) != nil {
-            let barcode = self.extractBarcode(fromFrame: frame)
-            if isBarcode {
-                let request : NSFetchRequest<ProductItem> = ProductItem.fetchRequest()
+            if let barcode = self.extractBarcode(fromFrame: frame) {
+                let result: [ProductItem] = self.productService.fetchProductsByBarcode(with: barcode)
                 
-                request.predicate = NSPredicate(format: "barcode_value CONTAINS[cd] %@", barcode!)
-                var products: [ProductItem] = []
-                
-                do{
-                    products = try Persisten.shared.context.fetch(request)
-
-                    if !products.isEmpty {
-                        print("hasil search \(String(describing: products[0].name))")
-                        showModal(product: products[0])
+                if !result.isEmpty {
+                    DispatchQueue.main.async {
+                        self.scanButton.isHighlighted = false
+                        self.cameraOverlay.alpha = 0
                     }
-                    
-                } catch let error{
-                    print("ga mencari \(error)")
+                    showModalDetectedProduct(product: result[0])
+                    print("hasil search \(String(describing: result[0]))")
                 }
-                print("barcode modal \(String(describing: barcode))")
-            } else {
-                print("show modal select product")
-                showModalSelectProduct()
             }
-        }
-    }
-    
-//    func fetchProducts() -> [ProductItem] {
-//        let request : NSFetchRequest<ProductItem> = ProductItem.fetchRequest()
-//        request.sortDescriptors = [NSSortDescriptor(key: "name", ascending: true)]
-//        var products: [ProductItem] = []
-//
-//        do {
-//            products = try context.fetch(request)
-//        }
-//        catch {
-//            print("Error fetching data produk")
-//        }
-//
-//        return products
-//    }
-    
-    private func myFetchRequest()
-    {
-//        let moc = (UIApplication.shared.delegate as! AppDelegate).persistentContainer
-        let request : NSFetchRequest<ProductItem> = ProductItem.fetchRequest()
-//        var result: ProductItem
-        
-        request.predicate = NSPredicate(format: "name = %@", "David")
-
-        do{
-            let results = try Persisten.shared.context.fetch(request)
-
-            for result in results
-            {
-                 print(result)
-            }
-
-        } catch let error{
-            print(error)
         }
     }
     
@@ -539,14 +453,5 @@ extension ViewController: AVCaptureVideoDataOutputSampleBufferDelegate {
         default:
             break
         }
-    }
-}
-
-extension Int
-{
-    func toString() -> String
-    {
-        let myString = String(self)
-        return myString
     }
 }
