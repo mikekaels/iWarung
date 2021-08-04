@@ -57,7 +57,7 @@
                                                     <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                 </state>
                                                 <connections>
-                                                    <segue destination="OBA-4J-l2X" kind="show" id="fuS-UH-FLn"/>
+                                                    <segue destination="OBA-4J-l2X" kind="show" identifier="toPembayaran" id="fuS-UH-FLn"/>
                                                 </connections>
                                             </button>
                                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="0cv-E6-WHa">
@@ -172,6 +172,7 @@
                         <outlet property="pembayaranArrowButton" destination="0cv-E6-WHa" id="iKh-3g-Xrv"/>
                         <outlet property="pembayaranButton" destination="J16-8M-IeG" id="RaX-nV-NFo"/>
                         <outlet property="totalBackgroundViewController" destination="GdH-J1-bHz" id="0jc-LD-WgK"/>
+                        <outlet property="totalBelanja" destination="Wbp-g3-K1Y" id="b85-lv-NVX"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Ief-a0-LHa" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>

@@ -57,6 +57,7 @@
 		E7AF66B826B213E20039A44B /* Persisten.swift in Sources */ = {isa = PBXBuildFile; fileRef = E7AF66B726B213E20039A44B /* Persisten.swift */; };
 		E7AF66BF26B427C00039A44B /* ProductItem+CoreDataClass.swift in Sources */ = {isa = PBXBuildFile; fileRef = E7AF66BD26B427C00039A44B /* ProductItem+CoreDataClass.swift */; };
 		E7AF66C026B427C00039A44B /* ProductItem+CoreDataProperties.swift in Sources */ = {isa = PBXBuildFile; fileRef = E7AF66BE26B427C00039A44B /* ProductItem+CoreDataProperties.swift */; };
+		E7AF672726BAAB240039A44B /* KeranjangModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = E7AF672626BAAB240039A44B /* KeranjangModel.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -112,6 +113,7 @@
 		E7AF66B726B213E20039A44B /* Persisten.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Persisten.swift; sourceTree = "<group>"; };
 		E7AF66BD26B427C00039A44B /* ProductItem+CoreDataClass.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "ProductItem+CoreDataClass.swift"; sourceTree = SOURCE_ROOT; };
 		E7AF66BE26B427C00039A44B /* ProductItem+CoreDataProperties.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "ProductItem+CoreDataProperties.swift"; sourceTree = SOURCE_ROOT; };
+		E7AF672626BAAB240039A44B /* KeranjangModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = KeranjangModel.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -200,6 +202,7 @@
 				BD1FFF3326AB65F800EB9AAD /* Product.swift */,
 				BDE43C2426AF4B36004CF3CC /* Onboarding.swift */,
 				BDE43C2626AF515E004CF3CC /* Core.swift */,
+				E7AF672626BAAB240039A44B /* KeranjangModel.swift */,
 			);
 			path = Models;
 			sourceTree = "<group>";
@@ -390,6 +393,7 @@
 				BDC8DFA426AC6C1E008310AA /* UITextField.swift in Sources */,
 				BDE43C2726AF515E004CF3CC /* Core.swift in Sources */,
 				E7AF66B426B165B00039A44B /* ProductItemViewCell.swift in Sources */,
+				E7AF672726BAAB240039A44B /* KeranjangModel.swift in Sources */,
 				BDB39A3A26ADD06F00296909 /* DaftarProdukViewController.swift in Sources */,
 				BDC625C826AD509500E44675 /* TambahProdukScanViewController.swift in Sources */,
 				BD1CF24526ACAEA9001B7EC8 /* TransaksiSelesaiPasView.swift in Sources */,
