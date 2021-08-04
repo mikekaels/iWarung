@@ -120,10 +120,9 @@ class TambahProdukFormViewController: UIViewController {
         }
         
         Persisten.shared.insertProduct(scanValue: codeValue, name: nama, description: desc, price: (price as NSString).floatValue, image: image, expired: date, stock: Int64(stock)!)
-        self.dismiss(animated: true, completion: nil)
-        DispatchQueue.main.async {
-            self.navigationController?.popViewController(animated: true)
-        }
+            self.dismiss(animated: true, completion: {
+                self.navigationController?.popViewController(animated: true)
+            })
             
             // edit
         } else {
@@ -161,7 +160,9 @@ class TambahProdukFormViewController: UIViewController {
     @IBAction func deleteProduk(_ sender: Any) {
         if (selectedItem != nil) {
             Persisten.shared.deleteProduct(item: selectedItem!)
-            self.dismiss(animated: true, completion: nil)
+            self.dismiss(animated: true, completion: {
+                self.navigationController?.popViewController(animated: true)
+            })
         }
     }
     

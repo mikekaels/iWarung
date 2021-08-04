@@ -17,6 +17,7 @@ class PembayaranViewController: UIViewController {
     @IBOutlet weak var receivedMoneyTextfield: UITextField!
     @IBOutlet weak var changeLabel: UILabel!
     
+    var totalPemabayaran: Float = 0.0
     
     
     @IBAction func finishTransactionPressed(_ sender: UIButton) {
@@ -34,22 +35,22 @@ extension PembayaranViewController {
         super.viewDidLoad()
         title = "Pembayaran"
         self.hideKeyboardWhenTappedAround()
-        totalTagihan.text = String(50000)
+        totalTagihan.text = String(totalPemabayaran)
         
         self.receivedMoneyTextfield.addTarget(self, action: #selector(PembayaranViewController.textFieldDidChange(_:)), for: .editingChanged)
     }
     
     @objc func textFieldDidChange(_ textField: UITextField) {
-        guard let money = Int(textField.text!) else {
+        guard let money = Float(textField.text!) else {
             return
         }
         
-        guard let bill = Int(self.totalTagihan.text!) else {
-            return
-        }
-        let total =  money - bill
+//        guard let bill = Int(self.totalTagihan.text!) else {
+//            return
+//        }
+        let total =  money - totalPemabayaran
         
-        self.changeLabel.text = String(total)
+        self.changeLabel.text = "Rp.\(String(total))"
     }
 }
 

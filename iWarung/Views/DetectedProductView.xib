@@ -70,7 +70,7 @@
                     <nil key="highlightedColor"/>
                 </label>
                 <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="798-Vr-Ewu">
-                    <rect key="frame" x="150" y="325.5" width="114" height="25"/>
+                    <rect key="frame" x="150" y="332.5" width="114" height="25"/>
                     <subviews>
                         <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="gQ1-l4-dU4">
                             <rect key="frame" x="69" y="4" width="17" height="17"/>
@@ -102,13 +102,13 @@
                     </constraints>
                 </view>
                 <label opaque="NO" userInteractionEnabled="NO" contentMode="center" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="20-2-2022" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="hiK-9Y-DZa">
-                    <rect key="frame" x="150" y="298" width="114" height="7.5"/>
+                    <rect key="frame" x="150" y="298" width="114" height="14.5"/>
                     <fontDescription key="fontDescription" type="system" pointSize="12"/>
                     <color key="textColor" systemColor="placeholderTextColor"/>
                     <nil key="highlightedColor"/>
                 </label>
                 <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="And-QO-REL">
-                    <rect key="frame" x="32" y="382.5" width="350" height="60.5"/>
+                    <rect key="frame" x="32" y="389.5" width="350" height="60.5"/>
                     <color key="backgroundColor" systemColor="systemBlueColor"/>
                     <constraints>
                         <constraint firstAttribute="width" constant="350" id="7g2-Tz-Xbc"/>

@@ -10,7 +10,11 @@ import UIKit
 class DetectedProductView: UIViewController {
     var hasSetPointOrigin = false
     var pointOrigin: CGPoint?
-
+    var productItem: ProductItem!
+    
+    var qty: Int? = 0
+    var total: Float? = 0.0
+    
     @IBOutlet weak var slideIndicator: UIView!
     @IBOutlet weak var titleProductLabel: UILabel!
     @IBOutlet weak var productImage: UIImageView!
@@ -24,6 +28,30 @@ class DetectedProductView: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         setupView()
+        
+        productImage.layer.cornerRadius = 25
+        
+        if productItem != nil {
+            titleProductLabel.text = productItem.name
+            productImage.image = UIImage(data: productItem.image_data!)
+            priceProductLabel.text = "Rp.\(String(productItem.price))"
+            dateExpiredLabel.text = formatterDate(deadline: productItem.exp_date!)
+            
+        }
+    }
+    
+    func formatterDate(deadline: Date) -> String {
+        let dateNow = Date()
+        let formatter = DateFormatter()
+        formatter.dateFormat = "MMM d, yyyy"
+        let data = deadline.days(from: dateNow)
+        
+        if (data >= 30) {
+            return formatter.string(from: deadline)
+        } else if (data < 0) {
+            return formatter.string(from: deadline)
+        }
+        return "Exp. \(data+1) days left"
     }
     
     override func viewDidLayoutSubviews() {
@@ -33,6 +61,10 @@ class DetectedProductView: UIViewController {
         }
     }
     @IBAction func addToCartAction(_ sender: Any) {
+        qty = 1;
+        total = Float(qty!) * productItem.price
+        
+        keranjangList.append(KeranjangModel(image: productItem.image_data!, name: productItem.name!, expired: productItem.exp_date!, price: productItem.price, qty: qty!, total: total!))
         dismiss(animated: true)
     }
     
