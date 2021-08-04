@@ -54,8 +54,7 @@ class Persisten {
             product.exp_date = expired
             product.image_data = image
             saveContext()
-        }
-        catch {
+        } catch {
             print("Error insert data Produk")
         }
     }
@@ -75,6 +74,22 @@ class Persisten {
         return products
     }
     
+    func fetchProductsByBarcode(with barcode: String) -> [ProductItem] {
+        let request : NSFetchRequest<ProductItem> = ProductItem.fetchRequest()
+
+        request.predicate = NSPredicate(format: "barcode_value CONTAINS[cd] %@", barcode)
+        var products: [ProductItem] = []
+
+        do{
+            products = try Persisten.shared.context.fetch(request)
+//            return products
+
+        } catch let error{
+            print("ga mencari \(error)")
+        }
+        return products
+    }
+    
     func deleteProduct(item: ProductItem) {
         
         guard let itemcontext = item.managedObjectContext else { return }
@@ -89,4 +104,6 @@ class Persisten {
 
         saveContext()
     }
+    
+    
 }

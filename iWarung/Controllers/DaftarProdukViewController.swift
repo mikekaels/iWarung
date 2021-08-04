@@ -8,25 +8,26 @@
 import UIKit
 import CoreData
 
-var productList = [ProductItem]()
-
-class DaftarProdukViewController: UIViewController, UICollectionViewDataSource, UICollectionViewDelegate {
+class DaftarProdukViewController: UIViewController, UICollectionViewDataSource, UICollectionViewDelegate, UIViewControllerTransitioningDelegate {
     @IBOutlet weak var daftarProdukCollectionView: UICollectionView!
     
+    
     var firsLoad = true
+    var productList = [ProductItem]()
     
     override func viewDidLoad() {
         super.viewDidLoad()
         title = "Daftar Produk"
         // Do any additional setup after loading the view.
         
-        let nibCell = UINib(nibName: "ProductItemViewCell", bundle: nil)
-        daftarProdukCollectionView.register(nibCell, forCellWithReuseIdentifier: "productItemCell")
+        let nibCell = UINib(nibName: "KeranjangCell", bundle: nil)
+        daftarProdukCollectionView.register(nibCell, forCellWithReuseIdentifier: "keranjangCell")
         
         daftarProdukCollectionView.dataSource = self
         daftarProdukCollectionView.delegate = self
         
         loadData()
+        self.hideKeyboardWhenTappedAround()
     }
     
     @objc func loadData(){
@@ -64,17 +65,19 @@ class DaftarProdukViewController: UIViewController, UICollectionViewDataSource, 
     
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         
-        let cell = daftarProdukCollectionView.dequeueReusableCell(withReuseIdentifier: "productItemCell", for: indexPath) as! ProductItemViewCell
+        let cell = daftarProdukCollectionView.dequeueReusableCell(withReuseIdentifier: "keranjangCell", for: indexPath) as! KeranjangCell
         
         let item: ProductItem!
         item = productList[indexPath.row]
         
         cell.productImage.image = UIImage(data: item.image_data!)
         cell.productName.text = item.name
-        cell.productDesc.text = item.desc
-        cell.productPrice.text = String("Rp.\(item.price)")
-        cell.productStock.text = String("Stock \(item.stock)")
-        cell.productExpired.text = formatterDate(deadline: item.exp_date!)
+        cell.productPrice.text = String(item.price)
+        cell.productExpired.text = formatterDate(with: item.exp_date!)
+        cell.totalProduk = Int(item.stock)
+        cell.totalProductLabel.text = String(cell.totalProduk)
+        cell.plusButton.isHidden = true
+        cell.minusButton.isHidden = true
         
         // giving shadow to the cell
         cell.layer.cornerRadius = 15.0
@@ -88,18 +91,24 @@ class DaftarProdukViewController: UIViewController, UICollectionViewDataSource, 
         return cell
     }
     
-    func formatterDate(deadline: Date) -> String {
-        let dateNow = Date()
+//    func formatterDate(deadline: Date) -> String {
+//        let dateNow = Date()
+//        let formatter = DateFormatter()
+//        formatter.dateFormat = "MMM d, yyyy"
+//        let data = deadline.days(from: dateNow)
+//
+//        if (data >= 30) {
+//            return formatter.string(from: deadline)
+//        } else if (data < 0) {
+//            return formatter.string(from: deadline)
+//        }
+//        return "Exp. \(data+1) days left"
+//    }
+    
+    func formatterDate(with date: Date) -> String {
         let formatter = DateFormatter()
-        formatter.dateFormat = "MMM d, yyyy"
-        let data = deadline.days(from: dateNow)
-        
-        if (data >= 30) {
-            return formatter.string(from: deadline)
-        } else if (data < 0) {
-            return formatter.string(from: deadline)
-        }
-        return "Exp. \(data+1) days left"
+        formatter.dateFormat = "d-MM-yyyy"
+        return formatter.string(from: date).uppercased()
     }
     
     
@@ -110,7 +119,16 @@ class DaftarProdukViewController: UIViewController, UICollectionViewDataSource, 
     }
     
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
-        self.performSegue(withIdentifier: "productDetail", sender: self)
+//        self.performSegue(withIdentifier: "productDetail", sender: self)
+    }
+    
+    @IBAction func tambahProdukPressed(_ sender: Any) {
+//        let slideVC = TambahProdukScanViewController()
+//        slideVC.modalPresentationStyle = .popover
+////        slideVC.transitioningDelegate = self
+//        self.present(slideVC, animated: true, completion: { () in
+//            print("Modal opened")
+//        })
     }
     
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
@@ -126,17 +144,4 @@ class DaftarProdukViewController: UIViewController, UICollectionViewDataSource, 
         }
     }
     
-}
-
-
-extension Date {
-    func days(from date: Date) -> Int {
-        Calendar.current.dateComponents([.day], from: date, to: self).day!
-    }
-    func adding(days: Int) -> Date {
-        Calendar.current.date(byAdding: .day, value: days, to: self)!
-    }
-    func adding(weeks: Int) -> Date {
-        Calendar.current.date(byAdding: .weekOfYear, value: weeks, to: self)!
-    }
 }

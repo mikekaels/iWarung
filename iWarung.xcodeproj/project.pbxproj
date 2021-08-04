@@ -16,6 +16,8 @@
 		BD1CF23F26AC99F9001B7EC8 /* TransaksiSelesaiPasView.xib in Resources */ = {isa = PBXBuildFile; fileRef = BD1CF23E26AC99F9001B7EC8 /* TransaksiSelesaiPasView.xib */; };
 		BD1CF24526ACAEA9001B7EC8 /* TransaksiSelesaiPasView.swift in Sources */ = {isa = PBXBuildFile; fileRef = BD1CF24426ACAEA9001B7EC8 /* TransaksiSelesaiPasView.swift */; };
 		BD1CF24726ACB279001B7EC8 /* UIApplication.swift in Sources */ = {isa = PBXBuildFile; fileRef = BD1CF24626ACB279001B7EC8 /* UIApplication.swift */; };
+		BD1FB09B26BB188200648B18 /* Int.swift in Sources */ = {isa = PBXBuildFile; fileRef = BD1FB09A26BB188200648B18 /* Int.swift */; };
+		BD1FB09D26BB1DBD00648B18 /* Date.swift in Sources */ = {isa = PBXBuildFile; fileRef = BD1FB09C26BB1DBD00648B18 /* Date.swift */; };
 		BD1FFF3126AB604100EB9AAD /* KeranjangCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = BD1FFF2F26AB604100EB9AAD /* KeranjangCell.swift */; };
 		BD1FFF3226AB604100EB9AAD /* KeranjangCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = BD1FFF3026AB604100EB9AAD /* KeranjangCell.xib */; };
 		BD1FFF3426AB65F800EB9AAD /* Product.swift in Sources */ = {isa = PBXBuildFile; fileRef = BD1FFF3326AB65F800EB9AAD /* Product.swift */; };
@@ -70,6 +72,8 @@
 		BD1CF23E26AC99F9001B7EC8 /* TransaksiSelesaiPasView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = TransaksiSelesaiPasView.xib; sourceTree = "<group>"; };
 		BD1CF24426ACAEA9001B7EC8 /* TransaksiSelesaiPasView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TransaksiSelesaiPasView.swift; sourceTree = "<group>"; };
 		BD1CF24626ACB279001B7EC8 /* UIApplication.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIApplication.swift; sourceTree = "<group>"; };
+		BD1FB09A26BB188200648B18 /* Int.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Int.swift; sourceTree = "<group>"; };
+		BD1FB09C26BB1DBD00648B18 /* Date.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Date.swift; sourceTree = "<group>"; };
 		BD1FFF2F26AB604100EB9AAD /* KeranjangCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = KeranjangCell.swift; sourceTree = "<group>"; };
 		BD1FFF3026AB604100EB9AAD /* KeranjangCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = KeranjangCell.xib; sourceTree = "<group>"; };
 		BD1FFF3326AB65F800EB9AAD /* Product.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Product.swift; sourceTree = "<group>"; };
@@ -80,7 +84,7 @@
 		BD5AC58126A369F400A52336 /* iWarung.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = iWarung.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		BD5AC58426A369F400A52336 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		BD5AC58626A369F400A52336 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
-		BD5AC58826A369F400A52336 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
+		BD5AC58826A369F400A52336 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; xcLanguageSpecificationIdentifier = xcode.lang.swift; };
 		BD5AC58B26A369F400A52336 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		BD5AC58E26A369F400A52336 /* iWarung.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = iWarung.xcdatamodel; sourceTree = "<group>"; };
 		BD5AC59026A369F500A52336 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
@@ -235,6 +239,8 @@
 				BDC8DFA326AC6C1E008310AA /* UITextField.swift */,
 				BD1CF24626ACB279001B7EC8 /* UIApplication.swift */,
 				BD3A595626B249C400BA4234 /* UISegmented.swift */,
+				BD1FB09A26BB188200648B18 /* Int.swift */,
+				BD1FB09C26BB1DBD00648B18 /* Date.swift */,
 			);
 			path = Extensions;
 			sourceTree = "<group>";
@@ -383,6 +389,7 @@
 				BD726E3226B5EC4F00EAFD14 /* CameraInactivePopUpViewController.swift in Sources */,
 				BDC8DFA626AC8D3B008310AA /* PresentationController.swift in Sources */,
 				BDE43C2526AF4B36004CF3CC /* Onboarding.swift in Sources */,
+				BD1FB09B26BB188200648B18 /* Int.swift in Sources */,
 				3FA214B726B0DB320036633F /* SelectProductView.swift in Sources */,
 				BDE43C2326AF4947004CF3CC /* OnboardingViewController.swift in Sources */,
 				BD1FFF3426AB65F800EB9AAD /* Product.swift in Sources */,
@@ -398,6 +405,7 @@
 				BDC625C826AD509500E44675 /* TambahProdukScanViewController.swift in Sources */,
 				BD1CF24526ACAEA9001B7EC8 /* TransaksiSelesaiPasView.swift in Sources */,
 				BDC8DFA226AC2886008310AA /* UIButton.swift in Sources */,
+				BD1FB09D26BB1DBD00648B18 /* Date.swift in Sources */,
 				BD1FFF3126AB604100EB9AAD /* KeranjangCell.swift in Sources */,
 				BD5AC58726A369F400A52336 /* SceneDelegate.swift in Sources */,
 			);
@@ -553,7 +561,7 @@
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				PRODUCT_BUNDLE_IDENTIFIER = com.kaelsihombing.iWarung;
+				PRODUCT_BUNDLE_IDENTIFIER = com.ilb.iwarung;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
@@ -572,7 +580,7 @@
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				PRODUCT_BUNDLE_IDENTIFIER = com.kaelsihombing.iWarung;
+				PRODUCT_BUNDLE_IDENTIFIER = com.ilb.iwarung;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2";

@@ -16,18 +16,29 @@ class KeranjangCell: UICollectionViewCell {
     @IBOutlet weak var stepperBackground: UIView!
     @IBOutlet weak var minusButton: UIButton!
     @IBOutlet weak var plusButton: UIButton!
+    @IBOutlet weak var totalProductLabel: UILabel!
+    
+    var totalProduk: Int = 0
     
     override func awakeFromNib() {
         super.awakeFromNib()
-        // Initialization code
         keranjangBackgroundView.layer.cornerRadius = 20
-//        keranjangBackgroundView.backgroundColor = #colorLiteral(red: 0.9411764741, green: 0.4980392158, blue: 0.3529411852, alpha: 1)
         productImage.layer.cornerRadius = 10
-        
         
         stepperBackground.cornerRadius(width: 7, height: 7)
         minusButton.cornerRadius(width: 3, height: 3)
         plusButton.cornerRadius(width: 3, height: 3)
     }
 
+    @IBAction func plusPressed(_ sender: Any) {
+        totalProduk += 1
+        totalProductLabel.text = String(totalProduk)
+    }
+    
+    @IBAction func minus(_ sender: UIButton) {
+        if totalProduk > 0 {
+            totalProduk -= 1
+            totalProductLabel.text = String(totalProduk)
+        }
+    }
 }

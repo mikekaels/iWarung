@@ -14,9 +14,11 @@ class KeranjangViewController: UIViewController {
     @IBOutlet weak var pembayaranArrowButton: UIButton!
     @IBOutlet weak var totalBelanja: UILabel!
     
-    var products: [KeranjangModel] = []
+    var products: [ProductItem] = []
     
     var totalSum = keranjangList.map({$0.total}).reduce(0, +)
+    
+    let productService : Persisten = Persisten()
  
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -31,6 +33,8 @@ class KeranjangViewController: UIViewController {
         print("Produks", products)
         
         totalBelanja.text = String(totalSum)
+        
+        products = productService.fetchProducts()
     }
     
     lazy var gradient: CAGradientLayer = {
@@ -110,7 +114,7 @@ extension KeranjangViewController: UICollectionViewDataSource, UICollectionViewD
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         let cell = keranjangCollectionView.dequeueReusableCell(withReuseIdentifier: "keranjangCell", for: indexPath) as! KeranjangCell
         
-        cell.productImage.image = UIImage(data: products[indexPath.row].image)
+        cell.productImage.image = UIImage(data: products[indexPath.row].image_data!)
         cell.productName.text = products[indexPath.row].name
 //        cell.productExpired.text = products[indexPath.row].exp_date
         cell.productPrice.text = String(products[indexPath.row].price)

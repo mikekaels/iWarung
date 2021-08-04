@@ -96,6 +96,9 @@
                                 </constraints>
                                 <state key="normal" image="camera-button"/>
                             </button>
+                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="cameraOverlay" translatesAutoresizingMaskIntoConstraints="NO" id="oiA-NZ-MqF">
+                                <rect key="frame" x="30" y="131" width="315" height="334"/>
+                            </imageView>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="nm7-3M-R9O" userLabel="top-buttons-container">
                                 <rect key="frame" x="0.0" y="74" width="375" height="32"/>
                                 <subviews>
@@ -161,6 +164,7 @@
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                         <constraints>
                             <constraint firstItem="Cbz-bd-7Wm" firstAttribute="top" secondItem="x02-0h-Ge7" secondAttribute="bottom" constant="-100" id="5IT-7f-ujU"/>
+                            <constraint firstItem="oiA-NZ-MqF" firstAttribute="top" secondItem="SPq-km-g6a" secondAttribute="top" constant="131" id="7fK-lE-oWm"/>
                             <constraint firstItem="uj6-Pr-aHV" firstAttribute="top" secondItem="dB1-kR-8pn" secondAttribute="bottom" constant="14" id="8Ut-yC-k8b"/>
                             <constraint firstItem="x02-0h-Ge7" firstAttribute="leading" secondItem="32U-rT-DQT" secondAttribute="leading" id="Dlg-Q2-hhQ"/>
                             <constraint firstItem="uj6-Pr-aHV" firstAttribute="centerX" secondItem="SPq-km-g6a" secondAttribute="centerX" id="EHd-DP-BPA"/>
@@ -171,14 +175,18 @@
                             <constraint firstItem="dB1-kR-8pn" firstAttribute="centerX" secondItem="SPq-km-g6a" secondAttribute="centerX" id="RGd-9d-bus"/>
                             <constraint firstItem="nm7-3M-R9O" firstAttribute="leading" secondItem="x02-0h-Ge7" secondAttribute="leading" id="U2F-Ay-85o"/>
                             <constraint firstItem="Cbz-bd-7Wm" firstAttribute="centerX" secondItem="SPq-km-g6a" secondAttribute="centerX" id="dXw-o6-tbf"/>
+                            <constraint firstItem="oiA-NZ-MqF" firstAttribute="leading" secondItem="32U-rT-DQT" secondAttribute="leading" constant="30" id="guZ-Nt-kEH"/>
                             <constraint firstItem="dB1-kR-8pn" firstAttribute="top" secondItem="Cbz-bd-7Wm" secondAttribute="bottom" constant="-100" id="o9U-nU-2QU"/>
                             <constraint firstItem="nm7-3M-R9O" firstAttribute="trailing" secondItem="x02-0h-Ge7" secondAttribute="trailing" id="qFE-Ge-vIU"/>
+                            <constraint firstItem="32U-rT-DQT" firstAttribute="trailing" secondItem="oiA-NZ-MqF" secondAttribute="trailing" constant="30" id="syT-1K-Pp1"/>
+                            <constraint firstItem="x02-0h-Ge7" firstAttribute="bottom" secondItem="oiA-NZ-MqF" secondAttribute="bottom" constant="30" id="xZc-Go-byN"/>
                         </constraints>
                     </view>
                     <navigationItem key="navigationItem" id="qG9-QH-FBf">
                         <barButtonItem key="backBarButtonItem" title="Kembali" id="t2W-UH-tra"/>
                     </navigationItem>
                     <connections>
+                        <outlet property="cameraOverlay" destination="oiA-NZ-MqF" id="IpR-n5-fwq"/>
                         <outlet property="cameraView" destination="x02-0h-Ge7" id="KVx-B8-Wth"/>
                         <outlet property="flashLightButton" destination="HB7-8K-5Ma" id="JlN-Up-NdA"/>
                         <outlet property="flashlightView" destination="J2f-xx-oNM" id="bPp-9q-ge3"/>
@@ -261,6 +269,7 @@
     <resources>
         <image name="camera-button" width="213" height="213"/>
         <image name="camera-inactive" width="819" height="819"/>
+        <image name="cameraOverlay" width="963" height="1470"/>
         <image name="flashlight-off" width="78" height="96"/>
         <image name="inventory" width="108" height="108"/>
         <systemColor name="systemBackgroundColor">
