@@ -41,9 +41,6 @@ class ViewController: UIViewController {
         inventoryView.cornerRadius(width: 10, height: 10)
         flashlightView.cornerRadius(width: 10, height: 10)
         cameraView.backgroundColor = UIColor(rgb: K.blueColor1)
-        self.addCameraInput()
-        self.configurePreviewLayer()
-        self.addVideoOutput()
 
         keranjangPopUp.cornerRadius()
         keranjangPopUp.addGradient()
@@ -66,6 +63,20 @@ class ViewController: UIViewController {
             name: NSNotification.Name(K.NSpopUpDismissed),
             object: nil)
         
+        //MARK: - CAMERA
+        self.addCameraInput()
+        self.addVideoOutput()
+        self.configurePreviewLayer()
+        self.captureSession.startRunning()
+        
+        if let layers = cameraView.layer.sublayers {
+            for layer in layers {
+                if layer.name == "camera-active" {
+                    layer.removeFromSuperlayer()
+                    self.captureSession.stopRunning()
+                }
+            }
+        }
     }
     
     @objc func popUpDismissed(notification: NSNotification){
@@ -218,14 +229,18 @@ extension ViewController {
     }
     
     @objc func toggleControls() {
+        
         print("Touched 1")
+        
         resetTimer()
         if !captureSession.isRunning {configurePreviewLayer()}
         self.captureSession.startRunning()
     }
     
     @objc func toggleControls2(sender:UILongPressGestureRecognizer) {
+        
         print("Touched 2")
+        
         resetTimer()
         if !captureSession.isRunning {configurePreviewLayer()}
         self.captureSession.startRunning()
@@ -248,8 +263,6 @@ extension ViewController {
         super.viewWillAppear(animated)
         navigationController?.setNavigationBarHidden(true, animated: animated)
         navigationController?.navigationBar.prefersLargeTitles = false
-        
-        toggleControls()
     }
     
     override func viewWillDisappear(_ animated: Bool) {
@@ -386,7 +399,7 @@ extension ViewController: AVCaptureVideoDataOutputSampleBufferDelegate {
         cameraPreviewLayer.name = "camera-active"
         cameraPreviewLayer.videoGravity = .resizeAspectFill
         cameraPreviewLayer.connection?.videoOrientation = .portrait
-        cameraPreviewLayer.frame = cameraView.frame
+//        cameraPreviewLayer.frame = cameraView.frame
         cameraPreviewLayer.frame = cameraView.bounds
         cameraView.layer.addSublayer(cameraPreviewLayer)
     }
