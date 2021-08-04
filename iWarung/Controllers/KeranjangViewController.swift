@@ -12,18 +12,11 @@ class KeranjangViewController: UIViewController {
     @IBOutlet weak var totalBackgroundViewController: UIView!
     @IBOutlet weak var pembayaranButton: UIButton!
     @IBOutlet weak var pembayaranArrowButton: UIButton!
+    @IBOutlet weak var totalBelanja: UILabel!
     
-    let products: [Product] = [
-        Product(image: "bimoli", name: "Bimoli 2L", expired: "20-05-2022", price: 24000),
-        Product(image: "gulaku", name: "Gulaku", expired: "15-03-2025", price: 18000),
-        Product(image: "blue band", name: "Blue Band", expired: "31-01-2028", price: 30000),
-        Product(image: "bimoli", name: "Bimoli 2L", expired: "20-05-2022", price: 24000),
-        Product(image: "gulaku", name: "Gulaku", expired: "15-03-2025", price: 18000),
-        Product(image: "blue band", name: "Blue Band", expired: "31-01-2028", price: 30000),
-        Product(image: "bimoli", name: "Bimoli 2L", expired: "20-05-2022", price: 24000),
-        Product(image: "gulaku", name: "Gulaku", expired: "15-03-2025", price: 18000),
-        Product(image: "blue band", name: "Blue Band", expired: "31-01-2028", price: 30000)
-    ]
+    var products: [KeranjangModel] = []
+    
+    var totalSum = keranjangList.map({$0.total}).reduce(0, +)
  
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -35,7 +28,9 @@ class KeranjangViewController: UIViewController {
         keranjangCollectionView.dataSource = self
         keranjangCollectionView.delegate = self
         
+        print("Produks", products)
         
+        totalBelanja.text = String(totalSum)
     }
     
     lazy var gradient: CAGradientLayer = {
@@ -54,6 +49,15 @@ class KeranjangViewController: UIViewController {
         gradient.endPoint = CGPoint(x: 1, y: endY)
         return gradient
     }()
+    
+    
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        if (segue.identifier == "toPembayaran") {
+            
+            let landingVC = segue.destination as! PembayaranViewController
+            landingVC.totalPemabayaran = totalSum
+        }
+    }
     
    
     
@@ -106,9 +110,9 @@ extension KeranjangViewController: UICollectionViewDataSource, UICollectionViewD
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         let cell = keranjangCollectionView.dequeueReusableCell(withReuseIdentifier: "keranjangCell", for: indexPath) as! KeranjangCell
         
-        cell.productImage.image = UIImage(named: products[indexPath.row].image)
+        cell.productImage.image = UIImage(data: products[indexPath.row].image)
         cell.productName.text = products[indexPath.row].name
-        cell.productExpired.text = products[indexPath.row].expired
+//        cell.productExpired.text = products[indexPath.row].exp_date
         cell.productPrice.text = String(products[indexPath.row].price)
         
         // giving shadow to the cell

@@ -8,6 +8,9 @@
 import UIKit
 import Vision
 import AVFoundation
+import CoreData
+
+var keranjangList = [KeranjangModel]()
 
 class ViewController: UIViewController {
     @IBOutlet weak var cameraView: UIView!
@@ -41,9 +44,10 @@ class ViewController: UIViewController {
         inventoryView.cornerRadius(width: 10, height: 10)
         flashlightView.cornerRadius(width: 10, height: 10)
         cameraView.backgroundColor = UIColor(rgb: K.blueColor1)
-
+        
         keranjangPopUp.cornerRadius()
         keranjangPopUp.addGradient()
+//        keranjangPopUp.jumlahProduk.text =  "Produk"
         
         // picker rotation
         rotationAngle = -90 * (.pi/180)
@@ -76,6 +80,18 @@ class ViewController: UIViewController {
                     self.captureSession.stopRunning()
                 }
             }
+        }
+    }
+    
+    override func viewDidDisappear(_ animated: Bool) {
+        print("Jumlah produk \(keranjangList.count)")
+    }
+
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        if (segue.identifier == "toKeranjang"){
+            
+            let landingVC = segue.destination as! KeranjangViewController
+            landingVC.products = keranjangList
         }
     }
     
@@ -143,9 +159,10 @@ class ViewController: UIViewController {
     
     
     
-    @objc func showModal() {
+    @objc func showModal(product: ProductItem) {
         DispatchQueue.main.async {
             let slideVC = DetectedProductView()
+            slideVC.productItem = product
             slideVC.modalPresentationStyle = .custom
             slideVC.transitioningDelegate = self
             self.present(slideVC, animated: true, completion: { () in
@@ -187,7 +204,7 @@ class ViewController: UIViewController {
     }
     
     @IBAction func openModal(_ sender: UIButton) {
-        showModal()
+//        showModal()
     }
     
     
@@ -413,11 +430,65 @@ extension ViewController: AVCaptureVideoDataOutputSampleBufferDelegate {
         }
         // TODO Gunakan data barcode untuk mencari barang yang sudah terdaftar
         if self.isPressed == true && self.extractBarcode(fromFrame: frame) != nil {
+            let barcode = self.extractBarcode(fromFrame: frame)
             if isBarcode {
-                showModal()
+                let request : NSFetchRequest<ProductItem> = ProductItem.fetchRequest()
+                
+                request.predicate = NSPredicate(format: "barcode_value CONTAINS[cd] %@", barcode!)
+                var products: [ProductItem] = []
+                
+                do{
+                    products = try Persisten.shared.context.fetch(request)
+
+                    if !products.isEmpty {
+                        print("hasil search \(String(describing: products[0].name))")
+                        showModal(product: products[0])
+                    }
+                    
+                } catch let error{
+                    print("ga mencari \(error)")
+                }
+                print("barcode modal \(String(describing: barcode))")
             } else {
+                print("show modal select product")
                 showModalSelectProduct()
             }
+        }
+    }
+    
+//    func fetchProducts() -> [ProductItem] {
+//        let request : NSFetchRequest<ProductItem> = ProductItem.fetchRequest()
+//        request.sortDescriptors = [NSSortDescriptor(key: "name", ascending: true)]
+//        var products: [ProductItem] = []
+//
+//        do {
+//            products = try context.fetch(request)
+//        }
+//        catch {
+//            print("Error fetching data produk")
+//        }
+//
+//        return products
+//    }
+    
+    private func myFetchRequest()
+    {
+//        let moc = (UIApplication.shared.delegate as! AppDelegate).persistentContainer
+        let request : NSFetchRequest<ProductItem> = ProductItem.fetchRequest()
+//        var result: ProductItem
+        
+        request.predicate = NSPredicate(format: "name = %@", "David")
+
+        do{
+            let results = try Persisten.shared.context.fetch(request)
+
+            for result in results
+            {
+                 print(result)
+            }
+
+        } catch let error{
+            print(error)
         }
     }
     
@@ -468,5 +539,14 @@ extension ViewController: AVCaptureVideoDataOutputSampleBufferDelegate {
         default:
             break
         }
+    }
+}
+
+extension Int
+{
+    func toString() -> String
+    {
+        let myString = String(self)
+        return myString
     }
 }
