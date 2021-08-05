@@ -52,3 +52,21 @@ extension UIView {
             return gradient
         }
 }
+
+extension UIView {
+    func addDashedBorder(_ color: UIColor = UIColor(rgb: K.blueColor1), withWidth width: CGFloat = 2, cornerRadius: CGFloat = 5, dashPattern: [NSNumber] = [3,6]) {
+
+    let shapeLayer = CAShapeLayer()
+
+    shapeLayer.bounds = bounds
+    shapeLayer.position = CGPoint(x: bounds.width/2, y: bounds.height/2)
+    shapeLayer.fillColor = nil
+    shapeLayer.strokeColor = color.cgColor
+    shapeLayer.lineWidth = width
+    shapeLayer.lineJoin = CAShapeLayerLineJoin.round // Updated in swift 4.2
+    shapeLayer.lineDashPattern = dashPattern
+    shapeLayer.path = UIBezierPath(roundedRect: bounds, cornerRadius: cornerRadius).cgPath
+
+    self.layer.addSublayer(shapeLayer)
+  }
+}
