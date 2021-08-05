@@ -133,8 +133,6 @@ class DaftarProdukViewController: UIViewController, UICollectionViewDataSource, 
     
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         if (segue.identifier == "productDetail"){
-            
-            
             if let destination = segue.destination as?
                     TambahProdukFormViewController, let index =
                     daftarProdukCollectionView.indexPathsForSelectedItems?.first {

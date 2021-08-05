@@ -49,6 +49,9 @@
                                     <constraint firstItem="0XZ-Wg-Oer" firstAttribute="centerX" secondItem="jcw-iO-ggO" secondAttribute="centerX" id="mg5-lj-pmj"/>
                                 </constraints>
                             </view>
+                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="cameraOverlay" translatesAutoresizingMaskIntoConstraints="NO" id="ing-YW-wpR">
+                                <rect key="frame" x="46" y="100" width="283" height="365"/>
+                            </imageView>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="jZG-dy-ZPc">
                                 <rect key="frame" x="150" y="535" width="75" height="75"/>
                                 <constraints>
@@ -124,14 +127,18 @@
                             <constraint firstItem="mQS-RJ-Ifo" firstAttribute="leading" secondItem="jcw-iO-ggO" secondAttribute="leading" id="EXB-Oy-1TQ"/>
                             <constraint firstItem="Q9l-Mf-qRe" firstAttribute="centerX" secondItem="P2B-gc-w8f" secondAttribute="centerX" id="NYd-hZ-lJt"/>
                             <constraint firstItem="jcw-iO-ggO" firstAttribute="top" secondItem="P2B-gc-w8f" secondAttribute="top" id="P4i-dP-vHX"/>
+                            <constraint firstAttribute="trailingMargin" secondItem="ing-YW-wpR" secondAttribute="trailing" constant="30" id="WNp-1s-9gm"/>
                             <constraint firstItem="Vlw-KF-SNv" firstAttribute="bottom" secondItem="Q9l-Mf-qRe" secondAttribute="bottom" constant="32" id="Wl0-2e-w0M"/>
                             <constraint firstItem="jcw-iO-ggO" firstAttribute="leading" secondItem="Vlw-KF-SNv" secondAttribute="leading" id="eBn-by-TP9"/>
+                            <constraint firstItem="Q9l-Mf-qRe" firstAttribute="top" secondItem="ing-YW-wpR" secondAttribute="bottom" constant="-70" id="eCc-ir-2UY"/>
                             <constraint firstItem="Q9l-Mf-qRe" firstAttribute="top" secondItem="jcw-iO-ggO" secondAttribute="bottom" constant="-100" id="pQp-Ai-I1K"/>
+                            <constraint firstItem="ing-YW-wpR" firstAttribute="top" secondItem="P2B-gc-w8f" secondAttribute="topMargin" constant="100" id="qKp-d7-lKz"/>
                             <constraint firstItem="jZG-dy-ZPc" firstAttribute="centerX" secondItem="P2B-gc-w8f" secondAttribute="centerX" id="qpL-Ho-Hmb"/>
                             <constraint firstItem="Vlw-KF-SNv" firstAttribute="trailing" secondItem="jcw-iO-ggO" secondAttribute="trailing" id="x4y-io-GtJ"/>
                             <constraint firstItem="mQS-RJ-Ifo" firstAttribute="trailing" secondItem="jcw-iO-ggO" secondAttribute="trailing" id="zCM-wW-C4i"/>
                             <constraint firstItem="mQS-RJ-Ifo" firstAttribute="top" secondItem="Vlw-KF-SNv" secondAttribute="top" constant="30" id="zLc-ek-IUg"/>
                             <constraint firstItem="jZG-dy-ZPc" firstAttribute="top" secondItem="Q9l-Mf-qRe" secondAttribute="bottom" constant="-100" id="zbp-ki-5yN"/>
+                            <constraint firstItem="ing-YW-wpR" firstAttribute="leading" secondItem="P2B-gc-w8f" secondAttribute="leadingMargin" constant="30" id="zn8-t7-34Q"/>
                         </constraints>
                     </view>
                     <navigationItem key="navigationItem" id="2ZU-zm-xrb">
@@ -139,6 +146,7 @@
                     </navigationItem>
                     <connections>
                         <outlet property="backButtonView" destination="Ydf-qj-Ibo" id="6Oe-EY-sb7"/>
+                        <outlet property="cameraOverlay" destination="ing-YW-wpR" id="GSe-wp-xuD"/>
                         <outlet property="cameraView" destination="jcw-iO-ggO" id="Tst-qA-UZg"/>
                         <outlet property="flashLightButton" destination="4rT-dF-JDa" id="6TA-3y-etT"/>
                         <outlet property="flashlightView" destination="Pyb-KO-xzD" id="IMe-xu-S41"/>
@@ -154,6 +162,7 @@
     <resources>
         <image name="camera-button" width="213" height="213"/>
         <image name="camera-inactive" width="819" height="819"/>
+        <image name="cameraOverlay" width="963" height="1470"/>
         <image name="chevron.backward" catalog="system" width="96" height="128"/>
         <image name="flashlight-off" width="78" height="96"/>
         <systemColor name="systemBackgroundColor">

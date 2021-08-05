@@ -9,8 +9,9 @@ import UIKit
 import Vision
 import AVFoundation
 
-class TambahProdukScanViewController: UIViewController {
+class TambahProdukScanViewController: UIViewController, UIViewControllerTransitioningDelegate {
 
+    @IBOutlet weak var cameraOverlay: UIImageView!
     @IBOutlet weak var cameraView: UIView!
     @IBOutlet weak var flashLightButton: UIButton!
     @IBOutlet weak var backButtonView: UIView!
@@ -35,6 +36,8 @@ class TambahProdukScanViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        cameraOverlay.isHidden = true
+        cameraOverlay.alpha = 0
         title = "Tambah Produk"
         backButtonView.cornerRadius(width: 10, height: 10)
         flashlightView.cornerRadius(width: 10, height: 10)
@@ -147,6 +150,7 @@ extension TambahProdukScanViewController {
                 if layer.name == "camera-active" {
                     layer.removeFromSuperlayer()
                     self.captureSession.stopRunning()
+                    self.cameraOverlay.isHidden = true
                 }
             }
         }
@@ -267,8 +271,15 @@ extension TambahProdukScanViewController {
             self.captureSession.startRunning()
             self.isPressed = true
             UIView.animate(withDuration: 0.3, animations: {self.scanButton.transform = CGAffineTransform(scaleX: 0.9, y: 0.9)},completion: nil)
+            
+            cameraOverlay.isHidden = false
+            UIView.animateKeyframes(withDuration: 0.5, delay: 0, options: [.autoreverse, .repeat], animations: {
+                self.cameraOverlay.alpha = 1
+            }, completion: nil)
         } else if sender.state == .ended {
             print("Scan stopped...")
+            cameraOverlay.alpha = 0
+            cameraOverlay.isHidden = true
             scanButton.setImage(UIImage(named: "camera-button"), for: .normal)
             self.isPressed = false
             UIView.animate(withDuration: 0.2) {self.scanButton.transform = CGAffineTransform.identity}}
@@ -297,10 +308,12 @@ extension TambahProdukScanViewController: AVCaptureVideoDataOutputSampleBufferDe
         if self.isPressed == true && self.extractBarcode(fromFrame: frame) != nil {
             if let barcode = self.extractBarcode(fromFrame: frame) {
                 let result: [ProductItem] = self.productService.fetchProductsByBarcode(with: barcode)
-                
-                if !result.isEmpty {
-//                    showModal(product: result[0])
-                    print("hasil search \(String(describing: result[0]))")
+                print("RESULT: ",result)
+                if result.isEmpty {
+                    DispatchQueue.main.async {
+                        self.cameraOverlay.alpha = 0
+                        self.showModalAddProductForm(with: String(barcode))
+                    }
                 }
             }
         }
@@ -352,6 +365,30 @@ extension TambahProdukScanViewController: AVCaptureVideoDataOutputSampleBufferDe
             break
         default:
             break
+        }
+    }
+}
+
+extension TambahProdukScanViewController {
+    func showModalAddProductForm(with barcode: String) {
+        print("BARCODE: ",barcode)
+        DispatchQueue.main.async {
+            let storyBoard: UIStoryboard = UIStoryboard(name: "TambahProdukForm", bundle: nil)
+            let newViewController = storyBoard.instantiateViewController(withIdentifier: "TambahProdukForm") as! TambahProdukFormViewController
+            newViewController.modalPresentationStyle = .popover
+            newViewController.scanningBarcode = String(barcode)
+            self.present(newViewController, animated: true, completion: nil)
+        }
+    }
+    
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        if (segue.identifier == "toKeranjang"){
+//            let landingVC = segue.destination as! KeranjangViewController
+//                        landingVC.products = keranjangList
+        } else if segue.identifier == "TambahProdukForm" {
+            if let navigationVC = segue.destination as? UINavigationController, let myViewController = navigationVC.topViewController as? TambahProdukFormViewController {
+//                    myViewController.yourProperty = myProperty
+                }
         }
     }
 }
