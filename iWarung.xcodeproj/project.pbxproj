@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		3F28F79D26BD2A9400F1050A /* UIImage.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3F28F79C26BD2A9400F1050A /* UIImage.swift */; };
 		3FA214B726B0DB320036633F /* SelectProductView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3FA214B526B0DB320036633F /* SelectProductView.swift */; };
 		3FA214B826B0DB320036633F /* SelectProductView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 3FA214B626B0DB320036633F /* SelectProductView.xib */; };
 		3FE725FB26A96F24009F4D32 /* Pembayaran.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 3FE725FA26A96F24009F4D32 /* Pembayaran.storyboard */; };
@@ -63,6 +64,7 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		3F28F79C26BD2A9400F1050A /* UIImage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIImage.swift; sourceTree = "<group>"; };
 		3FA214B526B0DB320036633F /* SelectProductView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SelectProductView.swift; sourceTree = "<group>"; };
 		3FA214B626B0DB320036633F /* SelectProductView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = SelectProductView.xib; sourceTree = "<group>"; };
 		3FE725FA26A96F24009F4D32 /* Pembayaran.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = Pembayaran.storyboard; sourceTree = "<group>"; };
@@ -241,6 +243,7 @@
 				BD3A595626B249C400BA4234 /* UISegmented.swift */,
 				BD1FB09A26BB188200648B18 /* Int.swift */,
 				BD1FB09C26BB1DBD00648B18 /* Date.swift */,
+				3F28F79C26BD2A9400F1050A /* UIImage.swift */,
 			);
 			path = Extensions;
 			sourceTree = "<group>";
@@ -394,6 +397,7 @@
 				BDE43C2326AF4947004CF3CC /* OnboardingViewController.swift in Sources */,
 				BD1FFF3426AB65F800EB9AAD /* Product.swift in Sources */,
 				BD74BCB026A4820B00E3EE75 /* constants.swift in Sources */,
+				3F28F79D26BD2A9400F1050A /* UIImage.swift in Sources */,
 				BD1FFF3D26AC24D300EB9AAD /* UIColor.swift in Sources */,
 				BD5AC58526A369F400A52336 /* AppDelegate.swift in Sources */,
 				3FF1EE7D26AE284000F4F122 /* DetectedProductView.swift in Sources */,

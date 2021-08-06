@@ -59,6 +59,9 @@
                                     <constraint firstAttribute="height" constant="75" id="f4A-ec-KUe"/>
                                 </constraints>
                                 <state key="normal" image="camera-button"/>
+                                <connections>
+                                    <action selector="photoButtonPressed:" destination="tPi-wd-8Lf" eventType="touchUpInside" id="KyV-6K-EVV"/>
+                                </connections>
                             </button>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="mQS-RJ-Ifo" userLabel="top-buttons-container">
                                 <rect key="frame" x="0.0" y="30" width="375" height="32"/>

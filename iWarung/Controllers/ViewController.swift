@@ -27,6 +27,7 @@ class ViewController: UIViewController {
     private let videoOutput                             = AVCaptureVideoDataOutput()
     private let sequenceHandler                         = VNSequenceRequestHandler()
     private var isBarcode                               = true
+    private let photoOutput                             = AVCapturePhotoOutput()
     
     var pickerData          : [String]      = K.pickerData
     var rotationAngle       : CGFloat!
@@ -37,6 +38,12 @@ class ViewController: UIViewController {
     var timer               : Timer?
     
     let productService      : Persisten = Persisten()
+    
+    lazy var textRecognizeRequest: VNRecognizeTextRequest = {
+        let textDetectRequest = VNRecognizeTextRequest(completionHandler: self.recognizeTextHandler)
+        textDetectRequest.recognitionLevel = .accurate
+        return textDetectRequest
+    }()
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -180,15 +187,24 @@ class ViewController: UIViewController {
         navigationController?.popViewController(animated: true)
     }
     
-    @IBAction func unwindToMain(segue: UIStoryboardSegue) {
-        print("This is the First View Controllers")
+    @IBAction func photoButtonPressed(_ sender: Any) {
+        if !isBarcode {
+            if !captureSession.isRunning {
+                resetTimer()
+                configurePreviewLayer()
+                self.captureSession.startRunning()
+            } else {
+                cameraOverlay.isHidden = false
+                UIView.animateKeyframes(withDuration: 0.5, delay: 0, options: [], animations: {
+                    self.cameraOverlay.alpha = 1
+                }, completion: { finished in
+                    self.cameraOverlay.isHidden = true
+                    self.cameraOverlay.alpha = 0
+                })
+                takePhoto()
+            }
+        }
     }
-    
-    @IBAction func openModal(_ sender: UIButton) {
-        //        showModal()
-    }
-    
-    
 }
 
 //MARK: - Check Inactivity
@@ -340,6 +356,13 @@ extension ViewController: UIPickerViewDelegate , UIPickerViewDataSource {
         return view
     }
     
+    func pickerView(_ pickerView: UIPickerView, didSelectRow row: Int, inComponent component: Int) {
+        if row == 0 {
+            isBarcode = true
+        } else {
+            isBarcode = false
+        }
+    }
 }
 
 //MARK: - Scan Button
@@ -391,7 +414,7 @@ extension ViewController: AVCaptureVideoDataOutputSampleBufferDelegate {
             debugPrint("unable to get image from sample buffer")
             return
         }
-        if self.isPressed == true && self.extractBarcode(fromFrame: frame) != nil {
+        if self.isBarcode == true && self.isPressed == true && self.extractBarcode(fromFrame: frame) != nil {
             if let barcode = self.extractBarcode(fromFrame: frame) {
                 let result: [ProductItem] = self.productService.fetchProductsByBarcode(with: barcode)
                 
@@ -427,6 +450,9 @@ extension ViewController: AVCaptureVideoDataOutputSampleBufferDelegate {
         self.videoOutput.videoSettings = [(kCVPixelBufferPixelFormatTypeKey as NSString) : NSNumber(value: kCVPixelFormatType_32BGRA)] as [String : Any]
         self.videoOutput.setSampleBufferDelegate(self, queue: DispatchQueue(label: "my.image.handling.queue"))
         self.captureSession.addOutput(self.videoOutput)
+        if captureSession.canAddOutput(photoOutput) {
+            captureSession.addOutput(photoOutput)
+        }
     }
     
     static func checkPermission() {
@@ -453,6 +479,111 @@ extension ViewController: AVCaptureVideoDataOutputSampleBufferDelegate {
             break
         default:
             break
+        }
+    }
+}
+
+//MARK: - Vision Take Photo
+extension ViewController: AVCapturePhotoCaptureDelegate {
+    func takePhoto() {
+        let photoSettings = AVCapturePhotoSettings()
+        if let photoPreviewType = photoSettings.availablePreviewPhotoPixelFormatTypes.first {
+            photoSettings.previewPhotoFormat = [kCVPixelBufferPixelFormatTypeKey as String: photoPreviewType]
+            photoOutput.capturePhoto(with: photoSettings, delegate: self)
+        }
+    }
+    
+    func photoOutput(_ output: AVCapturePhotoOutput, didFinishProcessingPhoto photo: AVCapturePhoto, error: Error?) {
+        if let _ = error {
+                    // Handle Error
+                } else if let cgImageRepresentation = photo.cgImageRepresentation(),
+                    let orientationInt = photo.metadata[String(kCGImagePropertyOrientation)] as? UInt32,
+                    let imageOrientation = UIImage.Orientation.orientation(fromCGOrientationRaw: orientationInt) {
+
+                    // Create image with proper orientation
+                    let cgImage = cgImageRepresentation.takeUnretainedValue()
+                    let cgOrientation = CGImagePropertyOrientation(imageOrientation)
+                    performVisionRequest(image: cgImage, orientation: cgOrientation)
+                }
+    }
+    
+    // MARK: - Vision
+    
+    /// - Tag: PerformRequests
+    fileprivate func performVisionRequest(image: CGImage, orientation: CGImagePropertyOrientation) {
+        
+        // Fetch desired requests based on switch status.
+        let requests = createVisionRequests()
+        // Create a request handler.
+        let imageRequestHandler = VNImageRequestHandler(cgImage: image,
+                                                        orientation: orientation,
+                                                        options: [:])
+        
+        // Send the requests to the request handler.
+        DispatchQueue.global(qos: .userInitiated).async {
+            do {
+                try imageRequestHandler.perform(requests)
+            } catch let error as NSError {
+                print("Failed to perform image request: \(error)")
+                self.presentAlert("Image Request Failed", error: error)
+                return
+            }
+        }
+    }
+    
+    /// - Tag: CreateRequests
+    fileprivate func createVisionRequests() -> [VNRequest] {
+        
+        // Create an array to collect all desired requests.
+        var requests: [VNRequest] = []
+        requests.append(self.textRecognizeRequest)
+        
+        // Return grouped requests as a single array.
+        return requests
+    }
+    
+    fileprivate func recognizeTextHandler(request: VNRequest, error: Error?) {
+        var resultScanText = [String]()
+        
+        guard let results = request.results as? [VNRecognizedTextObservation] else {
+            return
+        }
+        
+        let maximumCandidates = 1
+
+        for visionResult in results {
+            guard let candidate = visionResult.topCandidates(maximumCandidates).first else { continue }
+            resultScanText.append(candidate.string)
+        }
+            
+        // MARK : Koding untuk menyimpan produk dari vision text
+        let result: [ProductItem] = self.productService.fetchProductsByBarcode(with: resultScanText.joined(separator: ","))
+        
+        if !result.isEmpty {
+            DispatchQueue.main.async {
+                self.scanButton.isHighlighted = false
+                self.cameraOverlay.alpha = 0
+            }
+            showModalDetectedProduct(product: result[0])
+            print("hasil search \(String(describing: result[0]))")
+        }
+        
+        print("Result Text : \(resultScanText)")
+    }
+    
+    // MARK: - Helper Methods
+    func presentAlert(_ title: String, error: NSError) {
+        // Always present alert on main thread.
+        DispatchQueue.main.async {
+            let alertController = UIAlertController(title: title,
+                                                    message: error.localizedDescription,
+                                                    preferredStyle: .alert)
+            let okAction = UIAlertAction(title: "OK",
+                                         style: .default) { _ in
+                                            // Do nothing -- simply dismiss alert.
+            }
+            alertController.addAction(okAction)
+            self.present(alertController, animated: true, completion: nil)
         }
     }
 }
