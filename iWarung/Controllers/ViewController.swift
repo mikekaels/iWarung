@@ -10,7 +10,7 @@ import Vision
 import AVFoundation
 import CoreData
 
-var keranjangList = [KeranjangModel]()
+var itemsKeranjang = [ItemKeranjang]()
 
 class ViewController: UIViewController {
     @IBOutlet weak var cameraView: UIView!
@@ -85,13 +85,14 @@ class ViewController: UIViewController {
     }
     
     override func viewDidDisappear(_ animated: Bool) {
-        print("Jumlah produk \(keranjangList.count)")
+        print("Jumlah produk \(itemsKeranjang.count)")
     }
     
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         if (segue.identifier == "toKeranjang"){
+            print("to Keranjang")
             let landingVC = segue.destination as! KeranjangViewController
-            //            landingVC.products = keranjangList
+            landingVC.products = itemsKeranjang
         }
     }
     

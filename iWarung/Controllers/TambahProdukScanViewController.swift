@@ -296,11 +296,13 @@ extension TambahProdukScanViewController: AVCaptureVideoDataOutputSampleBufferDe
         }
         if self.isPressed == true && self.extractBarcode(fromFrame: frame) != nil {
             if let barcode = self.extractBarcode(fromFrame: frame) {
-                let result: [ProductItem] = self.productService.fetchProductsByBarcode(with: barcode)
-                
-                if !result.isEmpty {
-//                    showModal(product: result[0])
-                    print("hasil search \(String(describing: result[0]))")
+                DispatchQueue.main.async {
+                    let storyboard: UIStoryboard = UIStoryboard(name: "TambahProdukForm", bundle: nil)
+                    let vc = storyboard.instantiateViewController(identifier: "TambahProdukForm") as! TambahProdukFormViewController
+                            
+                    vc.scanningBarcode = barcode
+                    self.present(vc, animated: true, completion: nil)
+    //                self.navigationController?.popViewController(animated: true)
                 }
             }
         }

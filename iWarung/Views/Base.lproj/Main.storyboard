@@ -75,7 +75,7 @@
                                             <constraint firstAttribute="height" constant="34" id="WvB-kQ-ac3"/>
                                         </constraints>
                                         <connections>
-                                            <segue destination="Xo6-r7-51v" kind="show" id="8I7-vO-noz"/>
+                                            <segue destination="Xo6-r7-51v" kind="show" identifier="toKeranjang" id="8I7-vO-noz"/>
                                         </connections>
                                     </button>
                                 </subviews>

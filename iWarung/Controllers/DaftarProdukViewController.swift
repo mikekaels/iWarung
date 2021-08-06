@@ -119,7 +119,7 @@ class DaftarProdukViewController: UIViewController, UICollectionViewDataSource, 
     }
     
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
-//        self.performSegue(withIdentifier: "productDetail", sender: self)
+        self.performSegue(withIdentifier: "productDetail", sender: self)
     }
     
     @IBAction func tambahProdukPressed(_ sender: Any) {
