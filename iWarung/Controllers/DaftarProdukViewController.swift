@@ -213,7 +213,7 @@ extension DaftarProdukViewController {
                         button.titleLabel?.font = K.segmentedButtonSelected
                     }
                     
-                    print(button.titleLabel!)
+                    print(button.titleLabel!.text!)
                     
 
                 } else {
