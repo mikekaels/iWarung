@@ -8,52 +8,63 @@
 import UIKit
 import CoreData
 
-class TambahProdukFormViewController: UIViewController {
+class TambahProdukFormViewController: UIViewController{
     
+    
+    @IBOutlet weak var imageBackgroundView: UIView!
     @IBOutlet weak var addProdItem: UIButton!
     @IBOutlet weak var deleteProdukButton: UIButton!
     @IBOutlet weak var namaTF: UITextField!
     @IBOutlet weak var hargaTF: UITextField!
     @IBOutlet weak var stockTF: UITextField!
+    @IBOutlet weak var kadaluwarsaTF: UITextField!
     @IBOutlet weak var deskTF: UITextView!
     @IBOutlet weak var imageButton: UIButton!
     @IBOutlet weak var imageThumnail: UIImageView!
     @IBOutlet weak var kadaluwarsaPicker: UIDatePicker!
     
     var selectedItem: ProductItem? = nil
-    var scanningBarcode: String? = nil
+    var scanningBarcode: String? = ""
     var datePicker: Date!
+    let datePickerView = UIDatePicker()
     
     override func viewDidLoad() {
+        
+        
         super.viewDidLoad()
-        
-        
+        self.imageBackgroundView.addDashedBorder()
+        self.hideKeyboardWhenTappedAround()
         imageThumnail.cornerRadius()
         
-        addProdItem.cornerRadius(width: 10, height: 4)
-        addProdItem.addGradient()
-        deleteProdukButton.cornerRadius(width: 10, height: 4)
-        deleteProdukButton.cornerRadius()
         
+        addProdItem.cornerRadius()
+        addProdItem.setTitle("Simpan", for: .normal)
         
-        if (selectedItem != nil) {
-            namaTF.text = selectedItem?.name
-            deskTF.text = selectedItem?.desc
-            hargaTF.text = "\(selectedItem?.price ?? 0)"
-            stockTF.text = "\(selectedItem?.stock ?? 0)"
-            kadaluwarsaPicker.date = (selectedItem?.exp_date!)!
-            imageThumnail.image = UIImage(data: (selectedItem?.image_data)!)
-            
-            addProdItem.setTitle("Simpan Perubahan", for: UIControl.State.normal)
-            
-        } else {
-            deleteProdukButton.isHidden = true
-        }
+        createDatePicker()
+//        addProdItem.cornerRadius(width: 10, height: 4)
+//        addProdItem.addGradient()
+//        deleteProdukButton.cornerRadius(width: 10, height: 4)
+//        deleteProdukButton.cornerRadius()
         
-        kadaluwarsaPicker.datePickerMode = .dateAndTime
-        kadaluwarsaPicker.addTarget(self, action: #selector(datePickerValueChanged(sender: )), for: UIControl.Event.valueChanged)
-        
-        self.setupHideKeyboardOnTap()
+//
+//        if (selectedItem != nil) {
+//            namaTF.text = selectedItem?.name
+//            deskTF.text = selectedItem?.desc
+//            hargaTF.text = "\(selectedItem?.price ?? 0)"
+//            stockTF.text = "\(selectedItem?.stock ?? 0)"
+//            kadaluwarsaPicker.date = (selectedItem?.exp_date!)!
+//            imageThumnail.image = UIImage(data: (selectedItem?.image_data)!)
+//
+//            addProdItem.setTitle("Simpan Perubahan", for: UIControl.State.normal)
+//
+//        } else {
+//            deleteProdukButton.isHidden = true
+//        }
+//
+//        kadaluwarsaPicker.datePickerMode = .dateAndTime
+//        kadaluwarsaPicker.addTarget(self, action: #selector(datePickerValueChanged(sender: )), for: UIControl.Event.valueChanged)
+//
+//        self.setupHideKeyboardOnTap()
     }
     
     /// Call this once to dismiss open keyboards by tapping anywhere in the view controller
@@ -93,10 +104,10 @@ class TambahProdukFormViewController: UIViewController {
             return
         }
         
-        guard let desc = deskTF.text else {
-            print("error deskripsi")
-            return
-        }
+//        guard let desc = deskTF.text else {
+//            print("error deskripsi")
+//            return
+//        }
         
         guard let price = hargaTF.text else {
             print("error harga")
@@ -114,12 +125,9 @@ class TambahProdukFormViewController: UIViewController {
             return
         }
         
-        guard let date = datePicker else {
-            print("error date")
-            return
-        }
+        let date = datePickerView.date
         
-        Persisten.shared.insertProduct(scanValue: codeValue, name: nama, description: desc, price: (price as NSString).floatValue, image: image, expired: date, stock: Int64(stock)!)
+        Persisten.shared.insertProduct(scanValue: codeValue, name: nama, description: "deskripsi", price: (price as NSString).floatValue, image: image, expired: date, stock: Int64(stock)!)
             self.dismiss(animated: true, completion: {
                 self.navigationController?.popViewController(animated: true)
             })
@@ -193,3 +201,28 @@ extension TambahProdukFormViewController: UIImagePickerControllerDelegate, UINav
     }
 }
 
+//MARK: - DATE PICKER
+extension TambahProdukFormViewController {
+    // toolbar
+    func createDatePicker() {
+        let toolbar = UIToolbar()
+        toolbar.sizeToFit()
+
+        // bar button
+        let doneBtn = UIBarButtonItem(barButtonSystemItem: .done, target: nil, action: #selector(inputDate))
+        
+        toolbar.setItems([doneBtn], animated: true)
+        
+        datePickerView.preferredDatePickerStyle = .wheels
+        datePickerView.datePickerMode = .date
+        
+        // assign toolbar
+        kadaluwarsaTF.inputAccessoryView = toolbar
+        kadaluwarsaTF.inputView = datePickerView
+    }
+    
+    @objc func inputDate() {
+        kadaluwarsaTF.text = "\(datePickerView.date)"
+        self.view.endEditing(true)
+    }
+}

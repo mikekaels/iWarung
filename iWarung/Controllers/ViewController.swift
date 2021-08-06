@@ -363,9 +363,9 @@ extension ViewController {
             }, completion: nil)
             
         } else if sender.state == .ended {
+            print("Scan stopped...")
             cameraOverlay.alpha = 0
             cameraOverlay.isHidden = true
-            print("Scan stopped...")
             scanButton.setImage(UIImage(named: "camera-button"), for: .normal)
             self.isPressed = false
             UIView.animate(withDuration: 0.2) {self.scanButton.transform = CGAffineTransform.identity}}
