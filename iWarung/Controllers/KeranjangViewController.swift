@@ -14,9 +14,8 @@ class KeranjangViewController: UIViewController {
     @IBOutlet weak var pembayaranArrowButton: UIButton!
     @IBOutlet weak var totalBelanja: UILabel!
     
-    var products: [ProductItem] = []
-    
-    var totalSum = keranjangList.map({$0.total}).reduce(0, +)
+    var products: [ItemKeranjang] = []
+    var totalSum = itemsKeranjang.map({$0.total}).reduce(0, +)
     
     let productService : Persisten = Persisten()
  
@@ -34,7 +33,7 @@ class KeranjangViewController: UIViewController {
         
         totalBelanja.text = String(totalSum)
         
-        products = productService.fetchProducts()
+//        products = productService.fetchProducts()
     }
     
     lazy var gradient: CAGradientLayer = {
@@ -60,6 +59,7 @@ class KeranjangViewController: UIViewController {
             
             let landingVC = segue.destination as! PembayaranViewController
             landingVC.totalPemabayaran = totalSum
+            landingVC.listItem = products
         }
     }
     
@@ -114,11 +114,13 @@ extension KeranjangViewController: UICollectionViewDataSource, UICollectionViewD
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         let cell = keranjangCollectionView.dequeueReusableCell(withReuseIdentifier: "keranjangCell", for: indexPath) as! KeranjangCell
         
-        cell.productImage.image = UIImage(data: products[indexPath.row].image_data!)
+        cell.productImage.image = UIImage(data: products[indexPath.row].image)
         cell.productName.text = products[indexPath.row].name
 //        cell.productExpired.text = products[indexPath.row].exp_date
         cell.productPrice.text = String(products[indexPath.row].price)
         
+        
+//        cell.plusButton.pressesBegan(<#T##presses: Set<UIPress>##Set<UIPress>#>, with: <#T##UIPressesEvent?#>)
         // giving shadow to the cell
         cell.layer.cornerRadius = 15.0
         cell.layer.borderWidth = 0.0
