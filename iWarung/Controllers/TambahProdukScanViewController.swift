@@ -500,8 +500,6 @@ extension TambahProdukScanViewController: AVCapturePhotoCaptureDelegate {
 
         for visionResult in results {
             guard let candidate = visionResult.topCandidates(maximumCandidates).first else { continue }
-            
-            print(candidate.string)
             resultScanText.append(candidate.string)
         }
             
@@ -511,12 +509,7 @@ extension TambahProdukScanViewController: AVCapturePhotoCaptureDelegate {
             self.showModalAddProductForm(with: resultScanText.joined(separator: ","))
         }
         
-        print(resultScanText)
-        for value in scanValue {
-            if value.contains(letter.first ?? "") {
-                print("ini \(value[0])")
-            }
-        }
+        print("Result Text : \(resultScanText)")
     }
     
     // MARK: - Helper Methods
