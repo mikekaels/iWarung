@@ -132,6 +132,21 @@ class TambahProdukFormViewController: UIViewController{
                 self.navigationController?.popViewController(animated: true)
             })
             
+//            manager?.productItem.name = nama
+////            manager?.productItem.desc = desc
+//            manager?.productItem.barcode_value = codeValue
+//            manager?.productItem.exp_date = date
+//            manager?.productItem.price = (price as NSString).floatValue
+//            manager?.productItem.stock = Int64(stock)!
+//            manager?.productItem.image_data = image
+//            manager?.updateData(onSuccess: {
+//                print("Berhasil ditambahkan")
+//                self.dismiss(animated: true, completion: nil)
+//            }, onError: {
+//                print("Gagal ditambahkan")
+//            })
+//
+            
             // edit
         } else {
             
@@ -140,10 +155,10 @@ class TambahProdukFormViewController: UIViewController{
                 return
             }
             
-            guard let desc = deskTF.text else {
-                print("error deskripsi")
-                return
-            }
+//            guard let desc = deskTF.text else {
+//                print("error deskripsi")
+//                return
+//            }
             
             guard let price = hargaTF.text else {
                 print("error harga")
@@ -156,7 +171,7 @@ class TambahProdukFormViewController: UIViewController{
             }
             
             self.selectedItem?.name = nama
-            self.selectedItem?.desc = desc
+//            self.selectedItem?.desc = desc
             self.selectedItem?.price = (price as NSString).floatValue
             self.selectedItem?.image_data = image
             
