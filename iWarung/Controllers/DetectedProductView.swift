@@ -64,7 +64,7 @@ class DetectedProductView: UIViewController {
         qty = 1;
         total = Float(qty!) * productItem.price
         
-        keranjangList.append(KeranjangModel(image: productItem.image_data!, name: productItem.name!, expired: productItem.exp_date!, price: productItem.price, qty: qty!, total: total!))
+        itemsKeranjang.append(ItemKeranjang(image: productItem.image_data!, name: productItem.name!, expired: productItem.exp_date!, price: productItem.price, qty: qty!, total: total!))
         dismiss(animated: true)
     }
     

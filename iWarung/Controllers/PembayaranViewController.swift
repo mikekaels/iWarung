@@ -18,6 +18,7 @@ class PembayaranViewController: UIViewController {
     @IBOutlet weak var changeLabel: UILabel!
     
     var totalPemabayaran: Float = 0.0
+    var listItem = [ItemKeranjang]()
     
     
     @IBAction func finishTransactionPressed(_ sender: UIButton) {
@@ -37,6 +38,7 @@ extension PembayaranViewController {
         self.hideKeyboardWhenTappedAround()
         totalTagihan.text = String(totalPemabayaran)
         
+        print("list Item", listItem)
         self.receivedMoneyTextfield.addTarget(self, action: #selector(PembayaranViewController.textFieldDidChange(_:)), for: .editingChanged)
     }
     

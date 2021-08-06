@@ -11,7 +11,14 @@
         <attribute name="type_scan" optional="YES" attributeType="String"/>
         <attribute name="vision_value" optional="YES" attributeType="String"/>
     </entity>
+    <entity name="Transactions" representedClassName="Transactions" syncable="YES" codeGenerationType="class">
+        <attribute name="bill" optional="YES" attributeType="Float" defaultValueString="0.0" usesScalarValueType="YES"/>
+        <attribute name="change" optional="YES" attributeType="Float" defaultValueString="0.0" usesScalarValueType="YES"/>
+        <attribute name="money" optional="YES" attributeType="Float" defaultValueString="0.0" usesScalarValueType="YES"/>
+        <attribute name="trx_date" optional="YES" attributeType="Date" usesScalarValueType="NO"/>
+    </entity>
     <elements>
-        <element name="ProductItem" positionX="-63" positionY="-18" width="128" height="164"/>
+        <element name="ProductItem" positionX="-63" positionY="-18" width="128" height="178"/>
+        <element name="Transactions" positionX="161.0419921875" positionY="-7.8270263671875" width="128" height="103"/>
     </elements>
 </model>
