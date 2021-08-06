@@ -131,14 +131,20 @@ class TambahProdukScanViewController: UIViewController, UIViewControllerTransiti
     
     @IBAction func photoButtonPressed(_ sender: Any) {
         if !isBarcode {
-            takePhoto()
-            cameraOverlay.isHidden = false
-            UIView.animateKeyframes(withDuration: 0.5, delay: 0, options: [], animations: {
-                self.cameraOverlay.alpha = 1
-            }, completion: { finished in
-                self.cameraOverlay.isHidden = true
-                self.cameraOverlay.alpha = 0
-            })
+            if !captureSession.isRunning {
+                resetTimer()
+                configurePreviewLayer()
+                self.captureSession.startRunning()
+            } else {
+                cameraOverlay.isHidden = false
+                UIView.animateKeyframes(withDuration: 0.5, delay: 0, options: [], animations: {
+                    self.cameraOverlay.alpha = 1
+                }, completion: { finished in
+                    self.cameraOverlay.isHidden = true
+                    self.cameraOverlay.alpha = 0
+                })
+                takePhoto()
+            }
         }
     }
 }
@@ -484,15 +490,7 @@ extension TambahProdukScanViewController: AVCapturePhotoCaptureDelegate {
     }
     
     fileprivate func recognizeTextHandler(request: VNRequest, error: Error?) {
-        var letter = [String]()
         var resultScanText = [String]()
-
-        let scanValue1 = ["AYO MINUM"]
-        let scanValue2 = ["SINGKONG","KERITING","AYAM","GEPREK"]
-        let scanValue3 = ["Sandwich","Roma","Susu & Cokelat"]
-        let scanValue = [scanValue1, scanValue2, scanValue3]
-        var redBoxes = [CGRect]() // Shows all recognized text lines
-        var greenBoxes = [CGRect]() // Shows words that might be serials
         
         guard let results = request.results as? [VNRecognizedTextObservation] else {
             return
@@ -505,23 +503,14 @@ extension TambahProdukScanViewController: AVCapturePhotoCaptureDelegate {
             
             print(candidate.string)
             resultScanText.append(candidate.string)
+        }
             
-            redBoxes.append(visionResult.boundingBox)
-            
-            for value in scanValue {
-                for dataScan in value {
-                    if let range = candidate.string.range(of: dataScan),
-                       let boxObservation = try? candidate.boundingBox(for: range) {
-                        let foundTextBox = boxObservation.boundingBox
-                        greenBoxes.append(foundTextBox)
-                        letter.append(dataScan)
-                    }
-                }
-            }
-            
+        // MARK : Koding untuk menyimpan produk dari vision text
+        DispatchQueue.main.async {
+            self.cameraOverlay.alpha = 0
+            self.showModalAddProductForm(with: resultScanText.joined(separator: ","))
         }
         
-        print(letter)
         print(resultScanText)
         for value in scanValue {
             if value.contains(letter.first ?? "") {
