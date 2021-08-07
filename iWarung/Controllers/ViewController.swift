@@ -92,14 +92,13 @@ class ViewController: UIViewController {
     }
     
     override func viewDidDisappear(_ animated: Bool) {
-        print("Jumlah produk \(itemsKeranjang.count)")
     }
     
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         if (segue.identifier == "toKeranjang"){
             print("to Keranjang")
             let landingVC = segue.destination as! KeranjangViewController
-            landingVC.products = itemsKeranjang
+//            landingVC.keranjangManager.items = itemsKeranjang
         }
     }
     

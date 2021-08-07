@@ -14,25 +14,22 @@ class KeranjangViewController: UIViewController {
     @IBOutlet weak var pembayaranArrowButton: UIButton!
     @IBOutlet weak var totalBelanja: UILabel!
     
-    var products: [ItemKeranjang] = []
+    var keranjangManager = KeranjangManager()
     var totalSum = itemsKeranjang.map({$0.total}).reduce(0, +)
     
     let productService : Persisten = Persisten()
- 
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         title = "Keranjang"
-        
+        print("KERANJANG ITEM: ",keranjangManager.fetchItems())
         let nibCell = UINib(nibName: "KeranjangCell", bundle: nil)
         keranjangCollectionView.register(nibCell, forCellWithReuseIdentifier: "keranjangCell")
         
         keranjangCollectionView.dataSource = self
         keranjangCollectionView.delegate = self
         
-        print("Produks", products)
-        
         totalBelanja.text = String(totalSum)
-        
 //        products = productService.fetchProducts()
     }
     
@@ -59,11 +56,9 @@ class KeranjangViewController: UIViewController {
             
             let landingVC = segue.destination as! PembayaranViewController
             landingVC.totalPemabayaran = totalSum
-            landingVC.listItem = products
+            landingVC.listItem = keranjangManager.items
         }
     }
-    
-   
     
 }
 
@@ -108,20 +103,22 @@ extension KeranjangViewController {
 
 extension KeranjangViewController: UICollectionViewDataSource, UICollectionViewDelegate {
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        return products.count
+        return keranjangManager.fetchItems().count
     }
     
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         let cell = keranjangCollectionView.dequeueReusableCell(withReuseIdentifier: "keranjangCell", for: indexPath) as! KeranjangCell
         
-        cell.productImage.image = UIImage(data: products[indexPath.row].image)
-        cell.productName.text = products[indexPath.row].name
+        cell.delegate = self
+        
+        cell.totalProduk = keranjangManager.fetchItems()[indexPath.row].qty
+        cell.totalProductLabel.text = String(keranjangManager.fetchItems()[indexPath.row].qty)
+        cell.productImage.image = UIImage(data: keranjangManager.fetchItems()[indexPath.row].image)
+        cell.productName.text = keranjangManager.fetchItems()[indexPath.row].name
 //        cell.productExpired.text = products[indexPath.row].exp_date
-        cell.productPrice.text = String(products[indexPath.row].price)
+        cell.productPrice.text = String(keranjangManager.fetchItems()[indexPath.row].price)
+        cell.indexPath = indexPath.row
         
-        
-        
-//        cell.plusButton.pressesBegan(<#T##presses: Set<UIPress>##Set<UIPress>#>, with: <#T##UIPressesEvent?#>)
         // giving shadow to the cell
         cell.layer.cornerRadius = 15.0
         cell.layer.borderWidth = 0.0
@@ -135,6 +132,19 @@ extension KeranjangViewController: UICollectionViewDataSource, UICollectionViewD
     }
     
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
-        print(indexPath)
+        print("PRODUK: ",keranjangManager.fetchItems()[indexPath.row].name)
+        print("JUMLAH: ",keranjangManager.fetchItems()[indexPath.row].qty)
+    }
+}
+
+extension KeranjangViewController: KeranjangDelegate {
+    func didTapPlusOrMinusButton(indexPath: Int, totalProduct: Int) {
+        print("INDEX: ",indexPath)
+        print("TOTAL PRODUK: ",totalProduct)
+        keranjangManager.changeQty(indexPath: indexPath, qty: totalProduct)
+    }
+    
+    func deleteProduct(indexPath: Int) {
+        keranjangManager.deleteItem(indexPath: indexPath)
     }
 }

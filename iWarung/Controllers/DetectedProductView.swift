@@ -8,11 +8,16 @@
 import UIKit
 
 class DetectedProductView: UIViewController {
+    @IBOutlet weak var plusButton: UIButton!
+    @IBOutlet weak var minusButton: UIButton!
+    
     var hasSetPointOrigin = false
     var pointOrigin: CGPoint?
     var productItem: ProductItem!
     
-    var qty: Int? = 0
+    var keranjangManager = KeranjangManager()
+    
+    var qty: Int = 1
     var total: Float? = 0.0
     
     @IBOutlet weak var slideIndicator: UIView!
@@ -28,8 +33,9 @@ class DetectedProductView: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         setupView()
+        self.quantityLabel.text = String(qty)
         
-        productImage.layer.cornerRadius = 25
+        productImage.layer.cornerRadius = productImage.frame.width / 2
         
         if productItem != nil {
             titleProductLabel.text = productItem.name
@@ -37,6 +43,18 @@ class DetectedProductView: UIViewController {
             priceProductLabel.text = "Rp.\(String(productItem.price))"
             dateExpiredLabel.text = formatterDate(deadline: productItem.exp_date!)
             
+        }
+    }
+    
+    @IBAction func plusPressed(_ sender: Any) {
+        self.qty += 1
+        self.quantityLabel.text = String(qty)
+    }
+    
+    @IBAction func minus(_ sender: UIButton) {
+        if self.qty > 0 {
+            self.qty -= 1
+            quantityLabel.text = String(qty)
         }
     }
     
@@ -61,10 +79,18 @@ class DetectedProductView: UIViewController {
         }
     }
     @IBAction func addToCartAction(_ sender: Any) {
-        qty = 1;
-        total = Float(qty!) * productItem.price
+        total = Float(qty) * productItem.price
         
-        itemsKeranjang.append(ItemKeranjang(image: productItem.image_data!, name: productItem.name!, expired: productItem.exp_date!, price: productItem.price, qty: qty!, total: total!))
+        keranjangManager.addItem(item: ItemKeranjang(
+                                    id: productItem.objectID,
+                                    image: productItem.image_data!,
+                                    name: productItem.name!,
+                                    expired: productItem.exp_date!,
+                                    price: productItem.price,
+                                    qty: qty,
+                                    total: total!))
+        
+        print("KERANJANG ISI: ",keranjangManager.items)
         dismiss(animated: true)
     }
     
