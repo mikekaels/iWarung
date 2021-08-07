@@ -6,9 +6,9 @@
 //
 
 import Foundation
+import CoreData
 
-
-class KeranjangModel {
+struct KeranjangModel {
     var id_trx: String
     var list_item: [ItemKeranjang]
     var trx_date: Date
@@ -24,15 +24,43 @@ class KeranjangModel {
         self.change = change
         self.money = money
     }
-    
+
 }
 
 
 struct ItemKeranjang {
+    var id: NSManagedObjectID
     var image: Data
     var name: String
     var expired: Date
     var price: Float
     var qty: Int
     var total: Float
+}
+
+class KeranjangManager {
+    var items : [ItemKeranjang] = []
+    var totalBelanja: Float {
+        var total: Float = 0.0
+        for item in items {
+            total += (Float(item.qty) * item.price)
+        }
+        return total
+    }
+    
+    func fetchItems()-> [ItemKeranjang] {
+        return self.items
+    }
+    
+    func addItem(item: ItemKeranjang) {
+        self.items.append(item)
+    }
+    
+    func deleteItem(indexPath: Int) {
+        self.items.remove(at: indexPath)
+    }
+    
+    func changeQty(indexPath: Int, qty: Int) {
+        self.items[indexPath].qty = qty
+    }
 }

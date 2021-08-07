@@ -8,9 +8,7 @@
 import UIKit
 
 class PembayaranViewController: UIViewController {
-    
-    
-    
+
     @IBOutlet weak var totalTagihanBackgroundView: UIView!
     @IBOutlet weak var totalTagihan: UILabel!
     @IBOutlet weak var finishTransactionButton: UIButton!
@@ -18,7 +16,10 @@ class PembayaranViewController: UIViewController {
     @IBOutlet weak var changeLabel: UILabel!
     
     var totalPemabayaran: Float = 0.0
-    var listItem = [ItemKeranjang]()
+    var totalChangeAmount: Float = 0.0
+    var keranjang = [ItemKeranjang]()
+    
+    var currentString = ""
     
     
     @IBAction func finishTransactionPressed(_ sender: UIButton) {
@@ -36,10 +37,10 @@ extension PembayaranViewController {
         super.viewDidLoad()
         title = "Pembayaran"
         self.hideKeyboardWhenTappedAround()
-        totalTagihan.text = String(totalPemabayaran)
-        
-        print("list Item", listItem)
+        totalTagihan.text = String(totalPemabayaran).currencyFormatting()
         self.receivedMoneyTextfield.addTarget(self, action: #selector(PembayaranViewController.textFieldDidChange(_:)), for: .editingChanged)
+        
+        configureTotalTagihanView()
     }
     
     @objc func textFieldDidChange(_ textField: UITextField) {
@@ -47,16 +48,16 @@ extension PembayaranViewController {
             return
         }
         
-//        guard let bill = Int(self.totalTagihan.text!) else {
-//            return
-//        }
-        let total =  money - totalPemabayaran
-        
-        self.changeLabel.text = "Rp.\(String(total))"
+        totalChangeAmount =  money - totalPemabayaran
+        updateChangeAmount()
+    }
+    
+    func updateChangeAmount() {
+        self.changeLabel.text = "Rp \(String(totalChangeAmount).currencyFormatting())"
     }
 }
 
-extension PembayaranViewController {
+extension PembayaranViewController: TransaksiSelesaiDelegate {
     
     override func viewWillAppear(_ animated: Bool) {
         //MARK: - Total tagihan background
@@ -94,17 +95,23 @@ extension PembayaranViewController {
     
     @objc func texfieldButton() {
         self.receivedMoneyTextfield.text = nil
+        self.changeLabel.text = nil
+        self.totalChangeAmount = 0
     }
     
     @objc func showModal() {
         let slideVC = TransaksiSelesaiPasView()
         slideVC.modalPresentationStyle = .custom
         slideVC.transitioningDelegate = self
+        slideVC.delegate = self
         self.present(slideVC, animated: true, completion: { () in
             print("Modal opened")
         })
     }
     
+    func backToRoot() {
+        self.navigationController?.popToRootViewController(animated: true)
+    }
     
 }
 
@@ -112,5 +119,17 @@ extension PembayaranViewController {
 extension PembayaranViewController: UIViewControllerTransitioningDelegate {
     func presentationController(forPresented presented: UIViewController, presenting: UIViewController?, source: UIViewController) -> UIPresentationController? {
         PresentationController(presentedViewController: presented, presenting: presenting)
+    }
+}
+
+extension PembayaranViewController {
+    func configureTotalTagihanView() {
+        totalTagihanBackgroundView.translatesAutoresizingMaskIntoConstraints = false
+        let TextSize = String(totalPemabayaran).currencyFormatting().SizeOf_String(font: UIFont.systemFont(ofSize: 34.0))
+        print("Total Tagihan",TextSize)
+//        totalTagihanBackgroundView.widthAnchor.constraint(equalToConstant: TextSize.width + 20).isActive = true
+        totalTagihanBackgroundView.frame = CGRect(x: 0, y: 0, width: TextSize.width + 100, height: totalTagihanBackgroundView.frame.height)
+//        button.widthAnchor.constraint(equalToConstant: CGFloat(buttonTitleSize.width + 20)).isActive = true
+        
     }
 }

@@ -8,13 +8,8 @@
 import UIKit
 
 class DetectedProductView: UIViewController {
-    var hasSetPointOrigin = false
-    var pointOrigin: CGPoint?
-    var productItem: ProductItem!
-    
-    var qty: Int? = 0
-    var total: Float? = 0.0
-    
+    @IBOutlet weak var plusButton: UIButton!
+    @IBOutlet weak var minusButton: UIButton!
     @IBOutlet weak var slideIndicator: UIView!
     @IBOutlet weak var titleProductLabel: UILabel!
     @IBOutlet weak var productImage: UIImageView!
@@ -25,25 +20,45 @@ class DetectedProductView: UIViewController {
     @IBOutlet weak var quantityBackground: UIView!
     @IBOutlet weak var addToCartButton: UIButton!
     
+    var hasSetPointOrigin = false
+    var pointOrigin: CGPoint?
+    var productItem: ProductItem!
+    var keranjangManager = KeranjangManager()
+    var qty: Int = 1
+    var total: Float? = 0.0
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         setupView()
+        self.quantityLabel.text = String(qty)
         
-        productImage.layer.cornerRadius = 25
+        productImage.layer.cornerRadius = productImage.frame.width / 2
         
         if productItem != nil {
             titleProductLabel.text = productItem.name
             productImage.image = UIImage(data: productItem.image_data!)
-            priceProductLabel.text = "Rp.\(String(productItem.price))"
-            dateExpiredLabel.text = formatterDate(deadline: productItem.exp_date!)
+            priceProductLabel.text = "Rp \(String(productItem.price).currencyFormatting())"
+            dateExpiredLabel.text = K.formattedDate(date: productItem.exp_date!)
             
+        }
+    }
+    
+    @IBAction func plusPressed(_ sender: Any) {
+        self.qty += 1
+        self.quantityLabel.text = String(qty)
+    }
+    
+    @IBAction func minus(_ sender: UIButton) {
+        if self.qty > 0 {
+            self.qty -= 1
+            quantityLabel.text = String(qty)
         }
     }
     
     func formatterDate(deadline: Date) -> String {
         let dateNow = Date()
         let formatter = DateFormatter()
-        formatter.dateFormat = "MMM d, yyyy"
+        formatter.dateFormat = "dd-mmm-yyyy"
         let data = deadline.days(from: dateNow)
         
         if (data >= 30) {
@@ -61,11 +76,13 @@ class DetectedProductView: UIViewController {
         }
     }
     @IBAction func addToCartAction(_ sender: Any) {
-        qty = 1;
-        total = Float(qty!) * productItem.price
+        total = Float(qty) * productItem.price
         
-        itemsKeranjang.append(ItemKeranjang(image: productItem.image_data!, name: productItem.name!, expired: productItem.exp_date!, price: productItem.price, qty: qty!, total: total!))
-        dismiss(animated: true)
+        let data = ItemKeranjang(id: productItem.objectID, image: productItem.image_data!, name: productItem.name!, expired: productItem.exp_date!, price: productItem.price, qty: qty, total: total!)
+        
+        //        NotificationCenter.default.post(name: K.keranjangNotificationKey, object: data)
+        NotificationCenter.default.post(name: K.detectedNotificationKey, object: data)
+        self.dismiss(animated: true)
     }
     
     lazy var gradient: CAGradientLayer = {

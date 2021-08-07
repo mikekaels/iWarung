@@ -9,8 +9,10 @@ import UIKit
 
 @IBDesignable class KeranjangPopUp: UIView {
     
-    @IBOutlet weak var jumlahProduk: UILabel!
-    @IBOutlet weak var totalBelanjaan: UILabel!
+    @IBOutlet weak var jumlahProdukLabel: UILabel!
+    @IBOutlet weak var totalHargaLabel: UILabel!
+    
+    
     
     override init(frame: CGRect) {
         super.init(frame: frame)
@@ -23,6 +25,7 @@ import UIKit
     }
  
     private func commonInit() {
+        
         let bundle = Bundle.init(for: KeranjangPopUp.self)
          
         if let viewToAdd = bundle.loadNibNamed("KeranjangPopUp", owner: self, options: nil), let contentView = viewToAdd.first as? UIView {

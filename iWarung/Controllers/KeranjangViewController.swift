@@ -7,6 +7,11 @@
 
 import UIKit
 
+protocol KeranjangDelegate {
+    func didTapPlusOrMinusButton(indexPath: Int, totalProduct: Int)
+    func deleteProduct(indexPath: Int)
+}
+
 class KeranjangViewController: UIViewController {
     @IBOutlet weak var keranjangCollectionView: UICollectionView!
     @IBOutlet weak var totalBackgroundViewController: UIView!
@@ -14,26 +19,21 @@ class KeranjangViewController: UIViewController {
     @IBOutlet weak var pembayaranArrowButton: UIButton!
     @IBOutlet weak var totalBelanja: UILabel!
     
-    var products: [ItemKeranjang] = []
-    var totalSum = itemsKeranjang.map({$0.total}).reduce(0, +)
-    
     let productService : Persisten = Persisten()
- 
+    var delegate: KeranjangDelegate!
+    
+    var keranjang = [ItemKeranjang]()
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         title = "Keranjang"
-        
         let nibCell = UINib(nibName: "KeranjangCell", bundle: nil)
         keranjangCollectionView.register(nibCell, forCellWithReuseIdentifier: "keranjangCell")
         
         keranjangCollectionView.dataSource = self
         keranjangCollectionView.delegate = self
-        
-        print("Produks", products)
-        
-        totalBelanja.text = String(totalSum)
-        
-//        products = productService.fetchProducts()
+        updateKeranjang()
+        //        totalBelanja.text = String(totalSum)
     }
     
     lazy var gradient: CAGradientLayer = {
@@ -58,12 +58,15 @@ class KeranjangViewController: UIViewController {
         if (segue.identifier == "toPembayaran") {
             
             let landingVC = segue.destination as! PembayaranViewController
-            landingVC.totalPemabayaran = totalSum
-            landingVC.listItem = products
+            landingVC.totalPemabayaran = K.totalPrice(keranjang: keranjang)
+            landingVC.keranjang = keranjang
         }
     }
     
-   
+    func dismissView() {
+        navigationController?.popViewController(animated: true)
+        dismiss(animated: true, completion: nil)
+    }
     
 }
 
@@ -73,8 +76,8 @@ extension KeranjangViewController {
         super.viewWillAppear(animated)
         navigationController?.navigationBar.prefersLargeTitles = true
         
-//        //MARK: - Change back button title to Kembali
-//        navigationController?.navigationBar.backItem?.title = "kembali"
+        //        //MARK: - Change back button title to Kembali
+        //        navigationController?.navigationBar.backItem?.title = "kembali"
         
         //MARK: - No Border on Navigation bar
         navigationController?.isHiddenHairline = true
@@ -91,12 +94,15 @@ extension KeranjangViewController {
         pembayaranArrowButton.backgroundColor = UIColor(rgb: K.blueColor3)
         
         let config = UIImage.SymbolConfiguration(pointSize: 20, weight: .semibold, scale: .small)
-
-         let BoldDoc = UIImage(systemName: "arrow.right", withConfiguration: config)
-
+        
+        let BoldDoc = UIImage(systemName: "arrow.right", withConfiguration: config)
+        
         pembayaranArrowButton.setImage(BoldDoc, for: .normal)
         pembayaranArrowButton.tintColor = .white
         pembayaranArrowButton.cornerRadius(width: 4, height: 4)
+        configureArrowAnimation()
+        
+        
     }
     
     override func viewWillDisappear(_ animated: Bool) {
@@ -104,24 +110,34 @@ extension KeranjangViewController {
         navigationController?.isHiddenHairline = false
     }
     
+    func configureArrowAnimation() {
+        if let frame = pembayaranArrowButton.superview?.convert(pembayaranArrowButton.frame, to: nil) {
+            UIView.animateKeyframes(withDuration: 0.6, delay: 0, options: [.autoreverse, .repeat,], animations: {
+                self.pembayaranArrowButton.frame = CGRect(x: 264.0, y: 19.0, width: 24.0, height: 24.0)
+            }, completion: nil)
+        }
+    }
+    
 }
 
 extension KeranjangViewController: UICollectionViewDataSource, UICollectionViewDelegate {
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        return products.count
+        return keranjang.count
     }
     
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         let cell = keranjangCollectionView.dequeueReusableCell(withReuseIdentifier: "keranjangCell", for: indexPath) as! KeranjangCell
         
-        cell.productImage.image = UIImage(data: products[indexPath.row].image)
-        cell.productName.text = products[indexPath.row].name
-//        cell.productExpired.text = products[indexPath.row].exp_date
-        cell.productPrice.text = String(products[indexPath.row].price)
+        cell.delegate = self
         
+        cell.totalProduk = keranjang[indexPath.row].qty
+        cell.totalProductLabel.text = String(keranjang[indexPath.row].qty)
+        cell.productImage.image = UIImage(data: keranjang[indexPath.row].image)
+        cell.productName.text = keranjang[indexPath.row].name
+        cell.productExpired.text = K.formattedDate(date: keranjang[indexPath.row].expired)
+        cell.productPrice.text = String(keranjang[indexPath.row].price).currencyFormatting()
+        cell.indexPath = indexPath.row
         
-        
-//        cell.plusButton.pressesBegan(<#T##presses: Set<UIPress>##Set<UIPress>#>, with: <#T##UIPressesEvent?#>)
         // giving shadow to the cell
         cell.layer.cornerRadius = 15.0
         cell.layer.borderWidth = 0.0
@@ -135,6 +151,30 @@ extension KeranjangViewController: UICollectionViewDataSource, UICollectionViewD
     }
     
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
-        print(indexPath)
+
+    }
+}
+
+extension KeranjangViewController: KeranjangCellDelegate {
+    func didTapPlusOrMinusButton(indexPath: Int, totalProduct: Int) {
+        keranjang[indexPath].qty = totalProduct
+        self.keranjangCollectionView.reloadData()
+        delegate.didTapPlusOrMinusButton(indexPath: indexPath, totalProduct: totalProduct)
+        updateKeranjang()
+    }
+    
+    func deleteProduct(indexPath: Int) {
+        keranjang.remove(at: indexPath)
+        self.keranjangCollectionView.reloadData()
+        delegate.deleteProduct(indexPath: indexPath)
+        updateKeranjang()
+        
+        if keranjang.count == 0 {
+            dismissView()
+        }
+    }
+    
+    func updateKeranjang() {
+        self.totalBelanja.text = String(K.totalPrice(keranjang: keranjang)).currencyFormatting()
     }
 }

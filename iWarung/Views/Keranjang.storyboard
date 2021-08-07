@@ -40,10 +40,10 @@
                                 </cells>
                             </collectionView>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Gkn-4e-MyN" userLabel="bottom-container">
-                                <rect key="frame" x="0.0" y="506" width="375" height="161"/>
+                                <rect key="frame" x="0.0" y="489" width="375" height="178"/>
                                 <subviews>
                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="slr-F0-wkd" userLabel="button-container">
-                                        <rect key="frame" x="28.5" y="72" width="322" height="62"/>
+                                        <rect key="frame" x="28.5" y="66" width="322" height="62"/>
                                         <subviews>
                                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="J16-8M-IeG">
                                                 <rect key="frame" x="0.0" y="0.0" width="322" height="62"/>
@@ -60,7 +60,7 @@
                                                 </connections>
                                             </button>
                                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="0cv-E6-WHa">
-                                                <rect key="frame" x="264" y="19" width="24" height="24"/>
+                                                <rect key="frame" x="248" y="19" width="24" height="24"/>
                                                 <color key="backgroundColor" red="0.176459678527356" green="0.63856436675479866" blue="0.96620899438858032" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
                                                 <constraints>
                                                     <constraint firstAttribute="width" constant="24" id="8gO-ZP-Dk8"/>
@@ -70,6 +70,9 @@
                                                 <state key="normal">
                                                     <imageReference key="image" image="arrow.right" catalog="system" symbolScale="small" renderingMode="original"/>
                                                 </state>
+                                                <connections>
+                                                    <segue destination="OBA-4J-l2X" kind="show" identifier="toPembayaran" id="ODT-cU-ISA"/>
+                                                </connections>
                                             </button>
                                         </subviews>
                                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
@@ -81,7 +84,7 @@
                                             <constraint firstAttribute="trailing" secondItem="J16-8M-IeG" secondAttribute="trailing" id="Xm9-pU-7vR"/>
                                             <constraint firstAttribute="width" constant="322" id="ZPi-1q-fac"/>
                                             <constraint firstAttribute="bottom" secondItem="J16-8M-IeG" secondAttribute="bottom" id="sf3-Nk-Psg"/>
-                                            <constraint firstAttribute="trailing" secondItem="0cv-E6-WHa" secondAttribute="trailing" constant="34" id="w73-x5-WA5"/>
+                                            <constraint firstAttribute="trailing" secondItem="0cv-E6-WHa" secondAttribute="trailing" constant="50" id="w73-x5-WA5"/>
                                             <constraint firstItem="J16-8M-IeG" firstAttribute="leading" secondItem="slr-F0-wkd" secondAttribute="leading" id="wv2-4K-2lH"/>
                                             <constraint firstItem="J16-8M-IeG" firstAttribute="centerX" secondItem="slr-F0-wkd" secondAttribute="centerX" id="yTf-yU-dsS"/>
                                             <constraint firstAttribute="bottom" secondItem="0cv-E6-WHa" secondAttribute="bottom" constant="19" id="zwH-2T-3Lt"/>
@@ -89,7 +92,7 @@
                                         </constraints>
                                     </view>
                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="v7N-XZ-CNF" userLabel="total-belanja-container">
-                                        <rect key="frame" x="36" y="10" width="307" height="34"/>
+                                        <rect key="frame" x="36" y="4" width="307" height="34"/>
                                         <subviews>
                                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="GdH-J1-bHz">
                                                 <rect key="frame" x="162" y="3" width="145" height="30"/>
@@ -100,7 +103,7 @@
                                                         <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                         <nil key="highlightedColor"/>
                                                     </label>
-                                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="125.000" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Wbp-g3-K1Y">
+                                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="125.000" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Wbp-g3-K1Y">
                                                         <rect key="frame" x="31" y="5" width="72" height="22"/>
                                                         <fontDescription key="fontDescription" type="boldSystem" pointSize="18"/>
                                                         <color key="textColor" red="1" green="0.83921568627450982" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
@@ -143,9 +146,9 @@
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <constraints>
                                     <constraint firstItem="slr-F0-wkd" firstAttribute="centerX" secondItem="v7N-XZ-CNF" secondAttribute="centerX" id="66H-3U-2EQ"/>
-                                    <constraint firstAttribute="height" constant="161" id="DM5-OX-pYa"/>
+                                    <constraint firstAttribute="height" constant="178" id="DM5-OX-pYa"/>
                                     <constraint firstItem="v7N-XZ-CNF" firstAttribute="leading" secondItem="Gkn-4e-MyN" secondAttribute="leading" constant="36" id="IuI-cG-qm4"/>
-                                    <constraint firstAttribute="bottom" secondItem="slr-F0-wkd" secondAttribute="bottom" constant="27" id="RfK-Tf-ko9"/>
+                                    <constraint firstAttribute="bottom" secondItem="slr-F0-wkd" secondAttribute="bottom" constant="50" id="RfK-Tf-ko9"/>
                                     <constraint firstItem="slr-F0-wkd" firstAttribute="top" secondItem="v7N-XZ-CNF" secondAttribute="bottom" constant="28" id="Vd2-ez-dKm"/>
                                     <constraint firstAttribute="trailing" secondItem="v7N-XZ-CNF" secondAttribute="trailing" constant="32" id="i9O-XL-RCb"/>
                                 </constraints>
@@ -176,7 +179,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Ief-a0-LHa" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1969.2307692307691" y="114.45497630331754"/>
+            <point key="canvasLocation" x="1968.8" y="113.79310344827587"/>
         </scene>
         <!--Pembayaran-->
         <scene sceneID="vfm-CE-r9q">
@@ -189,6 +192,9 @@
             <point key="canvasLocation" x="2780" y="76"/>
         </scene>
     </scenes>
+    <inferredMetricsTieBreakers>
+        <segue reference="ODT-cU-ISA"/>
+    </inferredMetricsTieBreakers>
     <resources>
         <image name="arrow.right" catalog="system" width="128" height="98"/>
         <namedColor name="AccentColor">

@@ -7,6 +7,11 @@
 
 import UIKit
 
+protocol KeranjangCellDelegate {
+    func didTapPlusOrMinusButton(indexPath: Int,totalProduct: Int)
+    func deleteProduct(indexPath: Int)
+}
+
 class KeranjangCell: UICollectionViewCell {
     @IBOutlet weak var productImage: UIImageView!
     @IBOutlet weak var productName: UILabel!
@@ -18,7 +23,11 @@ class KeranjangCell: UICollectionViewCell {
     @IBOutlet weak var plusButton: UIButton!
     @IBOutlet weak var totalProductLabel: UILabel!
     
-    var totalProduk: Int = 0
+    var totalProduk: Int = 1
+    var indexPath: Int = 0
+    var keranjangVC = KeranjangViewController()
+    
+    var delegate: KeranjangCellDelegate!
     
     override func awakeFromNib() {
         super.awakeFromNib()
@@ -32,13 +41,17 @@ class KeranjangCell: UICollectionViewCell {
 
     @IBAction func plusPressed(_ sender: Any) {
         totalProduk += 1
+        delegate.didTapPlusOrMinusButton(indexPath: self.indexPath, totalProduct: self.totalProduk)
         totalProductLabel.text = String(totalProduk)
     }
     
     @IBAction func minus(_ sender: UIButton) {
-        if totalProduk > 0 {
+        if totalProduk > 1 {
             totalProduk -= 1
+            delegate.didTapPlusOrMinusButton(indexPath: self.indexPath, totalProduct: self.totalProduk)
             totalProductLabel.text = String(totalProduk)
+        } else {
+            delegate.deleteProduct(indexPath: self.indexPath)
         }
     }
 }

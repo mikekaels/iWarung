@@ -84,19 +84,19 @@ class DaftarProdukViewController: UIViewController, UIViewControllerTransitionin
     
     
     
-//    func formatterDate(deadline: Date) -> String {
-//        let dateNow = Date()
-//        let formatter = DateFormatter()
-//        formatter.dateFormat = "MMM d, yyyy"
-//        let data = deadline.days(from: dateNow)
-//
-//        if (data >= 30) {
-//            return formatter.string(from: deadline)
-//        } else if (data < 0) {
-//            return formatter.string(from: deadline)
-//        }
-//        return "Exp. \(data+1) days left"
-//    }
+    //    func formatterDate(deadline: Date) -> String {
+    //        let dateNow = Date()
+    //        let formatter = DateFormatter()
+    //        formatter.dateFormat = "MMM d, yyyy"
+    //        let data = deadline.days(from: dateNow)
+    //
+    //        if (data >= 30) {
+    //            return formatter.string(from: deadline)
+    //        } else if (data < 0) {
+    //            return formatter.string(from: deadline)
+    //        }
+    //        return "Exp. \(data+1) days left"
+    //    }
     
     func formatterDate(with date: Date) -> String {
         let formatter = DateFormatter()
@@ -111,21 +111,21 @@ class DaftarProdukViewController: UIViewController, UIViewControllerTransitionin
     }
     
     @IBAction func tambahProdukPressed(_ sender: Any) {
-//        let slideVC = TambahProdukScanViewController()
-//        slideVC.modalPresentationStyle = .popover
-////        slideVC.transitioningDelegate = self
-//        self.present(slideVC, animated: true, completion: { () in
-//            print("Modal opened")
-//        })
+        //        let slideVC = TambahProdukScanViewController()
+        //        slideVC.modalPresentationStyle = .popover
+        ////        slideVC.transitioningDelegate = self
+        //        self.present(slideVC, animated: true, completion: { () in
+        //            print("Modal opened")
+        //        })
     }
     
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         if (segue.identifier == "productDetail"){
             if let destination = segue.destination as?
-                    TambahProdukFormViewController, let index =
+                TambahProdukFormViewController, let index =
                     daftarProdukCollectionView.indexPathsForSelectedItems?.first {
-                    destination.selectedItem = productList[index.row]
-                }
+                destination.selectedItem = productList[index.row]
+            }
             
         }
     }
@@ -150,7 +150,7 @@ extension DaftarProdukViewController:  UICollectionViewDataSource, UICollectionV
         
         cell.productImage.image = UIImage(data: item.image_data!)
         cell.productName.text = item.name
-        cell.productPrice.text = String(item.price)
+        cell.productPrice.text = String(item.price).currencyFormatting()
         cell.productExpired.text = formatterDate(with: item.exp_date!)
         cell.totalProduk = Int(item.stock)
         cell.totalProductLabel.text = String(cell.totalProduk)
@@ -198,34 +198,34 @@ extension DaftarProdukViewController: UISearchBarDelegate {
 extension DaftarProdukViewController {
     
     @objc func handleSegmentedControlButtons(sender: UIButton) {
-            let segmentedControlButtons: [UIButton] = [
-                K.allProducts,
-                K.popular,
-                K.expired,
-                K.firstAdded,
-                K.lastAdded
-            ]
-            
-            for button in segmentedControlButtons {
-                if button == sender {
-                    UIView.animate(withDuration: 0.2, delay: 0.1, options: .transitionFlipFromLeft) {
-                        button.setTitleColor(UIColor(rgb: K.blueColor1), for: .normal)
-                        button.titleLabel?.font = K.segmentedButtonSelected
-                    }
+        let segmentedControlButtons: [UIButton] = [
+            K.allProducts,
+            K.popular,
+            K.expired,
+            K.firstAdded,
+            K.lastAdded
+        ]
+        
+        for button in segmentedControlButtons {
+            if button == sender {
+                UIView.animate(withDuration: 0.2, delay: 0.1, options: .transitionFlipFromLeft) {
+                    button.setTitleColor(UIColor(rgb: K.blueColor1), for: .normal)
+                    button.titleLabel?.font = K.segmentedButtonSelected
+                }
+                
+                print(button.titleLabel!.text!)
+                
+                
+            } else {
+                UIView.animate(withDuration: 0.2, delay: 0.1, options: .transitionFlipFromLeft) {
+                    button.setTitleColor(K.greyLight, for: .normal)
+                    button.titleLabel?.font = K.segmentedButton
                     
-                    print(button.titleLabel!.text!)
-                    
-
-                } else {
-                    UIView.animate(withDuration: 0.2, delay: 0.1, options: .transitionFlipFromLeft) {
-                        button.setTitleColor(K.greyLight, for: .normal)
-                        button.titleLabel?.font = K.segmentedButton
-                        
-                    }
                 }
             }
-            
         }
+        
+    }
     
     func configureCustomSegmentedControl() {
         let segmentedControlButtons: [UIButton] = [
@@ -235,30 +235,39 @@ extension DaftarProdukViewController {
             K.firstAdded,
             K.lastAdded
         ]
-            
-            segmentedControlButtons.forEach {$0.addTarget(self, action: #selector(handleSegmentedControlButtons(sender:)), for: .touchUpInside)}
-            
-            let stackView = UIStackView(arrangedSubviews: segmentedControlButtons)
-            stackView.translatesAutoresizingMaskIntoConstraints = false
-//            stackView.widthAnchor.constraint(equalTo: self.view.widthAnchor).isActive = true;
-            stackView.axis = .horizontal
-            stackView.distribution = .fillProportionally
         
-            segmentedScrollView.addSubview(stackView)
-        
-            segmentedScrollView.contentInset = UIEdgeInsets(top: 0, left: 20.0, bottom: 0, right: 20)
-            
-            NSLayoutConstraint.activate([
-//                scrollView.topAnchor.constraint(equalTo: view.safeAreaLayoutGuide.topAnchor),
-//                scrollView.leadingAnchor.constraint(equalTo: view.leadingAnchor),
-//                scrollView.trailingAnchor.constraint(equalTo: view.trailingAnchor),
-//                scrollView.heightAnchor.constraint(equalToConstant: 50),
-                
-                stackView.topAnchor.constraint(equalTo: segmentedScrollView.topAnchor),
-                stackView.leadingAnchor.constraint(equalTo: segmentedScrollView.leadingAnchor),
-                stackView.trailingAnchor.constraint(equalTo: segmentedScrollView.trailingAnchor),
-                stackView.heightAnchor.constraint(equalToConstant: 30)
-            ])
-            
+        for button in segmentedControlButtons {
+            if button.titleLabel!.text! == "Semua Produk" {
+                UIView.animate(withDuration: 0.2, delay: 0.1, options: .transitionFlipFromLeft) {
+                    button.setTitleColor(UIColor(rgb: K.blueColor1), for: .normal)
+                    button.titleLabel?.font = K.segmentedButtonSelected
+                }
+            }
         }
+        
+        segmentedControlButtons.forEach {$0.addTarget(self, action: #selector(handleSegmentedControlButtons(sender:)), for: .touchUpInside)}
+        
+        let stackView = UIStackView(arrangedSubviews: segmentedControlButtons)
+        stackView.translatesAutoresizingMaskIntoConstraints = false
+        //            stackView.widthAnchor.constraint(equalTo: self.view.widthAnchor).isActive = true;
+        stackView.axis = .horizontal
+        stackView.distribution = .fillProportionally
+        
+        segmentedScrollView.addSubview(stackView)
+        
+        segmentedScrollView.contentInset = UIEdgeInsets(top: 0, left: 20.0, bottom: 0, right: 20)
+        
+        NSLayoutConstraint.activate([
+            //                scrollView.topAnchor.constraint(equalTo: view.safeAreaLayoutGuide.topAnchor),
+            //                scrollView.leadingAnchor.constraint(equalTo: view.leadingAnchor),
+            //                scrollView.trailingAnchor.constraint(equalTo: view.trailingAnchor),
+            //                scrollView.heightAnchor.constraint(equalToConstant: 50),
+            
+            stackView.topAnchor.constraint(equalTo: segmentedScrollView.topAnchor),
+            stackView.leadingAnchor.constraint(equalTo: segmentedScrollView.leadingAnchor),
+            stackView.trailingAnchor.constraint(equalTo: segmentedScrollView.trailingAnchor),
+            stackView.heightAnchor.constraint(equalToConstant: 30)
+        ])
+        
+    }
 }

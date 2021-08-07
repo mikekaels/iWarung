@@ -7,9 +7,15 @@
 
 import UIKit
 
+protocol TransaksiSelesaiDelegate {
+    func backToRoot()
+}
+
 class TransaksiSelesaiPasView: UIViewController {
     var hasSetPointOrigin = false
     var pointOrigin: CGPoint?
+    
+    var delegate: TransaksiSelesaiDelegate!
     
     @IBOutlet weak var cetakStrukButton: UIButton!
     @IBOutlet weak var backToMainScreenButton: UIButton!
@@ -17,6 +23,7 @@ class TransaksiSelesaiPasView: UIViewController {
     
     @IBAction func backToMainScreenPressed(_ sender: UIButton) {
         self.dismiss(animated: true, completion: nil)
+        delegate.backToRoot()
     }
     
     override func viewDidLayoutSubviews() {
@@ -58,9 +65,11 @@ extension TransaksiSelesaiPasView {
         
         //MARK: - buttons
         cetakStrukButton.cornerRadius()
-        cetakStrukButton.addGradient()
+        cetakStrukButton.tintColor = UIColor(rgb: K.blueColor1)
+//        cetakStrukButton.addGradient()
         
         //MARK: - buttons
         backToMainScreenButton.cornerRadius()
+        backToMainScreenButton.addGradient()
     }
 }
