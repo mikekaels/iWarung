@@ -7,7 +7,7 @@
 
 import UIKit
 
-protocol KeranjangDelegate {
+protocol KeranjangCellDelegate {
     func didTapPlusOrMinusButton(indexPath: Int,totalProduct: Int)
     func deleteProduct(indexPath: Int)
 }
@@ -27,7 +27,7 @@ class KeranjangCell: UICollectionViewCell {
     var indexPath: Int = 0
     var keranjangVC = KeranjangViewController()
     
-    var delegate: KeranjangDelegate!
+    var delegate: KeranjangCellDelegate!
     
     override func awakeFromNib() {
         super.awakeFromNib()
@@ -46,7 +46,7 @@ class KeranjangCell: UICollectionViewCell {
     }
     
     @IBAction func minus(_ sender: UIButton) {
-        if totalProduk > 0 {
+        if totalProduk > 1 {
             totalProduk -= 1
             delegate.didTapPlusOrMinusButton(indexPath: self.indexPath, totalProduct: self.totalProduk)
             totalProductLabel.text = String(totalProduk)

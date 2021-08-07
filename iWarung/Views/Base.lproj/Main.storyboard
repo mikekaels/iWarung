@@ -196,6 +196,7 @@
                         <outlet property="inventoryButton" destination="X3t-Nn-2LP" id="AIu-G5-9F9"/>
                         <outlet property="inventoryView" destination="iOY-dg-bds" id="US2-Pp-AEg"/>
                         <outlet property="keranjangPopUp" destination="bFX-Xw-7Dp" id="INw-as-IHf"/>
+                        <outlet property="keranjangPopUpView" destination="uj6-Pr-aHV" id="wLf-9O-aeR"/>
                         <outlet property="pickerView" destination="Cbz-bd-7Wm" id="HiC-Th-IQf"/>
                         <outlet property="scanButton" destination="dB1-kR-8pn" id="y1A-4V-Aeb"/>
                     </connections>

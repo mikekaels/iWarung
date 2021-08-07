@@ -38,6 +38,7 @@ class TambahProdukFormViewController: UIViewController{
         
         
         addProdItem.cornerRadius()
+        addProdItem.addGradient()
         addProdItem.setTitle("Simpan", for: .normal)
         
         createDatePicker()

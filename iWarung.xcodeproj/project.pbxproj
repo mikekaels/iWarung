@@ -39,7 +39,7 @@
 		BD74BCB026A4820B00E3EE75 /* constants.swift in Sources */ = {isa = PBXBuildFile; fileRef = BD74BCAF26A4820B00E3EE75 /* constants.swift */; };
 		BD85A2D126A9F72600FE1B9C /* Keranjang.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = BD85A2D026A9F72600FE1B9C /* Keranjang.storyboard */; };
 		BD85A2D326A9F74B00FE1B9C /* KeranjangViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BD85A2D226A9F74B00FE1B9C /* KeranjangViewController.swift */; };
-		BD8C016726A3F15600FAF9C5 /* model.swift in Sources */ = {isa = PBXBuildFile; fileRef = BD8C016626A3F15600FAF9C5 /* model.swift */; };
+		BD9023E326BEE57E00976CF1 /* String.swift in Sources */ = {isa = PBXBuildFile; fileRef = BD9023E226BEE57E00976CF1 /* String.swift */; };
 		BDB39A3826ADD05800296909 /* DaftarProduk.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = BDB39A3726ADD05800296909 /* DaftarProduk.storyboard */; };
 		BDB39A3A26ADD06F00296909 /* DaftarProdukViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BDB39A3926ADD06F00296909 /* DaftarProdukViewController.swift */; };
 		BDC625C626AD507300E44675 /* TambahProdukScan.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = BDC625C526AD507300E44675 /* TambahProdukScan.storyboard */; };
@@ -99,7 +99,7 @@
 		BD74BCAF26A4820B00E3EE75 /* constants.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = constants.swift; sourceTree = "<group>"; };
 		BD85A2D026A9F72600FE1B9C /* Keranjang.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = Keranjang.storyboard; sourceTree = "<group>"; };
 		BD85A2D226A9F74B00FE1B9C /* KeranjangViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = KeranjangViewController.swift; sourceTree = "<group>"; };
-		BD8C016626A3F15600FAF9C5 /* model.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = model.swift; sourceTree = "<group>"; };
+		BD9023E226BEE57E00976CF1 /* String.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = String.swift; sourceTree = "<group>"; };
 		BDB39A3726ADD05800296909 /* DaftarProduk.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = DaftarProduk.storyboard; sourceTree = "<group>"; };
 		BDB39A3926ADD06F00296909 /* DaftarProdukViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DaftarProdukViewController.swift; sourceTree = "<group>"; };
 		BDC625C526AD507300E44675 /* TambahProdukScan.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = TambahProdukScan.storyboard; sourceTree = "<group>"; };
@@ -190,7 +190,7 @@
 				BDEA922226AE7BBF00157FA6 /* TransaksiSelesaiPas */,
 				BDC625C526AD507300E44675 /* TambahProdukScan.storyboard */,
 				BDB39A3726ADD05800296909 /* DaftarProduk.storyboard */,
-				3FF1EE7C26AE284000F4F122 /* DetectedProductView.xib */,
+				BDDDE2A326BF321500081BB1 /* DetectedProduct */,
 				BDEA922026AE7B8000157FA6 /* KeranjangPopUp */,
 				BDE43C2026AF4283004CF3CC /* Onboarding.storyboard */,
 				E7194C5526AFD3D50018B189 /* TambahProdukForm.storyboard */,
@@ -206,7 +206,6 @@
 			children = (
 				E7AF66BD26B427C00039A44B /* ProductItem+CoreDataClass.swift */,
 				E7AF66BE26B427C00039A44B /* ProductItem+CoreDataProperties.swift */,
-				BD8C016626A3F15600FAF9C5 /* model.swift */,
 				BD1FFF3326AB65F800EB9AAD /* Product.swift */,
 				BDE43C2426AF4B36004CF3CC /* Onboarding.swift */,
 				BDE43C2626AF515E004CF3CC /* Core.swift */,
@@ -226,7 +225,6 @@
 				BDC625C726AD509500E44675 /* TambahProdukScanViewController.swift */,
 				BDB39A3926ADD06F00296909 /* DaftarProdukViewController.swift */,
 				E7194C4B26ADD7D70018B189 /* TambahProdukFormViewController.swift */,
-				3FF1EE7B26AE284000F4F122 /* DetectedProductView.swift */,
 				BDE43C2226AF4947004CF3CC /* OnboardingViewController.swift */,
 				BD726E2F26B5EBBB00EAFD14 /* SBCardPopUpViewController.swift */,
 				BD726E3126B5EC4F00EAFD14 /* CameraInactivePopUpViewController.swift */,
@@ -247,6 +245,7 @@
 				BD1FB09A26BB188200648B18 /* Int.swift */,
 				BD1FB09C26BB1DBD00648B18 /* Date.swift */,
 				3F28F79C26BD2A9400F1050A /* UIImage.swift */,
+				BD9023E226BEE57E00976CF1 /* String.swift */,
 			);
 			path = Extensions;
 			sourceTree = "<group>";
@@ -257,6 +256,15 @@
 				BD726E3426B60CB100EAFD14 /* PopUpDelegate.swift */,
 			);
 			path = Protocols;
+			sourceTree = "<group>";
+		};
+		BDDDE2A326BF321500081BB1 /* DetectedProduct */ = {
+			isa = PBXGroup;
+			children = (
+				3FF1EE7C26AE284000F4F122 /* DetectedProductView.xib */,
+				3FF1EE7B26AE284000F4F122 /* DetectedProductView.swift */,
+			);
+			path = DetectedProduct;
 			sourceTree = "<group>";
 		};
 		BDEA922026AE7B8000157FA6 /* KeranjangPopUp */ = {
@@ -378,9 +386,9 @@
 			files = (
 				E7194C4C26ADD7D70018B189 /* TambahProdukFormViewController.swift in Sources */,
 				BD1CF24726ACB279001B7EC8 /* UIApplication.swift in Sources */,
+				BD9023E326BEE57E00976CF1 /* String.swift in Sources */,
 				E7AF66B826B213E20039A44B /* Persisten.swift in Sources */,
 				3FE725FD26A96F7A009F4D32 /* PembayaranViewController.swift in Sources */,
-				BD8C016726A3F15600FAF9C5 /* model.swift in Sources */,
 				BD1FFF3926AB957100EB9AAD /* UIViewController.swift in Sources */,
 				BD3A595726B249C400BA4234 /* UISegmented.swift in Sources */,
 				BD5AC58926A369F400A52336 /* ViewController.swift in Sources */,

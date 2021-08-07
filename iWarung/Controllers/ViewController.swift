@@ -10,9 +10,7 @@ import Vision
 import AVFoundation
 import CoreData
 
-var itemsKeranjang = [ItemKeranjang]()
-
-class ViewController: UIViewController {
+class ViewController: UIViewController{
     @IBOutlet weak var cameraView: UIView!
     @IBOutlet weak var flashLightButton : UIButton!
     @IBOutlet weak var flashlightView: UIView!
@@ -22,12 +20,19 @@ class ViewController: UIViewController {
     @IBOutlet weak var scanButton       : UIButton!
     @IBOutlet weak var keranjangPopUp   : KeranjangPopUp!
     @IBOutlet weak var cameraOverlay: UIImageView!
+    @IBOutlet weak var keranjangPopUpView: UIView!
     
     private let captureSession                          = AVCaptureSession()
     private let videoOutput                             = AVCaptureVideoDataOutput()
     private let sequenceHandler                         = VNSequenceRequestHandler()
     private var isBarcode                               = true
     private let photoOutput                             = AVCapturePhotoOutput()
+    
+    lazy var textRecognizeRequest: VNRecognizeTextRequest = {
+        let textDetectRequest = VNRecognizeTextRequest(completionHandler: self.recognizeTextHandler)
+        textDetectRequest.recognitionLevel = .accurate
+        return textDetectRequest
+    }()
     
     var pickerData          : [String]      = K.pickerData
     var rotationAngle       : CGFloat!
@@ -37,20 +42,17 @@ class ViewController: UIViewController {
     var torchOn             : Bool          = false
     var timer               : Timer?
     
+    var keranjang           = [ItemKeranjang]()
     let productService      : Persisten = Persisten()
-    
-    lazy var textRecognizeRequest: VNRecognizeTextRequest = {
-        let textDetectRequest = VNRecognizeTextRequest(completionHandler: self.recognizeTextHandler)
-        textDetectRequest.recognitionLevel = .accurate
-        return textDetectRequest
-    }()
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        print("VIEW DID LOAD ---------------------")
+        self.hideKeranjangPopUp()
         setupNavBar()
         cameraOverlay.isHidden = true
         cameraOverlay.alpha = 0
-        
+
         flashLightButton.backgroundColor = .white
         flashLightButton.cornerRadius(width: 4, height: 4)
         inventoryView.cornerRadius(width: 10, height: 10)
@@ -67,8 +69,7 @@ class ViewController: UIViewController {
         
         self.pickerView.dataSource = self
         self.pickerView.delegate = self
-        
-        
+
         NotificationCenter.default.addObserver(
             self,
             selector: #selector(self.popUpDismissed),
@@ -89,16 +90,43 @@ class ViewController: UIViewController {
                 }
             }
         }
+        
+        //MARK: - ADD OBSERVER NOTIFICATION CENTER
+        NotificationCenter.default.addObserver(forName: K.detectedNotificationKey, object: nil, queue: nil, using: { (notification) in
+            guard let object = notification.object as? ItemKeranjang else {
+                print("NOT OBJECT ----------------")
+              return
+            }
+            self.keranjang.append(object)
+            self.updateKeranjangPopUp()
+        })
     }
     
-    override func viewDidDisappear(_ animated: Bool) {
+    func hideKeranjangPopUp() {
+        keranjangPopUpView.isHidden = true
+        
+        self.keranjangPopUpView.frame = CGRect(x: K.xPosition, y: K.yPosition + 100, width: K.width, height: K.height)
+    }
+    
+    func unhideKeranjangPopUp() {
+        if keranjangPopUpView.isHidden == true {
+            keranjangPopUpView.isHidden = false
+            UIView.animateKeyframes(withDuration: 0.6, delay: 0.3, options: .beginFromCurrentState, animations: {
+                self.keranjangPopUpView.frame = CGRect(x: K.xPosition, y: K.yPosition - 13, width: K.width, height: K.height)
+            }, completion: nil)
+            
+            UIView.animateKeyframes(withDuration: 0.2, delay: 0.9, options: .beginFromCurrentState, animations: {
+                self.keranjangPopUpView.frame = CGRect(x: K.xPosition, y: K.yPosition, width: K.width, height: K.height)
+            }, completion: nil)
+        }
     }
     
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         if (segue.identifier == "toKeranjang"){
-            print("to Keranjang")
             let landingVC = segue.destination as! KeranjangViewController
-//            landingVC.keranjangManager.items = itemsKeranjang
+            print("KERANJANG: ",keranjang)
+            landingVC.delegate = self
+            landingVC.keranjang = keranjang
         }
     }
     
@@ -163,7 +191,6 @@ class ViewController: UIViewController {
             slideVC.modalPresentationStyle = .custom
             slideVC.transitioningDelegate = self
             self.present(slideVC, animated: true, completion: { () in
-                print("Modal opened")
                 self.isPressed = false
             })
         }
@@ -174,7 +201,6 @@ class ViewController: UIViewController {
             let slideVC = SelectProductView()
             slideVC.transitioningDelegate = self
             self.present(slideVC, animated: true, completion: { () in
-                print("Modal opened")
             })
         }
     }
@@ -206,10 +232,37 @@ class ViewController: UIViewController {
     }
 }
 
+extension ViewController: KeranjangDelegate  {
+
+    func didTapPlusOrMinusButton(indexPath: Int, totalProduct: Int) {
+        keranjang[indexPath].qty = totalProduct
+        updateKeranjangPopUp()
+    }
+    
+    func deleteProduct(indexPath: Int) {
+        keranjang.remove(at: indexPath)
+        updateKeranjangPopUp()
+        
+    }
+    
+    func updateKeranjangPopUp() {
+        self.keranjangPopUp.jumlahProdukLabel.text = "\(self.keranjang.count) Produk"
+        self.keranjangPopUp.totalHargaLabel.text = String(K.totalPrice(keranjang: keranjang)).currencyFormatting()
+        if self.keranjang.count != 0 {
+            self.unhideKeranjangPopUp()
+        } else {
+            self.hideKeranjangPopUp()
+        }
+    }
+}
+
 //MARK: - Check Inactivity
 extension ViewController {
     
     override func viewDidAppear(_ animated: Bool) {
+        super.viewDidAppear(animated)
+        print("VIEW DID APPEAR ---------------------")
+        updateKeranjangPopUp()
         resetTimer()
         
         let longPressRecognizer = UILongPressGestureRecognizer(target: self, action: #selector(toggleControls2))
@@ -256,6 +309,11 @@ extension ViewController {
 //MARK: - Remove Nav bar
 extension ViewController {
     override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        print("VIEW WILL APPEAR ---------------------")
+       
+        updateKeranjangPopUp()
+        
         if !Core.shared.isNewUser() {
             // show onboarding
             let controller = storyboard?.instantiateViewController(identifier: "Onboarding") as! OnboardingViewController
@@ -265,12 +323,13 @@ extension ViewController {
         }
         
         self.navigationController?.isHiddenHairline = true
-        super.viewWillAppear(animated)
+        
         navigationController?.setNavigationBarHidden(true, animated: animated)
         navigationController?.navigationBar.prefersLargeTitles = false
     }
     
     override func viewWillDisappear(_ animated: Bool) {
+        print("VIEW WILL DISSAPPEAR ---------------------")
         super.viewWillDisappear(animated)
         navigationController?.setNavigationBarHidden(false, animated: animated)
         if let layers = cameraView.layer.sublayers {
@@ -368,7 +427,6 @@ extension ViewController: UIPickerViewDelegate , UIPickerViewDataSource {
 extension ViewController {
     @objc func longPressed(sender: UILongPressGestureRecognizer)
     {
-        print("Shoot..")
         if sender.state == .began {
             print("Start scanning...")
             scanButton.setImage(UIImage(named: "camera-button-pressed"), for: .normal)
@@ -423,7 +481,7 @@ extension ViewController: AVCaptureVideoDataOutputSampleBufferDelegate {
                         self.cameraOverlay.alpha = 0
                     }
                     showModalDetectedProduct(product: result[0])
-                    print("hasil search \(String(describing: result[0]))")
+//                    print("hasil search \(String(describing: result[0]))")
                 }
             }
         }
@@ -564,10 +622,10 @@ extension ViewController: AVCapturePhotoCaptureDelegate {
                 self.cameraOverlay.alpha = 0
             }
             showModalDetectedProduct(product: result[0])
-            print("hasil search \(String(describing: result[0]))")
+//            print("hasil search \(String(describing: result[0]))")
         }
         
-        print("Result Text : \(resultScanText)")
+//        print("Result Text : \(resultScanText)")
     }
     
     // MARK: - Helper Methods

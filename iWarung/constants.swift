@@ -62,4 +62,29 @@ struct K {
     static let expired = UIButton().createSegmentedControlButton(setTitle: "Kadaluwarsa")
     static let lastAdded = UIButton().createSegmentedControlButton(setTitle: "Terakhir ditambahkan")
     static let firstAdded = UIButton().createSegmentedControlButton(setTitle: "Pertama ditambahkan")
+    
+    //MARK: - NOTIFICATION NAME
+    static let detectedNotificationKey = Notification.Name(rawValue: "detected")
+    
+    static let xPosition = 0.0
+    static let yPosition = -0.5
+    static let width = 251.0
+    static let height = 34.0
+    
+    static func formattedDate(date: Date)-> String {
+        let formatter = DateFormatter()
+        formatter.dateFormat = "d-MM-yyyy"
+        return formatter.string(from: date).uppercased()
+    }
+    
+    static func totalPrice(keranjang: [ItemKeranjang]) -> Float  {
+        var total: Float = 0.0
+        
+        for product in keranjang {
+            total += (product.price * Float(product.qty))
+        }
+        
+        return total
+    }
 }
+

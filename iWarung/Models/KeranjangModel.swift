@@ -16,15 +16,15 @@ struct KeranjangModel {
     var change: Float
     var money: Float
     
-//    init(idTrx: String, listItem: [ItemKeranjang], trxDate: Date, bill: Float, change: Float, money: Float) {
-//        self.id_trx = idTrx
-//        self.list_item = listItem
-//        self.trx_date = trxDate
-//        self.bill = bill
-//        self.change = change
-//        self.money = money
-//    }
-//
+    init(idTrx: String, listItem: [ItemKeranjang], trxDate: Date, bill: Float, change: Float, money: Float) {
+        self.id_trx = idTrx
+        self.list_item = listItem
+        self.trx_date = trxDate
+        self.bill = bill
+        self.change = change
+        self.money = money
+    }
+
 }
 
 
@@ -38,7 +38,7 @@ struct ItemKeranjang {
     var total: Float
 }
 
-struct KeranjangManager {
+class KeranjangManager {
     var items : [ItemKeranjang] = []
     var totalBelanja: Float {
         var total: Float = 0.0
@@ -52,15 +52,15 @@ struct KeranjangManager {
         return self.items
     }
     
-    mutating func addItem(item: ItemKeranjang) {
+    func addItem(item: ItemKeranjang) {
         self.items.append(item)
     }
     
-    mutating func deleteItem(indexPath: Int) {
+    func deleteItem(indexPath: Int) {
         self.items.remove(at: indexPath)
     }
     
-    mutating func changeQty(indexPath: Int, qty: Int) {
+    func changeQty(indexPath: Int, qty: Int) {
         self.items[indexPath].qty = qty
     }
 }

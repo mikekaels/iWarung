@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="18122" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
-    <device id="retina6_1" orientation="portrait" appearance="light"/>
+    <device id="retina6_0" orientation="portrait" appearance="light"/>
     <dependencies>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="18093"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
@@ -22,21 +22,18 @@
             <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
             <subviews>
                 <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="And-QO-REL">
-                    <rect key="frame" x="36" y="320" width="321" height="62"/>
-                    <color key="backgroundColor" systemColor="systemBlueColor"/>
+                    <rect key="frame" x="36" y="290" width="321" height="62"/>
                     <constraints>
                         <constraint firstAttribute="height" constant="62" id="WYQ-69-hhD"/>
                     </constraints>
                     <fontDescription key="fontDescription" type="boldSystem" pointSize="15"/>
-                    <state key="normal" title="     Cetak Struk">
-                        <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                    </state>
+                    <state key="normal" title="     Cetak Struk"/>
                     <connections>
                         <action selector="backToMainScreenPressed:" destination="-1" eventType="touchUpInside" id="cau-GP-di4"/>
                     </connections>
                 </button>
                 <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="b7x-fo-NTy">
-                    <rect key="frame" x="174" y="12" width="66" height="3.5"/>
+                    <rect key="frame" x="174" y="12" width="66" height="3.6666666666666661"/>
                     <color key="backgroundColor" systemColor="systemGray2Color"/>
                     <constraints>
                         <constraint firstAttribute="height" constant="3.5" id="LrA-Mz-7re"/>
@@ -50,18 +47,22 @@
                     </constraints>
                 </imageView>
                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Transaksi Sukses" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="jli-sX-XWU">
-                    <rect key="frame" x="94" y="30.5" width="226" height="19.5"/>
+                    <rect key="frame" x="94" y="30.666666666666671" width="226" height="19.333333333333329"/>
                     <fontDescription key="fontDescription" type="system" weight="semibold" pointSize="16"/>
                     <nil key="textColor"/>
                     <nil key="highlightedColor"/>
                 </label>
                 <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="l8R-eC-eog">
-                    <rect key="frame" x="36" y="394" width="342" height="62"/>
+                    <rect key="frame" x="42" y="364" width="330" height="62"/>
+                    <color key="backgroundColor" red="1" green="0.83921568629999999" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
                     <constraints>
                         <constraint firstAttribute="height" constant="62" id="Kns-pp-gsv"/>
+                        <constraint firstAttribute="width" constant="330" id="wnl-dK-V5D"/>
                     </constraints>
                     <fontDescription key="fontDescription" type="boldSystem" pointSize="15"/>
-                    <state key="normal" title="Kembali ke Layar Utama"/>
+                    <state key="normal" title="Kembali ke Layar Utama">
+                        <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                    </state>
                     <connections>
                         <action selector="backToMainScreenPressed:" destination="-1" eventType="touchUpInside" id="m9b-c3-wGN"/>
                     </connections>
@@ -73,14 +74,13 @@
                 <constraint firstAttribute="trailing" secondItem="And-QO-REL" secondAttribute="trailing" constant="57" id="3Kr-mD-4xn"/>
                 <constraint firstItem="vUN-kp-3ea" firstAttribute="trailing" secondItem="jli-sX-XWU" secondAttribute="trailing" constant="94" id="DCG-nP-mbg"/>
                 <constraint firstItem="vUN-kp-3ea" firstAttribute="trailing" secondItem="gZm-ip-sxW" secondAttribute="trailing" constant="134" id="EYJ-fI-0X8"/>
-                <constraint firstAttribute="trailing" secondItem="l8R-eC-eog" secondAttribute="trailing" constant="36" id="F8Y-on-8R4"/>
                 <constraint firstAttribute="trailing" secondItem="b7x-fo-NTy" secondAttribute="trailing" constant="174" id="I1N-dy-fJa"/>
-                <constraint firstItem="vUN-kp-3ea" firstAttribute="bottom" secondItem="l8R-eC-eog" secondAttribute="bottom" constant="20" id="Mvx-P6-eDS"/>
+                <constraint firstAttribute="bottom" secondItem="l8R-eC-eog" secondAttribute="bottom" constant="50" id="Mvx-P6-eDS"/>
                 <constraint firstItem="jli-sX-XWU" firstAttribute="leading" secondItem="vUN-kp-3ea" secondAttribute="leading" constant="94" id="RLM-2d-7Lj"/>
                 <constraint firstItem="b7x-fo-NTy" firstAttribute="leading" secondItem="iN0-l3-epB" secondAttribute="leading" constant="174" id="Su9-m2-F0C"/>
+                <constraint firstItem="l8R-eC-eog" firstAttribute="centerX" secondItem="iN0-l3-epB" secondAttribute="centerX" id="TQH-Uv-gZ6"/>
                 <constraint firstItem="l8R-eC-eog" firstAttribute="top" secondItem="And-QO-REL" secondAttribute="bottom" constant="12" id="Vgl-Q3-FKe"/>
                 <constraint firstItem="b7x-fo-NTy" firstAttribute="top" secondItem="iN0-l3-epB" secondAttribute="top" constant="12" id="ZT6-WB-HLd"/>
-                <constraint firstItem="l8R-eC-eog" firstAttribute="leading" secondItem="vUN-kp-3ea" secondAttribute="leading" constant="36" id="aOa-OZ-4P7"/>
                 <constraint firstItem="gZm-ip-sxW" firstAttribute="top" secondItem="jli-sX-XWU" secondAttribute="bottom" constant="45" id="cYO-Z1-jlb"/>
                 <constraint firstItem="And-QO-REL" firstAttribute="leading" secondItem="vUN-kp-3ea" secondAttribute="leading" constant="36" id="iLJ-P0-JZa"/>
                 <constraint firstItem="gZm-ip-sxW" firstAttribute="leading" secondItem="vUN-kp-3ea" secondAttribute="leading" constant="135" id="ldE-tf-D06"/>
@@ -94,9 +94,6 @@
         <image name="success" width="435" height="435"/>
         <systemColor name="systemBackgroundColor">
             <color white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-        </systemColor>
-        <systemColor name="systemBlueColor">
-            <color red="0.0" green="0.47843137254901963" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
         </systemColor>
         <systemColor name="systemGray2Color">
             <color red="0.68235294117647061" green="0.68235294117647061" blue="0.69803921568627447" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
