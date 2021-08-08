@@ -138,6 +138,8 @@ extension KeranjangViewController: UICollectionViewDataSource, UICollectionViewD
         cell.productPrice.text = String(keranjang[indexPath.row].price).currencyFormatting()
         cell.indexPath = indexPath.row
         
+        cell.cPoint = cell.frame
+        
         // giving shadow to the cell
         cell.layer.cornerRadius = 15.0
         cell.layer.borderWidth = 0.0
@@ -151,12 +153,14 @@ extension KeranjangViewController: UICollectionViewDataSource, UICollectionViewD
     }
     
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
-
+        let attributes = self.collectionView(collectionView, cellForItemAt: indexPath)
+        let cPoint = attributes.frame
+        print("didSelectItemAt: ",cPoint)
     }
 }
 
 extension KeranjangViewController: KeranjangCellDelegate {
-    func didTapPlusOrMinusButton(indexPath: Int, totalProduct: Int) {
+    func didTapPlusOrMinusButton(indexPath: Int, totalProduct: Int, cPoint: CGRect) {
         keranjang[indexPath].qty = totalProduct
         self.keranjangCollectionView.reloadData()
         delegate.didTapPlusOrMinusButton(indexPath: indexPath, totalProduct: totalProduct)
@@ -165,7 +169,7 @@ extension KeranjangViewController: KeranjangCellDelegate {
     
     func deleteProduct(indexPath: Int) {
         keranjang.remove(at: indexPath)
-        self.keranjangCollectionView.reloadData()
+        keranjangCollectionView.reloadData()
         delegate.deleteProduct(indexPath: indexPath)
         updateKeranjang()
         

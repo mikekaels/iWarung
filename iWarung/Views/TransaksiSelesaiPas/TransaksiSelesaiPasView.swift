@@ -20,6 +20,8 @@ class TransaksiSelesaiPasView: UIViewController {
     @IBOutlet weak var cetakStrukButton: UIButton!
     @IBOutlet weak var backToMainScreenButton: UIButton!
     @IBOutlet weak var slideIndicator: UIView!
+    @IBOutlet weak var successBackground: UIImageView!
+    @IBOutlet weak var successForeground: UIImageView!
     
     @IBAction func backToMainScreenPressed(_ sender: UIButton) {
         self.dismiss(animated: true, completion: nil)
@@ -27,6 +29,7 @@ class TransaksiSelesaiPasView: UIViewController {
     }
     
     override func viewDidLayoutSubviews() {
+        successLogoAnimate()
         if !hasSetPointOrigin {
             hasSetPointOrigin = true
             pointOrigin = self.view.frame.origin
@@ -53,6 +56,21 @@ class TransaksiSelesaiPasView: UIViewController {
                 }
             }
         }
+    }
+    
+    func successLogoAnimate() {
+        let foregroundResize: CGFloat = 40
+        UIView.animateKeyframes(withDuration: 1.5, delay: 0, options: [.repeat, .autoreverse], animations: {
+            self.successBackground.rotate(angle: 90)
+        }, completion: nil)
+        
+        UIView.animateKeyframes(withDuration: 1.5, delay: 0, options: [.autoreverse, .repeat,], animations: {
+            self.successForeground.frame = CGRect(x: -CGFloat(foregroundResize / 2),
+                                                  y: -CGFloat(foregroundResize / 2),
+                                                  width: self.successForeground.frame.width + foregroundResize,
+                                                  height: self.successForeground.frame.height + foregroundResize)
+        }, completion: nil)
+        
     }
 }
 

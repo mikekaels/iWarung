@@ -8,7 +8,7 @@
 import UIKit
 
 protocol KeranjangCellDelegate {
-    func didTapPlusOrMinusButton(indexPath: Int,totalProduct: Int)
+    func didTapPlusOrMinusButton(indexPath: Int,totalProduct: Int, cPoint: CGRect)
     func deleteProduct(indexPath: Int)
 }
 
@@ -29,6 +29,8 @@ class KeranjangCell: UICollectionViewCell {
     
     var delegate: KeranjangCellDelegate!
     
+    var cPoint : CGRect = CGRect(x: 0.0, y: 0.0, width: 0, height: 0)
+    
     override func awakeFromNib() {
         super.awakeFromNib()
         keranjangBackgroundView.layer.cornerRadius = 20
@@ -41,17 +43,32 @@ class KeranjangCell: UICollectionViewCell {
 
     @IBAction func plusPressed(_ sender: Any) {
         totalProduk += 1
-        delegate.didTapPlusOrMinusButton(indexPath: self.indexPath, totalProduct: self.totalProduk)
+        delegate.didTapPlusOrMinusButton(indexPath: self.indexPath, totalProduct: self.totalProduk, cPoint: self.cPoint)
         totalProductLabel.text = String(totalProduk)
     }
     
     @IBAction func minus(_ sender: UIButton) {
         if totalProduk > 1 {
             totalProduk -= 1
-            delegate.didTapPlusOrMinusButton(indexPath: self.indexPath, totalProduct: self.totalProduk)
+            delegate.didTapPlusOrMinusButton(indexPath: self.indexPath, totalProduct: self.totalProduk, cPoint: self.cPoint)
             totalProductLabel.text = String(totalProduk)
         } else {
-            delegate.deleteProduct(indexPath: self.indexPath)
+            self.removeCellAnimation()
         }
+    }
+}
+extension KeranjangCell {
+    func removeCellAnimation() {
+        UIView.animateKeyframes(withDuration: 0.6, delay: 0, options: .beginFromCurrentState, animations: {
+            self.rotate(angle: 5)
+            self.center = CGPoint(x: self.center.x + 10.0, y: self.center.y + 5)
+        }, completion: nil)
+        
+        UIView.animateKeyframes(withDuration: 0.3, delay: 0.6, options: .beginFromCurrentState, animations: {
+            self.rotate(angle: -30)
+            self.center = CGPoint(x: self.center.x - 400, y: self.center.y)
+        }, completion: {_ in
+            self.delegate.deleteProduct(indexPath: self.indexPath)
+        })
     }
 }
