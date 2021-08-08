@@ -168,9 +168,20 @@ extension KeranjangViewController: KeranjangCellDelegate {
     }
     
     func deleteProduct(indexPath: Int) {
+        
         keranjang.remove(at: indexPath)
-        keranjangCollectionView.reloadData()
+        
         delegate.deleteProduct(indexPath: indexPath)
+        
+//        keranjangCollectionView.reloadData()
+        
+        self.keranjangCollectionView.performBatchUpdates(
+          {
+            self.keranjangCollectionView.reloadSections(NSIndexSet(index: 0) as IndexSet)
+          }, completion: { (finished:Bool) -> Void in
+        })
+
+        
         updateKeranjang()
         
         if keranjang.count == 0 {

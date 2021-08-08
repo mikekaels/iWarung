@@ -68,6 +68,7 @@ extension KeranjangCell {
             self.rotate(angle: -30)
             self.center = CGPoint(x: self.center.x - 400, y: self.center.y)
         }, completion: {_ in
+            self.isHidden = true
             self.delegate.deleteProduct(indexPath: self.indexPath)
         })
     }
