@@ -610,11 +610,13 @@ extension ViewController: AVCapturePhotoCaptureDelegate {
 
         for visionResult in results {
             guard let candidate = visionResult.topCandidates(maximumCandidates).first else { continue }
-            resultScanText.append(candidate.string)
+            if let result = candidate.string.extractTextRecognize() {
+                resultScanText.append(result)
+            }
         }
             
         // MARK : Koding untuk menyimpan produk dari vision text
-        let result: [ProductItem] = self.productService.fetchProductsByBarcode(with: resultScanText.joined(separator: ","))
+        let result: [ProductItem] = self.productService.fetchProductsByNonBarcode(with: resultScanText)
         
         if !result.isEmpty {
             DispatchQueue.main.async {
@@ -622,10 +624,12 @@ extension ViewController: AVCapturePhotoCaptureDelegate {
                 self.cameraOverlay.alpha = 0
             }
             showModalDetectedProduct(product: result[0])
-//            print("hasil search \(String(describing: result[0]))")
+        } else {
+            showAlert(withTitle: "Barang tidak ditemukan", message: "Silahkan tambahkan barang ke dalam database")
         }
         
-//        print("Result Text : \(resultScanText)")
+        print("Result Text : \(resultScanText)")
+        print("Result Database : \(result)")
     }
     
     // MARK: - Helper Methods

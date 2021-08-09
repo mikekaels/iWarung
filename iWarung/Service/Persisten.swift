@@ -90,6 +90,29 @@ class Persisten {
         return products
     }
     
+    func fetchProductsByNonBarcode(with barcode: [String]) -> [ProductItem] {
+        var resultProduct : [ProductItem] = []
+        let request : NSFetchRequest<ProductItem> = ProductItem.fetchRequest()
+        var products: [ProductItem] = []
+
+        do {
+            products = try Persisten.shared.context.fetch(request)
+        } catch let error{
+            print("ga mencari \(error)")
+        }
+        
+        for value in products {
+            let resultTextArray = value.barcode_value?.components(separatedBy: ",") ?? []
+            for text in resultTextArray {
+                if text.contains(barcode.first ?? "") {
+                    resultProduct.append(value)
+                }
+            }
+        }
+        
+        return resultProduct
+    }
+    
     func deleteProduct(item: ProductItem) {
         
         guard let itemcontext = item.managedObjectContext else { return }
