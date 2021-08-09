@@ -115,10 +115,8 @@ extension PembayaranViewController: TransaksiSelesaiDelegate {
     }
     
     func openRecipt() {
-//        let vc = ReciptViewController()
-//        vc.keranjang = keranjang
-//        self.navigationController?.pushViewController(vc, animated: true)
         let vc = UIStoryboard.init(name: "Recipt", bundle: Bundle.main).instantiateViewController(withIdentifier: "ReciptViewController") as? ReciptViewController
+        vc?.keranjang = keranjang
         self.navigationController?.pushViewController(vc!, animated: true)
     }
     

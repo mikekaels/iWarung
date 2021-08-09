@@ -49,6 +49,7 @@
 		BDC490FC26C1BE7300825792 /* ReciptFooterTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = BDC490FA26C1BE7300825792 /* ReciptFooterTableViewCell.xib */; };
 		BDC4910026C1C35E00825792 /* ReciptViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BDC490FF26C1C35E00825792 /* ReciptViewController.swift */; };
 		BDC4910226C1D3AD00825792 /* Recipt.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = BDC4910126C1D3AD00825792 /* Recipt.storyboard */; };
+		BDC4910426C1D79F00825792 /* Pembayaran.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = BDC4910326C1D79F00825792 /* Pembayaran.storyboard */; };
 		BDC625C626AD507300E44675 /* TambahProdukScan.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = BDC625C526AD507300E44675 /* TambahProdukScan.storyboard */; };
 		BDC625C826AD509500E44675 /* TambahProdukScanViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BDC625C726AD509500E44675 /* TambahProdukScanViewController.swift */; };
 		BDC8DFA226AC2886008310AA /* UIButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = BDC8DFA126AC2886008310AA /* UIButton.swift */; };
@@ -116,6 +117,7 @@
 		BDC490FA26C1BE7300825792 /* ReciptFooterTableViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = ReciptFooterTableViewCell.xib; sourceTree = "<group>"; };
 		BDC490FF26C1C35E00825792 /* ReciptViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ReciptViewController.swift; sourceTree = "<group>"; };
 		BDC4910126C1D3AD00825792 /* Recipt.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = Recipt.storyboard; sourceTree = "<group>"; };
+		BDC4910326C1D79F00825792 /* Pembayaran.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; name = Pembayaran.storyboard; path = ../../../../../../.Trash/Pembayaran.storyboard; sourceTree = "<group>"; };
 		BDC625C526AD507300E44675 /* TambahProdukScan.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = TambahProdukScan.storyboard; sourceTree = "<group>"; };
 		BDC625C726AD509500E44675 /* TambahProdukScanViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TambahProdukScanViewController.swift; sourceTree = "<group>"; };
 		BDC8DFA126AC2886008310AA /* UIButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIButton.swift; sourceTree = "<group>"; };
@@ -200,6 +202,7 @@
 				BDC490E926C1BD1300825792 /* Recipt */,
 				BD5AC58A26A369F400A52336 /* Main.storyboard */,
 				BD85A2D026A9F72600FE1B9C /* Keranjang.storyboard */,
+				BDC4910326C1D79F00825792 /* Pembayaran.storyboard */,
 				BDEA922126AE7B9900157FA6 /* KeranjangCell */,
 				BDEA922226AE7BBF00157FA6 /* TransaksiSelesaiPas */,
 				BDC625C526AD507300E44675 /* TambahProdukScan.storyboard */,
@@ -413,6 +416,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				BDEA921D26AE7A6A00157FA6 /* KeranjangPopUp.xib in Resources */,
+				BDC4910426C1D79F00825792 /* Pembayaran.storyboard in Resources */,
 				E7AF66B526B165B00039A44B /* ProductItemViewCell.xib in Resources */,
 				BDC490EF26C1BDC000825792 /* ReciptListProductTableViewCell.xib in Resources */,
 				BDC490F726C1BE5800825792 /* ReciptHeaderTableViewCell.xib in Resources */,
