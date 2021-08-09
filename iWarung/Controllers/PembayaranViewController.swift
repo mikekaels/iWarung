@@ -21,7 +21,6 @@ class PembayaranViewController: UIViewController {
     
     var currentString = ""
     
-    
     @IBAction func finishTransactionPressed(_ sender: UIButton) {
         showModal()
     }
@@ -58,6 +57,8 @@ extension PembayaranViewController {
 }
 
 extension PembayaranViewController: TransaksiSelesaiDelegate {
+    
+    
     
     override func viewWillAppear(_ animated: Bool) {
         //MARK: - Total tagihan background
@@ -111,6 +112,12 @@ extension PembayaranViewController: TransaksiSelesaiDelegate {
     
     func backToRoot() {
         self.navigationController?.popToRootViewController(animated: true)
+    }
+    
+    func openRecipt() {
+        let vc = UIStoryboard.init(name: "Recipt", bundle: Bundle.main).instantiateViewController(withIdentifier: "ReciptViewController") as? ReciptViewController
+        vc?.keranjang = keranjang
+        self.navigationController?.pushViewController(vc!, animated: true)
     }
     
 }

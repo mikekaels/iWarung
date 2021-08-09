@@ -59,7 +59,7 @@
                                                     <segue destination="OBA-4J-l2X" kind="show" identifier="toPembayaran" id="fuS-UH-FLn"/>
                                                 </connections>
                                             </button>
-                                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="0cv-E6-WHa">
+                                            <button opaque="NO" userInteractionEnabled="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="0cv-E6-WHa">
                                                 <rect key="frame" x="248" y="19" width="24" height="24"/>
                                                 <color key="backgroundColor" red="0.176459678527356" green="0.63856436675479866" blue="0.96620899438858032" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
                                                 <constraints>
