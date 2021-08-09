@@ -500,7 +500,9 @@ extension TambahProdukScanViewController: AVCapturePhotoCaptureDelegate {
 
         for visionResult in results {
             guard let candidate = visionResult.topCandidates(maximumCandidates).first else { continue }
-            resultScanText.append(candidate.string)
+            if let result = candidate.string.extractTextRecognize() {
+                resultScanText.append(result)
+            }
         }
             
         // MARK : Koding untuk menyimpan produk dari vision text
