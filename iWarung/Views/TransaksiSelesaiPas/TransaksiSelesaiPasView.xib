@@ -31,7 +31,7 @@
                     <fontDescription key="fontDescription" type="boldSystem" pointSize="15"/>
                     <state key="normal" title="     Cetak Struk"/>
                     <connections>
-                        <action selector="backToMainScreenPressed:" destination="-1" eventType="touchUpInside" id="cau-GP-di4"/>
+                        <action selector="cetakStrukTapped:" destination="-1" eventType="touchUpInside" id="Jkg-4f-GNv"/>
                     </connections>
                 </button>
                 <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="b7x-fo-NTy">

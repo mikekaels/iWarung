@@ -9,6 +9,7 @@ import UIKit
 
 protocol TransaksiSelesaiDelegate {
     func backToRoot()
+    func openRecipt()
 }
 
 class TransaksiSelesaiPasView: UIViewController {
@@ -27,6 +28,12 @@ class TransaksiSelesaiPasView: UIViewController {
         self.dismiss(animated: true, completion: nil)
         delegate.backToRoot()
     }
+    
+    @IBAction func cetakStrukTapped(_ sender: UIButton) {
+        self.dismiss(animated: true, completion: nil)
+        delegate.openRecipt()
+    }
+    
     
     override func viewDidLayoutSubviews() {
         successLogoAnimate()

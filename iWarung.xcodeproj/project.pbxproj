@@ -10,7 +10,6 @@
 		3F28F79D26BD2A9400F1050A /* UIImage.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3F28F79C26BD2A9400F1050A /* UIImage.swift */; };
 		3FA214B726B0DB320036633F /* SelectProductView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3FA214B526B0DB320036633F /* SelectProductView.swift */; };
 		3FA214B826B0DB320036633F /* SelectProductView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 3FA214B626B0DB320036633F /* SelectProductView.xib */; };
-		3FE725FB26A96F24009F4D32 /* Pembayaran.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 3FE725FA26A96F24009F4D32 /* Pembayaran.storyboard */; };
 		3FE725FD26A96F7A009F4D32 /* PembayaranViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3FE725FC26A96F7A009F4D32 /* PembayaranViewController.swift */; };
 		3FF1EE7D26AE284000F4F122 /* DetectedProductView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3FF1EE7B26AE284000F4F122 /* DetectedProductView.swift */; };
 		3FF1EE7E26AE284000F4F122 /* DetectedProductView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 3FF1EE7C26AE284000F4F122 /* DetectedProductView.xib */; };
@@ -42,6 +41,14 @@
 		BD9023E326BEE57E00976CF1 /* String.swift in Sources */ = {isa = PBXBuildFile; fileRef = BD9023E226BEE57E00976CF1 /* String.swift */; };
 		BDB39A3826ADD05800296909 /* DaftarProduk.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = BDB39A3726ADD05800296909 /* DaftarProduk.storyboard */; };
 		BDB39A3A26ADD06F00296909 /* DaftarProdukViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BDB39A3926ADD06F00296909 /* DaftarProdukViewController.swift */; };
+		BDC490EE26C1BDC000825792 /* ReciptListProductTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = BDC490EC26C1BDC000825792 /* ReciptListProductTableViewCell.swift */; };
+		BDC490EF26C1BDC000825792 /* ReciptListProductTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = BDC490ED26C1BDC000825792 /* ReciptListProductTableViewCell.xib */; };
+		BDC490F626C1BE5800825792 /* ReciptHeaderTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = BDC490F426C1BE5800825792 /* ReciptHeaderTableViewCell.swift */; };
+		BDC490F726C1BE5800825792 /* ReciptHeaderTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = BDC490F526C1BE5800825792 /* ReciptHeaderTableViewCell.xib */; };
+		BDC490FB26C1BE7300825792 /* ReciptFooterTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = BDC490F926C1BE7300825792 /* ReciptFooterTableViewCell.swift */; };
+		BDC490FC26C1BE7300825792 /* ReciptFooterTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = BDC490FA26C1BE7300825792 /* ReciptFooterTableViewCell.xib */; };
+		BDC4910026C1C35E00825792 /* ReciptViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BDC490FF26C1C35E00825792 /* ReciptViewController.swift */; };
+		BDC4910226C1D3AD00825792 /* Recipt.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = BDC4910126C1D3AD00825792 /* Recipt.storyboard */; };
 		BDC625C626AD507300E44675 /* TambahProdukScan.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = BDC625C526AD507300E44675 /* TambahProdukScan.storyboard */; };
 		BDC625C826AD509500E44675 /* TambahProdukScanViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BDC625C726AD509500E44675 /* TambahProdukScanViewController.swift */; };
 		BDC8DFA226AC2886008310AA /* UIButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = BDC8DFA126AC2886008310AA /* UIButton.swift */; };
@@ -68,7 +75,6 @@
 		3F28F79C26BD2A9400F1050A /* UIImage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIImage.swift; sourceTree = "<group>"; };
 		3FA214B526B0DB320036633F /* SelectProductView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SelectProductView.swift; sourceTree = "<group>"; };
 		3FA214B626B0DB320036633F /* SelectProductView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = SelectProductView.xib; sourceTree = "<group>"; };
-		3FE725FA26A96F24009F4D32 /* Pembayaran.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = Pembayaran.storyboard; sourceTree = "<group>"; };
 		3FE725FC26A96F7A009F4D32 /* PembayaranViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PembayaranViewController.swift; sourceTree = "<group>"; };
 		3FF1EE7B26AE284000F4F122 /* DetectedProductView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetectedProductView.swift; sourceTree = "<group>"; };
 		3FF1EE7C26AE284000F4F122 /* DetectedProductView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = DetectedProductView.xib; sourceTree = "<group>"; };
@@ -102,6 +108,14 @@
 		BD9023E226BEE57E00976CF1 /* String.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = String.swift; sourceTree = "<group>"; };
 		BDB39A3726ADD05800296909 /* DaftarProduk.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = DaftarProduk.storyboard; sourceTree = "<group>"; };
 		BDB39A3926ADD06F00296909 /* DaftarProdukViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DaftarProdukViewController.swift; sourceTree = "<group>"; };
+		BDC490EC26C1BDC000825792 /* ReciptListProductTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ReciptListProductTableViewCell.swift; sourceTree = "<group>"; };
+		BDC490ED26C1BDC000825792 /* ReciptListProductTableViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = ReciptListProductTableViewCell.xib; sourceTree = "<group>"; };
+		BDC490F426C1BE5800825792 /* ReciptHeaderTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ReciptHeaderTableViewCell.swift; sourceTree = "<group>"; };
+		BDC490F526C1BE5800825792 /* ReciptHeaderTableViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = ReciptHeaderTableViewCell.xib; sourceTree = "<group>"; };
+		BDC490F926C1BE7300825792 /* ReciptFooterTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ReciptFooterTableViewCell.swift; sourceTree = "<group>"; };
+		BDC490FA26C1BE7300825792 /* ReciptFooterTableViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = ReciptFooterTableViewCell.xib; sourceTree = "<group>"; };
+		BDC490FF26C1C35E00825792 /* ReciptViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ReciptViewController.swift; sourceTree = "<group>"; };
+		BDC4910126C1D3AD00825792 /* Recipt.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = Recipt.storyboard; sourceTree = "<group>"; };
 		BDC625C526AD507300E44675 /* TambahProdukScan.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = TambahProdukScan.storyboard; sourceTree = "<group>"; };
 		BDC625C726AD509500E44675 /* TambahProdukScanViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TambahProdukScanViewController.swift; sourceTree = "<group>"; };
 		BDC8DFA126AC2886008310AA /* UIButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIButton.swift; sourceTree = "<group>"; };
@@ -183,8 +197,8 @@
 		BD5AC59C26A36A1700A52336 /* Views */ = {
 			isa = PBXGroup;
 			children = (
+				BDC490E926C1BD1300825792 /* Recipt */,
 				BD5AC58A26A369F400A52336 /* Main.storyboard */,
-				3FE725FA26A96F24009F4D32 /* Pembayaran.storyboard */,
 				BD85A2D026A9F72600FE1B9C /* Keranjang.storyboard */,
 				BDEA922126AE7B9900157FA6 /* KeranjangCell */,
 				BDEA922226AE7BBF00157FA6 /* TransaksiSelesaiPas */,
@@ -228,6 +242,7 @@
 				BDE43C2226AF4947004CF3CC /* OnboardingViewController.swift */,
 				BD726E2F26B5EBBB00EAFD14 /* SBCardPopUpViewController.swift */,
 				BD726E3126B5EC4F00EAFD14 /* CameraInactivePopUpViewController.swift */,
+				BDC490FF26C1C35E00825792 /* ReciptViewController.swift */,
 			);
 			path = Controllers;
 			sourceTree = "<group>";
@@ -256,6 +271,44 @@
 				BD726E3426B60CB100EAFD14 /* PopUpDelegate.swift */,
 			);
 			path = Protocols;
+			sourceTree = "<group>";
+		};
+		BDC490E926C1BD1300825792 /* Recipt */ = {
+			isa = PBXGroup;
+			children = (
+				BDC490F826C1BE5E00825792 /* ReciptFooter */,
+				BDC490F126C1BE2200825792 /* ReciptHeader */,
+				BDC490F026C1BE1500825792 /* ReciptListProduct */,
+				BDC4910126C1D3AD00825792 /* Recipt.storyboard */,
+			);
+			path = Recipt;
+			sourceTree = "<group>";
+		};
+		BDC490F026C1BE1500825792 /* ReciptListProduct */ = {
+			isa = PBXGroup;
+			children = (
+				BDC490EC26C1BDC000825792 /* ReciptListProductTableViewCell.swift */,
+				BDC490ED26C1BDC000825792 /* ReciptListProductTableViewCell.xib */,
+			);
+			path = ReciptListProduct;
+			sourceTree = "<group>";
+		};
+		BDC490F126C1BE2200825792 /* ReciptHeader */ = {
+			isa = PBXGroup;
+			children = (
+				BDC490F426C1BE5800825792 /* ReciptHeaderTableViewCell.swift */,
+				BDC490F526C1BE5800825792 /* ReciptHeaderTableViewCell.xib */,
+			);
+			path = ReciptHeader;
+			sourceTree = "<group>";
+		};
+		BDC490F826C1BE5E00825792 /* ReciptFooter */ = {
+			isa = PBXGroup;
+			children = (
+				BDC490F926C1BE7300825792 /* ReciptFooterTableViewCell.swift */,
+				BDC490FA26C1BE7300825792 /* ReciptFooterTableViewCell.xib */,
+			);
+			path = ReciptFooter;
 			sourceTree = "<group>";
 		};
 		BDDDE2A326BF321500081BB1 /* DetectedProduct */ = {
@@ -361,9 +414,12 @@
 			files = (
 				BDEA921D26AE7A6A00157FA6 /* KeranjangPopUp.xib in Resources */,
 				E7AF66B526B165B00039A44B /* ProductItemViewCell.xib in Resources */,
-				3FE725FB26A96F24009F4D32 /* Pembayaran.storyboard in Resources */,
+				BDC490EF26C1BDC000825792 /* ReciptListProductTableViewCell.xib in Resources */,
+				BDC490F726C1BE5800825792 /* ReciptHeaderTableViewCell.xib in Resources */,
 				3FA214B826B0DB320036633F /* SelectProductView.xib in Resources */,
 				BDC625C626AD507300E44675 /* TambahProdukScan.storyboard in Resources */,
+				BDC490FC26C1BE7300825792 /* ReciptFooterTableViewCell.xib in Resources */,
+				BDC4910226C1D3AD00825792 /* Recipt.storyboard in Resources */,
 				BD1CF23F26AC99F9001B7EC8 /* TransaksiSelesaiPasView.xib in Resources */,
 				BD5AC59426A369F500A52336 /* LaunchScreen.storyboard in Resources */,
 				3FF1EE7E26AE284000F4F122 /* DetectedProductView.xib in Resources */,
@@ -385,11 +441,14 @@
 			buildActionMask = 2147483647;
 			files = (
 				E7194C4C26ADD7D70018B189 /* TambahProdukFormViewController.swift in Sources */,
+				BDC490FB26C1BE7300825792 /* ReciptFooterTableViewCell.swift in Sources */,
 				BD1CF24726ACB279001B7EC8 /* UIApplication.swift in Sources */,
+				BDC4910026C1C35E00825792 /* ReciptViewController.swift in Sources */,
 				BD9023E326BEE57E00976CF1 /* String.swift in Sources */,
 				E7AF66B826B213E20039A44B /* Persisten.swift in Sources */,
 				3FE725FD26A96F7A009F4D32 /* PembayaranViewController.swift in Sources */,
 				BD1FFF3926AB957100EB9AAD /* UIViewController.swift in Sources */,
+				BDC490EE26C1BDC000825792 /* ReciptListProductTableViewCell.swift in Sources */,
 				BD3A595726B249C400BA4234 /* UISegmented.swift in Sources */,
 				BD5AC58926A369F400A52336 /* ViewController.swift in Sources */,
 				BD726E3026B5EBBB00EAFD14 /* SBCardPopUpViewController.swift in Sources */,
@@ -400,6 +459,7 @@
 				BD1FFF3B26AC237A00EB9AAD /* UIView.swift in Sources */,
 				BD85A2D326A9F74B00FE1B9C /* KeranjangViewController.swift in Sources */,
 				BD5AC58F26A369F400A52336 /* iWarung.xcdatamodeld in Sources */,
+				BDC490F626C1BE5800825792 /* ReciptHeaderTableViewCell.swift in Sources */,
 				BD726E3226B5EC4F00EAFD14 /* CameraInactivePopUpViewController.swift in Sources */,
 				BDC8DFA626AC8D3B008310AA /* PresentationController.swift in Sources */,
 				BDE43C2526AF4B36004CF3CC /* Onboarding.swift in Sources */,
