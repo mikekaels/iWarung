@@ -17,5 +17,13 @@ extension Date {
     func adding(weeks: Int) -> Date {
         Calendar.current.date(byAdding: .weekOfYear, value: weeks, to: self)!
     }
+    
+    func formatterDate(deadline: Date) -> String {
+        
+        let formatter = DateFormatter()
+        formatter.dateFormat = "MMM d, yyyy"
+        
+        return formatter.string(from: deadline)
+    }
 }
 

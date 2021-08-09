@@ -7,6 +7,7 @@
 
 import UIKit
 import CoreData
+import UserNotifications
 
 class TambahProdukFormViewController: UIViewController{
     
@@ -22,11 +23,15 @@ class TambahProdukFormViewController: UIViewController{
     @IBOutlet weak var imageButton: UIButton!
     @IBOutlet weak var imageThumnail: UIImageView!
     @IBOutlet weak var kadaluwarsaPicker: UIDatePicker!
+    @IBOutlet weak var cameraIcon: UIImageView!
+    @IBOutlet weak var ketukText: UILabel!
     
-    var selectedItem: ProductItem? = nil
+    var selectedItem: ProductItem?
     var scanningBarcode: String? = ""
     var datePicker: Date!
     let datePickerView = UIDatePicker()
+    
+    let center = UNUserNotificationCenter.current()
     
     override func viewDidLoad() {
         
@@ -42,30 +47,48 @@ class TambahProdukFormViewController: UIViewController{
         addProdItem.setTitle("Simpan", for: .normal)
         
         createDatePicker()
-//        addProdItem.cornerRadius(width: 10, height: 4)
-//        addProdItem.addGradient()
-//        deleteProdukButton.cornerRadius(width: 10, height: 4)
-//        deleteProdukButton.cornerRadius()
         
+        deleteProdukButton.backgroundColor = .white
+        deleteProdukButton.cornerRadius()
+        deleteProdukButton.layer.borderWidth = 2.0
+        deleteProdukButton.layer.borderColor = UIColor.red.cgColor
 //
-//        if (selectedItem != nil) {
-//            namaTF.text = selectedItem?.name
-//            deskTF.text = selectedItem?.desc
-//            hargaTF.text = "\(selectedItem?.price ?? 0)"
-//            stockTF.text = "\(selectedItem?.stock ?? 0)"
-//            kadaluwarsaPicker.date = (selectedItem?.exp_date!)!
-//            imageThumnail.image = UIImage(data: (selectedItem?.image_data)!)
-//
-//            addProdItem.setTitle("Simpan Perubahan", for: UIControl.State.normal)
-//
-//        } else {
-//            deleteProdukButton.isHidden = true
-//        }
+        if (selectedItem != nil) {
+            cameraIcon.isHidden = true
+            ketukText.isHidden = true
+            
+            namaTF.text = selectedItem!.name
+            
+            hargaTF.text = String(selectedItem!.price).currencyFormatting()
+            stockTF.text = "\(selectedItem!.stock)"
+            kadaluwarsaTF.text = formatterDate(deadline: (selectedItem?.exp_date)!)
+            imageThumnail.image = UIImage(data: (selectedItem?.image_data)!)
+
+            addProdItem.setTitle("Simpan Perubahan", for: UIControl.State.normal)
+
+        } else {
+            deleteProdukButton.isHidden = true
+        }
 //
 //        kadaluwarsaPicker.datePickerMode = .dateAndTime
 //        kadaluwarsaPicker.addTarget(self, action: #selector(datePickerValueChanged(sender: )), for: UIControl.Event.valueChanged)
 //
 //        self.setupHideKeyboardOnTap()
+    }
+    
+    
+    func formatterDate(deadline: Date) -> String {
+        let dateNow = Date()
+        let formatter = DateFormatter()
+        formatter.dateFormat = "MMM d, yyyy"
+        let data = deadline.days(from: dateNow)
+        
+        if (data >= 30) {
+            return formatter.string(from: deadline)
+        } else if (data < 0) {
+            return formatter.string(from: deadline)
+        }
+        return "\(data+1) days left"
     }
     
     /// Call this once to dismiss open keyboards by tapping anywhere in the view controller
@@ -105,11 +128,6 @@ class TambahProdukFormViewController: UIViewController{
             return
         }
         
-//        guard let desc = deskTF.text else {
-//            print("error deskripsi")
-//            return
-//        }
-        
         guard let price = hargaTF.text else {
             print("error harga")
             return
@@ -127,26 +145,24 @@ class TambahProdukFormViewController: UIViewController{
         }
         
         let date = datePickerView.date
+            
+            let content = UNMutableNotificationContent()
+            content.title = "Info product Kadaluwarsa"
+            content.body = nama
+            content.sound = UNNotificationSound.defaultCriticalSound(withAudioVolume: 100)
+            
+            let dateComponent = Calendar.current.dateComponents([.year, .month, .day, .hour, .minute, .second], from: date)
+            let trigger = UNCalendarNotificationTrigger(dateMatching: dateComponent, repeats: true)
+            
+            let uuidString = UUID().uuidString
+            let request = UNNotificationRequest(identifier: uuidString, content: content, trigger: trigger)
+            
+            center.add(request) { (error) in
+                print("Error adding notification because \(String(describing: error))")
+            }
         
         Persisten.shared.insertProduct(scanValue: codeValue, name: nama, description: "deskripsi", price: (price as NSString).floatValue, image: image, expired: date, stock: Int64(stock)!)
-            self.dismiss(animated: true, completion: {
-                self.navigationController?.popViewController(animated: true)
-            })
-            
-//            manager?.productItem.name = nama
-////            manager?.productItem.desc = desc
-//            manager?.productItem.barcode_value = codeValue
-//            manager?.productItem.exp_date = date
-//            manager?.productItem.price = (price as NSString).floatValue
-//            manager?.productItem.stock = Int64(stock)!
-//            manager?.productItem.image_data = image
-//            manager?.updateData(onSuccess: {
-//                print("Berhasil ditambahkan")
-//                self.dismiss(animated: true, completion: nil)
-//            }, onError: {
-//                print("Gagal ditambahkan")
-//            })
-//
+            self.dismiss(animated: true, completion: nil)
             
             // edit
         } else {
@@ -156,10 +172,6 @@ class TambahProdukFormViewController: UIViewController{
                 return
             }
             
-//            guard let desc = deskTF.text else {
-//                print("error deskripsi")
-//                return
-//            }
             
             guard let price = hargaTF.text else {
                 print("error harga")
@@ -171,10 +183,26 @@ class TambahProdukFormViewController: UIViewController{
                 return
             }
             
+            let date = datePickerView.date
+            
             self.selectedItem?.name = nama
-//            self.selectedItem?.desc = desc
             self.selectedItem?.price = (price as NSString).floatValue
             self.selectedItem?.image_data = image
+            
+            let content = UNMutableNotificationContent()
+            content.title = "Info product Kadaluwarsa"
+            content.body = nama
+            content.sound = UNNotificationSound.defaultCriticalSound(withAudioVolume: 100)
+            
+            let dateComponent = Calendar.current.dateComponents([.year, .month, .day, .hour, .minute, .second], from: date)
+            let trigger = UNCalendarNotificationTrigger(dateMatching: dateComponent, repeats: true)
+            
+            let uuidString = UUID().uuidString
+            let request = UNNotificationRequest(identifier: uuidString, content: content, trigger: trigger)
+            
+            center.add(request) { (error) in
+                print("Error adding notification because \(String(describing: error))")
+            }
             
             Persisten.shared.saveContext()
             self.dismiss(animated: true, completion: nil)
@@ -212,8 +240,10 @@ extension TambahProdukFormViewController: UIImagePickerControllerDelegate, UINav
         guard let userPickedImage = info[.editedImage] as? UIImage else { return }
         imageThumnail.image = userPickedImage
         picker.dismiss(animated: true)
-        
-        
+        if (imageThumnail.image != nil) {
+            cameraIcon.isHidden = true
+            ketukText.isHidden = true
+        }
     }
 }
 
@@ -238,7 +268,9 @@ extension TambahProdukFormViewController {
     }
     
     @objc func inputDate() {
-        kadaluwarsaTF.text = "\(datePickerView.date)"
+        let formatter = DateFormatter()
+        formatter.dateFormat = "d MMM, yyyy"
+        kadaluwarsaTF.text = formatter.string(from: datePickerView.date)
         self.view.endEditing(true)
     }
 }

@@ -121,7 +121,7 @@
                                                     <nil key="highlightedColor"/>
                                                 </label>
                                                 <datePicker contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" datePickerMode="date" style="compact" translatesAutoresizingMaskIntoConstraints="NO" id="cww-Wa-i2j">
-                                                    <rect key="frame" x="146" y="-4" width="222" height="50"/>
+                                                    <rect key="frame" x="145" y="-4" width="222" height="50"/>
                                                     <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMaxY="YES"/>
                                                     <locale key="locale" localeIdentifier="id_ID"/>
                                                 </datePicker>
@@ -394,6 +394,20 @@
                                     <action selector="addProduct:" destination="Y6W-OH-hqX" eventType="touchUpInside" id="X6A-fv-a03"/>
                                 </connections>
                             </button>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="eEg-on-Dxp">
+                                <rect key="frame" x="36" y="655" width="318" height="62"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="318" id="X3G-Qe-LIx"/>
+                                    <constraint firstAttribute="height" constant="62" id="nYs-6A-frP"/>
+                                </constraints>
+                                <state key="normal" title="Hapus Produk">
+                                    <color key="titleColor" systemColor="systemRedColor"/>
+                                </state>
+                                <connections>
+                                    <action selector="addProduct:" destination="Y6W-OH-hqX" eventType="touchUpInside" id="pag-An-oQf"/>
+                                    <action selector="deleteProduk:" destination="Y6W-OH-hqX" eventType="touchUpInside" id="X0s-n4-WKs"/>
+                                </connections>
+                            </button>
                         </subviews>
                         <viewLayoutGuide key="safeArea" id="vDu-zF-Fre"/>
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
@@ -401,13 +415,17 @@
                             <constraint firstItem="pOL-4K-Yvt" firstAttribute="top" secondItem="vDu-zF-Fre" secondAttribute="top" constant="15" id="0oD-g1-sVg"/>
                             <constraint firstItem="77p-fg-qfi" firstAttribute="centerX" secondItem="5EZ-qb-Rvc" secondAttribute="centerX" id="1WP-tf-2DM"/>
                             <constraint firstItem="gFz-GL-DCg" firstAttribute="leading" secondItem="vDu-zF-Fre" secondAttribute="leading" constant="25" id="Aal-cX-M0D"/>
+                            <constraint firstItem="eEg-on-Dxp" firstAttribute="leading" secondItem="vDu-zF-Fre" secondAttribute="leading" constant="36" id="Ac6-8q-o88"/>
+                            <constraint firstItem="vDu-zF-Fre" firstAttribute="trailing" secondItem="eEg-on-Dxp" secondAttribute="trailing" constant="36" id="BIv-2j-Itb"/>
                             <constraint firstItem="tFI-WS-1cm" firstAttribute="centerX" secondItem="5EZ-qb-Rvc" secondAttribute="centerX" id="Cnf-Oj-6Xy"/>
+                            <constraint firstItem="Nv6-Qa-uQw" firstAttribute="top" secondItem="eEg-on-Dxp" secondAttribute="bottom" constant="16" id="FHf-dP-KfE"/>
                             <constraint firstItem="NvC-ve-HYX" firstAttribute="top" secondItem="AkC-4I-Qvq" secondAttribute="bottom" id="HvO-VO-XYM"/>
                             <constraint firstItem="Nv6-Qa-uQw" firstAttribute="centerX" secondItem="5EZ-qb-Rvc" secondAttribute="centerX" id="RBR-6s-jzL"/>
                             <constraint firstItem="AkC-4I-Qvq" firstAttribute="top" secondItem="77p-fg-qfi" secondAttribute="bottom" id="Rfw-fu-RdT"/>
                             <constraint firstItem="tFI-WS-1cm" firstAttribute="top" secondItem="pOL-4K-Yvt" secondAttribute="bottom" constant="10" id="Z4S-Az-Fxe"/>
                             <constraint firstItem="gFz-GL-DCg" firstAttribute="top" secondItem="tFI-WS-1cm" secondAttribute="bottom" constant="25" id="Zgt-L4-khv"/>
                             <constraint firstItem="AkC-4I-Qvq" firstAttribute="centerX" secondItem="5EZ-qb-Rvc" secondAttribute="centerX" id="hjl-wV-z5p"/>
+                            <constraint firstItem="eEg-on-Dxp" firstAttribute="centerX" secondItem="5EZ-qb-Rvc" secondAttribute="centerX" id="i5G-Qm-doz"/>
                             <constraint firstItem="pOL-4K-Yvt" firstAttribute="leading" secondItem="vDu-zF-Fre" secondAttribute="leading" constant="25" id="laF-C9-jRJ"/>
                             <constraint firstItem="NvC-ve-HYX" firstAttribute="centerX" secondItem="5EZ-qb-Rvc" secondAttribute="centerX" id="nBo-IA-WpP"/>
                             <constraint firstItem="vDu-zF-Fre" firstAttribute="bottom" secondItem="Nv6-Qa-uQw" secondAttribute="bottom" constant="15" id="wNQ-qs-zbt"/>
@@ -419,11 +437,14 @@
                     <navigationItem key="navigationItem" id="pmp-E3-LDg"/>
                     <connections>
                         <outlet property="addProdItem" destination="Nv6-Qa-uQw" id="pFO-7D-twS"/>
+                        <outlet property="cameraIcon" destination="phr-Jt-WpL" id="AWS-TJ-TfR"/>
+                        <outlet property="deleteProdukButton" destination="eEg-on-Dxp" id="yAI-Fi-aMo"/>
                         <outlet property="hargaTF" destination="HC6-Hu-KXK" id="A0I-Sq-wkf"/>
                         <outlet property="imageBackgroundView" destination="tFI-WS-1cm" id="3aB-V4-7h9"/>
                         <outlet property="imageButton" destination="DHm-RG-1jC" id="pJB-ks-2Q4"/>
                         <outlet property="imageThumnail" destination="LsC-q2-WbH" id="B6C-9s-cub"/>
                         <outlet property="kadaluwarsaTF" destination="aP7-0e-DGH" id="31Z-0w-uJp"/>
+                        <outlet property="ketukText" destination="yql-pv-JOg" id="XdZ-Aa-gD1"/>
                         <outlet property="namaTF" destination="qkW-Xr-Xyy" id="JZE-y4-Odq"/>
                         <outlet property="stockTF" destination="fsL-SK-2jA" id="WSi-aq-DzM"/>
                     </connections>
@@ -456,6 +477,9 @@
         <image name="kapal api" width="700" height="933"/>
         <systemColor name="systemBackgroundColor">
             <color white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+        </systemColor>
+        <systemColor name="systemRedColor">
+            <color red="1" green="0.23137254901960785" blue="0.18823529411764706" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
         </systemColor>
     </resources>
 </document>

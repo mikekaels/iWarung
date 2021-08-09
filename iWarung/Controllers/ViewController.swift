@@ -482,6 +482,8 @@ extension ViewController: AVCaptureVideoDataOutputSampleBufferDelegate {
                     }
                     showModalDetectedProduct(product: result[0])
 //                    print("hasil search \(String(describing: result[0]))")
+                } else {
+                    showAlert(withTitle: "Informasi", message: "Produk belum ditambahkan ke inventori")
                 }
             }
         }
