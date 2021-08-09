@@ -348,6 +348,9 @@ extension TambahProdukScanViewController: AVCaptureVideoDataOutputSampleBufferDe
                         self.cameraOverlay.alpha = 0
                         self.showModalAddProductForm(with: String(barcode))
                     }
+                } else {
+                    let nameP = String(result[0].name!)
+                    showAlert(withTitle: "Info Tambah Produk", message: "Barcode telah digunakan dengan nama produk \(nameP).")
                 }
             }
         }

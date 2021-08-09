@@ -55,8 +55,16 @@ class DaftarProdukViewController: UIViewController, UIViewControllerTransitionin
     
     @objc func loadData(){
         
-        productList = Persisten.shared.fetchProducts()
-        daftarProdukCollectionView.reloadData()
+        do {
+            productList = Persisten.shared.fetchProducts()
+            
+            DispatchQueue.main.async {
+                self.daftarProdukCollectionView.reloadData()
+            }
+        }
+        catch {
+            print("error load data")
+        }
         
     }
     
@@ -78,25 +86,9 @@ class DaftarProdukViewController: UIViewController, UIViewControllerTransitionin
     }()
     
     @objc func refresh() {
-        self.daftarProdukCollectionView.reloadData()
+        loadData();
     }
     
-    
-    
-    
-    //    func formatterDate(deadline: Date) -> String {
-    //        let dateNow = Date()
-    //        let formatter = DateFormatter()
-    //        formatter.dateFormat = "MMM d, yyyy"
-    //        let data = deadline.days(from: dateNow)
-    //
-    //        if (data >= 30) {
-    //            return formatter.string(from: deadline)
-    //        } else if (data < 0) {
-    //            return formatter.string(from: deadline)
-    //        }
-    //        return "Exp. \(data+1) days left"
-    //    }
     
     func formatterDate(with date: Date) -> String {
         let formatter = DateFormatter()
