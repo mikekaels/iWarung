@@ -413,11 +413,11 @@ extension TambahProdukScanViewController {
     func showModalAddProductForm(with barcode: String) {
         print("BARCODE: ",barcode)
         DispatchQueue.main.async {
-            let storyBoard: UIStoryboard = UIStoryboard(name: "TambahProdukForm", bundle: nil)
-            let newViewController = storyBoard.instantiateViewController(withIdentifier: "TambahProdukForm") as! TambahProdukFormViewController
-            newViewController.modalPresentationStyle = .popover
-            newViewController.scanningBarcode = String(barcode)
-            self.present(newViewController, animated: true, completion: nil)
+            let vc =  UIStoryboard.init(name: "TambahProdukForm", bundle: Bundle.main).instantiateViewController(withIdentifier: "TambahProdukForm") as! TambahProdukFormViewController
+            vc.scanningBarcode = String(barcode)
+            vc.isNewProduct = true
+            let nav = UINavigationController(rootViewController: vc)
+            self.present(nav, animated: true, completion: nil)
         }
     }
     
