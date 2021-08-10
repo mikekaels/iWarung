@@ -7,7 +7,7 @@
 
 import UIKit
 
-class PembayaranViewController: UIViewController {
+class PembayaranViewController: UIViewController, UITextFieldDelegate {
 
     @IBOutlet weak var totalTagihanBackgroundView: UIView!
     @IBOutlet weak var totalTagihan: UILabel!
@@ -22,7 +22,11 @@ class PembayaranViewController: UIViewController {
     var currentString = ""
     
     @IBAction func finishTransactionPressed(_ sender: UIButton) {
-        showModal()
+        if Double(receivedMoneyTextfield.text ?? "") ?? 0 <= 0 ||  totalChangeAmount < 0{
+            showAlert(withTitle: "Uang belum cukup", message: "Silahkan isi uang diterima dengan benar")
+        } else {
+            showModal()
+        }
     }
     
     func onButtonTapped() {
@@ -37,9 +41,34 @@ extension PembayaranViewController {
         title = "Pembayaran"
         self.hideKeyboardWhenTappedAround()
         totalTagihan.text = String(totalPemabayaran).currencyFormatting()
+        receivedMoneyTextfield.delegate = self
         self.receivedMoneyTextfield.addTarget(self, action: #selector(PembayaranViewController.textFieldDidChange(_:)), for: .editingChanged)
+        self.receivedMoneyTextfield.addTarget(self, action: #selector(textDidChange), for: UIControl.Event.editingDidEnd)
         
         configureTotalTagihanView()
+    }
+    
+    @objc func textDidChange(_ textField:UITextField) {
+        if textField.text?.count == 0 {
+            totalChangeAmount = 0
+            updateChangeAmount()
+        }
+     }
+    
+    func textField(_ textField: UITextField, shouldChangeCharactersIn range: NSRange, replacementString string: String) -> Bool {
+        //Prevent "0" characters as the first characters. (i.e.: There should not be values like "003" "01" "000012" etc.)
+        if textField.text?.count == 0 && string == "0" {
+            totalChangeAmount = 0
+            return false
+        }
+        
+        //Only allow numbers. No Copy-Paste text values.
+        let allowedCharacterSet = CharacterSet.init(charactersIn: "0123456789.")
+        let textCharacterSet = CharacterSet.init(charactersIn: textField.text! + string)
+        if !allowedCharacterSet.isSuperset(of: textCharacterSet) {
+            return false
+        }
+        return true
     }
     
     @objc func textFieldDidChange(_ textField: UITextField) {
