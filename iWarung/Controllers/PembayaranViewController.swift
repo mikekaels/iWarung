@@ -106,7 +106,7 @@ extension PembayaranViewController: TransaksiSelesaiDelegate {
         slideVC.transitioningDelegate = self
         slideVC.delegate = self
         self.present(slideVC, animated: true, completion: { () in
-            print("Modal opened")
+            print("Modal openedd")
         })
     }
     

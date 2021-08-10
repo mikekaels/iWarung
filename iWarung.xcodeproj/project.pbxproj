@@ -39,6 +39,32 @@
 		BD85A2D126A9F72600FE1B9C /* Keranjang.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = BD85A2D026A9F72600FE1B9C /* Keranjang.storyboard */; };
 		BD85A2D326A9F74B00FE1B9C /* KeranjangViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BD85A2D226A9F74B00FE1B9C /* KeranjangViewController.swift */; };
 		BD9023E326BEE57E00976CF1 /* String.swift in Sources */ = {isa = PBXBuildFile; fileRef = BD9023E226BEE57E00976CF1 /* String.swift */; };
+		BDB379FD26C2257200BDF9C2 /* Keranjang.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = BDB379D826C2257200BDF9C2 /* Keranjang.storyboard */; };
+		BDB379FE26C2257200BDF9C2 /* SelectProductView.swift in Sources */ = {isa = PBXBuildFile; fileRef = BDB379DA26C2257200BDF9C2 /* SelectProductView.swift */; };
+		BDB379FF26C2257200BDF9C2 /* SelectProductView.xib in Resources */ = {isa = PBXBuildFile; fileRef = BDB379DB26C2257200BDF9C2 /* SelectProductView.xib */; };
+		BDB37A0026C2257200BDF9C2 /* ProductItemViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = BDB379DD26C2257200BDF9C2 /* ProductItemViewCell.xib */; };
+		BDB37A0126C2257200BDF9C2 /* ProductItemViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = BDB379DE26C2257200BDF9C2 /* ProductItemViewCell.swift */; };
+		BDB37A0226C2257200BDF9C2 /* Onboarding.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = BDB379DF26C2257200BDF9C2 /* Onboarding.storyboard */; };
+		BDB37A0326C2257200BDF9C2 /* TambahProdukForm.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = BDB379E026C2257200BDF9C2 /* TambahProdukForm.storyboard */; };
+		BDB37A0426C2257200BDF9C2 /* KeranjangCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = BDB379E226C2257200BDF9C2 /* KeranjangCell.swift */; };
+		BDB37A0526C2257200BDF9C2 /* KeranjangCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = BDB379E326C2257200BDF9C2 /* KeranjangCell.xib */; };
+		BDB37A0626C2257200BDF9C2 /* TransaksiSelesaiPasView.swift in Sources */ = {isa = PBXBuildFile; fileRef = BDB379E526C2257200BDF9C2 /* TransaksiSelesaiPasView.swift */; };
+		BDB37A0726C2257200BDF9C2 /* TransaksiSelesaiPasView.xib in Resources */ = {isa = PBXBuildFile; fileRef = BDB379E626C2257200BDF9C2 /* TransaksiSelesaiPasView.xib */; };
+		BDB37A0826C2257200BDF9C2 /* KeranjangPopUp.swift in Sources */ = {isa = PBXBuildFile; fileRef = BDB379E826C2257200BDF9C2 /* KeranjangPopUp.swift */; };
+		BDB37A0926C2257200BDF9C2 /* KeranjangPopUp.xib in Resources */ = {isa = PBXBuildFile; fileRef = BDB379E926C2257200BDF9C2 /* KeranjangPopUp.xib */; };
+		BDB37A0A26C2257200BDF9C2 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = BDB379EA26C2257200BDF9C2 /* Main.storyboard */; };
+		BDB37A0B26C2257200BDF9C2 /* Pembayaran.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = BDB379EC26C2257200BDF9C2 /* Pembayaran.storyboard */; };
+		BDB37A0C26C2257200BDF9C2 /* Recipt.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = BDB379EE26C2257200BDF9C2 /* Recipt.storyboard */; };
+		BDB37A0D26C2257200BDF9C2 /* ReciptListProductTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = BDB379F026C2257200BDF9C2 /* ReciptListProductTableViewCell.swift */; };
+		BDB37A0E26C2257200BDF9C2 /* ReciptListProductTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = BDB379F126C2257200BDF9C2 /* ReciptListProductTableViewCell.xib */; };
+		BDB37A0F26C2257200BDF9C2 /* ReciptHeaderTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = BDB379F326C2257200BDF9C2 /* ReciptHeaderTableViewCell.swift */; };
+		BDB37A1026C2257200BDF9C2 /* ReciptHeaderTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = BDB379F426C2257200BDF9C2 /* ReciptHeaderTableViewCell.xib */; };
+		BDB37A1126C2257200BDF9C2 /* ReciptFooterTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = BDB379F626C2257200BDF9C2 /* ReciptFooterTableViewCell.swift */; };
+		BDB37A1226C2257200BDF9C2 /* ReciptFooterTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = BDB379F726C2257200BDF9C2 /* ReciptFooterTableViewCell.xib */; };
+		BDB37A1326C2257200BDF9C2 /* TambahProdukScan.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = BDB379F826C2257200BDF9C2 /* TambahProdukScan.storyboard */; };
+		BDB37A1426C2257200BDF9C2 /* DetectedProductView.xib in Resources */ = {isa = PBXBuildFile; fileRef = BDB379FA26C2257200BDF9C2 /* DetectedProductView.xib */; };
+		BDB37A1526C2257200BDF9C2 /* DetectedProductView.swift in Sources */ = {isa = PBXBuildFile; fileRef = BDB379FB26C2257200BDF9C2 /* DetectedProductView.swift */; };
+		BDB37A1626C2257200BDF9C2 /* DaftarProduk.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = BDB379FC26C2257200BDF9C2 /* DaftarProduk.storyboard */; };
 		BDB39A3826ADD05800296909 /* DaftarProduk.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = BDB39A3726ADD05800296909 /* DaftarProduk.storyboard */; };
 		BDB39A3A26ADD06F00296909 /* DaftarProdukViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BDB39A3926ADD06F00296909 /* DaftarProdukViewController.swift */; };
 		BDC490EE26C1BDC000825792 /* ReciptListProductTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = BDC490EC26C1BDC000825792 /* ReciptListProductTableViewCell.swift */; };
@@ -107,6 +133,32 @@
 		BD85A2D026A9F72600FE1B9C /* Keranjang.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = Keranjang.storyboard; sourceTree = "<group>"; };
 		BD85A2D226A9F74B00FE1B9C /* KeranjangViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = KeranjangViewController.swift; sourceTree = "<group>"; };
 		BD9023E226BEE57E00976CF1 /* String.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = String.swift; sourceTree = "<group>"; };
+		BDB379D826C2257200BDF9C2 /* Keranjang.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = Keranjang.storyboard; sourceTree = "<group>"; };
+		BDB379DA26C2257200BDF9C2 /* SelectProductView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SelectProductView.swift; sourceTree = "<group>"; };
+		BDB379DB26C2257200BDF9C2 /* SelectProductView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = SelectProductView.xib; sourceTree = "<group>"; };
+		BDB379DD26C2257200BDF9C2 /* ProductItemViewCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = ProductItemViewCell.xib; sourceTree = "<group>"; };
+		BDB379DE26C2257200BDF9C2 /* ProductItemViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ProductItemViewCell.swift; sourceTree = "<group>"; };
+		BDB379DF26C2257200BDF9C2 /* Onboarding.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = Onboarding.storyboard; sourceTree = "<group>"; };
+		BDB379E026C2257200BDF9C2 /* TambahProdukForm.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = TambahProdukForm.storyboard; sourceTree = "<group>"; };
+		BDB379E226C2257200BDF9C2 /* KeranjangCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = KeranjangCell.swift; sourceTree = "<group>"; };
+		BDB379E326C2257200BDF9C2 /* KeranjangCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = KeranjangCell.xib; sourceTree = "<group>"; };
+		BDB379E526C2257200BDF9C2 /* TransaksiSelesaiPasView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TransaksiSelesaiPasView.swift; sourceTree = "<group>"; };
+		BDB379E626C2257200BDF9C2 /* TransaksiSelesaiPasView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = TransaksiSelesaiPasView.xib; sourceTree = "<group>"; };
+		BDB379E826C2257200BDF9C2 /* KeranjangPopUp.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = KeranjangPopUp.swift; sourceTree = "<group>"; };
+		BDB379E926C2257200BDF9C2 /* KeranjangPopUp.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = KeranjangPopUp.xib; sourceTree = "<group>"; };
+		BDB379EB26C2257200BDF9C2 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
+		BDB379EC26C2257200BDF9C2 /* Pembayaran.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = Pembayaran.storyboard; sourceTree = "<group>"; };
+		BDB379EE26C2257200BDF9C2 /* Recipt.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = Recipt.storyboard; sourceTree = "<group>"; };
+		BDB379F026C2257200BDF9C2 /* ReciptListProductTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ReciptListProductTableViewCell.swift; sourceTree = "<group>"; };
+		BDB379F126C2257200BDF9C2 /* ReciptListProductTableViewCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = ReciptListProductTableViewCell.xib; sourceTree = "<group>"; };
+		BDB379F326C2257200BDF9C2 /* ReciptHeaderTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ReciptHeaderTableViewCell.swift; sourceTree = "<group>"; };
+		BDB379F426C2257200BDF9C2 /* ReciptHeaderTableViewCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = ReciptHeaderTableViewCell.xib; sourceTree = "<group>"; };
+		BDB379F626C2257200BDF9C2 /* ReciptFooterTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ReciptFooterTableViewCell.swift; sourceTree = "<group>"; };
+		BDB379F726C2257200BDF9C2 /* ReciptFooterTableViewCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = ReciptFooterTableViewCell.xib; sourceTree = "<group>"; };
+		BDB379F826C2257200BDF9C2 /* TambahProdukScan.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = TambahProdukScan.storyboard; sourceTree = "<group>"; };
+		BDB379FA26C2257200BDF9C2 /* DetectedProductView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = DetectedProductView.xib; sourceTree = "<group>"; };
+		BDB379FB26C2257200BDF9C2 /* DetectedProductView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DetectedProductView.swift; sourceTree = "<group>"; };
+		BDB379FC26C2257200BDF9C2 /* DaftarProduk.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = DaftarProduk.storyboard; sourceTree = "<group>"; };
 		BDB39A3726ADD05800296909 /* DaftarProduk.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = DaftarProduk.storyboard; sourceTree = "<group>"; };
 		BDB39A3926ADD06F00296909 /* DaftarProdukViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DaftarProdukViewController.swift; sourceTree = "<group>"; };
 		BDC490EC26C1BDC000825792 /* ReciptListProductTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ReciptListProductTableViewCell.swift; sourceTree = "<group>"; };
@@ -203,6 +255,7 @@
 				BD5AC58A26A369F400A52336 /* Main.storyboard */,
 				BD85A2D026A9F72600FE1B9C /* Keranjang.storyboard */,
 				BDC4910326C1D79F00825792 /* Pembayaran.storyboard */,
+				BDB379D726C2257200BDF9C2 /* Views */,
 				BDEA922126AE7B9900157FA6 /* KeranjangCell */,
 				BDEA922226AE7BBF00157FA6 /* TransaksiSelesaiPas */,
 				BDC625C526AD507300E44675 /* TambahProdukScan.storyboard */,
@@ -274,6 +327,119 @@
 				BD726E3426B60CB100EAFD14 /* PopUpDelegate.swift */,
 			);
 			path = Protocols;
+			sourceTree = "<group>";
+		};
+		BDB379D726C2257200BDF9C2 /* Views */ = {
+			isa = PBXGroup;
+			children = (
+				BDB379D826C2257200BDF9C2 /* Keranjang.storyboard */,
+				BDB379D926C2257200BDF9C2 /* SelectProduct */,
+				BDB379DC26C2257200BDF9C2 /* ProductItemCell */,
+				BDB379DF26C2257200BDF9C2 /* Onboarding.storyboard */,
+				BDB379E026C2257200BDF9C2 /* TambahProdukForm.storyboard */,
+				BDB379E126C2257200BDF9C2 /* KeranjangCell */,
+				BDB379E426C2257200BDF9C2 /* TransaksiSelesaiPas */,
+				BDB379E726C2257200BDF9C2 /* KeranjangPopUp */,
+				BDB379EA26C2257200BDF9C2 /* Main.storyboard */,
+				BDB379EC26C2257200BDF9C2 /* Pembayaran.storyboard */,
+				BDB379ED26C2257200BDF9C2 /* Recipt */,
+				BDB379F826C2257200BDF9C2 /* TambahProdukScan.storyboard */,
+				BDB379F926C2257200BDF9C2 /* DetectedProduct */,
+				BDB379FC26C2257200BDF9C2 /* DaftarProduk.storyboard */,
+			);
+			name = Views;
+			sourceTree = "<group>";
+		};
+		BDB379D926C2257200BDF9C2 /* SelectProduct */ = {
+			isa = PBXGroup;
+			children = (
+				BDB379DA26C2257200BDF9C2 /* SelectProductView.swift */,
+				BDB379DB26C2257200BDF9C2 /* SelectProductView.xib */,
+			);
+			path = SelectProduct;
+			sourceTree = "<group>";
+		};
+		BDB379DC26C2257200BDF9C2 /* ProductItemCell */ = {
+			isa = PBXGroup;
+			children = (
+				BDB379DD26C2257200BDF9C2 /* ProductItemViewCell.xib */,
+				BDB379DE26C2257200BDF9C2 /* ProductItemViewCell.swift */,
+			);
+			path = ProductItemCell;
+			sourceTree = "<group>";
+		};
+		BDB379E126C2257200BDF9C2 /* KeranjangCell */ = {
+			isa = PBXGroup;
+			children = (
+				BDB379E226C2257200BDF9C2 /* KeranjangCell.swift */,
+				BDB379E326C2257200BDF9C2 /* KeranjangCell.xib */,
+			);
+			path = KeranjangCell;
+			sourceTree = "<group>";
+		};
+		BDB379E426C2257200BDF9C2 /* TransaksiSelesaiPas */ = {
+			isa = PBXGroup;
+			children = (
+				BDB379E526C2257200BDF9C2 /* TransaksiSelesaiPasView.swift */,
+				BDB379E626C2257200BDF9C2 /* TransaksiSelesaiPasView.xib */,
+			);
+			path = TransaksiSelesaiPas;
+			sourceTree = "<group>";
+		};
+		BDB379E726C2257200BDF9C2 /* KeranjangPopUp */ = {
+			isa = PBXGroup;
+			children = (
+				BDB379E826C2257200BDF9C2 /* KeranjangPopUp.swift */,
+				BDB379E926C2257200BDF9C2 /* KeranjangPopUp.xib */,
+			);
+			path = KeranjangPopUp;
+			sourceTree = "<group>";
+		};
+		BDB379ED26C2257200BDF9C2 /* Recipt */ = {
+			isa = PBXGroup;
+			children = (
+				BDB379EE26C2257200BDF9C2 /* Recipt.storyboard */,
+				BDB379EF26C2257200BDF9C2 /* ReciptListProduct */,
+				BDB379F226C2257200BDF9C2 /* ReciptHeader */,
+				BDB379F526C2257200BDF9C2 /* ReciptFooter */,
+			);
+			path = Recipt;
+			sourceTree = "<group>";
+		};
+		BDB379EF26C2257200BDF9C2 /* ReciptListProduct */ = {
+			isa = PBXGroup;
+			children = (
+				BDB379F026C2257200BDF9C2 /* ReciptListProductTableViewCell.swift */,
+				BDB379F126C2257200BDF9C2 /* ReciptListProductTableViewCell.xib */,
+			);
+			path = ReciptListProduct;
+			sourceTree = "<group>";
+		};
+		BDB379F226C2257200BDF9C2 /* ReciptHeader */ = {
+			isa = PBXGroup;
+			children = (
+				BDB379F326C2257200BDF9C2 /* ReciptHeaderTableViewCell.swift */,
+				BDB379F426C2257200BDF9C2 /* ReciptHeaderTableViewCell.xib */,
+			);
+			path = ReciptHeader;
+			sourceTree = "<group>";
+		};
+		BDB379F526C2257200BDF9C2 /* ReciptFooter */ = {
+			isa = PBXGroup;
+			children = (
+				BDB379F626C2257200BDF9C2 /* ReciptFooterTableViewCell.swift */,
+				BDB379F726C2257200BDF9C2 /* ReciptFooterTableViewCell.xib */,
+			);
+			path = ReciptFooter;
+			sourceTree = "<group>";
+		};
+		BDB379F926C2257200BDF9C2 /* DetectedProduct */ = {
+			isa = PBXGroup;
+			children = (
+				BDB379FA26C2257200BDF9C2 /* DetectedProductView.xib */,
+				BDB379FB26C2257200BDF9C2 /* DetectedProductView.swift */,
+			);
+			path = DetectedProduct;
 			sourceTree = "<group>";
 		};
 		BDC490E926C1BD1300825792 /* Recipt */ = {
@@ -416,23 +582,40 @@
 			buildActionMask = 2147483647;
 			files = (
 				BDEA921D26AE7A6A00157FA6 /* KeranjangPopUp.xib in Resources */,
+				BDB37A1026C2257200BDF9C2 /* ReciptHeaderTableViewCell.xib in Resources */,
 				BDC4910426C1D79F00825792 /* Pembayaran.storyboard in Resources */,
+				BDB37A1426C2257200BDF9C2 /* DetectedProductView.xib in Resources */,
+				BDB37A1326C2257200BDF9C2 /* TambahProdukScan.storyboard in Resources */,
 				E7AF66B526B165B00039A44B /* ProductItemViewCell.xib in Resources */,
 				BDC490EF26C1BDC000825792 /* ReciptListProductTableViewCell.xib in Resources */,
 				BDC490F726C1BE5800825792 /* ReciptHeaderTableViewCell.xib in Resources */,
+				BDB379FF26C2257200BDF9C2 /* SelectProductView.xib in Resources */,
 				3FA214B826B0DB320036633F /* SelectProductView.xib in Resources */,
+				BDB37A0A26C2257200BDF9C2 /* Main.storyboard in Resources */,
 				BDC625C626AD507300E44675 /* TambahProdukScan.storyboard in Resources */,
+				BDB37A1226C2257200BDF9C2 /* ReciptFooterTableViewCell.xib in Resources */,
+				BDB37A0B26C2257200BDF9C2 /* Pembayaran.storyboard in Resources */,
 				BDC490FC26C1BE7300825792 /* ReciptFooterTableViewCell.xib in Resources */,
+				BDB37A0C26C2257200BDF9C2 /* Recipt.storyboard in Resources */,
+				BDB37A0526C2257200BDF9C2 /* KeranjangCell.xib in Resources */,
+				BDB37A0026C2257200BDF9C2 /* ProductItemViewCell.xib in Resources */,
+				BDB379FD26C2257200BDF9C2 /* Keranjang.storyboard in Resources */,
 				BDC4910226C1D3AD00825792 /* Recipt.storyboard in Resources */,
 				BD1CF23F26AC99F9001B7EC8 /* TransaksiSelesaiPasView.xib in Resources */,
+				BDB37A1626C2257200BDF9C2 /* DaftarProduk.storyboard in Resources */,
 				BD5AC59426A369F500A52336 /* LaunchScreen.storyboard in Resources */,
+				BDB37A0926C2257200BDF9C2 /* KeranjangPopUp.xib in Resources */,
 				3FF1EE7E26AE284000F4F122 /* DetectedProductView.xib in Resources */,
+				BDB37A0226C2257200BDF9C2 /* Onboarding.storyboard in Resources */,
+				BDB37A0326C2257200BDF9C2 /* TambahProdukForm.storyboard in Resources */,
 				BDB39A3826ADD05800296909 /* DaftarProduk.storyboard in Resources */,
 				BD5AC59126A369F500A52336 /* Assets.xcassets in Resources */,
 				BD85A2D126A9F72600FE1B9C /* Keranjang.storyboard in Resources */,
+				BDB37A0726C2257200BDF9C2 /* TransaksiSelesaiPasView.xib in Resources */,
 				BDE43C2126AF4283004CF3CC /* Onboarding.storyboard in Resources */,
 				BD5AC58C26A369F400A52336 /* Main.storyboard in Resources */,
 				E7194C5626AFD3D50018B189 /* TambahProdukForm.storyboard in Resources */,
+				BDB37A0E26C2257200BDF9C2 /* ReciptListProductTableViewCell.xib in Resources */,
 				BD1FFF3226AB604100EB9AAD /* KeranjangCell.xib in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -444,6 +627,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				BDB379FE26C2257200BDF9C2 /* SelectProductView.swift in Sources */,
 				E7194C4C26ADD7D70018B189 /* TambahProdukFormViewController.swift in Sources */,
 				BDC490FB26C1BE7300825792 /* ReciptFooterTableViewCell.swift in Sources */,
 				BD1CF24726ACB279001B7EC8 /* UIApplication.swift in Sources */,
@@ -451,16 +635,19 @@
 				BD9023E326BEE57E00976CF1 /* String.swift in Sources */,
 				E7AF66B826B213E20039A44B /* Persisten.swift in Sources */,
 				3FE725FD26A96F7A009F4D32 /* PembayaranViewController.swift in Sources */,
+				BDB37A0F26C2257200BDF9C2 /* ReciptHeaderTableViewCell.swift in Sources */,
 				BD1FFF3926AB957100EB9AAD /* UIViewController.swift in Sources */,
 				BDC490EE26C1BDC000825792 /* ReciptListProductTableViewCell.swift in Sources */,
 				BD3A595726B249C400BA4234 /* UISegmented.swift in Sources */,
 				BD5AC58926A369F400A52336 /* ViewController.swift in Sources */,
 				BD726E3026B5EBBB00EAFD14 /* SBCardPopUpViewController.swift in Sources */,
+				BDB37A0626C2257200BDF9C2 /* TransaksiSelesaiPasView.swift in Sources */,
 				BDEA921F26AE7B7A00157FA6 /* KeranjangPopUp.swift in Sources */,
 				E7AF66BF26B427C00039A44B /* ProductItem+CoreDataClass.swift in Sources */,
 				E7AF66C026B427C00039A44B /* ProductItem+CoreDataProperties.swift in Sources */,
 				BD726E3526B60CB100EAFD14 /* PopUpDelegate.swift in Sources */,
 				BD1FFF3B26AC237A00EB9AAD /* UIView.swift in Sources */,
+				BDB37A1526C2257200BDF9C2 /* DetectedProductView.swift in Sources */,
 				BD85A2D326A9F74B00FE1B9C /* KeranjangViewController.swift in Sources */,
 				BD5AC58F26A369F400A52336 /* iWarung.xcdatamodeld in Sources */,
 				BDC490F626C1BE5800825792 /* ReciptHeaderTableViewCell.swift in Sources */,
@@ -468,9 +655,11 @@
 				BDC8DFA626AC8D3B008310AA /* PresentationController.swift in Sources */,
 				BDE43C2526AF4B36004CF3CC /* Onboarding.swift in Sources */,
 				BD1FB09B26BB188200648B18 /* Int.swift in Sources */,
+				BDB37A0826C2257200BDF9C2 /* KeranjangPopUp.swift in Sources */,
 				3FA214B726B0DB320036633F /* SelectProductView.swift in Sources */,
 				BDE43C2326AF4947004CF3CC /* OnboardingViewController.swift in Sources */,
 				BD1FFF3426AB65F800EB9AAD /* Product.swift in Sources */,
+				BDB37A0426C2257200BDF9C2 /* KeranjangCell.swift in Sources */,
 				BD74BCB026A4820B00E3EE75 /* constants.swift in Sources */,
 				3F28F79D26BD2A9400F1050A /* UIImage.swift in Sources */,
 				BD1FFF3D26AC24D300EB9AAD /* UIColor.swift in Sources */,
@@ -482,12 +671,15 @@
 				E7AF672726BAAB240039A44B /* KeranjangModel.swift in Sources */,
 				BDB39A3A26ADD06F00296909 /* DaftarProdukViewController.swift in Sources */,
 				BDC625C826AD509500E44675 /* TambahProdukScanViewController.swift in Sources */,
+				BDB37A0D26C2257200BDF9C2 /* ReciptListProductTableViewCell.swift in Sources */,
 				BD1CF24526ACAEA9001B7EC8 /* TransaksiSelesaiPasView.swift in Sources */,
 				BDC8DFA226AC2886008310AA /* UIButton.swift in Sources */,
 				BD1FB09D26BB1DBD00648B18 /* Date.swift in Sources */,
 				BD1FFF3126AB604100EB9AAD /* KeranjangCell.swift in Sources */,
+				BDB37A0126C2257200BDF9C2 /* ProductItemViewCell.swift in Sources */,
 				BD5AC58726A369F400A52336 /* SceneDelegate.swift in Sources */,
 				E71B13D326BD6E870023245A /* ProductModel.swift in Sources */,
+				BDB37A1126C2257200BDF9C2 /* ReciptFooterTableViewCell.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -508,6 +700,14 @@
 				BD5AC59326A369F500A52336 /* Base */,
 			);
 			name = LaunchScreen.storyboard;
+			sourceTree = "<group>";
+		};
+		BDB379EA26C2257200BDF9C2 /* Main.storyboard */ = {
+			isa = PBXVariantGroup;
+			children = (
+				BDB379EB26C2257200BDF9C2 /* Base */,
+			);
+			name = Main.storyboard;
 			sourceTree = "<group>";
 		};
 /* End PBXVariantGroup section */
