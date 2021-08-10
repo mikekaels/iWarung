@@ -121,7 +121,7 @@
                                                     <nil key="highlightedColor"/>
                                                 </label>
                                                 <datePicker contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" datePickerMode="date" style="compact" translatesAutoresizingMaskIntoConstraints="NO" id="cww-Wa-i2j">
-                                                    <rect key="frame" x="145" y="-4" width="222" height="50"/>
+                                                    <rect key="frame" x="144" y="-4" width="222" height="50"/>
                                                     <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMaxY="YES"/>
                                                     <locale key="locale" localeIdentifier="id_ID"/>
                                                 </datePicker>

@@ -105,10 +105,16 @@ extension UIView {
     
     // Save pdf file in document directory
     func saveViewPdf(data: NSMutableData) -> String {
-        
+        let date = Date()
+        let df = DateFormatter()
+        df.dateFormat = "yyyy-MM-dd-HH:mm"
+        df.dateStyle = .long
+        df.timeStyle = .medium
+        let dateString = df.string(from: date)
+        print("Date String: ",dateString)
         let paths = FileManager.default.urls(for: .documentDirectory, in: .userDomainMask)
         let docDirectoryPath = paths[0]
-        let pdfPath = docDirectoryPath.appendingPathComponent("PDF generated.pdf")
+        let pdfPath = docDirectoryPath.appendingPathComponent("iWarung-\(String(dateString)).pdf")
         if data.write(to: pdfPath, atomically: true) {
             return pdfPath.path
         } else {
