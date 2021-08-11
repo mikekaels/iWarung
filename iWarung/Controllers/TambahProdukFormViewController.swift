@@ -83,7 +83,6 @@ class TambahProdukFormViewController: UIViewController{
     }
     
     fileprivate func errorLabelSetup() {
-        addProdItem.isEnabled = false
         addProdItem.tintColor = .red
         errorTextLabel.isHidden = true
     }
@@ -103,7 +102,6 @@ class TambahProdukFormViewController: UIViewController{
 
         // Update Save Button
         errorTextLabel.isHidden = formIsValid
-        addProdItem.isEnabled = formIsValid
     }
     
     func buttonSetup(){
@@ -351,43 +349,11 @@ extension TambahProdukFormViewController: UITextFieldDelegate {
                     self.errorTextLabel.isHidden = valid
                 })
             case hargaTF:
-                let (valid, message) = validate(textField)
-                
-                if valid {
-                    stockTF.becomeFirstResponder()
-                }
-                
-                self.errorTextLabel.text = message
-                
-                UIView.animate(withDuration: 0.25, animations: {
-                    self.errorTextLabel.isHidden = valid
-                })
+                stockTF.becomeFirstResponder()
             case stockTF:
-                let (valid, message) = validate(textField)
-                
-                if valid {
-                    kadaluwarsaTF.becomeFirstResponder()
-                }
-                
-                self.errorTextLabel.text = message
-                
-                UIView.animate(withDuration: 0.25, animations: {
-                    self.errorTextLabel.isHidden = valid
-                })
-                
+                kadaluwarsaTF.becomeFirstResponder()
             default:
-                let (valid, message) = validate(textField)
-                
-                if valid {
-                    kadaluwarsaTF.resignFirstResponder()
-                }
-                
-                self.errorTextLabel.text = message
-                
-                UIView.animate(withDuration: 0.25, animations: {
-                    self.errorTextLabel.isHidden = valid
-                })
-                
+                kadaluwarsaTF.resignFirstResponder()
             }
         
             return true
