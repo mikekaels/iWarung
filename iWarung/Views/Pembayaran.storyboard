@@ -127,10 +127,10 @@
             </objects>
             <point key="canvasLocation" x="131.8840579710145" y="115.84821428571428"/>
         </scene>
-        <!--Main-->
+        <!--Home-->
         <scene sceneID="Vco-OL-UEk">
             <objects>
-                <viewControllerPlaceholder storyboardIdentifier="Main" storyboardName="Main" referencedIdentifier="Main" id="rH4-EE-6dz" sceneMemberID="viewController">
+                <viewControllerPlaceholder storyboardIdentifier="Home" storyboardName="Main" referencedIdentifier="Home" id="rH4-EE-6dz" sceneMemberID="viewController">
                     <navigationItem key="navigationItem" id="VOt-OO-aez"/>
                 </viewControllerPlaceholder>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="LfN-sw-yne" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>

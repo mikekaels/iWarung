@@ -120,7 +120,7 @@ extension UIView {
         shapeLayer.lineJoin = CAShapeLayerLineJoin.round // Updated in swift 4.2
         shapeLayer.lineDashPattern = dashPattern
         shapeLayer.path = UIBezierPath(roundedRect: bounds, cornerRadius: cornerRadius).cgPath
-        
+        shapeLayer.name = "dash-border"
         self.layer.addSublayer(shapeLayer)
     }
     

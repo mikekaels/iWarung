@@ -8,10 +8,10 @@
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <scenes>
-        <!--Onboarding-->
+        <!--OnboardingViewController-->
         <scene sceneID="Mbk-bJ-H1V">
             <objects>
-                <viewControllerPlaceholder storyboardIdentifier="Onboarding" storyboardName="Onboarding" referencedIdentifier="Onboarding" id="bS4-ST-UIL" sceneMemberID="viewController"/>
+                <viewControllerPlaceholder storyboardIdentifier="OnboardingViewController" storyboardName="Onboarding" referencedIdentifier="OnboardingViewController" id="bS4-ST-UIL" sceneMemberID="viewController"/>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="gOx-4a-kxv" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="1956" y="-341"/>
@@ -19,7 +19,7 @@
         <!--View Controller-->
         <scene sceneID="tne-QT-ifu">
             <objects>
-                <viewController storyboardIdentifier="Main" id="BYZ-38-t0r" customClass="ViewController" customModule="iWarung" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController id="BYZ-38-t0r" customClass="ViewController" customModule="iWarung" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="SPq-km-g6a">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
@@ -254,7 +254,7 @@
         <!--Navigation Controller-->
         <scene sceneID="vqY-bI-Odp">
             <objects>
-                <navigationController automaticallyAdjustsScrollViewInsets="NO" id="bZX-rg-eem" sceneMemberID="viewController">
+                <navigationController storyboardIdentifier="Home" automaticallyAdjustsScrollViewInsets="NO" useStoryboardIdentifierAsRestorationIdentifier="YES" id="bZX-rg-eem" sceneMemberID="viewController">
                     <toolbarItems/>
                     <navigationBar key="navigationBar" contentMode="scaleToFill" id="cSB-ro-qLY">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="44"/>

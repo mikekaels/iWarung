@@ -222,7 +222,7 @@ class TambahProdukFormViewController: UIViewController{
                 print("Error adding notification because \(String(describing: error))")
             }
         
-        Persisten.shared.insertProduct(scanValue: codeValue, name: nama, description: "deskripsi", price: (price as NSString).floatValue, image: image, expired: date, stock: Int64(stock)!)
+            Persisten.shared.insertProduct(scanValue: codeValue, name: nama, description: "deskripsi", price: (price as NSString).floatValue, image: image, expired: date, stock: Int64(stock)!)
             self.dismiss(animated: true, completion: {
                 self.navigationController?.popViewController(animated: true)
             })
@@ -296,18 +296,21 @@ extension TambahProdukFormViewController: UIImagePickerControllerDelegate, UINav
         let imagePicker = UIImagePickerController()
         imagePicker.sourceType = .camera
         imagePicker.delegate = self
-        imagePicker.allowsEditing = true
+        imagePicker.allowsEditing = false
         present(imagePicker, animated: true, completion: nil)
     }
     
     func imagePickerController(_ picker: UIImagePickerController, didFinishPickingMediaWithInfo info: [UIImagePickerController.InfoKey : Any]) {
         
-        guard let userPickedImage = info[.editedImage] as? UIImage else { return }
-        imageThumnail.image = userPickedImage
+        guard let userPickedImage = info[.originalImage] as? UIImage else { return }
+        imageThumnail.image = userPickedImage.upOrientationImage()
         picker.dismiss(animated: true)
         if (imageThumnail.image != nil) {
             cameraIcon.isHidden = true
             ketukText.isHidden = true
+            self.imageBackgroundView.layer.sublayers!
+                .filter { $0.name == "dash-border" }
+                .forEach { $0.removeFromSuperlayer() }
         }
     }
 }

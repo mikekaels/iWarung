@@ -1,17 +1,15 @@
 {
   "images" : [
     {
-      "filename" : "kasir 1x.png",
+      "filename" : "mudah.png",
       "idiom" : "universal",
       "scale" : "1x"
     },
     {
-      "filename" : "kasir 2x.png",
       "idiom" : "universal",
       "scale" : "2x"
     },
     {
-      "filename" : "kasir 3x.png",
       "idiom" : "universal",
       "scale" : "3x"
     }

@@ -24,5 +24,7 @@ class OnboardingCollectionViewCell: UICollectionViewCell {
         self.slideImage.image = slide.image
         self.slideLabel.text = slide.label
         self.slideDescription.text = slide.description
+        
+        self.slideLabel.tintColor = UIColor(rgb: K.blueColor1)
     }
 }
