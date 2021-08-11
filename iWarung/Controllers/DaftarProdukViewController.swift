@@ -112,21 +112,25 @@ class DaftarProdukViewController: UIViewController, UIViewControllerTransitionin
     }
     
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        if (segue.identifier == "productDetail"){
-            if let destination = segue.destination as?
-                TambahProdukFormViewController, let index =
-                    daftarProdukCollectionView.indexPathsForSelectedItems?.first {
-                destination.selectedItem = productList[index.row]
-            }
-            
-        }
+//        if (segue.identifier == "productDetail"){
+//            if let destination = segue.destination as?
+//                TambahProdukFormViewController, let index =
+//                    daftarProdukCollectionView.indexPathsForSelectedItems?.first {
+//                destination.selectedItem = productList[index.row]
+//            }
+//
+//        }
     }
     
 }
 
 extension DaftarProdukViewController:  UICollectionViewDataSource, UICollectionViewDelegate {
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
-        self.performSegue(withIdentifier: "productDetail", sender: self)
+        let vc =  UIStoryboard.init(name: "TambahProdukForm", bundle: Bundle.main).instantiateViewController(withIdentifier: "TambahProdukForm") as! TambahProdukFormViewController
+        vc.selectedItem = productList[indexPath.row]
+        vc.isNewProduct = false
+        let nav = UINavigationController(rootViewController: vc)
+        self.present(nav, animated: true, completion: nil)
     }
     
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
