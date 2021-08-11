@@ -15,8 +15,9 @@ class PembayaranViewController: UIViewController {
     @IBOutlet weak var receivedMoneyTextfield: UITextField!
     @IBOutlet weak var changeLabel: UILabel!
     
-    var totalPemabayaran: Float = 0.0
+    var totalPembayaran: Float = 0.0
     var totalChangeAmount: Float = 0.0
+    var money: Float = 0.0
     var keranjang = [ItemKeranjang]()
     
     var currentString = ""
@@ -36,7 +37,7 @@ extension PembayaranViewController {
         super.viewDidLoad()
         title = "Pembayaran"
         self.hideKeyboardWhenTappedAround()
-        totalTagihan.text = String(totalPemabayaran).currencyFormatting()
+        totalTagihan.text = String(totalPembayaran).currencyFormatting()
         self.receivedMoneyTextfield.addTarget(self, action: #selector(PembayaranViewController.textFieldDidChange(_:)), for: .editingChanged)
         
         configureTotalTagihanView()
@@ -46,8 +47,8 @@ extension PembayaranViewController {
         guard let money = Float(textField.text!) else {
             return
         }
-        
-        totalChangeAmount =  money - totalPemabayaran
+        self.money = money
+        totalChangeAmount =  self.money - totalPembayaran
         updateChangeAmount()
     }
     
@@ -115,9 +116,11 @@ extension PembayaranViewController: TransaksiSelesaiDelegate {
     }
     
     func openRecipt() {
-        let vc = UIStoryboard.init(name: "Recipt", bundle: Bundle.main).instantiateViewController(withIdentifier: "ReciptViewController") as? ReciptViewController
-        vc?.keranjang = keranjang
-        self.navigationController?.pushViewController(vc!, animated: true)
+        let vc = UIStoryboard.init(name: "Recipt", bundle: Bundle.main).instantiateViewController(withIdentifier: "ReciptViewController") as! ReciptViewController
+        vc.keranjang = keranjang
+        vc.uang = money
+        vc.kembalian = totalChangeAmount
+        self.navigationController?.pushViewController(vc, animated: true)
     }
     
 }
@@ -132,7 +135,7 @@ extension PembayaranViewController: UIViewControllerTransitioningDelegate {
 extension PembayaranViewController {
     func configureTotalTagihanView() {
         totalTagihanBackgroundView.translatesAutoresizingMaskIntoConstraints = false
-        let TextSize = String(totalPemabayaran).currencyFormatting().SizeOf_String(font: UIFont.systemFont(ofSize: 34.0))
+        let TextSize = String(totalPembayaran).currencyFormatting().SizeOf_String(font: UIFont.systemFont(ofSize: 34.0))
         print("Total Tagihan",TextSize)
 //        totalTagihanBackgroundView.widthAnchor.constraint(equalToConstant: TextSize.width + 20).isActive = true
         totalTagihanBackgroundView.frame = CGRect(x: 0, y: 0, width: TextSize.width + 100, height: totalTagihanBackgroundView.frame.height)

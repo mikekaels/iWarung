@@ -58,7 +58,7 @@ class KeranjangViewController: UIViewController {
         if (segue.identifier == "toPembayaran") {
             
             let landingVC = segue.destination as! PembayaranViewController
-            landingVC.totalPemabayaran = K.totalPrice(keranjang: keranjang)
+            landingVC.totalPembayaran = K.totalPrice(keranjang: keranjang)
             landingVC.keranjang = keranjang
         }
     }

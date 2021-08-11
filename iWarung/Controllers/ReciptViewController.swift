@@ -11,13 +11,22 @@ class ReciptViewController: UIViewController {
     
     @IBOutlet weak var reciptTableView: UITableView!
     @IBOutlet weak var pdfView: UIView!
+    @IBOutlet weak var bottomLine: UIView!
     
+    @IBOutlet weak var receiptIdLabel: UILabel!
+    @IBOutlet weak var dateLabel: UILabel!
+    @IBOutlet weak var timeLabel: UILabel!
     var keranjang = [ItemKeranjang]()
+    var uang: Float = 0
+    var kembalian: Float = 0
     
     override func viewDidLoad() {
         super.viewDidLoad()
         print("KERANJANG: ",keranjang)
+        
+        receiptSetup()
         // Do any additional setup after loading the view.
+        bottomLine.addDashedLineBorder(color: UIColor(rgb: K.blueColor1))
         
         self.reciptTableView.separatorStyle = UITableViewCell.SeparatorStyle.none
         
@@ -40,6 +49,10 @@ class ReciptViewController: UIViewController {
         self.createPDFTap()
     }
     
+    func receiptSetup() {
+        self.dateLabel.text = K.getOnlyDate()
+        self.timeLabel.text = K.getOnlyTime()
+    }
 }
 
 extension ReciptViewController: UITableViewDataSource, UITableViewDelegate {
@@ -56,7 +69,7 @@ extension ReciptViewController: UITableViewDataSource, UITableViewDelegate {
             return cell
         } else {
             let cell = reciptTableView.dequeueReusableCell(withIdentifier: "reciptFooter", for: indexPath) as! ReciptFooterTableViewCell
-//            cell.commonInit(qty: 0, productName: "Last Item", totalPrice: 0.0)
+            cell.commonInit(totalBelanja: K.totalPrice(keranjang: keranjang), uang: self.uang, kembalian: self.kembalian)
             return cell
         }
     }
