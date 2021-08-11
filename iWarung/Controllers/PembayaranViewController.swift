@@ -41,7 +41,7 @@ extension PembayaranViewController {
         super.viewDidLoad()
         title = "Pembayaran"
         self.hideKeyboardWhenTappedAround()
-        totalTagihan.text = String(totalPemabayaran).currencyFormatting()
+        totalTagihan.text = String(totalPembayaran).currencyFormatting()
         receivedMoneyTextfield.delegate = self
         self.receivedMoneyTextfield.addTarget(self, action: #selector(PembayaranViewController.textFieldDidChange(_:)), for: .editingChanged)
         self.receivedMoneyTextfield.addTarget(self, action: #selector(textDidChange), for: UIControl.Event.editingDidEnd)
