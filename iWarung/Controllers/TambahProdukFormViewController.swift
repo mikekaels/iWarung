@@ -9,6 +9,11 @@ import UIKit
 import CoreData
 import UserNotifications
 
+protocol ProdukFormDelegate {
+    func update()
+    func delete(item: ProductItem)
+}
+
 class TambahProdukFormViewController: UIViewController{
     
     
@@ -37,6 +42,8 @@ class TambahProdukFormViewController: UIViewController{
     var isNewProduct = false
     
     let center = UNUserNotificationCenter.current()
+    
+    var delegate: ProdukFormDelegate!
     
     override func viewDidLoad() {
         
@@ -115,7 +122,9 @@ class TambahProdukFormViewController: UIViewController{
     }
     
     @objc func deleteProduct(){
-        Persisten.shared.deleteProduct(item: selectedItem!)
+        print("SELECTED: ",type(of: selectedItem?.id))
+//        Persisten.shared.deleteProduct(item: selectedItem!)
+        self.delegate.delete(item: selectedItem!)
         self.dismiss(animated: true, completion: {
             self.navigationController?.popViewController(animated: true)
         })
@@ -173,27 +182,24 @@ class TambahProdukFormViewController: UIViewController{
         
         
         if (selectedItem == nil) {
+            
         guard let codeValue = scanningBarcode else {
             print("erorr id")
             return
         }
-        
         guard let nama = namaTF.text else {
             print("error nama")
             return
         }
-        
         guard let price = hargaTF.text else {
             print("error harga")
             return
         }
-            
         guard let stock = stockTF.text else {
             print("error harga")
             return
             
         }
-        
         guard  let image = imageThumnail.image?.pngData() else {
             print("error image ")
             return
@@ -217,7 +223,9 @@ class TambahProdukFormViewController: UIViewController{
             }
         
         Persisten.shared.insertProduct(scanValue: codeValue, name: nama, description: "deskripsi", price: (price as NSString).floatValue, image: image, expired: date, stock: Int64(stock)!)
-            self.dismiss(animated: true, completion: nil)
+            self.dismiss(animated: true, completion: {
+                self.navigationController?.popViewController(animated: true)
+            })
             
             // edit
         } else {
@@ -226,13 +234,14 @@ class TambahProdukFormViewController: UIViewController{
                 print("error nama")
                 return
             }
-            
-            
             guard let price = hargaTF.text else {
                 print("error harga")
                 return
             }
-            
+            guard let stock = stockTF.text else {
+                print("error harga")
+                return
+            }
             guard  let image = imageThumnail.image?.pngData() else {
                 print("error image ")
                 return
@@ -243,6 +252,7 @@ class TambahProdukFormViewController: UIViewController{
             self.selectedItem?.name = nama
             self.selectedItem?.price = (price as NSString).floatValue
             self.selectedItem?.image_data = image
+            self.selectedItem?.stock = Int64(stock)!
             
             let content = UNMutableNotificationContent()
             content.title = "Info product Kadaluwarsa"
@@ -260,17 +270,17 @@ class TambahProdukFormViewController: UIViewController{
             }
             
             Persisten.shared.saveContext()
-            self.dismiss(animated: true, completion: nil)
-        }
-    }
-    
-    @IBAction func deleteProduk(_ sender: Any) {
-        if (selectedItem != nil) {
-            Persisten.shared.deleteProduct(item: selectedItem!)
+            delegate.update()
             self.dismiss(animated: true, completion: {
                 self.navigationController?.popViewController(animated: true)
             })
         }
+    }
+    
+    @IBAction func backButtonTapped(_ sender: Any) {
+        self.dismiss(animated: true, completion: {
+            self.navigationController?.popViewController(animated: true)
+        })
     }
     
     func onButtonTapped() {

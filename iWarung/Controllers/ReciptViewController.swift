@@ -49,6 +49,11 @@ class ReciptViewController: UIViewController {
         self.createPDFTap()
     }
     
+    @IBAction func backButtonTapped(_ sender: UIButton) {
+        NotificationCenter.default.post(name: K.clearKeranjangNotificationKey, object: nil)
+        self.navigationController?.popToRootViewController(animated: true)
+    }
+    
     func receiptSetup() {
         self.dateLabel.text = K.getOnlyDate()
         self.timeLabel.text = K.getOnlyTime()

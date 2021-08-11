@@ -117,11 +117,20 @@ extension PembayaranViewController: TransaksiSelesaiDelegate {
         
         receivedMoneyTextfield.rightView = textFieldBtn
         receivedMoneyTextfield.rightViewMode = .always
+        
+        configureTotalTagihanView()
+    }
+    
+    override func viewDidAppear(_ animated: Bool) {
+        super.viewDidAppear(animated)
+        configureTotalTagihanView()
     }
     
     override func viewWillDisappear(_ animated: Bool) {
         super.viewWillDisappear(animated)
         navigationController?.isHiddenHairline = false
+        
+        configureTotalTagihanView()
     }
     
     @objc func texfieldButton() {
@@ -165,7 +174,6 @@ extension PembayaranViewController {
     func configureTotalTagihanView() {
         totalTagihanBackgroundView.translatesAutoresizingMaskIntoConstraints = false
         let TextSize = String(totalPembayaran).currencyFormatting().SizeOf_String(font: UIFont.systemFont(ofSize: 34.0))
-        print("Total Tagihan",TextSize)
 //        totalTagihanBackgroundView.widthAnchor.constraint(equalToConstant: TextSize.width + 20).isActive = true
         totalTagihanBackgroundView.frame = CGRect(x: 0, y: 0, width: TextSize.width + 100, height: totalTagihanBackgroundView.frame.height)
 //        button.widthAnchor.constraint(equalToConstant: CGFloat(buttonTitleSize.width + 20)).isActive = true

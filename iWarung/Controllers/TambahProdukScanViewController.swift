@@ -408,6 +408,7 @@ extension TambahProdukScanViewController {
             let vc =  UIStoryboard.init(name: "TambahProdukForm", bundle: Bundle.main).instantiateViewController(withIdentifier: "TambahProdukForm") as! TambahProdukFormViewController
             vc.scanningBarcode = String(barcode)
             vc.isNewProduct = true
+//            vc.delegate = self
             let nav = UINavigationController(rootViewController: vc)
             self.present(nav, animated: true, completion: nil)
         }

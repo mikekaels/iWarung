@@ -65,6 +65,8 @@ struct K {
     
     //MARK: - NOTIFICATION NAME
     static let detectedNotificationKey = Notification.Name(rawValue: "detected")
+    static let clearKeranjangNotificationKey = Notification.Name(rawValue: "clearKeranjang")
+    
     
     static let xPosition = 0.0
     static let yPosition = -0.5

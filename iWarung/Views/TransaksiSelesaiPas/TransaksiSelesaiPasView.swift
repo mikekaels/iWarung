@@ -25,6 +25,7 @@ class TransaksiSelesaiPasView: UIViewController {
     @IBOutlet weak var successForeground: UIImageView!
     
     @IBAction func backToMainScreenPressed(_ sender: UIButton) {
+        NotificationCenter.default.post(name: K.clearKeranjangNotificationKey, object: nil)
         self.dismiss(animated: true, completion: nil)
         delegate.backToRoot()
     }

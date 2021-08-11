@@ -46,25 +46,10 @@ class DaftarProdukViewController: UIViewController, UIViewControllerTransitionin
         daftarProdukCollectionView.dataSource = self
         daftarProdukCollectionView.delegate = self
         
-        loadData()
-        self.dupProductList = self.productList
+        refreshList()
+//        self.dupProductList = self.productList
         self.hideKeyboardWhenTappedAround()
         navigationItem.hidesSearchBarWhenScrolling = true
-        
-    }
-    
-    @objc func loadData(){
-        
-        do {
-            productList = Persisten.shared.fetchProducts()
-            
-            DispatchQueue.main.async {
-                self.daftarProdukCollectionView.reloadData()
-            }
-        }
-        catch {
-            print("error load data")
-        }
         
     }
     
@@ -85,10 +70,10 @@ class DaftarProdukViewController: UIViewController, UIViewControllerTransitionin
         return gradient
     }()
     
-    @objc func refresh() {
-        loadData();
-    }
-    
+//    @objc func refresh() {
+//        loadData();
+//    }
+//
     
     func formatterDate(with date: Date) -> String {
         let formatter = DateFormatter()
@@ -98,7 +83,7 @@ class DaftarProdukViewController: UIViewController, UIViewControllerTransitionin
     
     
     override func viewDidAppear(_ animated: Bool) {
-        loadData()
+        refreshList()
         daftarProdukCollectionView.reloadData()
     }
     
@@ -127,8 +112,9 @@ class DaftarProdukViewController: UIViewController, UIViewControllerTransitionin
 extension DaftarProdukViewController:  UICollectionViewDataSource, UICollectionViewDelegate {
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
         let vc =  UIStoryboard.init(name: "TambahProdukForm", bundle: Bundle.main).instantiateViewController(withIdentifier: "TambahProdukForm") as! TambahProdukFormViewController
-        vc.selectedItem = productList[indexPath.row]
+        vc.selectedItem = dupProductList[indexPath.row]
         vc.isNewProduct = false
+        vc.delegate = self
         let nav = UINavigationController(rootViewController: vc)
         self.present(nav, animated: true, completion: nil)
     }
@@ -166,15 +152,33 @@ extension DaftarProdukViewController:  UICollectionViewDataSource, UICollectionV
     }
 }
 
-extension DaftarProdukViewController {
+extension DaftarProdukViewController: ProdukFormDelegate {
+    
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         // Navigation Bar
         navigationController?.navigationBar.prefersLargeTitles = true
+        self.refreshList()
     }
     
     override func viewWillDisappear(_ animated: Bool) {
         super.viewWillDisappear(animated)
+        self.refreshList()
+    }
+    
+    func update() {
+        refreshList()
+    }
+    
+    func delete(item: ProductItem) {
+        Persisten.shared.deleteProduct(item: item)
+        refreshList()
+    }
+    
+    func refreshList() {
+        productList = Persisten.shared.fetchProducts()
+        self.dupProductList = self.productList
+        self.daftarProdukCollectionView.reloadData()
     }
 }
 
@@ -183,11 +187,12 @@ extension DaftarProdukViewController: UISearchBarDelegate {
         guard let text = searchBar.text else{
             return
         }
+        
         self.dupProductList = text.isEmpty ? self.productList : productList.filter({ Product in
             return Product.name!.range(of: text, options: .caseInsensitive, range: nil, locale: nil) != nil
         })
-        
-        self.loadData()
+
+        self.daftarProdukCollectionView.reloadData()
     }
 }
 

@@ -91,13 +91,37 @@ class ViewController: UIViewController{
             }
         }
         
+        self.setupNotificationCenter()
+    }
+    
+    func setupNotificationCenter() {
         //MARK: - ADD OBSERVER NOTIFICATION CENTER
-        NotificationCenter.default.addObserver(forName: K.detectedNotificationKey, object: nil, queue: nil, using: { (notification) in
+        NotificationCenter.default.addObserver(forName: K.detectedNotificationKey, object: nil, queue: nil, using: { [self] (notification) in
             guard let object = notification.object as? ItemKeranjang else {
                 print("NOT OBJECT ----------------")
               return
             }
-            self.keranjang.append(object)
+            if keranjang.isEmpty {
+                self.keranjang.append(object)
+            } else {
+                var indexFound = -1
+                for (index, item) in keranjang.enumerated() {
+                    if item.id == object.id {
+                        indexFound = index
+                    }
+                }
+    
+                if indexFound != -1 {
+                    keranjang[indexFound].qty += object.qty
+                } else {
+                    self.keranjang.append(object)
+                }
+            }
+            self.updateKeranjangPopUp()
+        })
+        
+        NotificationCenter.default.addObserver(forName: K.clearKeranjangNotificationKey, object: nil, queue: nil, using: { [self] (notification) in
+            self.keranjang.removeAll()
             self.updateKeranjangPopUp()
         })
     }
