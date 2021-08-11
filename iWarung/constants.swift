@@ -43,9 +43,9 @@ struct K {
     
     //MARK: - Onboarding
     static let onboardingSlides: [Onboarding] = [
-        Onboarding(image: #imageLiteral(resourceName: "produk 1x"), label: "Cepat", description: "Ketahui harga produk dan hitung penjualan  dengan cepat"),
-        Onboarding(image: #imageLiteral(resourceName: "produk 1x"), label: "Mudah", description: "Kelola produk jualan anda dengan mudah"),
-        Onboarding(image: #imageLiteral(resourceName: "meningkat"), label: "Meningkat", description: "Kualitas manajemen warung anda akan semakin meningkat")
+        Onboarding(image: #imageLiteral(resourceName: "cepat"), label: "Cepat", description: "Ketahui harga produk dan hitung penjualan anda dengan cepat"),
+        Onboarding(image: #imageLiteral(resourceName: "mudah"), label: "Mudah", description: "Kelola produk jualan anda dengan mudah"),
+        Onboarding(image: #imageLiteral(resourceName: "meningkat"), label: "Meningkat", description: "Bersama iWarung, kualitas manajemen warung anda akan semakin meningkat")
     ]
     
     //MARK: - Notification Name

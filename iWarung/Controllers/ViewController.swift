@@ -338,13 +338,13 @@ extension ViewController {
        
         updateKeranjangPopUp()
         
-        if !Core.shared.isNewUser() {
-            // show onboarding
-            let controller = storyboard?.instantiateViewController(identifier: "Onboarding") as! OnboardingViewController
-            controller.modalPresentationStyle = .fullScreen
-            controller.modalTransitionStyle = .crossDissolve
-            present(controller, animated: true, completion: nil)
-        }
+//        if !Core.shared.isNewUser() {
+//            // show onboarding
+//            let controller = storyboard?.instantiateViewController(identifier: "OnboardingViewController") as! OnboardingViewController
+//            controller.modalPresentationStyle = .fullScreen
+//            controller.modalTransitionStyle = .crossDissolve
+//            present(controller, animated: true, completion: nil)
+//        }
         
         self.navigationController?.isHiddenHairline = true
         
@@ -499,7 +499,7 @@ extension ViewController: AVCaptureVideoDataOutputSampleBufferDelegate {
                     showModalDetectedProduct(product: result[0])
 //                    print("hasil search \(String(describing: result[0]))")
                 } else {
-                    showAlert(withTitle: "Informasi", message: "Produk belum ditambahkan ke inventori")
+                    showAlert(withTitle: "Produk tidak ditemukan", message: "Silahkan tambahkan produk")
                 }
             }
         }

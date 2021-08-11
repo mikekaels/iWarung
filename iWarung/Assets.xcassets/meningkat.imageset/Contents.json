@@ -1,17 +1,15 @@
 {
   "images" : [
     {
-      "filename" : "meningkat 1x.png",
+      "filename" : "meningkat.png",
       "idiom" : "universal",
       "scale" : "1x"
     },
     {
-      "filename" : "meningkat 2x.png",
       "idiom" : "universal",
       "scale" : "2x"
     },
     {
-      "filename" : "meningkat 3x.png",
       "idiom" : "universal",
       "scale" : "3x"
     }

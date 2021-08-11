@@ -24,7 +24,9 @@ class PembayaranViewController: UIViewController, UITextFieldDelegate {
     
     @IBAction func finishTransactionPressed(_ sender: UIButton) {
         if Double(receivedMoneyTextfield.text ?? "") ?? 0 <= 0 ||  totalChangeAmount < 0{
-            showAlert(withTitle: "Uang belum cukup", message: "Silahkan isi uang diterima dengan benar")
+//            showAlert(withTitle: "Uang belum cukup", message: "Silahkan isi uang diterima dengan benar")
+            self.money = K.totalPrice(keranjang: keranjang)
+            showModal()
         } else {
             showModal()
         }
@@ -39,6 +41,7 @@ class PembayaranViewController: UIViewController, UITextFieldDelegate {
 extension PembayaranViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
+        finishTransactionButton.setTitle("Bayar Dengan Uang Pas", for: .normal)
         title = "Pembayaran"
         self.hideKeyboardWhenTappedAround()
         totalTagihan.text = String(totalPembayaran).currencyFormatting()
@@ -51,8 +54,11 @@ extension PembayaranViewController {
     
     @objc func textDidChange(_ textField:UITextField) {
         if textField.text?.count == 0 {
+            finishTransactionButton.setTitle("Bayar Dengan Uang Pas", for: .normal)
             totalChangeAmount = 0
             updateChangeAmount()
+        } else {
+            finishTransactionButton.setTitle("Selesaikan Transaksi", for: .normal)
         }
      }
     
@@ -82,7 +88,11 @@ extension PembayaranViewController {
     }
     
     func updateChangeAmount() {
-        self.changeLabel.text = "Rp \(String(totalChangeAmount).currencyFormatting())"
+        if totalChangeAmount == 0 {
+            self.changeLabel.text = ""
+        } else {
+            self.changeLabel.text = "Rp \(String(totalChangeAmount).currencyFormatting())"
+        }
     }
 }
 
@@ -96,7 +106,7 @@ extension PembayaranViewController: TransaksiSelesaiDelegate {
         totalTagihanBackgroundView.addGradient()
         
         //MARK: - Finish transaction button
-        finishTransactionButton.setTitle("Selesaikan Transaksi", for: .normal)
+//        finishTransactionButton.setTitle("Selesaikan Transaksi", for: .normal)
         finishTransactionButton.addGradient()
         finishTransactionButton.cornerRadius()
         
@@ -135,8 +145,9 @@ extension PembayaranViewController: TransaksiSelesaiDelegate {
     
     @objc func texfieldButton() {
         self.receivedMoneyTextfield.text = nil
-        self.changeLabel.text = nil
+        self.changeLabel.text = ""
         self.totalChangeAmount = 0
+        finishTransactionButton.setTitle("Bayar Dengan Uang Pas", for: .normal)
     }
     
     @objc func showModal() {

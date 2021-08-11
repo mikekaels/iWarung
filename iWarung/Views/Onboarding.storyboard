@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="18122" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="Y6W-OH-hqX">
-    <device id="retina4_7" orientation="portrait" appearance="light"/>
+    <device id="retina6_0" orientation="portrait" appearance="light"/>
     <dependencies>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="18093"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
@@ -12,13 +12,13 @@
         <!--Onboarding View Controller-->
         <scene sceneID="s0d-6b-0kx">
             <objects>
-                <viewController storyboardIdentifier="Onboarding" useStoryboardIdentifierAsRestorationIdentifier="YES" id="Y6W-OH-hqX" customClass="OnboardingViewController" customModule="iWarung" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="OnboardingViewController" id="Y6W-OH-hqX" customClass="OnboardingViewController" customModule="iWarung" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="5EZ-qb-Rvc">
-                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <rect key="frame" x="0.0" y="0.0" width="390" height="844"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" pagingEnabled="YES" showsHorizontalScrollIndicator="NO" showsVerticalScrollIndicator="NO" dataMode="prototypes" translatesAutoresizingMaskIntoConstraints="NO" id="cPL-Un-RjF">
-                                <rect key="frame" x="0.0" y="0.0" width="375" height="411.5"/>
+                                <rect key="frame" x="0.0" y="0.0" width="390" height="589.66666666666663"/>
                                 <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                                 <collectionViewFlowLayout key="collectionViewLayout" scrollDirection="horizontal" minimumLineSpacing="0.0" minimumInteritemSpacing="0.0" id="Rw4-x6-HUc">
                                     <size key="itemSize" width="390" height="582"/>
@@ -28,7 +28,7 @@
                                 </collectionViewFlowLayout>
                                 <cells>
                                     <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" restorationIdentifier="OnboardingCollectionViewCell" reuseIdentifier="OnboardingCollectionViewCell" id="xcg-tG-CyE" customClass="OnboardingCollectionViewCell" customModule="iWarung" customModuleProvider="target">
-                                        <rect key="frame" x="0.0" y="-85.5" width="413" height="582"/>
+                                        <rect key="frame" x="0.0" y="3.6666666666666665" width="413" height="582"/>
                                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                         <collectionViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" insetsLayoutMarginsFromSafeArea="NO" id="51l-Ab-A2C">
                                             <rect key="frame" x="0.0" y="0.0" width="413" height="582"/>
@@ -46,7 +46,7 @@
                                                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Cepat" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="m2k-wX-2IB">
                                                             <rect key="frame" x="0.0" y="0.0" width="293" height="23"/>
                                                             <fontDescription key="fontDescription" type="system" weight="semibold" pointSize="19"/>
-                                                            <color key="textColor" red="0.17645967849999999" green="0.63856436679999995" blue="0.96620899439999997" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
+                                                            <color key="textColor" red="0.1960784314" green="0.45098039220000002" blue="0.96470588239999999" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
                                                             <nil key="highlightedColor"/>
                                                         </label>
                                                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="pSm-s2-DiP">
@@ -80,12 +80,12 @@ dengan cepat</string>
                                 </cells>
                             </collectionView>
                             <pageControl opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" numberOfPages="3" translatesAutoresizingMaskIntoConstraints="NO" id="gd2-he-gZb">
-                                <rect key="frame" x="127" y="431.5" width="121.5" height="27.5"/>
+                                <rect key="frame" x="135" y="609.66666666666663" width="120.33333333333331" height="26.333333333333371"/>
                                 <color key="pageIndicatorTintColor" systemColor="systemGray6Color"/>
                                 <color key="currentPageIndicatorTintColor" red="0.17645967849999999" green="0.63856436679999995" blue="0.96620899439999997" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
                             </pageControl>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="TKw-M0-hNQ">
-                                <rect key="frame" x="36" y="477" width="303" height="106"/>
+                                <rect key="frame" x="36" y="654" width="318" height="106"/>
                                 <subviews>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="0IN-ng-0xM">
                                         <rect key="frame" x="0.0" y="28" width="160" height="50"/>
@@ -93,9 +93,12 @@ dengan cepat</string>
                                             <constraint firstAttribute="width" constant="160" id="OD5-v8-2pu"/>
                                         </constraints>
                                         <state key="normal" title="Lewati"/>
+                                        <connections>
+                                            <action selector="skipButtonTapped:" destination="Y6W-OH-hqX" eventType="touchUpInside" id="kDT-pv-4xy"/>
+                                        </connections>
                                     </button>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="b7X-Hr-0xc">
-                                        <rect key="frame" x="143" y="28" width="160" height="50"/>
+                                        <rect key="frame" x="158" y="28" width="160" height="50"/>
                                         <color key="backgroundColor" red="0.17645967849999999" green="0.63856436679999995" blue="0.96620899439999997" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
                                         <constraints>
                                             <constraint firstAttribute="height" constant="50" id="P2f-3P-X2x"/>
@@ -109,7 +112,7 @@ dengan cepat</string>
                                         </connections>
                                     </button>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="0Zf-uE-8Oi">
-                                        <rect key="frame" x="71.5" y="28" width="160" height="50"/>
+                                        <rect key="frame" x="79" y="28" width="160" height="50"/>
                                         <color key="backgroundColor" red="0.17645967849999999" green="0.63856436679999995" blue="0.96620899439999997" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
                                         <constraints>
                                             <constraint firstAttribute="height" constant="50" id="PNB-lH-NdB"/>
@@ -163,6 +166,14 @@ dengan cepat</string>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Ief-a0-LHa" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="130.76923076923077" y="81.042654028436019"/>
+        </scene>
+        <!--Home-->
+        <scene sceneID="LP4-V2-0lP">
+            <objects>
+                <viewControllerPlaceholder storyboardIdentifier="Home" storyboardName="Main" referencedIdentifier="Home" id="p7A-02-B0u" sceneMemberID="viewController"/>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="amM-S7-cBd" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="1077" y="18"/>
         </scene>
     </scenes>
     <resources>

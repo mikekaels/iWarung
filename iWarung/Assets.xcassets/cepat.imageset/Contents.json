@@ -1,17 +1,15 @@
 {
   "images" : [
     {
-      "filename" : "produk 1x.png",
+      "filename" : "cepat.png",
       "idiom" : "universal",
       "scale" : "1x"
     },
     {
-      "filename" : "produk 2x.png",
       "idiom" : "universal",
       "scale" : "2x"
     },
     {
-      "filename" : "produk 3x.png",
       "idiom" : "universal",
       "scale" : "3x"
     }

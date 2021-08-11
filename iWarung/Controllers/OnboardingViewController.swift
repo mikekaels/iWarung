@@ -14,6 +14,7 @@ class OnboardingViewController: UIViewController{
     @IBOutlet weak var skipButton: UIButton!
     @IBOutlet weak var pageCtrl: UIPageControl!
     @IBOutlet weak var mulaiButton: UIButton!
+//    @IBOutlet weak var label: UILabel!
     
     var currentPage = 0 {
         didSet {
@@ -52,7 +53,9 @@ class OnboardingViewController: UIViewController{
         onboardingCollectionView.dataSource = self
         // Do any additional setup after loading the view.
         self.mulaiButton.alpha = 0
+//        label.tintColor = UIColor(rgb: K.blueColor1)
     }
+
     
     func notNewUser() {
         Core.shared.setIsNotNewUser()
@@ -64,7 +67,11 @@ class OnboardingViewController: UIViewController{
     //MARK: - Actions
     @IBAction func nextPagePressed(_ sender: UIButton) {
         if currentPage == K.onboardingSlides.count - 1 {
-            notNewUser()
+            let controller = storyboard?.instantiateViewController(identifier: "Home") as! UINavigationController
+            controller.modalPresentationStyle = .fullScreen
+            controller.modalTransitionStyle = .flipHorizontal
+            Core.shared.setIsNotNewUser()
+            present(controller, animated: true, completion: nil)
         } else {
             currentPage += 1
             let indexPath = IndexPath(item: currentPage, section: 0)
@@ -73,15 +80,12 @@ class OnboardingViewController: UIViewController{
         }
     }
     
-    @IBAction func mulaiButtonPressed(_ sender: UIButton) {
-        if currentPage == K.onboardingSlides.count - 1 {
-            notNewUser()
-        } else {
-            currentPage += 1
-            let indexPath = IndexPath(item: currentPage, section: 0)
-            
-            onboardingCollectionView.scrollToItem(at: indexPath, at: .centeredHorizontally, animated: true)
-        }
+    @IBAction func skipButtonTapped(_ sender: UIButton) {
+        let controller = storyboard?.instantiateViewController(identifier: "Home") as! UINavigationController
+        controller.modalPresentationStyle = .fullScreen
+        controller.modalTransitionStyle = .flipHorizontal
+        Core.shared.setIsNotNewUser()
+        present(controller, animated: true, completion: nil)
     }
     
 }
