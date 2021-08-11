@@ -7,7 +7,7 @@
 
 import UIKit
 
-class PembayaranViewController: UIViewController {
+class PembayaranViewController: UIViewController, UITextFieldDelegate {
 
     @IBOutlet weak var totalTagihanBackgroundView: UIView!
     @IBOutlet weak var totalTagihan: UILabel!
@@ -15,14 +15,19 @@ class PembayaranViewController: UIViewController {
     @IBOutlet weak var receivedMoneyTextfield: UITextField!
     @IBOutlet weak var changeLabel: UILabel!
     
-    var totalPemabayaran: Float = 0.0
+    var totalPembayaran: Float = 0.0
     var totalChangeAmount: Float = 0.0
+    var money: Float = 0.0
     var keranjang = [ItemKeranjang]()
     
     var currentString = ""
     
     @IBAction func finishTransactionPressed(_ sender: UIButton) {
-        showModal()
+        if Double(receivedMoneyTextfield.text ?? "") ?? 0 <= 0 ||  totalChangeAmount < 0{
+            showAlert(withTitle: "Uang belum cukup", message: "Silahkan isi uang diterima dengan benar")
+        } else {
+            showModal()
+        }
     }
     
     func onButtonTapped() {
@@ -36,18 +41,43 @@ extension PembayaranViewController {
         super.viewDidLoad()
         title = "Pembayaran"
         self.hideKeyboardWhenTappedAround()
-        totalTagihan.text = String(totalPemabayaran).currencyFormatting()
+        totalTagihan.text = String(totalPembayaran).currencyFormatting()
+        receivedMoneyTextfield.delegate = self
         self.receivedMoneyTextfield.addTarget(self, action: #selector(PembayaranViewController.textFieldDidChange(_:)), for: .editingChanged)
+        self.receivedMoneyTextfield.addTarget(self, action: #selector(textDidChange), for: UIControl.Event.editingDidEnd)
         
         configureTotalTagihanView()
+    }
+    
+    @objc func textDidChange(_ textField:UITextField) {
+        if textField.text?.count == 0 {
+            totalChangeAmount = 0
+            updateChangeAmount()
+        }
+     }
+    
+    func textField(_ textField: UITextField, shouldChangeCharactersIn range: NSRange, replacementString string: String) -> Bool {
+        //Prevent "0" characters as the first characters. (i.e.: There should not be values like "003" "01" "000012" etc.)
+        if textField.text?.count == 0 && string == "0" {
+            totalChangeAmount = 0
+            return false
+        }
+        
+        //Only allow numbers. No Copy-Paste text values.
+        let allowedCharacterSet = CharacterSet.init(charactersIn: "0123456789.")
+        let textCharacterSet = CharacterSet.init(charactersIn: textField.text! + string)
+        if !allowedCharacterSet.isSuperset(of: textCharacterSet) {
+            return false
+        }
+        return true
     }
     
     @objc func textFieldDidChange(_ textField: UITextField) {
         guard let money = Float(textField.text!) else {
             return
         }
-        
-        totalChangeAmount =  money - totalPemabayaran
+        self.money = money
+        totalChangeAmount =  self.money - totalPembayaran
         updateChangeAmount()
     }
     
@@ -115,9 +145,11 @@ extension PembayaranViewController: TransaksiSelesaiDelegate {
     }
     
     func openRecipt() {
-        let vc = UIStoryboard.init(name: "Recipt", bundle: Bundle.main).instantiateViewController(withIdentifier: "ReciptViewController") as? ReciptViewController
-        vc?.keranjang = keranjang
-        self.navigationController?.pushViewController(vc!, animated: true)
+        let vc = UIStoryboard.init(name: "Recipt", bundle: Bundle.main).instantiateViewController(withIdentifier: "ReciptViewController") as! ReciptViewController
+        vc.keranjang = keranjang
+        vc.uang = money
+        vc.kembalian = totalChangeAmount
+        self.navigationController?.pushViewController(vc, animated: true)
     }
     
 }
@@ -132,7 +164,7 @@ extension PembayaranViewController: UIViewControllerTransitioningDelegate {
 extension PembayaranViewController {
     func configureTotalTagihanView() {
         totalTagihanBackgroundView.translatesAutoresizingMaskIntoConstraints = false
-        let TextSize = String(totalPemabayaran).currencyFormatting().SizeOf_String(font: UIFont.systemFont(ofSize: 34.0))
+        let TextSize = String(totalPembayaran).currencyFormatting().SizeOf_String(font: UIFont.systemFont(ofSize: 34.0))
         print("Total Tagihan",TextSize)
 //        totalTagihanBackgroundView.widthAnchor.constraint(equalToConstant: TextSize.width + 20).isActive = true
         totalTagihanBackgroundView.frame = CGRect(x: 0, y: 0, width: TextSize.width + 100, height: totalTagihanBackgroundView.frame.height)

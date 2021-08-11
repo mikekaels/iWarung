@@ -225,14 +225,6 @@ extension TambahProdukScanViewController {
             }
         }
     }
-    
-    private func showAlert(withTitle title: String, message: String) {
-        DispatchQueue.main.async {
-            let alertController = UIAlertController(title: title, message: message, preferredStyle: .alert)
-            alertController.addAction(UIAlertAction(title: "OK", style: .default))
-            self.present(alertController, animated: true)
-        }
-    }
 }
 
 //MARK: - UIPicker Non Barcode or Barcode
@@ -413,11 +405,11 @@ extension TambahProdukScanViewController {
     func showModalAddProductForm(with barcode: String) {
         print("BARCODE: ",barcode)
         DispatchQueue.main.async {
-            let storyBoard: UIStoryboard = UIStoryboard(name: "TambahProdukForm", bundle: nil)
-            let newViewController = storyBoard.instantiateViewController(withIdentifier: "TambahProdukForm") as! TambahProdukFormViewController
-            newViewController.modalPresentationStyle = .popover
-            newViewController.scanningBarcode = String(barcode)
-            self.present(newViewController, animated: true, completion: nil)
+            let vc =  UIStoryboard.init(name: "TambahProdukForm", bundle: Bundle.main).instantiateViewController(withIdentifier: "TambahProdukForm") as! TambahProdukFormViewController
+            vc.scanningBarcode = String(barcode)
+            vc.isNewProduct = true
+            let nav = UINavigationController(rootViewController: vc)
+            self.present(nav, animated: true, completion: nil)
         }
     }
     
@@ -515,21 +507,5 @@ extension TambahProdukScanViewController: AVCapturePhotoCaptureDelegate {
         }
         
         print("Result Text : \(resultScanText)")
-    }
-    
-    // MARK: - Helper Methods
-    func presentAlert(_ title: String, error: NSError) {
-        // Always present alert on main thread.
-        DispatchQueue.main.async {
-            let alertController = UIAlertController(title: title,
-                                                    message: error.localizedDescription,
-                                                    preferredStyle: .alert)
-            let okAction = UIAlertAction(title: "OK",
-                                         style: .default) { _ in
-                                            // Do nothing -- simply dismiss alert.
-            }
-            alertController.addAction(okAction)
-            self.present(alertController, animated: true, completion: nil)
-        }
     }
 }

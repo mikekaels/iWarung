@@ -25,11 +25,16 @@ class TambahProdukFormViewController: UIViewController{
     @IBOutlet weak var kadaluwarsaPicker: UIDatePicker!
     @IBOutlet weak var cameraIcon: UIImageView!
     @IBOutlet weak var ketukText: UILabel!
+    @IBOutlet weak var canceldeleteButton: UIButton!
+    @IBOutlet weak var errorTextLabel: UILabel!
+    
+    @IBOutlet var textFields: [UITextField]!
     
     var selectedItem: ProductItem?
     var scanningBarcode: String? = ""
     var datePicker: Date!
     let datePickerView = UIDatePicker()
+    var isNewProduct = false
     
     let center = UNUserNotificationCenter.current()
     
@@ -48,11 +53,6 @@ class TambahProdukFormViewController: UIViewController{
         
         createDatePicker()
         
-        deleteProdukButton.backgroundColor = .white
-        deleteProdukButton.cornerRadius()
-        deleteProdukButton.layer.borderWidth = 2.0
-        deleteProdukButton.layer.borderColor = UIColor.red.cgColor
-//
         if (selectedItem != nil) {
             cameraIcon.isHidden = true
             ketukText.isHidden = true
@@ -65,15 +65,70 @@ class TambahProdukFormViewController: UIViewController{
             imageThumnail.image = UIImage(data: (selectedItem?.image_data)!)
 
             addProdItem.setTitle("Simpan Perubahan", for: UIControl.State.normal)
+            
+            canceldeleteButton.setTitle("Hapus", for: UIControl.State.normal)
 
         } else {
-            deleteProdukButton.isHidden = true
+//            deleteProdukButton.isHidden = true
         }
 //
 //        kadaluwarsaPicker.datePickerMode = .dateAndTime
 //        kadaluwarsaPicker.addTarget(self, action: #selector(datePickerValueChanged(sender: )), for: UIControl.Event.valueChanged)
 //
 //        self.setupHideKeyboardOnTap()
+        buttonSetup()
+        errorLabelSetup()
+        
+        NotificationCenter.default.addObserver(self, selector: #selector(textDidChange(_:)), name: UITextField.textDidChangeNotification, object: nil)
+    }
+    
+    fileprivate func errorLabelSetup() {
+        addProdItem.tintColor = .red
+        errorTextLabel.isHidden = true
+    }
+    
+    @objc private func textDidChange(_ notification: Notification) {
+        var formIsValid = true
+
+        for textField in textFields {
+            // Validate Text Field
+            let (valid, _) = validate(textField)
+
+            guard valid else {
+                formIsValid = false
+                break
+            }
+        }
+
+        // Update Save Button
+        errorTextLabel.isHidden = formIsValid
+    }
+    
+    func buttonSetup(){
+        if isNewProduct {
+            canceldeleteButton.setTitle("Batalkan", for: .normal)
+            canceldeleteButton.addTarget(self, action: #selector(cancelForm), for: .touchUpInside)
+        } else {
+            canceldeleteButton.setTitle("Hapus", for: .normal)
+            canceldeleteButton.addTarget(self, action: #selector(deleteProduct), for: .touchUpInside)
+        }
+    }
+    
+    @objc func deleteProduct(){
+        Persisten.shared.deleteProduct(item: selectedItem!)
+        self.dismiss(animated: true, completion: {
+            self.navigationController?.popViewController(animated: true)
+        })
+    }
+        
+    
+    @objc func cancelForm(){
+        self.dismiss(animated: true, completion: nil)
+    }
+    
+    
+    override func viewWillAppear(_ animated: Bool) {
+        
     }
     
     
@@ -272,5 +327,53 @@ extension TambahProdukFormViewController {
         formatter.dateFormat = "d MMM, yyyy"
         kadaluwarsaTF.text = formatter.string(from: datePickerView.date)
         self.view.endEditing(true)
+    }
+}
+
+//MARK: - TextField Delegate
+
+extension TambahProdukFormViewController: UITextFieldDelegate {
+    
+    override func textFieldShouldReturn(_ textField: UITextField) -> Bool {
+        switch textField {
+            case namaTF:
+                let (valid, message) = validate(textField)
+                
+                if valid {
+                    hargaTF.becomeFirstResponder()
+                }
+                
+                self.errorTextLabel.text = message
+                
+                UIView.animate(withDuration: 0.25, animations: {
+                    self.errorTextLabel.isHidden = valid
+                })
+            case hargaTF:
+                stockTF.becomeFirstResponder()
+            case stockTF:
+                kadaluwarsaTF.becomeFirstResponder()
+            default:
+                kadaluwarsaTF.resignFirstResponder()
+            }
+        
+            return true
+    }
+    
+    fileprivate func validate(_ textField: UITextField) -> (Bool, String?) {
+        guard let text = textField.text else {
+            return (false, nil)
+        }
+
+        if textField == namaTF {
+            return (text.count > 0, "Nama produk tidak boleh kosong")
+        } else if textField == hargaTF {
+            return (text.count > 0, "Harga produk tidak boleh kosong")
+        } else if textField == stockTF {
+            return (text.count >= 0, "Stok barang tidak boleh minus")
+        } else if textField == kadaluwarsaTF {
+            return (text.count > 0, "Tanggal kadaluwarsa tidak boleh kosong")
+        }
+
+        return (text.count > 0, "This field cannot be empty.")
     }
 }

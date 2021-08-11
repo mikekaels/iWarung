@@ -86,5 +86,22 @@ struct K {
         
         return total
     }
+    
+    static func getOnlyDate()-> String {
+        let date = Date()
+        let df = DateFormatter()
+        df.dateFormat = "d-MM-yyyy"
+        let dateString = df.string(from: date).uppercased()
+        return dateString
+    }
+    
+    static func getOnlyTime()-> String {
+        let date = Date()
+        let df = DateFormatter()
+        df.dateFormat = "hh:mm"
+        df.timeStyle = .short
+        let dateString = df.string(from: date).uppercased()
+        return dateString
+    }
 }
 
