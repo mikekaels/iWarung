@@ -1,0 +1,125 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder.WatchKit.Storyboard" version="3.0" toolsVersion="18122" targetRuntime="watchKit" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES" initialViewController="AgC-eL-Hgc">
+    <device id="watch44"/>
+    <dependencies>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="18093"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBWatchKitPlugin" version="18022"/>
+    </dependencies>
+    <scenes>
+        <!--Interface Controller-->
+        <scene sceneID="aou-V4-d1y">
+            <objects>
+                <controller id="AgC-eL-Hgc" customClass="InterfaceController" customModule="iWarung_watchOS" customModuleProvider="target">
+                    <items>
+                        <label alignment="left" hidden="YES" text="hem" id="Iwn-HW-JiV"/>
+                        <button width="1" alignment="left" hidden="YES" title="Button" id="zuJ-R7-IbV">
+                            <connections>
+                                <action selector="buttonTapped" destination="AgC-eL-Hgc" id="X0x-pI-6d5"/>
+                            </connections>
+                        </button>
+                        <button alignment="left" id="AwO-Ii-0Vb">
+                            <group key="contentGroup" width="1" alignment="left" id="pwk-dj-1pD">
+                                <items>
+                                    <group width="1" height="90" alignment="left" verticalAlignment="center" layout="vertical" id="mfY-x4-Y7B">
+                                        <items>
+                                            <imageView width="50" height="50" alignment="center" verticalAlignment="center" image="stock" id="lV4-jR-j6d"/>
+                                            <label alignment="center" verticalAlignment="center" text="STOK KURANG" id="2id-1v-0zr"/>
+                                        </items>
+                                        <color key="backgroundColor" red="0.30196078430000001" green="0.27450980390000002" blue="0.039215686270000001" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                    </group>
+                                </items>
+                            </group>
+                            <connections>
+                                <action selector="stokKurangButtonTapped" destination="AgC-eL-Hgc" id="314-jP-dLy"/>
+                            </connections>
+                        </button>
+                        <button alignment="left" id="X0b-Qa-hOa">
+                            <group key="contentGroup" width="1" alignment="left" id="ZaP-OR-CiQ">
+                                <items>
+                                    <group width="1" height="90" alignment="left" verticalAlignment="center" layout="vertical" id="CMQ-CR-ldR">
+                                        <items>
+                                            <imageView width="56" height="50" alignment="center" verticalAlignment="center" image="expired" id="qIg-03-FQN"/>
+                                            <label alignment="center" verticalAlignment="center" text="KADALUWARSA" id="GNO-0O-IhH"/>
+                                        </items>
+                                        <color key="backgroundColor" red="0.30196078430000001" green="0.070588235289999995" blue="0.058823529409999999" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                    </group>
+                                </items>
+                            </group>
+                        </button>
+                    </items>
+                    <connections>
+                        <outlet property="label" destination="Iwn-HW-JiV" id="X1r-4Y-M8q"/>
+                    </connections>
+                </controller>
+            </objects>
+            <point key="canvasLocation" x="219.52173913043478" y="358.97321428571428"/>
+        </scene>
+        <!--StokKurangInterfaceController-->
+        <scene sceneID="wU3-QO-HO0">
+            <objects>
+                <controller identifier="StokKurangInterfaceController" id="nDO-8b-T4F" customClass="StokKurangInterfaceController" customModule="iWarung_watchOS_Extension">
+                    <items>
+                        <label width="1" alignment="left" text="Stok kurang:" id="hk5-FD-pcA"/>
+                        <table alignment="left" id="UTh-3K-vcZ">
+                            <items>
+                                <tableRow identifier="StokKurangTableController" id="nYh-Fi-MWP" customClass="StokKurangTableController" customModule="iWarung_watchOS_Extension">
+                                    <group key="rootItem" width="1" height="50" alignment="left" id="g7w-BA-5Xc">
+                                        <items>
+                                            <group width="40" height="40" alignment="left" verticalAlignment="center" backgroundImage="stock" radius="20" id="Zx8-ux-Ndb"/>
+                                            <group width="120" alignment="right" verticalAlignment="center" layout="vertical" id="rX7-16-bCc">
+                                                <items>
+                                                    <label width="1" alignment="left" text="Bimoli 2L" id="FnV-Mj-VF4"/>
+                                                    <label alignment="left" text="10" id="VOR-HX-9NV"/>
+                                                </items>
+                                            </group>
+                                        </items>
+                                        <color key="backgroundColor" red="0.30196078430000001" green="0.070588235289999995" blue="0.058823529409999999" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                    </group>
+                                </tableRow>
+                            </items>
+                        </table>
+                    </items>
+                    <connections>
+                        <outlet property="stokKurangTable" destination="UTh-3K-vcZ" id="yfW-q1-Dug"/>
+                    </connections>
+                </controller>
+            </objects>
+            <point key="canvasLocation" x="220" y="660"/>
+        </scene>
+        <!--Static Notification Interface Controller-->
+        <scene sceneID="AEw-b0-oYE">
+            <objects>
+                <notificationController id="YCC-NB-fut">
+                    <items>
+                        <label alignment="left" text="Alert Label" numberOfLines="0" id="IdU-wH-bcW"/>
+                    </items>
+                    <notificationCategory key="notificationCategory" identifier="myCategory" id="JfB-70-Muf"/>
+                    <connections>
+                        <outlet property="notificationAlertLabel" destination="IdU-wH-bcW" id="JKC-fr-R95"/>
+                        <segue destination="4sK-HA-Art" kind="relationship" relationship="dynamicNotificationInterface" id="kXh-Jw-8B1"/>
+                        <segue destination="eXb-UN-Cd0" kind="relationship" relationship="dynamicInteractiveNotificationInterface" id="mpB-YA-K8N"/>
+                    </connections>
+                </notificationController>
+            </objects>
+            <point key="canvasLocation" x="-254" y="348"/>
+        </scene>
+        <!--Notification Controller-->
+        <scene sceneID="ZPc-GJ-vnh">
+            <objects>
+                <controller id="4sK-HA-Art" customClass="NotificationController" customModule="iWarung_watchOS" customModuleProvider="target"/>
+            </objects>
+            <point key="canvasLocation" x="-6" y="348"/>
+        </scene>
+        <!--Notification Controller-->
+        <scene sceneID="Niz-AI-uX2">
+            <objects>
+                <controller id="eXb-UN-Cd0" customClass="NotificationController" customModule="iWarung_watchOS" customModuleProvider="target"/>
+            </objects>
+            <point key="canvasLocation" x="-254" y="674"/>
+        </scene>
+    </scenes>
+    <resources>
+        <image name="expired" width="270" height="243"/>
+        <image name="stock" width="270" height="267"/>
+    </resources>
+</document>

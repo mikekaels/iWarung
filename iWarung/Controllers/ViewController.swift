@@ -9,8 +9,10 @@ import UIKit
 import Vision
 import AVFoundation
 import CoreData
+import WatchConnectivity
 
 class ViewController: UIViewController{
+    
     @IBOutlet weak var cameraView: UIView!
     @IBOutlet weak var flashLightButton : UIButton!
     @IBOutlet weak var flashlightView: UIView!
@@ -45,6 +47,12 @@ class ViewController: UIViewController{
     var keranjang           = [ItemKeranjang]()
     let productService      : Persisten = Persisten()
     
+    var session: WCSession?//2
+    var connectivityHandler = WatchSessionManager.shared
+    var lastNumber: Int = 0
+    
+    @IBOutlet weak var label: UILabel!
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         print("VIEW DID LOAD ---------------------")
@@ -52,7 +60,7 @@ class ViewController: UIViewController{
         setupNavBar()
         cameraOverlay.isHidden = true
         cameraOverlay.alpha = 0
-
+        
         flashLightButton.backgroundColor = .white
         flashLightButton.cornerRadius(width: 4, height: 4)
         inventoryView.cornerRadius(width: 10, height: 10)
@@ -69,7 +77,7 @@ class ViewController: UIViewController{
         
         self.pickerView.dataSource = self
         self.pickerView.delegate = self
-
+        
         NotificationCenter.default.addObserver(
             self,
             selector: #selector(self.popUpDismissed),
@@ -92,14 +100,56 @@ class ViewController: UIViewController{
         }
         
         self.setupNotificationCenter()
+        
+        //MARK: - Ask for Permission [Notification]
+        let center = UNUserNotificationCenter.current()
+        
+        center.requestAuthorization(options: [.alert, .sound]) { (granted, error) in
+        }
+        
+        connectivityHandler.iOSDelegate = self
     }
     
+    func sendDataToIwatch() {
+        let data = Persisten.shared.fetchProducts()
+        var array = [[String: Any]]()
+        
+        for item in data {
+            let dict = ["name": item.name!, "stock": item.stock, "expired": item.exp_date!] as [String : Any]
+            array.append(dict)
+        }
+        print("ARRAY: ",array)
+        do {
+            try connectivityHandler.updateApplicationContext(applicationContext: ["data": array])
+        } catch {
+            print("Error: \(error)")
+        }
+    }
+    
+    @IBAction func buttonTapped(_ sender: Any) {
+        let data = Persisten.shared.fetchProducts()
+        var array = [[String: Any]]()
+        
+        for item in data {
+            let dict = ["name": item.name!, "stock": item.stock, "expired": item.exp_date!] as [String : Any]
+            array.append(dict)
+        }
+        print("ARRAY: ",array)
+        do {
+            try connectivityHandler.updateApplicationContext(applicationContext: ["row" : self.lastNumber as Int, "data": array])
+        } catch {
+            print("Error: \(error)")
+        }
+        
+        lastNumber += 1
+    }
+
     func setupNotificationCenter() {
         //MARK: - ADD OBSERVER NOTIFICATION CENTER
         NotificationCenter.default.addObserver(forName: K.detectedNotificationKey, object: nil, queue: nil, using: { [self] (notification) in
             guard let object = notification.object as? ItemKeranjang else {
                 print("NOT OBJECT ----------------")
-              return
+                return
             }
             if keranjang.isEmpty {
                 self.keranjang.append(object)
@@ -110,7 +160,7 @@ class ViewController: UIViewController{
                         indexFound = index
                     }
                 }
-    
+                
                 if indexFound != -1 {
                     keranjang[indexFound].qty += object.qty
                 } else {
@@ -146,7 +196,7 @@ class ViewController: UIViewController{
     }
     
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        if (segue.identifier == "toKeranjang"){
+        if segue.identifier == "toKeranjang" {
             let landingVC = segue.destination as! KeranjangViewController
             print("KERANJANG: ",keranjang)
             landingVC.delegate = self
@@ -257,7 +307,7 @@ class ViewController: UIViewController{
 }
 
 extension ViewController: KeranjangDelegate  {
-
+    
     func didTapPlusOrMinusButton(indexPath: Int, totalProduct: Int) {
         keranjang[indexPath].qty = totalProduct
         updateKeranjangPopUp()
@@ -296,7 +346,7 @@ extension ViewController {
         self.scanButton.addGestureRecognizer(longTapGesture)
         self.scanButton.addGestureRecognizer(longPressRecognizer)
         self.view.addGestureRecognizer(tapGesture)
-        
+        sendDataToIwatch()
     }
     
     func resetTimer() {
@@ -335,21 +385,22 @@ extension ViewController {
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         print("VIEW WILL APPEAR ---------------------")
-       
+        
         updateKeranjangPopUp()
         
-//        if !Core.shared.isNewUser() {
-//            // show onboarding
-//            let controller = storyboard?.instantiateViewController(identifier: "OnboardingViewController") as! OnboardingViewController
-//            controller.modalPresentationStyle = .fullScreen
-//            controller.modalTransitionStyle = .crossDissolve
-//            present(controller, animated: true, completion: nil)
-//        }
+        //        if !Core.shared.isNewUser() {
+        //            // show onboarding
+        //            let controller = storyboard?.instantiateViewController(identifier: "OnboardingViewController") as! OnboardingViewController
+        //            controller.modalPresentationStyle = .fullScreen
+        //            controller.modalTransitionStyle = .crossDissolve
+        //            present(controller, animated: true, completion: nil)
+        //        }
         
         self.navigationController?.isHiddenHairline = true
         
         navigationController?.setNavigationBarHidden(true, animated: animated)
         navigationController?.navigationBar.prefersLargeTitles = false
+        sendDataToIwatch()
     }
     
     override func viewWillDisappear(_ animated: Bool) {
@@ -497,7 +548,7 @@ extension ViewController: AVCaptureVideoDataOutputSampleBufferDelegate {
                         self.cameraOverlay.alpha = 0
                     }
                     showModalDetectedProduct(product: result[0])
-//                    print("hasil search \(String(describing: result[0]))")
+                    //                    print("hasil search \(String(describing: result[0]))")
                 } else {
                     showAlert(withTitle: "Produk tidak ditemukan", message: "Silahkan tambahkan produk")
                 }
@@ -570,16 +621,16 @@ extension ViewController: AVCapturePhotoCaptureDelegate {
     
     func photoOutput(_ output: AVCapturePhotoOutput, didFinishProcessingPhoto photo: AVCapturePhoto, error: Error?) {
         if let _ = error {
-                    // Handle Error
-                } else if let cgImageRepresentation = photo.cgImageRepresentation(),
-                    let orientationInt = photo.metadata[String(kCGImagePropertyOrientation)] as? UInt32,
-                    let imageOrientation = UIImage.Orientation.orientation(fromCGOrientationRaw: orientationInt) {
-
-                    // Create image with proper orientation
-                    let cgImage = cgImageRepresentation.takeUnretainedValue()
-                    let cgOrientation = CGImagePropertyOrientation(imageOrientation)
-                    performVisionRequest(image: cgImage, orientation: cgOrientation)
-                }
+            // Handle Error
+        } else if let cgImageRepresentation = photo.cgImageRepresentation(),
+                  let orientationInt = photo.metadata[String(kCGImagePropertyOrientation)] as? UInt32,
+                  let imageOrientation = UIImage.Orientation.orientation(fromCGOrientationRaw: orientationInt) {
+            
+            // Create image with proper orientation
+            let cgImage = cgImageRepresentation.takeUnretainedValue()
+            let cgOrientation = CGImagePropertyOrientation(imageOrientation)
+            performVisionRequest(image: cgImage, orientation: cgOrientation)
+        }
     }
     
     // MARK: - Vision
@@ -625,14 +676,14 @@ extension ViewController: AVCapturePhotoCaptureDelegate {
         }
         
         let maximumCandidates = 1
-
+        
         for visionResult in results {
             guard let candidate = visionResult.topCandidates(maximumCandidates).first else { continue }
             if let result = candidate.string.extractTextRecognize() {
                 resultScanText.append(result)
             }
         }
-            
+        
         // MARK : Koding untuk menyimpan produk dari vision text
         let result: [ProductItem] = self.productService.fetchProductsByNonBarcode(with: resultScanText)
         
@@ -649,4 +700,22 @@ extension ViewController: AVCapturePhotoCaptureDelegate {
         print("Result Text : \(resultScanText)")
         print("Result Database : \(result)")
     }    
+}
+
+extension ViewController: iOSDelegate {
+    
+    func applicationContextReceived(tuple: ApplicationContextReceived) {
+        DispatchQueue.main.async() {
+            print("TUPLE: ",tuple)
+            if let row = tuple.applicationContext["row"] as? Int {
+                self.label.text = String(row)
+                self.lastNumber = row
+            }
+        }
+    }
+    
+    
+    func messageReceived(tuple: MessageReceived) {
+    }
+    
 }

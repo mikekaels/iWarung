@@ -6,8 +6,9 @@
 //
 
 import UIKit
+import UserNotifications
 
-class PembayaranViewController: UIViewController, UITextFieldDelegate {
+class PembayaranViewController: UIViewController, UITextFieldDelegate, UNUserNotificationCenterDelegate {
 
     @IBOutlet weak var totalTagihanBackgroundView: UIView!
     @IBOutlet weak var totalTagihan: UILabel!
@@ -21,6 +22,7 @@ class PembayaranViewController: UIViewController, UITextFieldDelegate {
     var keranjang = [ItemKeranjang]()
     
     var currentString = ""
+    let center = UNUserNotificationCenter.current()
     
     @IBAction func finishTransactionPressed(_ sender: UIButton) {
         if Double(receivedMoneyTextfield.text ?? "") ?? 0 <= 0 ||  totalChangeAmount < 0{
@@ -50,6 +52,36 @@ extension PembayaranViewController {
         self.receivedMoneyTextfield.addTarget(self, action: #selector(textDidChange), for: UIControl.Event.editingDidEnd)
         
         configureTotalTagihanView()
+        createStockNotification()
+        
+        UNUserNotificationCenter.current().delegate = self
+    }
+    
+    func userNotificationCenter(_ center: UNUserNotificationCenter, willPresent notification: UNNotification, withCompletionHandler completionHandler: @escaping (UNNotificationPresentationOptions) -> Void) {
+        completionHandler([.list, .banner, .badge, .sound])
+    }
+    
+    func createStockNotification() {
+        //MARK: - Create notification content
+        let content = UNMutableNotificationContent()
+        content.title = "Stok mau habis"
+        content.body = "Produk ini stoknya tersisa 5"
+        
+        // Create the notification trigger
+        let date = Date().addingTimeInterval(6)
+        let dateComponents = Calendar.current.dateComponents([.year, .month, .day, .hour, .minute, .second], from: date)
+        
+        let trigger = UNCalendarNotificationTrigger(dateMatching: dateComponents, repeats: false)
+        
+        // Create Request
+        let uuidString = UUID().uuidString
+        let request = UNNotificationRequest(identifier: uuidString, content: content, trigger: trigger)
+        
+        // register the request
+
+        center.add(request) { (error) in
+            print("ERROR: ", error as Any)
+        }
     }
     
     @objc func textDidChange(_ textField:UITextField) {
