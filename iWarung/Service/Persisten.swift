@@ -42,7 +42,7 @@ class Persisten {
         }
     }
     
-    func insertProduct(scanValue: String,  name: String, description: String, price: Float, image: Data, expired: Date, stock: Int64){
+    func insertProduct(scanValue: String,  name: String, description: String, price: Float, image: Data, expired: Date, stock: Int64, min_stock: Int64){
         
         do {
             let product = ProductItem(context: context)
@@ -53,6 +53,7 @@ class Persisten {
             product.stock = stock
             product.exp_date = expired
             product.image_data = image
+            product.min_stock = min_stock
             saveContext()
         } catch {
             print("Error insert data Produk")

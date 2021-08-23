@@ -222,12 +222,11 @@ class TambahProdukFormViewController: UIViewController{
                 print("Error adding notification because \(String(describing: error))")
             }
         
-            Persisten.shared.insertProduct(scanValue: codeValue, name: nama, description: "deskripsi", price: (price as NSString).floatValue, image: image, expired: date, stock: Int64(stock)!)
+            Persisten.shared.insertProduct(scanValue: codeValue, name: nama, description: "deskripsi", price: (price as NSString).floatValue, image: image, expired: date, stock: Int64(stock)!, min_stock: 5)
+            
             self.dismiss(animated: true, completion: {
                 self.navigationController?.popViewController(animated: true)
             })
-            
-            // edit
         } else {
             
             guard let nama = namaTF.text else {

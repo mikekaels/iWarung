@@ -13,6 +13,16 @@
 		3FE725FD26A96F7A009F4D32 /* PembayaranViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3FE725FC26A96F7A009F4D32 /* PembayaranViewController.swift */; };
 		3FF1EE7D26AE284000F4F122 /* DetectedProductView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3FF1EE7B26AE284000F4F122 /* DetectedProductView.swift */; };
 		3FF1EE7E26AE284000F4F122 /* DetectedProductView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 3FF1EE7C26AE284000F4F122 /* DetectedProductView.xib */; };
+		BD02C9E526D197480028AB3B /* ProductItem+CoreDataProperties.swift in Sources */ = {isa = PBXBuildFile; fileRef = BD02C9E426D197480028AB3B /* ProductItem+CoreDataProperties.swift */; };
+		BD02C9EC26D1B4230028AB3B /* Interface.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = BD02C9EA26D1B4230028AB3B /* Interface.storyboard */; };
+		BD02C9EE26D1B4240028AB3B /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = BD02C9ED26D1B4240028AB3B /* Assets.xcassets */; };
+		BD02C9F526D1B4240028AB3B /* iWarung watchOS Extension.appex in Embed App Extensions */ = {isa = PBXBuildFile; fileRef = BD02C9F426D1B4240028AB3B /* iWarung watchOS Extension.appex */; settings = {ATTRIBUTES = (RemoveHeadersOnCopy, ); }; };
+		BD02C9FA26D1B4240028AB3B /* InterfaceController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BD02C9F926D1B4240028AB3B /* InterfaceController.swift */; };
+		BD02C9FC26D1B4240028AB3B /* ExtensionDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = BD02C9FB26D1B4240028AB3B /* ExtensionDelegate.swift */; };
+		BD02C9FE26D1B4240028AB3B /* NotificationController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BD02C9FD26D1B4240028AB3B /* NotificationController.swift */; };
+		BD02CA0026D1B4240028AB3B /* ComplicationController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BD02C9FF26D1B4240028AB3B /* ComplicationController.swift */; };
+		BD02CA0226D1B4250028AB3B /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = BD02CA0126D1B4250028AB3B /* Assets.xcassets */; };
+		BD02CA0726D1B4250028AB3B /* iWarung watchOS.app in Embed Watch Content */ = {isa = PBXBuildFile; fileRef = BD02C9E826D1B4230028AB3B /* iWarung watchOS.app */; settings = {ATTRIBUTES = (RemoveHeadersOnCopy, ); }; };
 		BD1CF23F26AC99F9001B7EC8 /* TransaksiSelesaiPasView.xib in Resources */ = {isa = PBXBuildFile; fileRef = BD1CF23E26AC99F9001B7EC8 /* TransaksiSelesaiPasView.xib */; };
 		BD1CF24526ACAEA9001B7EC8 /* TransaksiSelesaiPasView.swift in Sources */ = {isa = PBXBuildFile; fileRef = BD1CF24426ACAEA9001B7EC8 /* TransaksiSelesaiPasView.swift */; };
 		BD1CF24726ACB279001B7EC8 /* UIApplication.swift in Sources */ = {isa = PBXBuildFile; fileRef = BD1CF24626ACB279001B7EC8 /* UIApplication.swift */; };
@@ -24,6 +34,9 @@
 		BD1FFF3926AB957100EB9AAD /* UIViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BD1FFF3826AB957100EB9AAD /* UIViewController.swift */; };
 		BD1FFF3B26AC237A00EB9AAD /* UIView.swift in Sources */ = {isa = PBXBuildFile; fileRef = BD1FFF3A26AC237A00EB9AAD /* UIView.swift */; };
 		BD1FFF3D26AC24D300EB9AAD /* UIColor.swift in Sources */ = {isa = PBXBuildFile; fileRef = BD1FFF3C26AC24D300EB9AAD /* UIColor.swift */; };
+		BD38922726D2DCE5005D2BF6 /* StokKurangTableController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BD38922626D2DCE5005D2BF6 /* StokKurangTableController.swift */; };
+		BD38922926D2DD4D005D2BF6 /* StokKurangInterfaceController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BD38922826D2DD4D005D2BF6 /* StokKurangInterfaceController.swift */; };
+		BD38922B26D2E81E005D2BF6 /* WatchManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = BD38922A26D2E81E005D2BF6 /* WatchManager.swift */; };
 		BD3A595726B249C400BA4234 /* UISegmented.swift in Sources */ = {isa = PBXBuildFile; fileRef = BD3A595626B249C400BA4234 /* UISegmented.swift */; };
 		BD52321A26C46AEF00B4795A /* UserDefault.swift in Sources */ = {isa = PBXBuildFile; fileRef = BD52321926C46AEF00B4795A /* UserDefault.swift */; };
 		BD5AC58526A369F400A52336 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = BD5AC58426A369F400A52336 /* AppDelegate.swift */; };
@@ -39,6 +52,8 @@
 		BD74BCB026A4820B00E3EE75 /* constants.swift in Sources */ = {isa = PBXBuildFile; fileRef = BD74BCAF26A4820B00E3EE75 /* constants.swift */; };
 		BD85A2D126A9F72600FE1B9C /* Keranjang.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = BD85A2D026A9F72600FE1B9C /* Keranjang.storyboard */; };
 		BD85A2D326A9F74B00FE1B9C /* KeranjangViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BD85A2D226A9F74B00FE1B9C /* KeranjangViewController.swift */; };
+		BD87042026D44BE000DE5562 /* WatchSessionManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = BD87041F26D44BE000DE5562 /* WatchSessionManager.swift */; };
+		BD87042126D44BE800DE5562 /* WatchSessionManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = BD87041F26D44BE000DE5562 /* WatchSessionManager.swift */; };
 		BD9023E326BEE57E00976CF1 /* String.swift in Sources */ = {isa = PBXBuildFile; fileRef = BD9023E226BEE57E00976CF1 /* String.swift */; };
 		BDB37A0B26C2257200BDF9C2 /* Pembayaran.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = BDB379EC26C2257200BDF9C2 /* Pembayaran.storyboard */; };
 		BDB39A3826ADD05800296909 /* DaftarProduk.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = BDB39A3726ADD05800296909 /* DaftarProduk.storyboard */; };
@@ -69,9 +84,50 @@
 		E7AF66B526B165B00039A44B /* ProductItemViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = E7AF66B326B165B00039A44B /* ProductItemViewCell.xib */; };
 		E7AF66B826B213E20039A44B /* Persisten.swift in Sources */ = {isa = PBXBuildFile; fileRef = E7AF66B726B213E20039A44B /* Persisten.swift */; };
 		E7AF66BF26B427C00039A44B /* ProductItem+CoreDataClass.swift in Sources */ = {isa = PBXBuildFile; fileRef = E7AF66BD26B427C00039A44B /* ProductItem+CoreDataClass.swift */; };
-		E7AF66C026B427C00039A44B /* ProductItem+CoreDataProperties.swift in Sources */ = {isa = PBXBuildFile; fileRef = E7AF66BE26B427C00039A44B /* ProductItem+CoreDataProperties.swift */; };
 		E7AF672726BAAB240039A44B /* KeranjangModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = E7AF672626BAAB240039A44B /* KeranjangModel.swift */; };
 /* End PBXBuildFile section */
+
+/* Begin PBXContainerItemProxy section */
+		BD02C9F626D1B4240028AB3B /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = BD5AC57926A369F400A52336 /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = BD02C9F326D1B4240028AB3B;
+			remoteInfo = "iWarung watchOS Extension";
+		};
+		BD02CA0526D1B4250028AB3B /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = BD5AC57926A369F400A52336 /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = BD02C9E726D1B4230028AB3B;
+			remoteInfo = "iWarung watchOS";
+		};
+/* End PBXContainerItemProxy section */
+
+/* Begin PBXCopyFilesBuildPhase section */
+		BD02CA0826D1B4250028AB3B /* Embed Watch Content */ = {
+			isa = PBXCopyFilesBuildPhase;
+			buildActionMask = 2147483647;
+			dstPath = "$(CONTENTS_FOLDER_PATH)/Watch";
+			dstSubfolderSpec = 16;
+			files = (
+				BD02CA0726D1B4250028AB3B /* iWarung watchOS.app in Embed Watch Content */,
+			);
+			name = "Embed Watch Content";
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		BD02CA0B26D1B4250028AB3B /* Embed App Extensions */ = {
+			isa = PBXCopyFilesBuildPhase;
+			buildActionMask = 2147483647;
+			dstPath = "";
+			dstSubfolderSpec = 13;
+			files = (
+				BD02C9F526D1B4240028AB3B /* iWarung watchOS Extension.appex in Embed App Extensions */,
+			);
+			name = "Embed App Extensions";
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
 		3F28F79C26BD2A9400F1050A /* UIImage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIImage.swift; sourceTree = "<group>"; };
@@ -80,6 +136,21 @@
 		3FE725FC26A96F7A009F4D32 /* PembayaranViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PembayaranViewController.swift; sourceTree = "<group>"; };
 		3FF1EE7B26AE284000F4F122 /* DetectedProductView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetectedProductView.swift; sourceTree = "<group>"; };
 		3FF1EE7C26AE284000F4F122 /* DetectedProductView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = DetectedProductView.xib; sourceTree = "<group>"; };
+		BD02C9E426D197480028AB3B /* ProductItem+CoreDataProperties.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "ProductItem+CoreDataProperties.swift"; sourceTree = "<group>"; };
+		BD02C9E826D1B4230028AB3B /* iWarung watchOS.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "iWarung watchOS.app"; sourceTree = BUILT_PRODUCTS_DIR; };
+		BD02C9EB26D1B4230028AB3B /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Interface.storyboard; sourceTree = "<group>"; };
+		BD02C9ED26D1B4240028AB3B /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
+		BD02C9EF26D1B4240028AB3B /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		BD02C9F426D1B4240028AB3B /* iWarung watchOS Extension.appex */ = {isa = PBXFileReference; explicitFileType = "wrapper.app-extension"; includeInIndex = 0; path = "iWarung watchOS Extension.appex"; sourceTree = BUILT_PRODUCTS_DIR; };
+		BD02C9F926D1B4240028AB3B /* InterfaceController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InterfaceController.swift; sourceTree = "<group>"; };
+		BD02C9FB26D1B4240028AB3B /* ExtensionDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ExtensionDelegate.swift; sourceTree = "<group>"; };
+		BD02C9FD26D1B4240028AB3B /* NotificationController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NotificationController.swift; sourceTree = "<group>"; };
+		BD02C9FF26D1B4240028AB3B /* ComplicationController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ComplicationController.swift; sourceTree = "<group>"; };
+		BD02CA0126D1B4250028AB3B /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
+		BD02CA0326D1B4250028AB3B /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		BD02CA0426D1B4250028AB3B /* PushNotificationPayload.apns */ = {isa = PBXFileReference; lastKnownFileType = text; path = PushNotificationPayload.apns; sourceTree = "<group>"; };
+		BD02CA1026D1B5710028AB3B /* iWarung.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = iWarung.entitlements; sourceTree = "<group>"; };
+		BD02CA1126D1B5C40028AB3B /* iWarung watchOS Extension.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = "iWarung watchOS Extension.entitlements"; sourceTree = "<group>"; };
 		BD1CF23E26AC99F9001B7EC8 /* TransaksiSelesaiPasView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = TransaksiSelesaiPasView.xib; sourceTree = "<group>"; };
 		BD1CF24426ACAEA9001B7EC8 /* TransaksiSelesaiPasView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TransaksiSelesaiPasView.swift; sourceTree = "<group>"; };
 		BD1CF24626ACB279001B7EC8 /* UIApplication.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIApplication.swift; sourceTree = "<group>"; };
@@ -91,6 +162,9 @@
 		BD1FFF3826AB957100EB9AAD /* UIViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIViewController.swift; sourceTree = "<group>"; };
 		BD1FFF3A26AC237A00EB9AAD /* UIView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIView.swift; sourceTree = "<group>"; };
 		BD1FFF3C26AC24D300EB9AAD /* UIColor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIColor.swift; sourceTree = "<group>"; };
+		BD38922626D2DCE5005D2BF6 /* StokKurangTableController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StokKurangTableController.swift; sourceTree = "<group>"; };
+		BD38922826D2DD4D005D2BF6 /* StokKurangInterfaceController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StokKurangInterfaceController.swift; sourceTree = "<group>"; };
+		BD38922A26D2E81E005D2BF6 /* WatchManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WatchManager.swift; sourceTree = "<group>"; };
 		BD3A595626B249C400BA4234 /* UISegmented.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UISegmented.swift; sourceTree = "<group>"; };
 		BD52321926C46AEF00B4795A /* UserDefault.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserDefault.swift; sourceTree = "<group>"; };
 		BD5AC58126A369F400A52336 /* iWarung.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = iWarung.app; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -108,6 +182,7 @@
 		BD74BCAF26A4820B00E3EE75 /* constants.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = constants.swift; sourceTree = "<group>"; };
 		BD85A2D026A9F72600FE1B9C /* Keranjang.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = Keranjang.storyboard; sourceTree = "<group>"; };
 		BD85A2D226A9F74B00FE1B9C /* KeranjangViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = KeranjangViewController.swift; sourceTree = "<group>"; };
+		BD87041F26D44BE000DE5562 /* WatchSessionManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WatchSessionManager.swift; sourceTree = "<group>"; };
 		BD9023E226BEE57E00976CF1 /* String.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = String.swift; sourceTree = "<group>"; };
 		BDB379EC26C2257200BDF9C2 /* Pembayaran.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = Pembayaran.storyboard; sourceTree = "<group>"; };
 		BDB39A3726ADD05800296909 /* DaftarProduk.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = DaftarProduk.storyboard; sourceTree = "<group>"; };
@@ -138,11 +213,17 @@
 		E7AF66B326B165B00039A44B /* ProductItemViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = ProductItemViewCell.xib; path = ProductItemCell/ProductItemViewCell.xib; sourceTree = "<group>"; };
 		E7AF66B726B213E20039A44B /* Persisten.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Persisten.swift; sourceTree = "<group>"; };
 		E7AF66BD26B427C00039A44B /* ProductItem+CoreDataClass.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "ProductItem+CoreDataClass.swift"; sourceTree = SOURCE_ROOT; };
-		E7AF66BE26B427C00039A44B /* ProductItem+CoreDataProperties.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "ProductItem+CoreDataProperties.swift"; sourceTree = SOURCE_ROOT; };
 		E7AF672626BAAB240039A44B /* KeranjangModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = KeranjangModel.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
+		BD02C9F126D1B4240028AB3B /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 		BD5AC57E26A369F400A52336 /* Frameworks */ = {
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
@@ -162,10 +243,40 @@
 			path = SelectProduct;
 			sourceTree = "<group>";
 		};
+		BD02C9E926D1B4230028AB3B /* iWarung watchOS */ = {
+			isa = PBXGroup;
+			children = (
+				BD02C9EA26D1B4230028AB3B /* Interface.storyboard */,
+				BD02C9ED26D1B4240028AB3B /* Assets.xcassets */,
+				BD02C9EF26D1B4240028AB3B /* Info.plist */,
+			);
+			path = "iWarung watchOS";
+			sourceTree = "<group>";
+		};
+		BD02C9F826D1B4240028AB3B /* iWarung watchOS Extension */ = {
+			isa = PBXGroup;
+			children = (
+				BD02CA1126D1B5C40028AB3B /* iWarung watchOS Extension.entitlements */,
+				BD02C9F926D1B4240028AB3B /* InterfaceController.swift */,
+				BD02C9FB26D1B4240028AB3B /* ExtensionDelegate.swift */,
+				BD02C9FD26D1B4240028AB3B /* NotificationController.swift */,
+				BD02C9FF26D1B4240028AB3B /* ComplicationController.swift */,
+				BD02CA0126D1B4250028AB3B /* Assets.xcassets */,
+				BD02CA0326D1B4250028AB3B /* Info.plist */,
+				BD02CA0426D1B4250028AB3B /* PushNotificationPayload.apns */,
+				BD38922626D2DCE5005D2BF6 /* StokKurangTableController.swift */,
+				BD38922826D2DD4D005D2BF6 /* StokKurangInterfaceController.swift */,
+			);
+			path = "iWarung watchOS Extension";
+			sourceTree = "<group>";
+		};
 		BD5AC57826A369F400A52336 = {
 			isa = PBXGroup;
 			children = (
+				BD87041E26D44BA300DE5562 /* Commons */,
 				BD5AC58326A369F400A52336 /* iWarung */,
+				BD02C9E926D1B4230028AB3B /* iWarung watchOS */,
+				BD02C9F826D1B4240028AB3B /* iWarung watchOS Extension */,
 				BD5AC58226A369F400A52336 /* Products */,
 			);
 			sourceTree = "<group>";
@@ -174,6 +285,8 @@
 			isa = PBXGroup;
 			children = (
 				BD5AC58126A369F400A52336 /* iWarung.app */,
+				BD02C9E826D1B4230028AB3B /* iWarung watchOS.app */,
+				BD02C9F426D1B4240028AB3B /* iWarung watchOS Extension.appex */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -181,6 +294,7 @@
 		BD5AC58326A369F400A52336 /* iWarung */ = {
 			isa = PBXGroup;
 			children = (
+				BD02CA1026D1B5710028AB3B /* iWarung.entitlements */,
 				BD726E3326B60C9E00EAFD14 /* Protocols */,
 				E7AF66B626B213BC0039A44B /* Service */,
 				BD5AC59F26A36A3800A52336 /* Extensions */,
@@ -224,12 +338,13 @@
 			isa = PBXGroup;
 			children = (
 				E7AF66BD26B427C00039A44B /* ProductItem+CoreDataClass.swift */,
-				E7AF66BE26B427C00039A44B /* ProductItem+CoreDataProperties.swift */,
+				BD02C9E426D197480028AB3B /* ProductItem+CoreDataProperties.swift */,
 				BD1FFF3326AB65F800EB9AAD /* Product.swift */,
 				BDE43C2426AF4B36004CF3CC /* Onboarding.swift */,
 				BDE43C2626AF515E004CF3CC /* Core.swift */,
 				E7AF672626BAAB240039A44B /* KeranjangModel.swift */,
 				E71B13D226BD6E870023245A /* ProductModel.swift */,
+				BD38922A26D2E81E005D2BF6 /* WatchManager.swift */,
 			);
 			path = Models;
 			sourceTree = "<group>";
@@ -277,6 +392,14 @@
 				BD726E3426B60CB100EAFD14 /* PopUpDelegate.swift */,
 			);
 			path = Protocols;
+			sourceTree = "<group>";
+		};
+		BD87041E26D44BA300DE5562 /* Commons */ = {
+			isa = PBXGroup;
+			children = (
+				BD87041F26D44BE000DE5562 /* WatchSessionManager.swift */,
+			);
+			path = Commons;
 			sourceTree = "<group>";
 		};
 		BDC490E926C1BD1300825792 /* Recipt */ = {
@@ -364,6 +487,40 @@
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
+		BD02C9E726D1B4230028AB3B /* iWarung watchOS */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = BD02CA0F26D1B4250028AB3B /* Build configuration list for PBXNativeTarget "iWarung watchOS" */;
+			buildPhases = (
+				BD02C9E626D1B4230028AB3B /* Resources */,
+				BD02CA0B26D1B4250028AB3B /* Embed App Extensions */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				BD02C9F726D1B4240028AB3B /* PBXTargetDependency */,
+			);
+			name = "iWarung watchOS";
+			productName = "iWarung watchOS";
+			productReference = BD02C9E826D1B4230028AB3B /* iWarung watchOS.app */;
+			productType = "com.apple.product-type.application.watchapp2";
+		};
+		BD02C9F326D1B4240028AB3B /* iWarung watchOS Extension */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = BD02CA0E26D1B4250028AB3B /* Build configuration list for PBXNativeTarget "iWarung watchOS Extension" */;
+			buildPhases = (
+				BD02C9F026D1B4240028AB3B /* Sources */,
+				BD02C9F126D1B4240028AB3B /* Frameworks */,
+				BD02C9F226D1B4240028AB3B /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = "iWarung watchOS Extension";
+			productName = "iWarung watchOS Extension";
+			productReference = BD02C9F426D1B4240028AB3B /* iWarung watchOS Extension.appex */;
+			productType = "com.apple.product-type.watchkit2-extension";
+		};
 		BD5AC58026A369F400A52336 /* iWarung */ = {
 			isa = PBXNativeTarget;
 			buildConfigurationList = BD5AC59826A369F500A52336 /* Build configuration list for PBXNativeTarget "iWarung" */;
@@ -371,10 +528,12 @@
 				BD5AC57D26A369F400A52336 /* Sources */,
 				BD5AC57E26A369F400A52336 /* Frameworks */,
 				BD5AC57F26A369F400A52336 /* Resources */,
+				BD02CA0826D1B4250028AB3B /* Embed Watch Content */,
 			);
 			buildRules = (
 			);
 			dependencies = (
+				BD02CA0626D1B4250028AB3B /* PBXTargetDependency */,
 			);
 			name = iWarung;
 			productName = iWarung;
@@ -390,6 +549,12 @@
 				LastSwiftUpdateCheck = 1250;
 				LastUpgradeCheck = 1250;
 				TargetAttributes = {
+					BD02C9E726D1B4230028AB3B = {
+						CreatedOnToolsVersion = 12.5.1;
+					};
+					BD02C9F326D1B4240028AB3B = {
+						CreatedOnToolsVersion = 12.5.1;
+					};
 					BD5AC58026A369F400A52336 = {
 						CreatedOnToolsVersion = 12.5.1;
 					};
@@ -409,11 +574,30 @@
 			projectRoot = "";
 			targets = (
 				BD5AC58026A369F400A52336 /* iWarung */,
+				BD02C9E726D1B4230028AB3B /* iWarung watchOS */,
+				BD02C9F326D1B4240028AB3B /* iWarung watchOS Extension */,
 			);
 		};
 /* End PBXProject section */
 
 /* Begin PBXResourcesBuildPhase section */
+		BD02C9E626D1B4230028AB3B /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				BD02C9EE26D1B4240028AB3B /* Assets.xcassets in Resources */,
+				BD02C9EC26D1B4230028AB3B /* Interface.storyboard in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		BD02C9F226D1B4240028AB3B /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				BD02CA0226D1B4250028AB3B /* Assets.xcassets in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 		BD5AC57F26A369F400A52336 /* Resources */ = {
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
@@ -443,6 +627,20 @@
 /* End PBXResourcesBuildPhase section */
 
 /* Begin PBXSourcesBuildPhase section */
+		BD02C9F026D1B4240028AB3B /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				BD38922726D2DCE5005D2BF6 /* StokKurangTableController.swift in Sources */,
+				BD02C9FE26D1B4240028AB3B /* NotificationController.swift in Sources */,
+				BD38922926D2DD4D005D2BF6 /* StokKurangInterfaceController.swift in Sources */,
+				BD02CA0026D1B4240028AB3B /* ComplicationController.swift in Sources */,
+				BD02C9FC26D1B4240028AB3B /* ExtensionDelegate.swift in Sources */,
+				BD02C9FA26D1B4240028AB3B /* InterfaceController.swift in Sources */,
+				BD87042126D44BE800DE5562 /* WatchSessionManager.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 		BD5AC57D26A369F400A52336 /* Sources */ = {
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
@@ -461,7 +659,6 @@
 				BD726E3026B5EBBB00EAFD14 /* SBCardPopUpViewController.swift in Sources */,
 				BDEA921F26AE7B7A00157FA6 /* KeranjangPopUp.swift in Sources */,
 				E7AF66BF26B427C00039A44B /* ProductItem+CoreDataClass.swift in Sources */,
-				E7AF66C026B427C00039A44B /* ProductItem+CoreDataProperties.swift in Sources */,
 				BD726E3526B60CB100EAFD14 /* PopUpDelegate.swift in Sources */,
 				BD1FFF3B26AC237A00EB9AAD /* UIView.swift in Sources */,
 				BD85A2D326A9F74B00FE1B9C /* KeranjangViewController.swift in Sources */,
@@ -477,6 +674,7 @@
 				BD74BCB026A4820B00E3EE75 /* constants.swift in Sources */,
 				3F28F79D26BD2A9400F1050A /* UIImage.swift in Sources */,
 				BD1FFF3D26AC24D300EB9AAD /* UIColor.swift in Sources */,
+				BD02C9E526D197480028AB3B /* ProductItem+CoreDataProperties.swift in Sources */,
 				BD5AC58526A369F400A52336 /* AppDelegate.swift in Sources */,
 				3FF1EE7D26AE284000F4F122 /* DetectedProductView.swift in Sources */,
 				BD52321A26C46AEF00B4795A /* UserDefault.swift in Sources */,
@@ -484,9 +682,11 @@
 				BDE43C2726AF515E004CF3CC /* Core.swift in Sources */,
 				E7AF66B426B165B00039A44B /* ProductItemViewCell.swift in Sources */,
 				E7AF672726BAAB240039A44B /* KeranjangModel.swift in Sources */,
+				BD38922B26D2E81E005D2BF6 /* WatchManager.swift in Sources */,
 				BDB39A3A26ADD06F00296909 /* DaftarProdukViewController.swift in Sources */,
 				BDC625C826AD509500E44675 /* TambahProdukScanViewController.swift in Sources */,
 				BD1CF24526ACAEA9001B7EC8 /* TransaksiSelesaiPasView.swift in Sources */,
+				BD87042026D44BE000DE5562 /* WatchSessionManager.swift in Sources */,
 				BDC8DFA226AC2886008310AA /* UIButton.swift in Sources */,
 				BD1FB09D26BB1DBD00648B18 /* Date.swift in Sources */,
 				BD1FFF3126AB604100EB9AAD /* KeranjangCell.swift in Sources */,
@@ -497,7 +697,28 @@
 		};
 /* End PBXSourcesBuildPhase section */
 
+/* Begin PBXTargetDependency section */
+		BD02C9F726D1B4240028AB3B /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = BD02C9F326D1B4240028AB3B /* iWarung watchOS Extension */;
+			targetProxy = BD02C9F626D1B4240028AB3B /* PBXContainerItemProxy */;
+		};
+		BD02CA0626D1B4250028AB3B /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = BD02C9E726D1B4230028AB3B /* iWarung watchOS */;
+			targetProxy = BD02CA0526D1B4250028AB3B /* PBXContainerItemProxy */;
+		};
+/* End PBXTargetDependency section */
+
 /* Begin PBXVariantGroup section */
+		BD02C9EA26D1B4230028AB3B /* Interface.storyboard */ = {
+			isa = PBXVariantGroup;
+			children = (
+				BD02C9EB26D1B4230028AB3B /* Base */,
+			);
+			name = Interface.storyboard;
+			sourceTree = "<group>";
+		};
 		BD5AC58A26A369F400A52336 /* Main.storyboard */ = {
 			isa = PBXVariantGroup;
 			children = (
@@ -517,6 +738,92 @@
 /* End PBXVariantGroup section */
 
 /* Begin XCBuildConfiguration section */
+		BD02CA0926D1B4250028AB3B /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				CODE_SIGN_STYLE = Automatic;
+				DEVELOPMENT_TEAM = RMQNS23DVX;
+				IBSC_MODULE = iWarung_watchOS_Extension;
+				INFOPLIST_FILE = "iWarung watchOS/Info.plist";
+				PRODUCT_BUNDLE_IDENTIFIER = com.ilb.iwarung.watchkitapp;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SDKROOT = watchos;
+				SKIP_INSTALL = YES;
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = 4;
+				WATCHOS_DEPLOYMENT_TARGET = 7.4;
+			};
+			name = Debug;
+		};
+		BD02CA0A26D1B4250028AB3B /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				CODE_SIGN_STYLE = Automatic;
+				DEVELOPMENT_TEAM = RMQNS23DVX;
+				IBSC_MODULE = iWarung_watchOS_Extension;
+				INFOPLIST_FILE = "iWarung watchOS/Info.plist";
+				PRODUCT_BUNDLE_IDENTIFIER = com.ilb.iwarung.watchkitapp;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SDKROOT = watchos;
+				SKIP_INSTALL = YES;
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = 4;
+				WATCHOS_DEPLOYMENT_TARGET = 7.4;
+			};
+			name = Release;
+		};
+		BD02CA0C26D1B4250028AB3B /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_COMPLICATION_NAME = Complication;
+				CODE_SIGN_ENTITLEMENTS = "iWarung watchOS Extension/iWarung watchOS Extension.entitlements";
+				CODE_SIGN_STYLE = Automatic;
+				DEVELOPMENT_TEAM = RMQNS23DVX;
+				INFOPLIST_FILE = "iWarung watchOS Extension/Info.plist";
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+					"@executable_path/../../Frameworks",
+				);
+				PRODUCT_BUNDLE_IDENTIFIER = com.ilb.iwarung.watchkitapp.watchkitextension;
+				PRODUCT_NAME = "${TARGET_NAME}";
+				SDKROOT = watchos;
+				SKIP_INSTALL = YES;
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = 4;
+				WATCHOS_DEPLOYMENT_TARGET = 7.4;
+			};
+			name = Debug;
+		};
+		BD02CA0D26D1B4250028AB3B /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_COMPLICATION_NAME = Complication;
+				CODE_SIGN_ENTITLEMENTS = "iWarung watchOS Extension/iWarung watchOS Extension.entitlements";
+				CODE_SIGN_STYLE = Automatic;
+				DEVELOPMENT_TEAM = RMQNS23DVX;
+				INFOPLIST_FILE = "iWarung watchOS Extension/Info.plist";
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+					"@executable_path/../../Frameworks",
+				);
+				PRODUCT_BUNDLE_IDENTIFIER = com.ilb.iwarung.watchkitapp.watchkitextension;
+				PRODUCT_NAME = "${TARGET_NAME}";
+				SDKROOT = watchos;
+				SKIP_INSTALL = YES;
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = 4;
+				WATCHOS_DEPLOYMENT_TARGET = 7.4;
+			};
+			name = Release;
+		};
 		BD5AC59626A369F500A52336 /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
@@ -638,6 +945,7 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				CODE_SIGN_ENTITLEMENTS = iWarung/iWarung.entitlements;
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = RMQNS23DVX;
 				INFOPLIST_FILE = iWarung/Info.plist;
@@ -658,6 +966,7 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				CODE_SIGN_ENTITLEMENTS = iWarung/iWarung.entitlements;
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = RMQNS23DVX;
 				INFOPLIST_FILE = iWarung/Info.plist;
@@ -676,6 +985,24 @@
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
+		BD02CA0E26D1B4250028AB3B /* Build configuration list for PBXNativeTarget "iWarung watchOS Extension" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				BD02CA0C26D1B4250028AB3B /* Debug */,
+				BD02CA0D26D1B4250028AB3B /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		BD02CA0F26D1B4250028AB3B /* Build configuration list for PBXNativeTarget "iWarung watchOS" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				BD02CA0926D1B4250028AB3B /* Debug */,
+				BD02CA0A26D1B4250028AB3B /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
 		BD5AC57C26A369F400A52336 /* Build configuration list for PBXProject "iWarung" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (

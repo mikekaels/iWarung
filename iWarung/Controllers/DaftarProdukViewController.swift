@@ -113,9 +113,11 @@ extension DaftarProdukViewController:  UICollectionViewDataSource, UICollectionV
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
         let vc =  UIStoryboard.init(name: "TambahProdukForm", bundle: Bundle.main).instantiateViewController(withIdentifier: "TambahProdukForm") as! TambahProdukFormViewController
         vc.selectedItem = dupProductList[indexPath.row]
+        print("PRODUK: ",dupProductList[indexPath.row])
         vc.isNewProduct = false
         vc.delegate = self
         let nav = UINavigationController(rootViewController: vc)
+        nav.modalPresentationStyle = .fullScreen
         self.present(nav, animated: true, completion: nil)
     }
     

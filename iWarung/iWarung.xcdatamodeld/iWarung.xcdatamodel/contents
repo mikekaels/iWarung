@@ -5,6 +5,7 @@
         <attribute name="desc" optional="YES" attributeType="String"/>
         <attribute name="exp_date" optional="YES" attributeType="Date" usesScalarValueType="NO"/>
         <attribute name="image_data" optional="YES" attributeType="Binary" allowsExternalBinaryDataStorage="YES"/>
+        <attribute name="min_stock" optional="YES" attributeType="Integer 64" defaultValueString="0" usesScalarValueType="YES"/>
         <attribute name="name" optional="YES" attributeType="String"/>
         <attribute name="price" optional="YES" attributeType="Float" defaultValueString="0.0" usesScalarValueType="YES"/>
         <attribute name="stock" optional="YES" attributeType="Integer 64" defaultValueString="0" usesScalarValueType="YES"/>
@@ -18,7 +19,7 @@
         <attribute name="trx_date" optional="YES" attributeType="Date" usesScalarValueType="NO"/>
     </entity>
     <elements>
-        <element name="ProductItem" positionX="-63" positionY="-18" width="128" height="178"/>
+        <element name="ProductItem" positionX="-63" positionY="-18" width="128" height="179"/>
         <element name="Transactions" positionX="161.0419921875" positionY="-7.8270263671875" width="128" height="103"/>
     </elements>
 </model>
