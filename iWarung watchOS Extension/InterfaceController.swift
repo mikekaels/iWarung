@@ -15,7 +15,7 @@ class InterfaceController: WKInterfaceController {
     var connectivityHandler = WatchSessionManager.shared
     var session : WCSession?
     var lastNumber: Int = 0
-    var products = [String: AnyObject]()
+    var products = [Any]()
     
     override func awake(withContext context: Any?) {
         // Configure interface objects here.
@@ -63,10 +63,10 @@ extension InterfaceController: WatchOSDelegate {
                 self.lastNumber = text
             }
             
-            if let data = tuple.applicationContext["data"] as? AnyObject {
+            if let data = tuple.applicationContext["data"] as? Any {
 //                self.label.setText(String(data[0].name))
                 print("THE DATA: ",data)
-                self.products = data as! [String : AnyObject]
+                self.products = data as! [Any]
             }
         }
     }

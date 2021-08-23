@@ -113,7 +113,6 @@ class ViewController: UIViewController{
     func sendDataToIwatch() {
         let data = Persisten.shared.fetchProducts()
         var array = [[String: Any]]()
-        
         for item in data {
             let dict = ["name": item.name!, "stock": item.stock, "expired": item.exp_date!] as [String : Any]
             array.append(dict)
@@ -217,7 +216,7 @@ class ViewController: UIViewController{
     }
     
     @IBAction func flashlightPressed(_ sender: UIButton) {
-        
+        sendDataToIwatch()
         if torchOn == false {
             self.torchOn = true
             flashLightButton.setImage(UIImage(named: "flashlight-on.png"), for: .normal)
@@ -346,7 +345,6 @@ extension ViewController {
         self.scanButton.addGestureRecognizer(longTapGesture)
         self.scanButton.addGestureRecognizer(longPressRecognizer)
         self.view.addGestureRecognizer(tapGesture)
-        sendDataToIwatch()
     }
     
     func resetTimer() {
@@ -400,7 +398,6 @@ extension ViewController {
         
         navigationController?.setNavigationBarHidden(true, animated: animated)
         navigationController?.navigationBar.prefersLargeTitles = false
-        sendDataToIwatch()
     }
     
     override func viewWillDisappear(_ animated: Bool) {

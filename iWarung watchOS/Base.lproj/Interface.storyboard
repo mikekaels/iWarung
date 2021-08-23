@@ -11,8 +11,8 @@
             <objects>
                 <controller id="AgC-eL-Hgc" customClass="InterfaceController" customModule="iWarung_watchOS" customModuleProvider="target">
                     <items>
-                        <label alignment="left" hidden="YES" text="hem" id="Iwn-HW-JiV"/>
-                        <button width="1" alignment="left" hidden="YES" title="Button" id="zuJ-R7-IbV">
+                        <label alignment="left" text="hem" id="Iwn-HW-JiV"/>
+                        <button width="1" alignment="left" title="Button" id="zuJ-R7-IbV">
                             <connections>
                                 <action selector="buttonTapped" destination="AgC-eL-Hgc" id="X0x-pI-6d5"/>
                             </connections>

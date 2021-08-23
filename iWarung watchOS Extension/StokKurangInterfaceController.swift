@@ -13,12 +13,14 @@ class StokKurangInterfaceController: WKInterfaceController {
     @IBOutlet weak var stokKurangTable: WKInterfaceTable!
     
     let stokKurang = ["1", "2", "3", "4", "5", "6", "7"]
+    var products = [Any]()
 
     override func awake(withContext context: Any?) {
         super.awake(withContext: context)
         
         // Configure interface objects here.
         print("CONTEXT: ",context!)
+        products = context as! [Any]
         loadTable()
     }
 
